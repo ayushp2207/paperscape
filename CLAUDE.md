@@ -15,11 +15,11 @@ Two people build this repo in parallel, each with their own Claude session. The 
 
 ## File ownership: only edit files you own
 
-| Owner           | Files                                                                                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Owner           | Files                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ayush (A)       | `db/conferences.js`, `db/submissionPlans.js`, `routes/conferences.js`, `routes/plans.js`, `scripts/seed-conferences.js`, `scripts/build-world-map.js`, `scripts/data/`, `public/index.html`, `public/conferences.html`, `public/plans.html`, `public/js/home.js`, `public/js/planner/`, `public/css/pages/{home,conferences,map,timeline,plans}.css`, `public/assets/` |
-| Harshitha (H)   | `db/reviews.js`, `db/reviewEntries.js`, `db/papers.js`, `routes/reviews.js`, `routes/entries.js`, `routes/papers.js`, `scripts/seed-papers.js`, `public/reviews.html`, `public/review.html`, `public/js/review/`, `public/css/pages/{reviews,review}.css`, `docs/DESIGN.md`, `docs/mockups/`, `README.md` |
-| Shared (frozen) | `server.js`, `package.json`, `eslint.config.js`, `.prettierrc`, `db/connection.js`, `db/indexes.js`, `lib/`, `middleware/`, `public/js/shared/`, `public/css/base.css`, `public/css/layout.css`, `public/css/components/` |
+| Harshitha (H)   | `db/reviews.js`, `db/reviewEntries.js`, `db/papers.js`, `routes/reviews.js`, `routes/entries.js`, `routes/papers.js`, `scripts/seed-papers.js`, `public/reviews.html`, `public/review.html`, `public/js/review/`, `public/css/pages/{reviews,review}.css`, `docs/DESIGN.md`, `docs/mockups/`, `README.md`                                                              |
+| Shared (frozen) | `server.js`, `package.json`, `eslint.config.js`, `.prettierrc`, `db/connection.js`, `db/indexes.js`, `lib/`, `middleware/`, `public/js/shared/`, `public/css/base.css`, `public/css/layout.css`, `public/css/components/`                                                                                                                                              |
 
 If a task seems to need a change to a shared or other-owner file, **stop and tell the user**. Shared changes go in a separate `shared:` PR.
 

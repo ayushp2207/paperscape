@@ -1,0 +1,52 @@
+/* Loading skeletons and empty/error states. */
+.empty-state {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-5);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.empty-state p {
+  max-width: 44ch;
+}
+
+.empty-state__icon {
+  color: var(--accent);
+}
+
+.empty-state--error .empty-state__icon {
+  color: var(--danger);
+}
+
+.skeleton-group {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skeleton-group--card {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
+.skeleton {
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeleton--card {
+  height: 160px;
+}
+
+.skeleton--row {
+  height: 56px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

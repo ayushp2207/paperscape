@@ -42,14 +42,14 @@ Everything that has to be set up **by hand** before (and around) coding: account
                         OpenAlex API
 ```
 
-| Thing           | Account owner | Teammate access                                    | Cost |
-| --------------- | ------------- | -------------------------------------------------- | ---- |
-| GitHub repo     | Ayush         | Collaborator (write)                               | Free |
-| MongoDB Atlas   | Ayush         | Own database user (+ optional read-only Atlas UI)  | Free (M0) |
-| OpenAlex        | Harshitha     | Not needed (seed runs once)                        | Free |
-| Render          | Ayush         | Sees deploy status on GitHub; uses public URL      | Free |
-| Excalidraw      | none          | Live collaboration link                            | Free |
-| YouTube         | either        | n/a                                                | Free |
+| Thing         | Account owner | Teammate access                                   | Cost      |
+| ------------- | ------------- | ------------------------------------------------- | --------- |
+| GitHub repo   | Ayush         | Collaborator (write)                              | Free      |
+| MongoDB Atlas | Ayush         | Own database user (+ optional read-only Atlas UI) | Free (M0) |
+| OpenAlex      | Harshitha     | Not needed (seed runs once)                       | Free      |
+| Render        | Ayush         | Sees deploy status on GitHub; uses public URL     | Free      |
+| Excalidraw    | none          | Live collaboration link                           | Free      |
+| YouTube       | either        | n/a                                               | Free      |
 
 **Key idea:** you both use **one shared Atlas database**.
 
@@ -107,13 +107,13 @@ _No Homebrew?_ Install it from https://brew.sh, or skip `gh` and use a personal 
 
 Install VS Code, then these extensions:
 
-| Extension                    | Why                                                       |
-| ---------------------------- | --------------------------------------------------------- |
-| **ESLint** (Microsoft)       | Shows lint errors inline (rubric: 0 errors)               |
-| **Prettier – Code formatter** | Formats on save (rubric: Prettier formatted)              |
-| **MongoDB for VS Code** (optional) | Browse the DB inside VS Code                          |
-| **Thunder Client** (optional) | Test API endpoints without writing frontend first        |
-| **Claude Code**              | Your AI pair                                              |
+| Extension                          | Why                                               |
+| ---------------------------------- | ------------------------------------------------- |
+| **ESLint** (Microsoft)             | Shows lint errors inline (rubric: 0 errors)       |
+| **Prettier – Code formatter**      | Formats on save (rubric: Prettier formatted)      |
+| **MongoDB for VS Code** (optional) | Browse the DB inside VS Code                      |
+| **Thunder Client** (optional)      | Test API endpoints without writing frontend first |
+| **Claude Code**                    | Your AI pair                                      |
 
 Turn on format-on-save (Settings → search "format on save" → ✓). Set **Default Formatter** to Prettier.
 The scaffold also adds `.vscode/settings.json` to the repo so this is automatic.
@@ -151,15 +151,15 @@ Why:
 
 Settings → **Branches** → **Add classic branch protection rule**:
 
-| Field                                              | Value                                    |
-| -------------------------------------------------- | ---------------------------------------- |
-| Branch name pattern                                | `main`                                   |
-| ✓ Require a pull request before merging            | on                                       |
-| └ ✓ Require approvals                              | **1**                                    |
-| └ ✓ Dismiss stale approvals when new commits are pushed | on                                  |
-| ✓ Require conversation resolution before merging   | on                                       |
-| ✗ Do not allow bypassing the above settings        | **leave off** (so Ayush can hotfix in an emergency) |
-| Allow force pushes / deletions                     | off                                      |
+| Field                                                   | Value                                               |
+| ------------------------------------------------------- | --------------------------------------------------- |
+| Branch name pattern                                     | `main`                                              |
+| ✓ Require a pull request before merging                 | on                                                  |
+| └ ✓ Require approvals                                   | **1**                                               |
+| └ ✓ Dismiss stale approvals when new commits are pushed | on                                                  |
+| ✓ Require conversation resolution before merging        | on                                                  |
+| ✗ Do not allow bypassing the above settings             | **leave off** (so Ayush can hotfix in an emergency) |
+| Allow force pushes / deletions                          | off                                                 |
 
 Click **Create**.
 
@@ -210,11 +210,11 @@ M0 limits: 512 MB storage, shared CPU. Our ~1,500 papers with abstracts are ~5�
 
 Left sidebar → **Security → Database Access** → **Add New Database User**:
 
-| Username          | Used by                     | Role                              |
-| ----------------- | --------------------------- | --------------------------------- |
-| `ayush-dev`       | Ayush's laptop              | **Read and write to any database** |
-| `harshitha-dev`   | Harshitha's laptop          | Read and write to any database    |
-| `render-prod`     | The Render server           | Read and write to any database    |
+| Username        | Used by            | Role                               |
+| --------------- | ------------------ | ---------------------------------- |
+| `ayush-dev`     | Ayush's laptop     | **Read and write to any database** |
+| `harshitha-dev` | Harshitha's laptop | Read and write to any database     |
+| `render-prod`   | The Render server  | Read and write to any database     |
 
 Settings for each user:
 
@@ -259,10 +259,10 @@ _Optional:_ to let her browse data in the Atlas website too, go to Project → *
 
 ### 3.7 Who loads which data (once, from a laptop)
 
-| Command                    | Who        | When                       | Result                           |
-| -------------------------- | ---------- | -------------------------- | -------------------------------- |
-| `npm run seed:conferences` | Ayush      | Day 1 (task A-1)           | ~30 docs in `conferences`        |
-| `npm run seed:papers`      | Harshitha  | Day 1 (task H-2)           | 1,000+ docs in `papers`          |
+| Command                    | Who       | When             | Result                    |
+| -------------------------- | --------- | ---------------- | ------------------------- |
+| `npm run seed:conferences` | Ayush     | Day 1 (task A-1) | ~30 docs in `conferences` |
+| `npm run seed:papers`      | Harshitha | Day 1 (task H-2) | 1,000+ docs in `papers`   |
 
 Because the DB is shared, **each seed runs once**, and the other person's app sees the data immediately. The deployed site uses the same DB, so production is seeded too. Don't re-run the other person's seed without telling them.
 
@@ -311,13 +311,13 @@ OPENALEX_API_KEY=
 OPENALEX_EMAIL=you@northeastern.edu
 ```
 
-| Variable           | Ayush            | Harshitha           | Render (prod)         |
-| ------------------ | ---------------- | ------------------- | --------------------- |
-| `MONGODB_URI`      | `ayush-dev` URI  | `harshitha-dev` URI | `render-prod` URI     |
-| `DB_NAME`          | `paperscape`     | `paperscape`        | `paperscape`          |
-| `PORT`             | `3000`           | `3000`              | _(don't set; Render injects it)_ |
-| `OPENALEX_*`       | optional         | **yes**             | not needed            |
-| `NODE_VERSION`     | n/a              | n/a                 | `22`                  |
+| Variable       | Ayush           | Harshitha           | Render (prod)                    |
+| -------------- | --------------- | ------------------- | -------------------------------- |
+| `MONGODB_URI`  | `ayush-dev` URI | `harshitha-dev` URI | `render-prod` URI                |
+| `DB_NAME`      | `paperscape`    | `paperscape`        | `paperscape`                     |
+| `PORT`         | `3000`          | `3000`              | _(don't set; Render injects it)_ |
+| `OPENALEX_*`   | optional        | **yes**             | not needed                       |
+| `NODE_VERSION` | n/a             | n/a                 | `22`                             |
 
 ### 5.2 Rules
 
@@ -360,31 +360,31 @@ Best to worst:
 
 Render dashboard → **New + → Web Service** → pick `ayushp2207/paperscape` → fill in:
 
-| Field              | Value                                              |
-| ------------------ | -------------------------------------------------- |
+| Field              | Value                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------- |
 | Name               | `paperscape` (becomes `paperscape.onrender.com` if free; otherwise Render adds a suffix) |
-| Region             | **Virginia (US East)** (same region as Atlas)      |
-| Branch             | `main`                                             |
-| Root Directory     | _(leave empty)_                                    |
-| Runtime / Language | **Node**                                           |
-| Build Command      | `npm ci`                                           |
-| Start Command      | `npm start`                                        |
-| Instance Type      | **Free**                                           |
+| Region             | **Virginia (US East)** (same region as Atlas)                                            |
+| Branch             | `main`                                                                                   |
+| Root Directory     | _(leave empty)_                                                                          |
+| Runtime / Language | **Node**                                                                                 |
+| Build Command      | `npm ci`                                                                                 |
+| Start Command      | `npm start`                                                                              |
+| Instance Type      | **Free**                                                                                 |
 
 **Environment Variables** (on the same page, "Add Environment Variable"):
 
-| Key            | Value                          |
-| -------------- | ------------------------------ |
+| Key            | Value                                   |
+| -------------- | --------------------------------------- |
 | `MONGODB_URI`  | the **`render-prod`** connection string |
-| `DB_NAME`      | `paperscape`                   |
-| `NODE_VERSION` | `22`                           |
+| `DB_NAME`      | `paperscape`                            |
+| `NODE_VERSION` | `22`                                    |
 
 **Advanced:**
 
-| Field             | Value          |
-| ----------------- | -------------- |
-| Health Check Path | `/api/health`  |
-| Auto-Deploy       | **On Commit**  |
+| Field             | Value         |
+| ----------------- | ------------- |
+| Health Check Path | `/api/health` |
+| Auto-Deploy       | **On Commit** |
 
 Click **Create Web Service**. The first build takes 2–4 min. Watch the **Logs** tab and look for your "Server listening on …" line.
 
@@ -423,16 +423,16 @@ Fallback with the same steps: **Koyeb** (free Node web service) or **Railway** (
 
 ## 7. Other tools
 
-| Need                  | Tool                                                         | How to collaborate                                                                 |
-| --------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| Mockups (Design doc)  | **Excalidraw** (https://excalidraw.com, no account)          | Click **Live collaboration → Start session** and send the link; both draw at once. Export PNGs to `docs/mockups/`. Also save the `.excalidraw` file so you can edit later |
-| Mockups (alternative) | Figma (free education plan)                                  | Share the file with edit access                                                    |
-| World map data        | Natural Earth GeoJSON (public domain, no account)            | Ayush's script downloads it once; output committed                                 |
-| Fonts                 | Google Fonts (Inter, JetBrains Mono)                         | Just a `<link>` tag, no account                                                    |
-| Icons                 | Lucide (https://lucide.dev, ISC license)                     | Copy SVG markup into `icons.js`                                                    |
-| Slides                | Google Slides                                                | Share with edit access; link in README + form                                      |
-| Video                 | Record: QuickTime (Mac, File → New Screen Recording) or OBS / Loom. Host: **YouTube**, visibility **Public** (rubric says public) | One person uploads; both narrate their part |
-| Chat                  | whatever you already use                                     | Make one thread just for "PR ready for review" pings                               |
+| Need                  | Tool                                                                                                                              | How to collaborate                                                                                                                                                        |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Mockups (Design doc)  | **Excalidraw** (https://excalidraw.com, no account)                                                                               | Click **Live collaboration → Start session** and send the link; both draw at once. Export PNGs to `docs/mockups/`. Also save the `.excalidraw` file so you can edit later |
+| Mockups (alternative) | Figma (free education plan)                                                                                                       | Share the file with edit access                                                                                                                                           |
+| World map data        | Natural Earth GeoJSON (public domain, no account)                                                                                 | Ayush's script downloads it once; output committed                                                                                                                        |
+| Fonts                 | Google Fonts (Inter, JetBrains Mono)                                                                                              | Just a `<link>` tag, no account                                                                                                                                           |
+| Icons                 | Lucide (https://lucide.dev, ISC license)                                                                                          | Copy SVG markup into `icons.js`                                                                                                                                           |
+| Slides                | Google Slides                                                                                                                     | Share with edit access; link in README + form                                                                                                                             |
+| Video                 | Record: QuickTime (Mac, File → New Screen Recording) or OBS / Loom. Host: **YouTube**, visibility **Public** (rubric says public) | One person uploads; both narrate their part                                                                                                                               |
+| Chat                  | whatever you already use                                                                                                          | Make one thread just for "PR ready for review" pings                                                                                                                      |
 
 ---
 
@@ -526,17 +526,17 @@ git push --force-with-lease
 
 ## 10. Troubleshooting
 
-| Symptom                                                                 | Fix                                                                                                                                                                                                         |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `MongoServerSelectionError` / timeout                                   | Atlas → Network Access must contain `0.0.0.0/0` (status "Active"). Wait 1–2 min after adding                                                                                                               |
-| `bad auth : authentication failed`                                      | Wrong username/password in the URI, or the `< >` brackets were left in. Reset the password in Atlas → Database Access                                                                                         |
+| Symptom                                                                 | Fix                                                                                                                                                                                        |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `MongoServerSelectionError` / timeout                                   | Atlas → Network Access must contain `0.0.0.0/0` (status "Active"). Wait 1–2 min after adding                                                                                               |
+| `bad auth : authentication failed`                                      | Wrong username/password in the URI, or the `< >` brackets were left in. Reset the password in Atlas → Database Access                                                                      |
 | `querySrv ENOTFOUND _mongodb._tcp…` (common on campus Wi-Fi / VPN)      | The network's DNS blocks SRV lookups. Switch to a hotspot, or set the DNS to `8.8.8.8`/`1.1.1.1`, or in Atlas → Connect → Drivers pick the older driver version to get a non-`+srv` string |
-| Password has `@ : / ?` and connection fails                             | URL-encode it (`@` → `%40`) or autogenerate a letters-and-digits password                                                                                                                                       |
-| `git push` → "protected branch" rejected                                | Expected. Push a branch and open a PR                                                                                                                                                                         |
-| `git push` asks for a password                                          | Run `gh auth login`, or use a GitHub personal access token instead of your password                                                                                                                           |
-| Render build fails: `npm ci` can only install with an existing lockfile | Commit `package-lock.json`                                                                                                                                                                                  |
-| Render: "No open ports detected" / deploy times out                     | `server.js` must `listen(process.env.PORT)`                                                                                                                                                                 |
-| Render: `SyntaxError: Cannot use import statement outside a module`     | `"type": "module"` missing in `package.json`, or Node version too old → set `NODE_VERSION=22`                                                                                                             |
-| Site works locally but deployed pages show no data                      | Env var missing or misspelled in Render → Environment; redeploy after fixing                                                                                                                              |
-| Deployed site takes ~1 min to load                                      | Free-tier cold start; expected. Warm it before demos (§6.6)                                                                                                                                                  |
-| OpenAlex returns `429 Too Many Requests`                                | The script backs off automatically; if it keeps happening, increase the sleep to 500 ms                                                                                                                      |
+| Password has `@ : / ?` and connection fails                             | URL-encode it (`@` → `%40`) or autogenerate a letters-and-digits password                                                                                                                  |
+| `git push` → "protected branch" rejected                                | Expected. Push a branch and open a PR                                                                                                                                                      |
+| `git push` asks for a password                                          | Run `gh auth login`, or use a GitHub personal access token instead of your password                                                                                                        |
+| Render build fails: `npm ci` can only install with an existing lockfile | Commit `package-lock.json`                                                                                                                                                                 |
+| Render: "No open ports detected" / deploy times out                     | `server.js` must `listen(process.env.PORT)`                                                                                                                                                |
+| Render: `SyntaxError: Cannot use import statement outside a module`     | `"type": "module"` missing in `package.json`, or Node version too old → set `NODE_VERSION=22`                                                                                              |
+| Site works locally but deployed pages show no data                      | Env var missing or misspelled in Render → Environment; redeploy after fixing                                                                                                               |
+| Deployed site takes ~1 min to load                                      | Free-tier cold start; expected. Warm it before demos (§6.6)                                                                                                                                |
+| OpenAlex returns `429 Too Many Requests`                                | The script backs off automatically; if it keeps happening, increase the sleep to 500 ms                                                                                                    |
