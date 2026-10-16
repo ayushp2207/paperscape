@@ -1,0 +1,37 @@
+{
+  "name": "paperscape",
+  "version": "1.0.0",
+  "description": "Plan your ML submissions and run your literature review in one place.",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "seed:conferences": "node scripts/seed-conferences.js",
+    "seed:papers": "node scripts/seed-papers.js",
+    "build:map": "node scripts/build-world-map.js"
+  },
+  "author": "Ayush Nimeshkumar Patel, Harshitha Seetharaman",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushp2207/paperscape.git"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10"
+  }
+}

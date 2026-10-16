@@ -44,31 +44,31 @@ From the approved proposal. Everything here is promised to the instructor, so al
 
 ### Conference Planner (persona: Nadia, 1st-year PhD)
 
-| #   | User story                                                                                                                                                                  | Owner |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| P1  | See upcoming ML conferences on a **world map** and **timeline**, filtered by **research area** and **month**                                                                | A     |
-| P2  | **Add, edit, delete** conference entries (dates, location, deadlines, research areas)                                                                                       | A     |
-| P3  | Create **submission plans** with a **target venue + backup**, **custom milestones**, and a **countdown** to each deadline                                                   | A     |
+| #   | User story                                                                                                                                                                       | Owner |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| P1  | See upcoming ML conferences on a **world map** and **timeline**, filtered by **research area** and **month**                                                                     | A     |
+| P2  | **Add, edit, delete** conference entries (dates, location, deadlines, research areas)                                                                                            | A     |
+| P3  | Create **submission plans** with a **target venue + backup**, **custom milestones**, and a **countdown** to each deadline                                                        | A     |
 | P4  | **Edit/delete** plans; get warned on **deadline clashes** (2 deadlines in the same week) and **travel squeeze** (< 6 weeks between acceptance notification and conference start) | A     |
 
 ### Review Workspace (persona: Leo, MS thesis)
 
-| #   | User story                                                                                                                  | Owner |
-| --- | --------------------------------------------------------------------------------------------------------------------------- | ----- |
-| R1  | **Create, edit, delete** literature reviews, each built around a **research question**                                      | H     |
-| R2  | **Search** recent papers by **keyword, research area, year**, read **abstracts**, **add** them to a review                  | H     |
+| #   | User story                                                                                                               | Owner |
+| --- | ------------------------------------------------------------------------------------------------------------------------ | ----- |
+| R1  | **Create, edit, delete** literature reviews, each built around a **research question**                                   | H     |
+| R2  | **Search** recent papers by **keyword, research area, year**, read **abstracts**, **add** them to a review               | H     |
 | R3  | Record each saved paper's **reading status, notes, key findings** relative to the question; **edit/remove** saved papers | H     |
 | R4  | Link papers into **ordered threads**; see **which saved papers cite each other**                                         | H     |
 
 ### Shared / platform
 
-| #   | Feature                                                                                      | Owner |
-| --- | -------------------------------------------------------------------------------------------- | ----- |
-| C1  | `papers` collection seeded from **OpenAlex** with **1,000+** recent ML papers (read-only)    | H     |
-| C2  | **Anonymous ID**: each browser gets an ID; users only see/edit their own plans and reviews | A     |
-| C3  | App shell: nav, theme (dark/light), design system, home page with **usage instructions**   | A     |
-| C4  | Conference seed data (public listings)                                                       | A     |
-| C5  | Optional extra: papers from `papers` that appeared at a selected conference                  | A (stretch) |
+| #   | Feature                                                                                    | Owner       |
+| --- | ------------------------------------------------------------------------------------------ | ----------- |
+| C1  | `papers` collection seeded from **OpenAlex** with **1,000+** recent ML papers (read-only)  | H           |
+| C2  | **Anonymous ID**: each browser gets an ID; users only see/edit their own plans and reviews | A           |
+| C3  | App shell: nav, theme (dark/light), design system, home page with **usage instructions**   | A           |
+| C4  | Conference seed data (public listings)                                                     | A           |
+| C5  | Optional extra: papers from `papers` that appeared at a selected conference                | A (stretch) |
 
 ---
 
@@ -78,42 +78,42 @@ From the approved proposal. Everything here is promised to the instructor, so al
 **Planned (P)** is polish we expect to fit.
 **Stretch (X)** is attempted only after everything Core is merged and deployed.
 
-| Tier | Conference Planner (A)                                                                                    | Review Workspace (H)                                                                 |
-| ---- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| M    | Conference CRUD (dialog form), list view with filters                                                     | Review CRUD (dialog form), list view                                                 |
-| M    | World map with pins (static SVG + our own projection maths), click a pin → detail panel                      | Paper search (keyword, area, year range) + paginated results + abstract expand      |
-| M    | Hand-drawn SVG timeline (deadline ◆, notification ●, conference bar ▬, "today" line)                     | Add paper → review; reading status, relation, relevance, notes, findings; edit/remove |
-| M    | Area chips + month filter shared by map, timeline, list                                                   | Threads: create/rename/delete, add/remove entries, reorder with ↑/↓ buttons         |
-| M    | Submission plan CRUD: target + backup, milestones repeater, status, notes                                 | Citation links: list "A cites B" among saved papers + per-paper badges              |
-| M    | Live countdown chips (updates every 60 s), deadlines in **AoE**                                           | Review cards show progress bar by status                                             |
-| M    | Clash warning (≤ 7 days apart) + travel warning (< 42 days notification→start)                            | Delete review cascades its entries                                                   |
-| P    | Home dashboard: next deadline, plan count, review count, "how to use"                                     | Filter reading list by status; sort by year/relevance                                |
-| P    | "Plan for this venue" button → prefilled plan form                                                        | "Already added ✓" state in search results                                            |
-| P    | "Backup deadline passes before target notification" warning                                               | Empty states + skeleton loaders on all her pages                                     |
-| P    | Duplicate a seeded conference into an editable copy                                                     | Paper detail drawer (authors, venue, DOI link, cited-by count)                        |
-| X    | Papers at this conference (C5)                                                                            | Citation **graph** in SVG (circular layout → force-directed)                         |
-| X    | `.ics` calendar export of a plan                                                                          | Drag-and-drop thread reordering (HTML5 DnD)                                          |
-| X    | Map zoom/pan + pin clustering                                                                             | "Suggested papers": cite ≥ 2 of your saved papers                                    |
-| X    | Filters synced to URL query string                                                                        | Export review to Markdown / BibTeX                                                   |
+| Tier | Conference Planner (A)                                                                  | Review Workspace (H)                                                                  |
+| ---- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| M    | Conference CRUD (dialog form), list view with filters                                   | Review CRUD (dialog form), list view                                                  |
+| M    | World map with pins (static SVG + our own projection maths), click a pin → detail panel | Paper search (keyword, area, year range) + paginated results + abstract expand        |
+| M    | Hand-drawn SVG timeline (deadline ◆, notification ●, conference bar ▬, "today" line)    | Add paper → review; reading status, relation, relevance, notes, findings; edit/remove |
+| M    | Area chips + month filter shared by map, timeline, list                                 | Threads: create/rename/delete, add/remove entries, reorder with ↑/↓ buttons           |
+| M    | Submission plan CRUD: target + backup, milestones repeater, status, notes               | Citation links: list "A cites B" among saved papers + per-paper badges                |
+| M    | Live countdown chips (updates every 60 s), deadlines in **AoE**                         | Review cards show progress bar by status                                              |
+| M    | Clash warning (≤ 7 days apart) + travel warning (< 42 days notification→start)          | Delete review cascades its entries                                                    |
+| P    | Home dashboard: next deadline, plan count, review count, "how to use"                   | Filter reading list by status; sort by year/relevance                                 |
+| P    | "Plan for this venue" button → prefilled plan form                                      | "Already added ✓" state in search results                                             |
+| P    | "Backup deadline passes before target notification" warning                             | Empty states + skeleton loaders on all her pages                                      |
+| P    | Duplicate a seeded conference into an editable copy                                     | Paper detail drawer (authors, venue, DOI link, cited-by count)                        |
+| X    | Papers at this conference (C5)                                                          | Citation **graph** in SVG (circular layout → force-directed)                          |
+| X    | `.ics` calendar export of a plan                                                        | Drag-and-drop thread reordering (HTML5 DnD)                                           |
+| X    | Map zoom/pan + pin clustering                                                           | "Suggested papers": cite ≥ 2 of your saved papers                                     |
+| X    | Filters synced to URL query string                                                      | Export review to Markdown / BibTeX                                                    |
 
 ---
 
 ## 3. Tech stack & constraints
 
-| Layer    | Choice                                                                         | Notes / rubric                                                               |
-| -------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| Runtime  | **Node.js 20+** (use 22 LTS)                                                   | Needed for `import.meta.dirname`, `node --watch`, `crypto.randomUUID`        |
-| Server   | **Express 4/5**                                                                | Rubric: node + express (5)                                                   |
-| DB       | **MongoDB Atlas (M0 free)** + **native `mongodb` driver**                      | **No Mongoose** (−20). At least 2 collections with CRUD (15). 1,000+ records (5) |
-| Modules  | **ESM only**: `"type": "module"`, `import`/`export`                            | **No `require`** (10)                                                        |
-| Frontend | **HTML5 + CSS3 + vanilla JS ES modules + Fetch**                               | Client-side rendering only (15). **No template engines** (−20), no React     |
-| Viz      | Hand-written **SVG** (timeline, map markers); static public-domain world SVG  | No D3, no Leaflet                                                            |
-| Config   | **dotenv** (approved)                                                          | No secrets in git (10)                                                       |
-| Quality  | **ESLint** (flat config) + **Prettier**                                        | Lint 0 errors (5), Prettier formatted (5)                                    |
-| Data     | **OpenAlex API**, one-time seed script                                         |                                                                              |
-| Deploy   | **Render** web service (free) + Atlas                                          | Public & working (5)                                                         |
-| Fonts    | Inter + JetBrains Mono via Google Fonts `<link>`                               | Only CSS, no JS library                                                      |
-| Icons    | Inline SVG (copy from Lucide, ISC license) in a `icons.js` module              | No icon library dependency                                                   |
+| Layer    | Choice                                                                       | Notes / rubric                                                                   |
+| -------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Runtime  | **Node.js 20+** (use 22 LTS)                                                 | Needed for `import.meta.dirname`, `node --watch`, `crypto.randomUUID`            |
+| Server   | **Express 4/5**                                                              | Rubric: node + express (5)                                                       |
+| DB       | **MongoDB Atlas (M0 free)** + **native `mongodb` driver**                    | **No Mongoose** (−20). At least 2 collections with CRUD (15). 1,000+ records (5) |
+| Modules  | **ESM only**: `"type": "module"`, `import`/`export`                          | **No `require`** (10)                                                            |
+| Frontend | **HTML5 + CSS3 + vanilla JS ES modules + Fetch**                             | Client-side rendering only (15). **No template engines** (−20), no React         |
+| Viz      | Hand-written **SVG** (timeline, map markers); static public-domain world SVG | No D3, no Leaflet                                                                |
+| Config   | **dotenv** (approved)                                                        | No secrets in git (10)                                                           |
+| Quality  | **ESLint** (flat config) + **Prettier**                                      | Lint 0 errors (5), Prettier formatted (5)                                        |
+| Data     | **OpenAlex API**, one-time seed script                                       |                                                                                  |
+| Deploy   | **Render** web service (free) + Atlas                                        | Public & working (5)                                                             |
+| Fonts    | Inter + JetBrains Mono via Google Fonts `<link>`                             | Only CSS, no JS library                                                          |
+| Icons    | Inline SVG (copy from Lucide, ISC license) in a `icons.js` module            | No icon library dependency                                                       |
 
 **Allowed dependencies (final list, nothing else without asking each other):**
 
@@ -193,7 +193,8 @@ paperscape/
     │   │   ├── dialog.css            [S]
     │   │   ├── toast.css             [S]
     │   │   ├── chips.css             [S]  (area chips, status badges, countdown chips)
-    │   │   └── tabs.css              [S]
+    │   │   ├── tabs.css              [S]
+    │   │   └── states.css            [S]  (empty states, skeletons)
     │   └── pages/
     │       ├── home.css              [A]
     │       ├── conferences.css       [A]
@@ -206,7 +207,7 @@ paperscape/
         ├── shared/                   [S] FROZEN after S0
         │   ├── api.js                fetch wrapper, adds X-Owner-Id, JSON, throws ApiError
         │   ├── owner.js              getOwnerId()
-        │   ├── dom.js                el(), clear(), qs() — safe DOM building
+        │   ├── dom.js                el(), svgEl(), clear(), qs(), qsa() — safe DOM building
         │   ├── ui.js                 toast(), confirmDialog(), openDialog(), emptyState(), skeleton()
         │   ├── format.js             dates, AoE helpers, countdown(), relative time
         │   ├── areas.js              AREAS taxonomy (ids, labels, colours), shared by both modules
@@ -270,13 +271,13 @@ To change a contract: agree in chat → `shared:` PR → both pull.
 
 ### Where overlap will happen (and the plan for it)
 
-| Overlap                                               | Plan                                                                                  |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Overlap                                                | Plan                                                                                                 |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | H needs a new shared UI helper (e.g. a tabs component) | Already included in S0 (`tabs.css`). If something else is needed, a `shared:` PR by whoever needs it |
-| `package.json` scripts                                | A pre-adds all scripts in S0 (`seed:papers` included)                                 |
-| `db/indexes.js`                                       | Pre-declared in S0; H reviews it during the S0 PR                                     |
-| Both touch `README.md` / `DESIGN.md`                  | H owns both files; A sends planner sections/screenshots via PR or chat               |
-| Final lint/format pass                                | Done **once**, by A, in F-1 after both features are merged                            |
+| `package.json` scripts                                 | A pre-adds all scripts in S0 (`seed:papers` included)                                                |
+| `db/indexes.js`                                        | Pre-declared in S0; H reviews it during the S0 PR                                                    |
+| Both touch `README.md` / `DESIGN.md`                   | H owns both files; A sends planner sections/screenshots via PR or chat                               |
+| Final lint/format pass                                 | Done **once**, by A, in F-1 after both features are merged                                           |
 
 ### Using Claude Code safely as a pair
 
@@ -386,13 +387,13 @@ Edit/delete is allowed only where `ownerId === req.ownerId`. Seeded ones offer *
 
 ### Indexes (`db/indexes.js`, created at server start; idempotent)
 
-| Collection        | Index                                                   |
-| ----------------- | ------------------------------------------------------- |
-| conferences       | `{ startDate: 1 }`, `{ ownerId: 1 }`, `{ areas: 1 }`    |
-| submissionPlans   | `{ ownerId: 1, updatedAt: -1 }`                         |
-| reviews           | `{ ownerId: 1, updatedAt: -1 }`                         |
-| reviewEntries     | `{ reviewId: 1, paperId: 1 }` **unique**, `{ ownerId: 1, reviewId: 1 }` |
-| papers            | `{ openalexId: 1 }` unique, text `{ title: "text", abstract: "text" }` (weights title 5), `{ areas: 1, year: -1 }`, `{ citedByCount: -1 }` |
+| Collection      | Index                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| conferences     | `{ startDate: 1 }`, `{ ownerId: 1 }`, `{ areas: 1 }`                                                                                       |
+| submissionPlans | `{ ownerId: 1, updatedAt: -1 }`                                                                                                            |
+| reviews         | `{ ownerId: 1, updatedAt: -1 }`                                                                                                            |
+| reviewEntries   | `{ reviewId: 1, paperId: 1 }` **unique**, `{ ownerId: 1, reviewId: 1 }`                                                                    |
+| papers          | `{ openalexId: 1 }` unique, text `{ title: "text", abstract: "text" }` (weights title 5), `{ areas: 1, year: -1 }`, `{ citedByCount: -1 }` |
 
 ---
 
@@ -409,61 +410,61 @@ Conventions:
 
 ### Conferences [A]
 
-| Method | URL                                   | Body / query                                    | Returns                          |
-| ------ | ------------------------------------- | ----------------------------------------------- | -------------------------------- |
-| GET    | `/api/conferences`                    | `?area=nlp,cv&month=2027-03&q=neur&past=false`  | `[conference]` sorted by next deadline |
-| GET    | `/api/conferences/:id`                |                                                 | `conference`                     |
-| POST   | `/api/conferences`                    | conference fields (no `_id`, `ownerId`)         | `201 conference`                 |
-| PUT    | `/api/conferences/:id`                | full editable fields                            | `conference` (404 if seed/not yours) |
-| DELETE | `/api/conferences/:id`                |                                                 | `204`; `409` if used by your plans |
-| POST   | `/api/conferences/:id/duplicate`      |                                                 | `201` your editable copy (P)     |
-| GET    | `/api/conferences/:id/papers`         |                                                 | `[paper]` (X, C5)                |
+| Method | URL                              | Body / query                                   | Returns                                |
+| ------ | -------------------------------- | ---------------------------------------------- | -------------------------------------- |
+| GET    | `/api/conferences`               | `?area=nlp,cv&month=2027-03&q=neur&past=false` | `[conference]` sorted by next deadline |
+| GET    | `/api/conferences/:id`           |                                                | `conference`                           |
+| POST   | `/api/conferences`               | conference fields (no `_id`, `ownerId`)        | `201 conference`                       |
+| PUT    | `/api/conferences/:id`           | full editable fields                           | `conference` (404 if seed/not yours)   |
+| DELETE | `/api/conferences/:id`           |                                                | `204`; `409` if used by your plans     |
+| POST   | `/api/conferences/:id/duplicate` |                                                | `201` your editable copy (P)           |
+| GET    | `/api/conferences/:id/papers`    |                                                | `[paper]` (X, C5)                      |
 
 `month=YYYY-MM` matches if **any** deadline or the conference itself falls in that month.
 
 ### Submission plans [A]
 
-| Method | URL                | Body                                                                         | Returns                                         |
-| ------ | ------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------- |
-| GET    | `/api/plans`       |                                                                              | `[plan + target + backup]` (conference docs embedded via `$lookup`) |
-| GET    | `/api/plans/:id`   |                                                                              | same shape, one                                 |
-| POST   | `/api/plans`       | `{ paperTitle, targetConferenceId, backupConferenceId?, status, milestones[], notes }` | `201`                                  |
-| PUT    | `/api/plans/:id`   | same                                                                         | updated                                         |
-| PATCH  | `/api/plans/:id/milestones/:mid` | `{ done }`                                                     | updated (checkbox toggle)                       |
-| DELETE | `/api/plans/:id`   |                                                                              | `204`                                           |
+| Method | URL                              | Body                                                                                   | Returns                                                             |
+| ------ | -------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| GET    | `/api/plans`                     |                                                                                        | `[plan + target + backup]` (conference docs embedded via `$lookup`) |
+| GET    | `/api/plans/:id`                 |                                                                                        | same shape, one                                                     |
+| POST   | `/api/plans`                     | `{ paperTitle, targetConferenceId, backupConferenceId?, status, milestones[], notes }` | `201`                                                               |
+| PUT    | `/api/plans/:id`                 | same                                                                                   | updated                                                             |
+| PATCH  | `/api/plans/:id/milestones/:mid` | `{ done }`                                                                             | updated (checkbox toggle)                                           |
+| DELETE | `/api/plans/:id`                 |                                                                                        | `204`                                                               |
 
 Validation: target ≠ backup; both conferences must be visible to the owner; milestone labels non-empty; dates valid.
 **Warnings are computed client-side** in `warnings.js`, which is pure and easy to demo.
 
 ### Reviews + threads + citations [H]
 
-| Method | URL                                          | Body / query                                  | Returns                                   |
-| ------ | -------------------------------------------- | --------------------------------------------- | ----------------------------------------- |
-| GET    | `/api/reviews`                               |                                               | `[review + counts{to-read,reading,read,skipped,total}]` |
-| GET    | `/api/reviews/:id`                           |                                               | `review`                                  |
-| POST   | `/api/reviews`                               | `{ title, question, description?, keywords? }` | `201`                                    |
-| PUT    | `/api/reviews/:id`                           | same                                          | updated                                   |
-| DELETE | `/api/reviews/:id`                           |                                               | `204` (also deletes its entries)          |
-| POST   | `/api/reviews/:id/threads`                   | `{ title, note? }`                            | `201 thread`                              |
-| PUT    | `/api/reviews/:id/threads/:threadId`         | `{ title?, note?, entryIds? }` (ordered)      | updated thread                            |
-| DELETE | `/api/reviews/:id/threads/:threadId`         |                                               | `204`                                     |
-| GET    | `/api/reviews/:id/citations`                 |                                               | `{ nodes:[{entryId,paperId,title,year}], edges:[{from,to}] }` (from cites to) |
+| Method | URL                                  | Body / query                                   | Returns                                                                       |
+| ------ | ------------------------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------- |
+| GET    | `/api/reviews`                       |                                                | `[review + counts{to-read,reading,read,skipped,total}]`                       |
+| GET    | `/api/reviews/:id`                   |                                                | `review`                                                                      |
+| POST   | `/api/reviews`                       | `{ title, question, description?, keywords? }` | `201`                                                                         |
+| PUT    | `/api/reviews/:id`                   | same                                           | updated                                                                       |
+| DELETE | `/api/reviews/:id`                   |                                                | `204` (also deletes its entries)                                              |
+| POST   | `/api/reviews/:id/threads`           | `{ title, note? }`                             | `201 thread`                                                                  |
+| PUT    | `/api/reviews/:id/threads/:threadId` | `{ title?, note?, entryIds? }` (ordered)       | updated thread                                                                |
+| DELETE | `/api/reviews/:id/threads/:threadId` |                                                | `204`                                                                         |
+| GET    | `/api/reviews/:id/citations`         |                                                | `{ nodes:[{entryId,paperId,title,year}], edges:[{from,to}] }` (from cites to) |
 
 ### Review entries [H]
 
-| Method | URL                                  | Body                                                      | Returns                         |
-| ------ | ------------------------------------ | --------------------------------------------------------- | ------------------------------- |
-| GET    | `/api/reviews/:id/entries`           | `?status=read`                                            | `[entry + paper summary]` (`$lookup`) |
-| POST   | `/api/reviews/:id/entries`           | `{ paperId }`                                             | `201`; `409` if already added   |
-| PUT    | `/api/entries/:entryId`              | `{ status, relation, relevance, notes, findings[] }`      | updated                         |
-| DELETE | `/api/entries/:entryId`              |                                                           | `204` (also `$pull` from threads) |
+| Method | URL                        | Body                                                 | Returns                               |
+| ------ | -------------------------- | ---------------------------------------------------- | ------------------------------------- |
+| GET    | `/api/reviews/:id/entries` | `?status=read`                                       | `[entry + paper summary]` (`$lookup`) |
+| POST   | `/api/reviews/:id/entries` | `{ paperId }`                                        | `201`; `409` if already added         |
+| PUT    | `/api/entries/:entryId`    | `{ status, relation, relevance, notes, findings[] }` | updated                               |
+| DELETE | `/api/entries/:entryId`    |                                                      | `204` (also `$pull` from threads)     |
 
 ### Papers (read-only) [H]
 
-| Method | URL                 | Query                                                  | Returns                                   |
-| ------ | ------------------- | ------------------------------------------------------ | ----------------------------------------- |
-| GET    | `/api/papers`       | `q, area, yearFrom, yearTo, page=1, limit=20 (max 50)` | `{ items:[paper w/o referencedWorks], total, page, pages }` |
-| GET    | `/api/papers/:id`   |                                                        | full paper                                |
+| Method | URL               | Query                                                  | Returns                                                     |
+| ------ | ----------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
+| GET    | `/api/papers`     | `q, area, yearFrom, yearTo, page=1, limit=20 (max 50)` | `{ items:[paper w/o referencedWorks], total, page, pages }` |
+| GET    | `/api/papers/:id` |                                                        | full paper                                                  |
 
 With `q`, use `$text` and sort by `{ score: { $meta: "textScore" } }`. Without `q`, sort by `citedByCount: -1`.
 
@@ -495,14 +496,24 @@ Dark-first with a light theme toggle; the theme is saved in `localStorage` and d
 
 ```css
 /* base.css tokens (dark) */
---bg: #0b1020;            --surface: #121933;       --surface-2: #1a2342;
---border: rgb(255 255 255 / 0.08);                  --text: #e7eaf3;
---text-muted: #9aa3bd;    --accent: #7c6cff;        --accent-2: #2dd4bf;
---success: #22c55e;       --warning: #f5a524;       --danger: #f04438;
---radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
+--bg: #0b1020;
+--surface: #121933;
+--surface-2: #1a2342;
+--border: rgb(255 255 255 / 0.08);
+--text: #e7eaf3;
+--text-muted: #9aa3bd;
+--accent: #7c6cff;
+--accent-2: #2dd4bf;
+--success: #22c55e;
+--warning: #f5a524;
+--danger: #f04438;
+--radius-sm: 8px;
+--radius: 14px;
+--radius-lg: 20px;
 --space-1: 4px … --space-8: 48px;
 --shadow: 0 8px 24px rgb(0 0 0 / 0.25);
---font: "Inter", system-ui, sans-serif;  --mono: "JetBrains Mono", ui-monospace, monospace;
+--font: 'Inter', system-ui, sans-serif;
+--mono: 'JetBrains Mono', ui-monospace, monospace;
 /* light: --bg #f6f7fb, --surface #ffffff, --surface-2 #eef1f8, --text #0f172a, --text-muted #5b6478, --border rgb(15 23 42 / 0.08) */
 ```
 
@@ -513,17 +524,17 @@ Look and feel:
 - Pill-shaped chips; countdown numbers in `--mono`.
 - Area colours (`areas.js` + CSS vars `--area-<id>`):
 
-| id         | label                     | colour    |
-| ---------- | ------------------------- | --------- |
-| general    | General ML                | `#94a3b8` |
-| nlp        | NLP                       | `#7c6cff` |
-| cv         | Computer Vision           | `#2dd4bf` |
-| rl         | Reinforcement Learning    | `#f5a524` |
-| genai      | Generative Models         | `#f472b6` |
-| theory     | Theory & Optimization     | `#60a5fa` |
-| graphs     | Graph Learning            | `#a3e635` |
-| robotics   | Robotics                  | `#fb923c` |
-| datamining | Data Mining & IR          | `#22d3ee` |
+| id         | label                  | colour    |
+| ---------- | ---------------------- | --------- |
+| general    | General ML             | `#94a3b8` |
+| nlp        | NLP                    | `#7c6cff` |
+| cv         | Computer Vision        | `#2dd4bf` |
+| rl         | Reinforcement Learning | `#f5a524` |
+| genai      | Generative Models      | `#f472b6` |
+| theory     | Theory & Optimization  | `#60a5fa` |
+| graphs     | Graph Learning         | `#a3e635` |
+| robotics   | Robotics               | `#fb923c` |
+| datamining | Data Mining & IR       | `#22d3ee` |
 
 - Countdown chip colour: > 30 days `--success`, 7–30 `--warning`, < 7 `--danger`, passed → muted + "closed".
 - Status badges: to-read (muted), reading (accent), read (success), skipped (strikethrough muted).
@@ -756,36 +767,36 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### Day 1: Foundation + first CRUD
 
-| Hour      | Ayush (A)                                                                | Harshitha (H)                                                                 |
-| --------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| 0:00–0:20 | **S0-1 Kickoff together**: read this doc, agree on contracts               | **S0-1 Kickoff together**                                                     |
-| 0:20–2:00 | **S0-2 Scaffold** (everything marked [S]) → PR → H reviews → merge       | **H-1 Design doc text** (0:45) → **H-2 Seed papers script** (on its own branch, touches only `scripts/seed-papers.js`) |
-| 2:00–2:45 | **A-1 Conference seed data + script**                                    | H-2 continue: run seed against Atlas, verify ≥ 1,000                         |
-| 2:45–3:45 | **A-2 Conferences API**                                                  | **H-3 Reviews API** (CRUD + counts)                                           |
-| 3:45–5:00 | **A-3 Conferences page: list + filters + dialog CRUD**                   | **H-4 Mockups** (all 5 pages)                                                 |
+| Hour      | Ayush (A)                                                          | Harshitha (H)                                                                                                          |
+| --------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| 0:00–0:20 | **S0-1 Kickoff together**: read this doc, agree on contracts       | **S0-1 Kickoff together**                                                                                              |
+| 0:20–2:00 | **S0-2 Scaffold** (everything marked [S]) → PR → H reviews → merge | **H-1 Design doc text** (0:45) → **H-2 Seed papers script** (on its own branch, touches only `scripts/seed-papers.js`) |
+| 2:00–2:45 | **A-1 Conference seed data + script**                              | H-2 continue: run seed against Atlas, verify ≥ 1,000                                                                   |
+| 2:45–3:45 | **A-2 Conferences API**                                            | **H-3 Reviews API** (CRUD + counts)                                                                                    |
+| 3:45–5:00 | **A-3 Conferences page: list + filters + dialog CRUD**             | **H-4 Mockups** (all 5 pages)                                                                                          |
 
 **End of Day 1:** scaffold merged, papers + conferences seeded, conference CRUD works end-to-end, reviews API works (tested with curl or the Thunder Client extension), mockups done.
 
 ### Day 2: Core features
 
-| Hour      | Ayush (A)                                                         | Harshitha (H)                                                         |
-| --------- | ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| 0:00–1:15 | **A-4 Plans API**                                                 | **H-5 Reviews page (list + dialog CRUD)**                             |
-| 1:15–2:30 | **A-5 Plans page: cards, dialog, milestones, countdown**          | **H-6 Papers search API + Find-papers tab**                           |
-| 2:30–3:45 | **A-6 World map**                                                 | **H-7 Entries API**                                                   |
-| 3:45–5:00 | **A-7 Timeline**                                                  | **H-8 Reading list tab (entry cards, edit, remove)**                  |
+| Hour      | Ayush (A)                                                | Harshitha (H)                                        |
+| --------- | -------------------------------------------------------- | ---------------------------------------------------- |
+| 0:00–1:15 | **A-4 Plans API**                                        | **H-5 Reviews page (list + dialog CRUD)**            |
+| 1:15–2:30 | **A-5 Plans page: cards, dialog, milestones, countdown** | **H-6 Papers search API + Find-papers tab**          |
+| 2:30–3:45 | **A-6 World map**                                        | **H-7 Entries API**                                  |
+| 3:45–5:00 | **A-7 Timeline**                                         | **H-8 Reading list tab (entry cards, edit, remove)** |
 
 **End of Day 2:** every Core feature except warnings, threads and citations works locally.
 
 ### Day 3: Finish core, deploy, polish, submit → **FREEZE**
 
-| Hour      | Ayush (A)                                                                 | Harshitha (H)                                                     |
-| --------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| 0:00–0:30 | **A-8 Deploy to Render** (deploy early to find surprises)                  | **H-9 Threads tab**                                               |
-| 0:30–1:30 | **A-9 Warnings**                                                          | H-9 continue (till ~1:15) → **H-10 Citations tab**                |
-| 1:30–2:30 | **A-10 Home dashboard + how-to-use**                                      | H-10 continue → **H-11 Polish own pages** (empty/loading states)  |
-| 2:30–3:30 | **A-11 Polish pass** (responsive, a11y, Planned items) + stretch if green | **F-3 README** + **F-4 slides** + finish DESIGN.md with screenshots |
-| 3:30–5:00 | **F-1 Lint/format/cleanup**, **F-2 redeploy + smoke test**, **F-5 video** (together), **F-6 Google Form**, **F-7 freeze tag** | same, together                         |
+| Hour      | Ayush (A)                                                                                                                     | Harshitha (H)                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| 0:00–0:30 | **A-8 Deploy to Render** (deploy early to find surprises)                                                                     | **H-9 Threads tab**                                                 |
+| 0:30–1:30 | **A-9 Warnings**                                                                                                              | H-9 continue (till ~1:15) → **H-10 Citations tab**                  |
+| 1:30–2:30 | **A-10 Home dashboard + how-to-use**                                                                                          | H-10 continue → **H-11 Polish own pages** (empty/loading states)    |
+| 2:30–3:30 | **A-11 Polish pass** (responsive, a11y, Planned items) + stretch if green                                                     | **F-3 README** + **F-4 slides** + finish DESIGN.md with screenshots |
+| 3:30–5:00 | **F-1 Lint/format/cleanup**, **F-2 redeploy + smoke test**, **F-5 video** (together), **F-6 Google Form**, **F-7 freeze tag** | same, together                                                      |
 
 **Rule:** if Day 3 at hour 2:30 has any Core item unfinished, **skip stretch and polish**. Core first.
 
@@ -804,8 +815,8 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### S0-2 Scaffold (A, ~1.7 h) → PR `shared: scaffold`
 
-- [ ] `npm init`; `"type": "module"`; `"engines": { "node": ">=20" }`; install deps from §3.
-- [ ] Scripts:
+- [x] `npm init`; `"type": "module"`; `"engines": { "node": ">=20" }`; install deps from §3.
+- [x] Scripts:
   ```json
   "start": "node server.js",
   "dev": "node --watch server.js",
@@ -816,31 +827,31 @@ Each day is 5 focused hours. Times are hours from the session start.
   "seed:papers": "node scripts/seed-papers.js",
   "build:map": "node scripts/build-world-map.js"
   ```
-- [ ] `eslint.config.js` (flat): `@eslint/js` recommended; Node globals for root/server files; browser globals for `public/**`; ignore `node_modules`, `public/assets`.
-- [ ] `.prettierrc`: `{ "singleQuote": true, "semi": true, "trailingComma": "all", "printWidth": 100 }`; `.prettierignore`: `node_modules`, `public/assets/world.svg`, `package-lock.json`.
-- [ ] `.vscode/settings.json`: `editor.formatOnSave: true`, `editor.defaultFormatter: "esbenp.prettier-vscode"`, ESLint validate on.
-- [ ] `.env.example` with all keys (empty values). Create your local `.env`.
-- [ ] `db/connection.js`:
+- [x] `eslint.config.js` (flat): `@eslint/js` recommended; Node globals for root/server files; browser globals for `public/**`; ignore `node_modules`, `public/assets`.
+- [x] `.prettierrc`: `{ "singleQuote": true, "semi": true, "trailingComma": "all", "printWidth": 100 }`; `.prettierignore`: `node_modules`, `public/assets/world.svg`, `package-lock.json`.
+- [x] `.vscode/settings.json`: `editor.formatOnSave: true`, `editor.defaultFormatter: "esbenp.prettier-vscode"`, ESLint validate on.
+- [x] `.env.example` with all keys (empty values). Create your local `.env`.
+- [x] `db/connection.js`:
   - Read `MONGODB_URI`, `DB_NAME`, create one `MongoClient`.
   - Export `connectDb()`, `getDb()`, `closeDb()`.
   - Fail fast with a clear message if the URI is missing.
-- [ ] `db/indexes.js` with all indexes from §6; called after connect.
-- [ ] `lib/validation.js` helpers.
-- [ ] `middleware/owner.js` (UUID regex, 400 if missing, skip `/api/health`). `middleware/errors.js` (404 JSON for `/api/*`, 500 handler that logs and hides stack traces).
-- [ ] `server.js`:
+- [x] `db/indexes.js` with all indexes from §6; called after connect.
+- [x] `lib/validation.js` helpers.
+- [x] `middleware/owner.js` (UUID regex, 400 if missing, skip `/api/health`). `middleware/errors.js` (404 JSON for `/api/*`, 500 handler that logs and hides stack traces).
+- [x] `server.js`:
   - `import 'dotenv/config'`, `express.json()`, `express.static('public')`.
   - `/api/health`, owner middleware on `/api`.
   - **Mount all 5 routers.**
   - Error middleware, `connectDb()` then `listen(PORT)`.
-- [ ] Stub routers: `routes/{conferences,plans,reviews,entries,papers}.js`, each exporting a `Router()` with one `GET /` returning `[]`. They are filled in later by their owner.
-- [ ] Empty db modules `db/{conferences,submissionPlans,reviews,reviewEntries,papers}.js` exporting nothing yet (or a `collection()` getter).
-- [ ] All 5 HTML pages with:
+- [x] Stub routers: `routes/{conferences,plans,reviews,entries,papers}.js`, each exporting a `Router()` with one `GET /` returning `[]`. They are filled in later by their owner.
+- [x] Empty db modules `db/{conferences,submissionPlans,reviews,reviewEntries,papers}.js` exporting nothing yet (or a `collection()` getter).
+- [x] All 5 HTML pages with:
   - `<head>`: meta viewport, title, favicon, Google Fonts, css links (base, layout, components/*, own page css).
   - Shared header/nav/footer markup, a `<main>` with a page heading, `<div id="toast-region" aria-live="polite">`, and a module script.
-- [ ] `public/js/shared/*` per §8 signatures, working (not stubs).
-- [ ] CSS `base.css`, `layout.css`, `components/*.css` with tokens and both themes; the theme toggle works.
-- [ ] `favicon.svg` (simple ◈ mark in accent colour).
-- [ ] Verify: `npm run dev` → all 5 pages load, nav works, theme toggles, `GET /api/health` ok, `npm run lint` 0 errors, `npm run format:check` passes.
+- [x] `public/js/shared/*` per §8 signatures, working (not stubs).
+- [x] CSS `base.css`, `layout.css`, `components/*.css` with tokens and both themes; the theme toggle works.
+- [x] `favicon.svg` (simple ◈ mark in accent colour).
+- [x] Verify: `npm run dev` → all 5 pages load, nav works, theme toggles, `GET /api/health` ok, `npm run lint` 0 errors, `npm run format:check` passes.
 - [ ] H reviews + merges. **From here on, `shared/` is frozen.**
 
 ---
@@ -1036,16 +1047,16 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ## 15. Final submission tasks
 
-| ID  | Task                                                                                                                                                                                                                    | Owner | Time   |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | ------ |
-| F-1 | `npm run lint` → 0 errors; `npm run format`; delete unused files, stub code, `console.log`s, commented-out code; confirm no secrets: `git log -p \| grep -i "mongodb+srv"` returns nothing                              | A     | 20 min |
-| F-2 | Merge, redeploy, full smoke test on the **deployed** URL using the §19 checklist                                                                                                                                       | A     | 20 min |
-| F-3 | **README.md**: title + one-line pitch, **Authors**, **Class link** (CS5610 course page URL), **Project objective**, **Screenshot** (home + planner + review), **Live demo link**, **Video link**, **Design doc link**, features list, tech stack, **Instructions to build** (clone → `npm i` → `.env` from `.env.example` → `npm run seed:conferences` → `npm run seed:papers` → `npm run dev`), usage, license | H | 30 min |
-| F-4 | **Slides** (5–6): problem, personas, demo screenshots, architecture, tech highlights (SVG map/timeline, citation clustering seed), what's next                                                                           | H     | 30 min |
-| F-5 | **Narrated video**, 3–5 min, **public** (YouTube public/unlisted per instructor). Script: intro both (15 s) → A demos P1–P4 (90 s) → H demos R1–R4 (90 s) → code tour: modules, ESM, db layer, no Mongoose (30 s) → outro | both | 40 min |
-| F-6 | **Google Form** submission: thumbnail = 16:9 screenshot of the home or map view (check it renders); links: repo, deployed app, video, design doc, slides. Test every link in an incognito window                         | H     | 10 min |
-| F-7 | **Code freeze ≥ 24 h before class**: tag `git tag v1.0-freeze && git push --tags`. No pushes after                                                                                                                      | A     | 2 min  |
-| F-8 | **Code review** (20 pts): after submission, each of you completes the assigned peer code reviews on time                                                                                                               | both  | later  |
+| ID  | Task                                                                                                                                                                                                                                                                                                                                                                                                            | Owner | Time   |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | ------ |
+| F-1 | `npm run lint` → 0 errors; `npm run format`; delete unused files, stub code, `console.log`s, commented-out code; confirm no secrets: `git log -p \| grep -i "mongodb+srv"` returns nothing                                                                                                                                                                                                                      | A     | 20 min |
+| F-2 | Merge, redeploy, full smoke test on the **deployed** URL using the §19 checklist                                                                                                                                                                                                                                                                                                                                | A     | 20 min |
+| F-3 | **README.md**: title + one-line pitch, **Authors**, **Class link** (CS5610 course page URL), **Project objective**, **Screenshot** (home + planner + review), **Live demo link**, **Video link**, **Design doc link**, features list, tech stack, **Instructions to build** (clone → `npm i` → `.env` from `.env.example` → `npm run seed:conferences` → `npm run seed:papers` → `npm run dev`), usage, license | H     | 30 min |
+| F-4 | **Slides** (5–6): problem, personas, demo screenshots, architecture, tech highlights (SVG map/timeline, citation clustering seed), what's next                                                                                                                                                                                                                                                                  | H     | 30 min |
+| F-5 | **Narrated video**, 3–5 min, **public** (YouTube public/unlisted per instructor). Script: intro both (15 s) → A demos P1–P4 (90 s) → H demos R1–R4 (90 s) → code tour: modules, ESM, db layer, no Mongoose (30 s) → outro                                                                                                                                                                                       | both  | 40 min |
+| F-6 | **Google Form** submission: thumbnail = 16:9 screenshot of the home or map view (check it renders); links: repo, deployed app, video, design doc, slides. Test every link in an incognito window                                                                                                                                                                                                                | H     | 10 min |
+| F-7 | **Code freeze ≥ 24 h before class**: tag `git tag v1.0-freeze && git push --tags`. No pushes after                                                                                                                                                                                                                                                                                                              | A     | 2 min  |
+| F-8 | **Code review** (20 pts): after submission, each of you completes the assigned peer code reviews on time                                                                                                                                                                                                                                                                                                        | both  | later  |
 
 ---
 
@@ -1053,71 +1064,71 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 Only start these when the **Core** row of every module is merged and deployed. Each goes on its own branch, so it can be abandoned without harm.
 
-| ID   | Item                                                     | Owner | Est.  | Gotchas                                                                                                    |
-| ---- | -------------------------------------------------------- | ----- | ----- | ---------------------------------------------------------------------------------------------------------- |
-| X-1  | Papers at this conference (proposal's optional extra)   | A     | 1 h   | Match `papers.venue` regex on acronym/name + `year`. OpenAlex venue names are messy and arXiv dominates, so expect few hits. Seed may need venue-targeted queries |
-| X-2  | `.ics` export of a plan's deadlines + milestones         | A     | 45 m  | Build the text in JS, `Blob` + `<a download>`. Use UTC `Z` times; escape commas/semicolons                     |
-| X-3  | Map zoom/pan + pin clustering                            | A     | 1.5 h | Change `viewBox` on wheel/drag; cluster by screen-distance grid; touch events                              |
-| X-4  | Filters synced to URL                                    | A     | 30 m  | `URLSearchParams` + `history.replaceState`; restore on load                                                |
-| X-5  | "My deadlines" overlay on the timeline (from plans)      | A     | 45 m  | Needs `/api/plans` on the conferences page                                                                 |
-| X-6  | Citation graph SVG                                       | H     | 1.5 h | Start with a **circular layout** (easy, deterministic); force-directed only if time. Arrowheads via `<marker>` |
-| X-7  | Drag-and-drop thread reordering                          | H     | 1 h   | HTML5 DnD does not work on mobile, so **keep the ↑/↓ buttons** as the accessible fallback                    |
-| X-8  | Suggested papers (cite ≥ 2 of your saved papers)         | H     | 1 h   | Query `papers.find({ referencedWorks: { $in: savedIds } })` then count overlaps; exclude already-saved      |
-| X-9  | Export review → Markdown / BibTeX                        | H     | 45 m  | BibTeX keys need sanitising; authors "Last, First"                                                          |
-| X-10 | Keyboard shortcuts (`/` focus search, `n` new item)      | both  | 30 m  | Ignore when focus is inside an input                                                                        |
+| ID   | Item                                                  | Owner | Est.  | Gotchas                                                                                                                                                           |
+| ---- | ----------------------------------------------------- | ----- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| X-1  | Papers at this conference (proposal's optional extra) | A     | 1 h   | Match `papers.venue` regex on acronym/name + `year`. OpenAlex venue names are messy and arXiv dominates, so expect few hits. Seed may need venue-targeted queries |
+| X-2  | `.ics` export of a plan's deadlines + milestones      | A     | 45 m  | Build the text in JS, `Blob` + `<a download>`. Use UTC `Z` times; escape commas/semicolons                                                                        |
+| X-3  | Map zoom/pan + pin clustering                         | A     | 1.5 h | Change `viewBox` on wheel/drag; cluster by screen-distance grid; touch events                                                                                     |
+| X-4  | Filters synced to URL                                 | A     | 30 m  | `URLSearchParams` + `history.replaceState`; restore on load                                                                                                       |
+| X-5  | "My deadlines" overlay on the timeline (from plans)   | A     | 45 m  | Needs `/api/plans` on the conferences page                                                                                                                        |
+| X-6  | Citation graph SVG                                    | H     | 1.5 h | Start with a **circular layout** (easy, deterministic); force-directed only if time. Arrowheads via `<marker>`                                                    |
+| X-7  | Drag-and-drop thread reordering                       | H     | 1 h   | HTML5 DnD does not work on mobile, so **keep the ↑/↓ buttons** as the accessible fallback                                                                         |
+| X-8  | Suggested papers (cite ≥ 2 of your saved papers)      | H     | 1 h   | Query `papers.find({ referencedWorks: { $in: savedIds } })` then count overlaps; exclude already-saved                                                            |
+| X-9  | Export review → Markdown / BibTeX                     | H     | 45 m  | BibTeX keys need sanitising; authors "Last, First"                                                                                                                |
+| X-10 | Keyboard shortcuts (`/` focus search, `n` new item)   | both  | 30 m  | Ignore when focus is inside an input                                                                                                                              |
 
 ---
 
 ## 17. Rubric mapping
 
-| Rubric item (pts)                                         | Where / how                                                               | Owner |
-| --------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
-| Design doc: description, personas, stories, mockups (50) | `docs/DESIGN.md` + `docs/mockups/`                                         | H     |
-| Accomplishes approved requirements (15)                   | §1 features all Core                                                       | both  |
-| Usable + instructions (5)                                 | Home "How to use", empty states with CTAs, README usage                    | A/H   |
-| Useful (5)                                                | Real conference data, real OpenAlex papers, warnings                       | both  |
-| ESLint config, 0 errors (5)                               | `eslint.config.js`, `npm run lint` in F-1                                  | A     |
-| Code organised: pages, db, css folders (5)                | §4 structure                                                               | both  |
-| JS in modules (15)                                        | `db/*`, `routes/*`, `public/js/shared/*`, `planner/*`, `review/*`          | both  |
-| Client-side rendering, vanilla JS (15)                    | Static HTML shells + fetch + `el()`                                        | both  |
-| At least 1 form (15)                                      | 6+ forms: conference, plan, review, entry edit, search, thread             | both  |
-| Deployed + works (5)                                      | Render (A-8, F-2)                                                          | A     |
-| ≥ 2 collections with CRUD (15)                            | conferences, submissionPlans, reviews, reviewEntries (4 with full CRUD)    | both  |
-| > 1,000 records (5)                                       | `papers` seeded 1,200+                                                     | H     |
-| Node + Express (5)                                        | `server.js`                                                                | A     |
-| Prettier formatted (5)                                    | `.prettierrc`, `npm run format:check`                                      | A     |
-| Standard tags, no div-buttons (5)                         | §8 principles; check in F-1                                                | both  |
-| CSS by modules (5)                                        | `css/base`, `css/layout`, `css/components/*`, `css/pages/*`                | both  |
-| README complete (10)                                      | F-3                                                                        | H     |
-| No exposed credentials (10)                               | `.env` ignored, `.env.example` only, Render env vars, F-1 grep             | A     |
-| package.json lists deps (5)                               | S0-2                                                                       | A     |
-| MIT license (5)                                           | `LICENSE` ✓ already                                                        | done  |
-| No leftover code (5)                                      | F-1 cleanup, no stub routes left                                           | A     |
-| Google Form correct (5)                                   | F-6                                                                        | H     |
-| Public narrated video (10)                                | F-5                                                                        | both  |
-| Frozen on time; video/slides/deploy before class (5)      | F-7 tag                                                                    | A     |
-| No CJS / `require` (10)                                   | `"type":"module"`; `grep -r "require(" --exclude-dir=node_modules .` → empty | A   |
-| No Mongoose / template engines (−20)                      | deps list in §3                                                            | both  |
-| Code review (20)                                          | F-8                                                                        | both  |
+| Rubric item (pts)                                        | Where / how                                                                  | Owner |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------- | ----- |
+| Design doc: description, personas, stories, mockups (50) | `docs/DESIGN.md` + `docs/mockups/`                                           | H     |
+| Accomplishes approved requirements (15)                  | §1 features all Core                                                         | both  |
+| Usable + instructions (5)                                | Home "How to use", empty states with CTAs, README usage                      | A/H   |
+| Useful (5)                                               | Real conference data, real OpenAlex papers, warnings                         | both  |
+| ESLint config, 0 errors (5)                              | `eslint.config.js`, `npm run lint` in F-1                                    | A     |
+| Code organised: pages, db, css folders (5)               | §4 structure                                                                 | both  |
+| JS in modules (15)                                       | `db/*`, `routes/*`, `public/js/shared/*`, `planner/*`, `review/*`            | both  |
+| Client-side rendering, vanilla JS (15)                   | Static HTML shells + fetch + `el()`                                          | both  |
+| At least 1 form (15)                                     | 6+ forms: conference, plan, review, entry edit, search, thread               | both  |
+| Deployed + works (5)                                     | Render (A-8, F-2)                                                            | A     |
+| ≥ 2 collections with CRUD (15)                           | conferences, submissionPlans, reviews, reviewEntries (4 with full CRUD)      | both  |
+| > 1,000 records (5)                                      | `papers` seeded 1,200+                                                       | H     |
+| Node + Express (5)                                       | `server.js`                                                                  | A     |
+| Prettier formatted (5)                                   | `.prettierrc`, `npm run format:check`                                        | A     |
+| Standard tags, no div-buttons (5)                        | §8 principles; check in F-1                                                  | both  |
+| CSS by modules (5)                                       | `css/base`, `css/layout`, `css/components/*`, `css/pages/*`                  | both  |
+| README complete (10)                                     | F-3                                                                          | H     |
+| No exposed credentials (10)                              | `.env` ignored, `.env.example` only, Render env vars, F-1 grep               | A     |
+| package.json lists deps (5)                              | S0-2                                                                         | A     |
+| MIT license (5)                                          | `LICENSE` ✓ already                                                          | done  |
+| No leftover code (5)                                     | F-1 cleanup, no stub routes left                                             | A     |
+| Google Form correct (5)                                  | F-6                                                                          | H     |
+| Public narrated video (10)                               | F-5                                                                          | both  |
+| Frozen on time; video/slides/deploy before class (5)     | F-7 tag                                                                      | A     |
+| No CJS / `require` (10)                                  | `"type":"module"`; `grep -r "require(" --exclude-dir=node_modules .` → empty | A     |
+| No Mongoose / template engines (−20)                     | deps list in §3                                                              | both  |
+| Code review (20)                                         | F-8                                                                          | both  |
 
 ---
 
 ## 18. Risks & mitigations
 
-| Risk                                                         | Mitigation                                                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| Merge conflicts in shared files                              | All shared files built in S0 and frozen; routers + pages pre-wired; `shared:` PR rule             |
-| Saved papers never cite each other → empty Citations tab     | Citation-cluster seeding (§10.6); demo review built from an anchor + citers                       |
-| OpenAlex rate limit / API key changes                        | 150 ms pacing, retry on 429, `mailto` fallback; seed runs once and results stay in Atlas          |
-| Conference dates for 2027 not yet announced                  | `datesConfirmed:false` + "estimated" badge; honest in the video                                   |
-| Wrong map projection → pins in the ocean                     | Generate the SVG ourselves with the same formula as the pins (§10.1)                              |
-| Timezone bugs (deadline shows the wrong day)                 | AoE helper in `format.js` used everywhere; store `Date`, display local + "AoE" tag                |
-| Atlas blocks Render                                          | `0.0.0.0/0` in Network Access before A-8                                                          |
-| Render cold start during demo                                | Warm it up 2 min before; mention in the video                                                     |
-| Secrets leak                                                 | `.env` in `.gitignore` (already), never paste the URI in chat/Slack, F-1 grep. If leaked: rotate the Atlas password immediately |
-| Claude edits files the person doesn't own                    | `CLAUDE.md` ownership table + task ID in every prompt + review diffs before commit                |
-| Running out of time                                          | Core-first rule at Day 3 hour 2:30; stretch only on separate branches                             |
-| XSS via notes/titles                                         | `textContent` only for user data (`el()` helper)                                                  |
+| Risk                                                     | Mitigation                                                                                                                      |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Merge conflicts in shared files                          | All shared files built in S0 and frozen; routers + pages pre-wired; `shared:` PR rule                                           |
+| Saved papers never cite each other → empty Citations tab | Citation-cluster seeding (§10.6); demo review built from an anchor + citers                                                     |
+| OpenAlex rate limit / API key changes                    | 150 ms pacing, retry on 429, `mailto` fallback; seed runs once and results stay in Atlas                                        |
+| Conference dates for 2027 not yet announced              | `datesConfirmed:false` + "estimated" badge; honest in the video                                                                 |
+| Wrong map projection → pins in the ocean                 | Generate the SVG ourselves with the same formula as the pins (§10.1)                                                            |
+| Timezone bugs (deadline shows the wrong day)             | AoE helper in `format.js` used everywhere; store `Date`, display local + "AoE" tag                                              |
+| Atlas blocks Render                                      | `0.0.0.0/0` in Network Access before A-8                                                                                        |
+| Render cold start during demo                            | Warm it up 2 min before; mention in the video                                                                                   |
+| Secrets leak                                             | `.env` in `.gitignore` (already), never paste the URI in chat/Slack, F-1 grep. If leaked: rotate the Atlas password immediately |
+| Claude edits files the person doesn't own                | `CLAUDE.md` ownership table + task ID in every prompt + review diffs before commit                                              |
+| Running out of time                                      | Core-first rule at Day 3 hour 2:30; stretch only on separate branches                                                           |
+| XSS via notes/titles                                     | `textContent` only for user data (`el()` helper)                                                                                |
 
 ---
 

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paperscape: plan submissions, run your literature review</title>
+    <meta
+      name="description"
+      content="Paperscape: plan ML conference submissions and organise literature reviews."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+    />
+    <script>
+      try {
+        const theme = localStorage.getItem('paperscape.theme');
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {
+        // Storage unavailable; fall back to the system theme.
+      }
+    </script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components/buttons.css" />
+    <link rel="stylesheet" href="css/components/forms.css" />
+    <link rel="stylesheet" href="css/components/cards.css" />
+    <link rel="stylesheet" href="css/components/dialog.css" />
+    <link rel="stylesheet" href="css/components/toast.css" />
+    <link rel="stylesheet" href="css/components/chips.css" />
+    <link rel="stylesheet" href="css/components/tabs.css" />
+    <link rel="stylesheet" href="css/components/states.css" />
+    <link rel="stylesheet" href="css/pages/home.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="favicon.svg" alt="" width="28" height="28" />
+          Paperscape
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Main">
+          <a href="conferences.html">Conferences</a>
+          <a href="plans.html">Plans</a>
+          <a href="reviews.html">Reviews</a>
+        </nav>
+        <div class="header-actions">
+          <button
+            class="icon-btn"
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle theme"
+          ></button>
+          <button
+            class="icon-btn nav-toggle"
+            id="nav-toggle"
+            type="button"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          ></button>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="container">
+      <section class="hero">
+        <p class="page-header__eyebrow">For ML grad students</p>
+        <h1>Plan your ML submissions.<br />Run your literature review.</h1>
+        <p class="hero__lead muted">
+          Every upcoming conference on one map and timeline, submission plans with live countdowns,
+          and literature reviews organised around your research question.
+        </p>
+        <div class="row">
+          <a class="btn btn--primary btn--lg" href="conferences.html">Open the planner</a>
+          <a class="btn btn--ghost btn--lg" href="reviews.html">Start a review</a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>© 2026 Ayush Nimeshkumar Patel &amp; Harshitha Seetharaman · CS5610 Web Development</p>
+        <p>
+          <a href="https://github.com/ayushp2207/paperscape">GitHub</a> ·
+          <a href="https://github.com/ayushp2207/paperscape/blob/main/LICENSE">MIT License</a>
+        </p>
+      </div>
+    </footer>
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+    <script type="module" src="js/shared/nav.js"></script>
+  </body>
+</html>
