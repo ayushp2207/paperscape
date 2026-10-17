@@ -7,7 +7,7 @@ export function el(tag, attrs = {}, ...children) {
     if (key === 'class')
       node.className = Array.isArray(value) ? value.filter(Boolean).join(' ') : value;
     else if (key === 'dataset') Object.assign(node.dataset, value);
-    else if (key === 'style' && typeof value === 'object') Object.assign(node.style, value);
+    else if (key === 'style' && typeof value === 'object') setStyles(node, value);
     else if (key === 'on') {
       for (const [event, handler] of Object.entries(value)) node.addEventListener(event, handler);
     } else if (key in node && typeof value !== 'string') node[key] = value;
@@ -26,13 +26,21 @@ export function svgEl(tag, attrs = {}, ...children) {
     if (value === undefined || value === null || value === false) continue;
     if (key === 'class')
       node.setAttribute('class', Array.isArray(value) ? value.filter(Boolean).join(' ') : value);
-    else if (key === 'style' && typeof value === 'object') Object.assign(node.style, value);
+    else if (key === 'style' && typeof value === 'object') setStyles(node, value);
     else if (key === 'on') {
       for (const [event, handler] of Object.entries(value)) node.addEventListener(event, handler);
     } else node.setAttribute(key, value);
   }
   append(node, children);
   return node;
+}
+
+// Supports CSS custom properties too: { '--area': 'var(--area-nlp)' }.
+function setStyles(node, styles) {
+  for (const [prop, val] of Object.entries(styles)) {
+    if (prop.startsWith('--')) node.style.setProperty(prop, val);
+    else node.style[prop] = val;
+  }
 }
 
 function append(node, children) {

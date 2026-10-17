@@ -886,15 +886,15 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-3 Conferences page: list + filters + CRUD (1.25 h)
 
-- [ ] `conferencesPage.js`:
+- [x] `conferencesPage.js`:
   - A single `state = { conferences, filters, view, selectedId }`.
   - `load()` → `render()`.
   - Tabs Map | Timeline | List. Map/Timeline render a placeholder until A-6/A-7.
-- [ ] `filters.js`: area chips (toggle buttons with `aria-pressed`), month `<select>` (next 12 months), text search (debounced 250 ms), show-past checkbox. Filters call the API with query params.
-- [ ] List view cards: acronym + year, name, city/country flag emoji, area chips, next deadline with countdown chip, or a "TBD" badge when dates or location are missing.
-- [ ] `conferenceDetail.js`: side panel (bottom sheet on mobile) with all deadlines + countdowns, website link, **Plan for this venue** → `plans.html?target=id`, Edit/Delete (own) or Duplicate (seed).
-- [ ] `conferenceForm.js`: one `<dialog>` for create + edit, prefill on edit, client date-order validation, server error mapping via `showFieldErrors`, toast on success, refresh list.
-- [ ] **Done when:** P2 fully works through the UI.
+- [x] `filters.js`: area chips (toggle buttons with `aria-pressed`), month `<select>` (next 12 months), text search (debounced 250 ms), show-past checkbox. Filters call the API with query params.
+- [x] List view cards: acronym + year, name, city/country flag emoji, area chips, next deadline with countdown chip, or a "TBD" badge when dates or location are missing.
+- [x] `conferenceDetail.js`: side panel (bottom sheet on mobile) with all deadlines + countdowns, website link, **Plan for this venue** → `plans.html?target=id`, Edit/Delete (own) or Duplicate (seed).
+- [x] `conferenceForm.js`: one `<dialog>` for create + edit, prefill on edit, client date-order validation, server error mapping via `showFieldErrors`, toast on success, refresh list.
+- [x] **Done when:** P2 fully works through the UI.
 
 ### A-4 Plans API (1.25 h)
 

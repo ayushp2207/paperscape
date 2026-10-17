@@ -1,1 +1,246 @@
-/* Conference page layout, filters and detail panel (A-3) */
+/* Conference page: filters, view toolbar, card grid, detail panel, form sections. */
+.conf-filters {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+}
+
+.conf-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.conf-filters__search {
+  flex: 1 1 260px;
+}
+
+.conf-filters__areas {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.conf-filters .chip[aria-pressed='true'] {
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  border-color: currentColor;
+}
+
+.conf-filters .chip__label {
+  color: var(--text);
+}
+
+.conf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.conf-toolbar .tabs {
+  display: inline-flex;
+}
+
+.conf-summary {
+  font-size: 0.875rem;
+}
+
+.conf-layout {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.conf-layout.has-detail {
+  grid-template-columns: minmax(0, 1fr) 380px;
+}
+
+.conf-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+
+.conf-card.is-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* The title button covers the whole card so any click selects it. */
+.conf-card__select {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.conf-card__select::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.conf-card__select:focus-visible {
+  outline: none;
+}
+
+.conf-card:has(.conf-card__select:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.conf-card__name {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  font-size: 0.875rem;
+}
+
+.conf-card__deadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.conf-detail {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-4));
+  display: grid;
+  gap: var(--space-4);
+  max-height: calc(100vh - var(--header-height) - var(--space-6));
+  overflow-y: auto;
+}
+
+.conf-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.conf-detail__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.conf-detail__title {
+  font-size: 1.5rem;
+}
+
+.conf-detail__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.conf-detail__facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+  font-size: 0.9375rem;
+}
+
+.conf-detail__facts dt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+}
+
+.conf-detail__facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.conf-detail__facts a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.deadline-list {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.deadline-row {
+  display: grid;
+  grid-template-columns: 104px 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 0.875rem;
+}
+
+.deadline-row__label {
+  font-weight: 600;
+}
+
+.deadline-row .badge {
+  justify-self: start;
+}
+
+.conf-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.form-section {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.form-section legend {
+  padding-inline: var(--space-2);
+  font-weight: 600;
+}
+
+/* Below 1024px the detail panel becomes a bottom sheet. */
+@media (max-width: 1024px) {
+  .conf-layout.has-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .conf-detail {
+    position: fixed;
+    inset: auto 0 0;
+    top: auto;
+    z-index: 60;
+    max-height: 75vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: var(--shadow-lg);
+    animation: sheet-in 200ms var(--ease);
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
