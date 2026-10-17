@@ -910,14 +910,15 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-4 Plans API (1.25 h)
 
-- [ ] `db/submissionPlans.js`: list/get with `$lookup` into conferences for target + backup (unwind, preserve null), create/update/delete scoped by `ownerId`, `toggleMilestone(planId, mid, done, ownerId)` via `arrayFilters` or positional `$`.
-- [ ] Validation: paperTitle 1–200 chars; target is required and visible to the owner; backup is optional, ≠ target, visible; status enum; milestones array ≤ 20 with label 1–100 and a valid date; the server assigns milestone `id` (`crypto.randomUUID()`) if missing.
-- [ ] **Done when:** full CRUD + milestone toggle works via curl, and another owner ID gets 404.
+- [x] `db/submissionPlans.js`: list/get with `$lookup` into conferences for target + backup (unwind, preserve null), create/update/delete scoped by `ownerId`, `toggleMilestone(planId, mid, done, ownerId)` via `arrayFilters` or positional `$`.
+- [x] Validation: paperTitle 1–200 chars; target is required and visible to the owner; backup is optional, ≠ target, visible; status enum; milestones array ≤ 20 with label 1–100 and a valid date; the server assigns milestone `id` (`crypto.randomUUID()`) if missing.
+- [x] **Done when:** full CRUD + milestone toggle works via curl, and another owner ID gets 404.
+- [x] `seed-conferences.js` now upserts by (acronym, year) instead of delete + insert, so seeded conference `_id`s stay stable and plans keep pointing at them after a re-seed.
 
 ### A-5 Plans page (1.25 h)
 
 - [ ] `plansPage.js`: load plans + conferences (for selects), render a cards grid (empty state with "Create your first plan" CTA).
-- [ ] `planForm.js`: `<dialog>` create/edit; selects show `ACRONYM YEAR · paper deadline date` (upcoming only, sorted); milestones repeater (add/remove rows); **Suggest milestones** button; `?target=` prefill.
+- [ ] `planForm.js`: `<dialog>` create/edit; prefill milestone dates with `toDateInputValue(date, { aoe: true })` (not `.slice(0, 10)`, which shifts AoE dates by a day on every save); selects show `ACRONYM YEAR · paper deadline date` (upcoming only, sorted); milestones repeater (add/remove rows); **Suggest milestones** button; `?target=` prefill.
 - [ ] Card:
   - Status badge, target + backup chips.
   - **Next deadline countdown** (nearest of abstract/paper for target), or "Deadline TBD".
