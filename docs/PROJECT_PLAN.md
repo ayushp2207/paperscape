@@ -870,7 +870,19 @@ Each day is 5 focused hours. Times are hours from the session start.
   - Deadlines → `aoeEndOfDay`, start/end → `calendarDay` (both imported from `public/js/shared/format.js`).
   - Prints how many conferences have dates, location, or are still TBD.
 - [x] **Done when:** `npm run seed:conferences` is idempotent and Atlas shows 32 seeded docs.
-- [ ] **Manual follow-up (Ayush + Harshitha, before Day 3):** fill real dates and city/country into `conferences.json` from each official site, then re-run the seed. Prioritise NeurIPS, ICML, ICLR, CVPR, ACL, EMNLP, AAAI, KDD, ICRA, CoRL. Claude can add `lat/lng` from the city. Also verify each `year` and `website`. Countdowns, timeline, map pins and warnings only appear for conferences with real values.
+- [x] ~~Manual follow-up: fill real dates by hand.~~ Replaced by A-1b (import from ccf-deadlines).
+
+### A-1b Import real conference data (1 h)
+
+- [x] `scripts/import-conferences.js` (`npm run import:conferences`): downloads 31 of our conferences from [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) (MIT) and rewrites `scripts/data/conferences.json`.
+  - Keeps the **last 2 past editions + every upcoming edition**. A conference with no announced upcoming edition gets a TBD placeholder for its next year (ICML 2027, UAI 2027); only the year is filled in.
+  - Parses the dataset's free-text dates ("June 30 - July 3, 2026", multi-city NeurIPS) and converts deadlines to exact instants using each entry's time zone (AoE / UTC±N). `decision_deadline` becomes our `notification`.
+  - Multi-round conferences: the earliest round still open, else the last round.
+  - Entries not in the dataset (CoLLAs) are kept untouched. Includes a tiny YAML reader, so no new dependency.
+- [x] `scripts/data/cities.json`: host-city aliases → canonical city, country, lat/lng (99 cities).
+- [x] `seed-conferences.js` accepts exact ISO instants for deadlines as well as `YYYY-MM-DD` (= 23:59 AoE).
+- [x] README credits the dataset (MIT).
+- [ ] **Refresh before the demo:** re-run `npm run import:conferences && npm run seed:conferences` to pick up newly announced dates. Re-running overwrites imported entries, so manual edits belong in conferences that aren't imported.
 
 ### A-2 Conferences API (1 h)
 

@@ -19,4 +19,10 @@ export function hasAnyDate(conference) {
   return Boolean(conference.startDate || DEADLINES.some(({ key }) => conference.deadlines?.[key]));
 }
 
+// Calendar days are stored at 12:00 UTC, so compare against the end of that day.
+export function isPastConference(conference, now = new Date()) {
+  const end = conference.endDate ?? conference.startDate;
+  return Boolean(end) && new Date(end).getTime() + 12 * 60 * 60 * 1000 < now.getTime();
+}
+
 export const isUserCreated = (conference) => !conference.isSeed;

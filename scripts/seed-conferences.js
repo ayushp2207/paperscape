@@ -1,6 +1,7 @@
 // Seeds the shared, read-only conference list from scripts/data/conferences.json.
 // Re-runnable: replaces only documents with isSeed: true, never user-created conferences.
 // Unknown dates/locations are null in the JSON and show as "TBD" in the UI.
+// Deadlines are either a day ("YYYY-MM-DD", meaning 23:59 AoE) or an exact ISO instant with offset.
 import dotenv from 'dotenv';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -14,12 +15,23 @@ dotenv.config({ quiet: true });
 
 const DATA_FILE = path.join(import.meta.dirname, 'data', 'conferences.json');
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const INSTANT_PATTERN = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})$/;
 const DEADLINE_KEYS = ['abstract', 'paper', 'notification', 'cameraReady'];
 
-function checkDate(value, label, errors) {
+const toDay = (value) => (value ? calendarDay(value) : null);
+const toDeadline = (value) => {
+  if (!value) return null;
+  return DATE_PATTERN.test(value) ? aoeEndOfDay(value) : new Date(value);
+};
+
+function checkDate(value, label, errors, { allowInstant = false } = {}) {
   if (value === null) return;
-  if (typeof value !== 'string' || !DATE_PATTERN.test(value)) {
-    errors.push(`${label} must be "YYYY-MM-DD" or null`);
+  const valid =
+    typeof value === 'string' &&
+    (DATE_PATTERN.test(value) || (allowInstant && INSTANT_PATTERN.test(value))) &&
+    !Number.isNaN(new Date(value).getTime());
+  if (!valid) {
+    errors.push(`${label} must be "YYYY-MM-DD"${allowInstant ? ', an ISO instant' : ''} or null`);
   }
 }
 
@@ -52,34 +64,21 @@ function validate(conf) {
   checkDate(conf.startDate, 'startDate', errors);
   checkDate(conf.endDate, 'endDate', errors);
   const deadlines = conf.deadlines ?? {};
-  for (const key of DEADLINE_KEYS) checkDate(deadlines[key] ?? null, `deadlines.${key}`, errors);
+  for (const key of DEADLINE_KEYS) {
+    checkDate(deadlines[key] ?? null, `deadlines.${key}`, errors, { allowInstant: true });
+  }
+  if (errors.length) return errors;
 
-  // YYYY-MM-DD strings compare correctly as plain strings.
-  checkOrder(conf.startDate, conf.endDate, 'startDate is after endDate', errors);
-  checkOrder(
-    deadlines.abstract,
-    deadlines.paper,
-    'abstract deadline is after paper deadline',
-    errors,
-  );
-  checkOrder(
-    deadlines.paper,
-    deadlines.notification,
-    'paper deadline is after notification',
-    errors,
-  );
-  checkOrder(
-    deadlines.notification,
-    conf.startDate,
-    'notification is after the conference starts',
-    errors,
-  );
+  // Compare as instants (a deadline may be a day or an exact time).
+  const start = toDay(conf.startDate);
+  const at = Object.fromEntries(DEADLINE_KEYS.map((key) => [key, toDeadline(deadlines[key])]));
+  checkOrder(start, toDay(conf.endDate), 'startDate is after endDate', errors);
+  checkOrder(at.abstract, at.paper, 'abstract deadline is after paper deadline', errors);
+  checkOrder(at.paper, at.notification, 'paper deadline is after notification', errors);
+  checkOrder(at.notification, start, 'notification is after the conference starts', errors);
 
   return errors;
 }
-
-const toDay = (value) => (value ? calendarDay(value) : null);
-const toDeadline = (value) => (value ? aoeEndOfDay(value) : null);
 
 function toDocument(conf, now) {
   const deadlines = conf.deadlines ?? {};
