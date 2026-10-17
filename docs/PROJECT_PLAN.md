@@ -874,15 +874,15 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-2 Conferences API (1 h)
 
-- [ ] `db/conferences.js`: `listVisible(ownerId, filters)`, `getVisible(id, ownerId)`, `create(ownerId, data)`, `updateOwned(id, ownerId, data)`, `deleteOwned(id, ownerId)`, `duplicate(id, ownerId)`, `countPlansUsing(id, ownerId)`.
-- [ ] Filters: `area` (`$in`); `month` (`$or` across deadline fields + startDate within the month range); `q` (case-insensitive regex on name/acronym/city, with **escaped input**); `past=false` → only conferences whose endDate ≥ now.
-- [ ] `routes/conferences.js`:
+- [x] `db/conferences.js`: `listVisible(ownerId, filters)`, `getVisible(id, ownerId)`, `create(ownerId, data)`, `updateOwned(id, ownerId, data)`, `deleteOwned(id, ownerId)`, `duplicate(id, ownerId)`, `countPlansUsing(id, ownerId)`.
+- [x] Filters: `area` (`$in`); `month` (`$or` across deadline fields + startDate within the month range); `q` (case-insensitive regex on name/acronym/city, with **escaped input**); `past=false` → only conferences whose endDate ≥ now.
+- [x] `routes/conferences.js`:
   - All endpoints from §7.
   - Validation: required fields, valid areas, lat ∈ [−90, 90], lng ∈ [−180, 180], date ordering, URL format. Dates and `location` may be `null` (TBD).
-- [ ] Sorting: by next upcoming deadline; conferences with no dates last. `month` filter and `past=false` ignore TBD fields (a fully-TBD conference is treated as upcoming).
+- [x] Sorting: by next upcoming deadline; conferences with no dates last. `month` filter and `past=false` ignore TBD fields (a fully-TBD conference is treated as upcoming).
   - Returns `{error, details}`.
-- [ ] Delete → `409` with a message if any of your plans use the conference.
-- [ ] **Done when:** curl/Thunder Client covers create → list → update → delete; editing a seed returns 404.
+- [x] Delete → `409` with a message if any of your plans use the conference.
+- [x] **Done when:** curl/Thunder Client covers create → list → update → delete; editing a seed returns 404.
 
 ### A-3 Conferences page: list + filters + CRUD (1.25 h)
 
