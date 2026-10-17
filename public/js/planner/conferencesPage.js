@@ -1,12 +1,12 @@
 import { api } from '../shared/api.js';
 import { el, qs, qsa } from '../shared/dom.js';
-import { formatDate } from '../shared/format.js';
+import { formatDate, formatDateRange } from '../shared/format.js';
 import { icon } from '../shared/icons.js';
 import { confirmDialog, emptyState, errorState, skeleton, toast } from '../shared/ui.js';
 import { areaBadge, locationText, renderDetail } from './conferenceDetail.js';
 import { initConferenceForm } from './conferenceForm.js';
 import { countdownChip, startCountdownTicker } from './countdown.js';
-import { hasAnyDate, isUserCreated, nextDeadline } from './deadlines.js';
+import { hasAnyDate, isPastConference, isUserCreated, nextDeadline } from './deadlines.js';
 import { initFilters, toQueryParams } from './filters.js';
 
 const VIEWS = ['map', 'timeline', 'list'];
@@ -84,8 +84,36 @@ async function duplicateAndEdit(conference) {
   }
 }
 
-function conferenceCard(conference) {
+// Next thing to happen: an upcoming deadline, else the conference itself, else why there is none.
+function cardFooter(conference) {
   const next = nextDeadline(conference);
+  if (next) {
+    const label = next.key === 'notification' ? 'Notification' : `${next.label} deadline`;
+    return [
+      el('span', { class: 'muted' }, `${label} · ${formatDate(next.date, { aoe: true })}`),
+      countdownChip(next.date),
+    ];
+  }
+  const startsInFuture = conference.startDate && new Date(conference.startDate) > new Date();
+  if (startsInFuture) {
+    return [
+      el(
+        'span',
+        { class: 'muted' },
+        `Conference · ${formatDateRange(conference.startDate, conference.endDate)}`,
+      ),
+      countdownChip(conference.startDate),
+    ];
+  }
+  const text = !hasAnyDate(conference)
+    ? 'Deadlines TBD'
+    : isPastConference(conference)
+      ? `Took place ${formatDateRange(conference.startDate, conference.endDate)}`
+      : 'Happening now';
+  return el('span', { class: 'muted' }, text);
+}
+
+function conferenceCard(conference) {
   const isSelected = conference._id === state.selectedId;
 
   return el(
@@ -119,24 +147,7 @@ function conferenceCard(conference) {
       el('span', {}, icon('mapPin', { size: 14 }), locationText(conference)),
     ),
     el('div', { class: 'chip-list' }, conference.areas.map(areaBadge)),
-    el(
-      'div',
-      { class: 'conf-card__deadline' },
-      next
-        ? [
-            el(
-              'span',
-              { class: 'muted' },
-              `${next.label} deadline · ${formatDate(next.date, { aoe: true })}`,
-            ),
-            countdownChip(next.date),
-          ]
-        : el(
-            'span',
-            { class: 'muted' },
-            hasAnyDate(conference) ? 'No upcoming deadlines' : 'Deadlines TBD',
-          ),
-    ),
+    el('div', { class: 'conf-card__deadline' }, cardFooter(conference)),
   );
 }
 

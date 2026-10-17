@@ -1,0 +1,650 @@
+{
+  "Aberdeen": {
+    "city": "Aberdeen",
+    "country": "UK",
+    "lat": 57.15,
+    "lng": -2.09
+  },
+  "Abu Dhabi": {
+    "city": "Abu Dhabi",
+    "country": "UAE",
+    "lat": 24.45,
+    "lng": 54.38
+  },
+  "Albuquerque": {
+    "city": "Albuquerque",
+    "country": "USA",
+    "lat": 35.08,
+    "lng": -106.65
+  },
+  "Amsterdam": {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.37,
+    "lng": 4.9
+  },
+  "Athens": {
+    "city": "Athens",
+    "country": "Greece",
+    "lat": 37.98,
+    "lng": 23.73
+  },
+  "Atlanta": {
+    "city": "Atlanta",
+    "country": "USA",
+    "lat": 33.75,
+    "lng": -84.39
+  },
+  "Auckland": {
+    "city": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.85,
+    "lng": 174.76
+  },
+  "Austin": {
+    "city": "Austin",
+    "country": "USA",
+    "lat": 30.27,
+    "lng": -97.74
+  },
+  "Baltimore": {
+    "city": "Baltimore",
+    "country": "USA",
+    "lat": 39.29,
+    "lng": -76.61
+  },
+  "Bangalore": {
+    "city": "Bangalore",
+    "country": "India",
+    "lat": 12.97,
+    "lng": 77.59
+  },
+  "Bangkok": {
+    "city": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.76,
+    "lng": 100.5
+  },
+  "Barcelona": {
+    "city": "Barcelona",
+    "country": "Spain",
+    "lat": 41.39,
+    "lng": 2.17
+  },
+  "Bellevue": {
+    "city": "Bellevue",
+    "country": "USA",
+    "lat": 47.61,
+    "lng": -122.2
+  },
+  "Boise": {
+    "city": "Boise",
+    "country": "USA",
+    "lat": 43.62,
+    "lng": -116.2
+  },
+  "Boston": {
+    "city": "Boston",
+    "country": "USA",
+    "lat": 42.36,
+    "lng": -71.06
+  },
+  "Boulder": {
+    "city": "Boulder",
+    "country": "USA",
+    "lat": 40.01,
+    "lng": -105.27
+  },
+  "Bremen": {
+    "city": "Bremen",
+    "country": "Germany",
+    "lat": 53.08,
+    "lng": 8.8
+  },
+  "Brisbane": {
+    "city": "Brisbane",
+    "country": "Australia",
+    "lat": -27.47,
+    "lng": 153.03
+  },
+  "Budapest": {
+    "city": "Budapest",
+    "country": "Hungary",
+    "lat": 47.5,
+    "lng": 19.04
+  },
+  "Daegu": {
+    "city": "Daegu",
+    "country": "South Korea",
+    "lat": 35.87,
+    "lng": 128.6
+  },
+  "Daejeon": {
+    "city": "Daejeon",
+    "country": "South Korea",
+    "lat": 36.35,
+    "lng": 127.38
+  },
+  "Davos": {
+    "city": "Davos",
+    "country": "Switzerland",
+    "lat": 46.8,
+    "lng": 9.84
+  },
+  "Delft": {
+    "city": "Delft",
+    "country": "Netherlands",
+    "lat": 52.01,
+    "lng": 4.36
+  },
+  "Denver": {
+    "city": "Denver",
+    "country": "USA",
+    "lat": 39.74,
+    "lng": -104.99
+  },
+  "Detroit": {
+    "city": "Detroit",
+    "country": "USA",
+    "lat": 42.33,
+    "lng": -83.05
+  },
+  "Dubai": {
+    "city": "Dubai",
+    "country": "UAE",
+    "lat": 25.2,
+    "lng": 55.27
+  },
+  "Dubaï": {
+    "city": "Dubai",
+    "country": "UAE",
+    "lat": 25.2,
+    "lng": 55.27
+  },
+  "Dublin": {
+    "city": "Dublin",
+    "country": "Ireland",
+    "lat": 53.35,
+    "lng": -6.26
+  },
+  "Edmonton": {
+    "city": "Edmonton",
+    "country": "Canada",
+    "lat": 53.55,
+    "lng": -113.49
+  },
+  "Eindhoven": {
+    "city": "Eindhoven",
+    "country": "Netherlands",
+    "lat": 51.44,
+    "lng": 5.47
+  },
+  "Florence": {
+    "city": "Florence",
+    "country": "Italy",
+    "lat": 43.77,
+    "lng": 11.26
+  },
+  "Glasgow": {
+    "city": "Glasgow",
+    "country": "UK",
+    "lat": 55.86,
+    "lng": -4.25
+  },
+  "Grenoble": {
+    "city": "Grenoble",
+    "country": "France",
+    "lat": 45.19,
+    "lng": 5.72
+  },
+  "Hangzhou": {
+    "city": "Hangzhou",
+    "country": "China",
+    "lat": 30.27,
+    "lng": 120.16
+  },
+  "Hannover": {
+    "city": "Hannover",
+    "country": "Germany",
+    "lat": 52.38,
+    "lng": 9.73
+  },
+  "Hanoi": {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "lat": 21.03,
+    "lng": 105.85
+  },
+  "Hong Kong": {
+    "city": "Hong Kong",
+    "country": "China",
+    "lat": 22.32,
+    "lng": 114.17
+  },
+  "Honolulu": {
+    "city": "Honolulu",
+    "country": "USA",
+    "lat": 21.31,
+    "lng": -157.86
+  },
+  "Hawaii Convention Center": {
+    "city": "Honolulu",
+    "country": "USA",
+    "lat": 21.31,
+    "lng": -157.86
+  },
+  "Hyderabad": {
+    "city": "Hyderabad",
+    "country": "India",
+    "lat": 17.39,
+    "lng": 78.49
+  },
+  "Istanbul": {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "lat": 41.01,
+    "lng": 28.98
+  },
+  "İstanbul": {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "lat": 41.01,
+    "lng": 28.98
+  },
+  "Jeju": {
+    "city": "Jeju",
+    "country": "South Korea",
+    "lat": 33.5,
+    "lng": 126.53
+  },
+  "Kigali": {
+    "city": "Kigali",
+    "country": "Rwanda",
+    "lat": -1.95,
+    "lng": 30.06
+  },
+  "Kyoto": {
+    "city": "Kyoto",
+    "country": "Japan",
+    "lat": 35.01,
+    "lng": 135.77
+  },
+  "Lake Buena Vista": {
+    "city": "Lake Buena Vista",
+    "country": "USA",
+    "lat": 28.37,
+    "lng": -81.52
+  },
+  "Disney Springs": {
+    "city": "Lake Buena Vista",
+    "country": "USA",
+    "lat": 28.37,
+    "lng": -81.52
+  },
+  "Buena Vista": {
+    "city": "Lake Buena Vista",
+    "country": "USA",
+    "lat": 28.37,
+    "lng": -81.52
+  },
+  "Lancaster": {
+    "city": "Lancaster",
+    "country": "UK",
+    "lat": 54.05,
+    "lng": -2.8
+  },
+  "London": {
+    "city": "London",
+    "country": "UK",
+    "lat": 51.51,
+    "lng": -0.13
+  },
+  "Long Beach": {
+    "city": "Long Beach",
+    "country": "USA",
+    "lat": 33.77,
+    "lng": -118.19
+  },
+  "Los Angeles": {
+    "city": "Los Angeles",
+    "country": "USA",
+    "lat": 34.05,
+    "lng": -118.24
+  },
+  "Lyon": {
+    "city": "Lyon",
+    "country": "France",
+    "lat": 45.76,
+    "lng": 4.84
+  },
+  "Macao": {
+    "city": "Macao",
+    "country": "China",
+    "lat": 22.2,
+    "lng": 113.54
+  },
+  "Mai Khao": {
+    "city": "Mai Khao",
+    "country": "Thailand",
+    "lat": 8.17,
+    "lng": 98.3
+  },
+  "Marrakesh": {
+    "city": "Marrakesh",
+    "country": "Morocco",
+    "lat": 31.63,
+    "lng": -7.99
+  },
+  "Melbourne": {
+    "city": "Melbourne",
+    "country": "Australia",
+    "lat": -37.81,
+    "lng": 144.96
+  },
+  "Mexico City": {
+    "city": "Mexico City",
+    "country": "Mexico",
+    "lat": 19.43,
+    "lng": -99.13
+  },
+  "Miami": {
+    "city": "Miami",
+    "country": "USA",
+    "lat": 25.76,
+    "lng": -80.19
+  },
+  "Montréal": {
+    "city": "Montréal",
+    "country": "Canada",
+    "lat": 45.5,
+    "lng": -73.57
+  },
+  "Montreal": {
+    "city": "Montréal",
+    "country": "Canada",
+    "lat": 45.5,
+    "lng": -73.57
+  },
+  "Munich": {
+    "city": "Munich",
+    "country": "Germany",
+    "lat": 48.14,
+    "lng": 11.58
+  },
+  "Naples": {
+    "city": "Naples",
+    "country": "Italy",
+    "lat": 40.85,
+    "lng": 14.27
+  },
+  "Nashville": {
+    "city": "Nashville",
+    "country": "USA",
+    "lat": 36.16,
+    "lng": -86.78
+  },
+  "New Orleans": {
+    "city": "New Orleans",
+    "country": "USA",
+    "lat": 29.95,
+    "lng": -90.07
+  },
+  "New York": {
+    "city": "New York",
+    "country": "USA",
+    "lat": 40.71,
+    "lng": -74.01
+  },
+  "Orlando": {
+    "city": "Orlando",
+    "country": "USA",
+    "lat": 28.54,
+    "lng": -81.38
+  },
+  "Padova": {
+    "city": "Padova",
+    "country": "Italy",
+    "lat": 45.41,
+    "lng": 11.88
+  },
+  "Paphos": {
+    "city": "Paphos",
+    "country": "Cyprus",
+    "lat": 34.77,
+    "lng": 32.42
+  },
+  "Paris": {
+    "city": "Paris",
+    "country": "France",
+    "lat": 48.86,
+    "lng": 2.35
+  },
+  "Philadelphia": {
+    "city": "Philadelphia",
+    "country": "USA",
+    "lat": 39.95,
+    "lng": -75.17
+  },
+  "Phoenix": {
+    "city": "Phoenix",
+    "country": "USA",
+    "lat": 33.45,
+    "lng": -112.07
+  },
+  "Pittsburgh": {
+    "city": "Pittsburgh",
+    "country": "USA",
+    "lat": 40.44,
+    "lng": -79.99
+  },
+  "Porto": {
+    "city": "Porto",
+    "country": "Portugal",
+    "lat": 41.15,
+    "lng": -8.61
+  },
+  "Punta Cana": {
+    "city": "Punta Cana",
+    "country": "Dominican Republic",
+    "lat": 18.58,
+    "lng": -68.4
+  },
+  "Rio de Janeiro": {
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "lat": -22.91,
+    "lng": -43.17
+  },
+  "San Diego": {
+    "city": "San Diego",
+    "country": "USA",
+    "lat": 32.72,
+    "lng": -117.16
+  },
+  "San Francisco": {
+    "city": "San Francisco",
+    "country": "USA",
+    "lat": 37.77,
+    "lng": -122.42
+  },
+  "San Jose": {
+    "city": "San Jose",
+    "country": "USA",
+    "lat": 37.34,
+    "lng": -121.89
+  },
+  "Santa Clara": {
+    "city": "Santa Clara",
+    "country": "USA",
+    "lat": 37.35,
+    "lng": -121.96
+  },
+  "Seattle": {
+    "city": "Seattle",
+    "country": "USA",
+    "lat": 47.61,
+    "lng": -122.33
+  },
+  "Seoul": {
+    "city": "Seoul",
+    "country": "South Korea",
+    "lat": 37.57,
+    "lng": 126.98
+  },
+  "Shanghai": {
+    "city": "Shanghai",
+    "country": "China",
+    "lat": 31.23,
+    "lng": 121.47
+  },
+  "Sheffield": {
+    "city": "Sheffield",
+    "country": "UK",
+    "lat": 53.38,
+    "lng": -1.47
+  },
+  "Shenyang": {
+    "city": "Shenyang",
+    "country": "China",
+    "lat": 41.81,
+    "lng": 123.43
+  },
+  "Singapore": {
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.35,
+    "lng": 103.82
+  },
+  "Strasbourg": {
+    "city": "Strasbourg",
+    "country": "France",
+    "lat": 48.57,
+    "lng": 7.75
+  },
+  "Suzhou": {
+    "city": "Suzhou",
+    "country": "China",
+    "lat": 31.3,
+    "lng": 120.59
+  },
+  "Sydney": {
+    "city": "Sydney",
+    "country": "Australia",
+    "lat": -33.87,
+    "lng": 151.21
+  },
+  "São Paulo": {
+    "city": "São Paulo",
+    "country": "Brazil",
+    "lat": -23.55,
+    "lng": -46.63
+  },
+  "Taipei": {
+    "city": "Taipei",
+    "country": "Taiwan",
+    "lat": 25.03,
+    "lng": 121.57
+  },
+  "Tangier": {
+    "city": "Tangier",
+    "country": "Morocco",
+    "lat": 35.76,
+    "lng": -5.83
+  },
+  "Thessaloniki": {
+    "city": "Thessaloniki",
+    "country": "Greece",
+    "lat": 40.64,
+    "lng": 22.94
+  },
+  "Tokyo": {
+    "city": "Tokyo",
+    "country": "Japan",
+    "lat": 35.68,
+    "lng": 139.69
+  },
+  "Toronto": {
+    "city": "Toronto",
+    "country": "Canada",
+    "lat": 43.65,
+    "lng": -79.38
+  },
+  "Tucson": {
+    "city": "Tucson",
+    "country": "USA",
+    "lat": 32.22,
+    "lng": -110.97
+  },
+  "Turin": {
+    "city": "Turin",
+    "country": "Italy",
+    "lat": 45.07,
+    "lng": 7.69
+  },
+  "Valencia": {
+    "city": "Valencia",
+    "country": "Spain",
+    "lat": 39.47,
+    "lng": -0.38
+  },
+  "Vancouver": {
+    "city": "Vancouver",
+    "country": "Canada",
+    "lat": 49.28,
+    "lng": -123.12
+  },
+  "Vienna": {
+    "city": "Vienna",
+    "country": "Austria",
+    "lat": 48.21,
+    "lng": 16.37
+  },
+  "Vilnius": {
+    "city": "Vilnius",
+    "country": "Lithuania",
+    "lat": 54.69,
+    "lng": 25.28
+  },
+  "Waikoloa": {
+    "city": "Waikoloa",
+    "country": "USA",
+    "lat": 19.94,
+    "lng": -155.79
+  },
+  "Washington, D.C.": {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "lat": 38.91,
+    "lng": -77.04
+  },
+  "Washington D.C.": {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "lat": 38.91,
+    "lng": -77.04
+  },
+  "Washington DC": {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "lat": 38.91,
+    "lng": -77.04
+  },
+  "Washington, DC": {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "lat": 38.91,
+    "lng": -77.04
+  },
+  "Xi'an": {
+    "city": "Xi'an",
+    "country": "China",
+    "lat": 34.34,
+    "lng": 108.94
+  },
+  "Yokohama": {
+    "city": "Yokohama",
+    "country": "Japan",
+    "lat": 35.44,
+    "lng": 139.64
+  }
+}

@@ -259,10 +259,10 @@ _Optional:_ to let her browse data in the Atlas website too, go to Project → *
 
 ### 3.7 Who loads which data (once, from a laptop)
 
-| Command                    | Who       | When             | Result                   |
-| -------------------------- | --------- | ---------------- | ------------------------ |
-| `npm run seed:conferences` | Ayush     | Day 1 (task A-1) | 32 docs in `conferences` |
-| `npm run seed:papers`      | Harshitha | Day 1 (task H-2) | 1,000+ docs in `papers`  |
+| Command                    | Who       | When             | Result                    |
+| -------------------------- | --------- | ---------------- | ------------------------- |
+| `npm run seed:conferences` | Ayush     | Day 1 (task A-1) | ~96 docs in `conferences` |
+| `npm run seed:papers`      | Harshitha | Day 1 (task H-2) | 1,000+ docs in `papers`   |
 
 Because the DB is shared, **each seed runs once**, and the other person's app sees the data immediately. The deployed site uses the same DB, so production is seeded too. Don't re-run the other person's seed without telling them.
 

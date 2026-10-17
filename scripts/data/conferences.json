@@ -2,15 +2,109 @@
   {
     "acronym": "NeurIPS",
     "name": "Conference on Neural Information Processing Systems",
-    "year": 2026,
-    "website": "https://neurips.cc",
+    "year": 2024,
+    "website": "https://neurips.cc/Conferences/2024",
     "areas": ["general", "theory", "genai"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Vancouver",
+      "country": "Canada",
+      "venue": null,
+      "lat": 49.28,
+      "lng": -123.12
+    },
+    "startDate": "2024-12-11",
+    "endDate": "2024-12-13",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2024-05-15T20:00:00Z",
+      "paper": "2024-05-22T20:00:00Z",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NeurIPS",
+    "name": "Conference on Neural Information Processing Systems",
+    "year": 2025,
+    "website": "https://neurips.cc/Conferences/2025",
+    "areas": ["general", "theory", "genai"],
+    "location": {
+      "city": "San Diego",
+      "country": "USA",
+      "venue": "also Mexico City, Mexico",
+      "lat": 32.72,
+      "lng": -117.16
+    },
+    "startDate": "2025-12-03",
+    "endDate": "2025-12-05",
+    "deadlines": {
+      "abstract": "2025-05-11T23:59:59-12:00",
+      "paper": "2025-05-15T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NeurIPS",
+    "name": "Conference on Neural Information Processing Systems",
+    "year": 2026,
+    "website": "https://neurips.cc/Conferences/2026",
+    "areas": ["general", "theory", "genai"],
+    "location": {
+      "city": "Sydney",
+      "country": "Australia",
+      "venue": "also Atlanta, USA; Paris, France",
+      "lat": -33.87,
+      "lng": 151.21
+    },
+    "startDate": "2026-12-08",
+    "endDate": "2026-12-11",
+    "deadlines": {
+      "abstract": "2026-05-05T11:59:00Z",
+      "paper": "2026-05-07T11:59:00Z",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICML",
+    "name": "International Conference on Machine Learning",
+    "year": 2025,
+    "website": "https://icml.cc/Conferences/2025",
+    "areas": ["general", "theory"],
+    "location": {
+      "city": "Vancouver",
+      "country": "Canada",
+      "venue": null,
+      "lat": 49.28,
+      "lng": -123.12
+    },
+    "startDate": "2025-07-13",
+    "endDate": "2025-07-19",
+    "deadlines": {
+      "abstract": "2025-01-23T23:59:59-12:00",
+      "paper": "2025-01-30T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICML",
+    "name": "International Conference on Machine Learning",
+    "year": 2026,
+    "website": "https://icml.cc/Conferences/2026",
+    "areas": ["general", "theory"],
+    "location": {
+      "city": "Seoul",
+      "country": "South Korea",
+      "venue": null,
+      "lat": 37.57,
+      "lng": 126.98
+    },
+    "startDate": "2026-07-06",
+    "endDate": "2026-07-11",
+    "deadlines": {
+      "abstract": "2026-01-24T11:59:59Z",
+      "paper": "2026-01-29T11:59:59Z",
       "notification": null,
       "cameraReady": null
     }
@@ -34,15 +128,109 @@
   {
     "acronym": "ICLR",
     "name": "International Conference on Learning Representations",
-    "year": 2027,
-    "website": "https://iclr.cc",
+    "year": 2025,
+    "website": "https://iclr.cc/Conferences/2025",
     "areas": ["general", "genai"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Singapore",
+      "country": "Singapore",
+      "venue": null,
+      "lat": 1.35,
+      "lng": 103.82
+    },
+    "startDate": "2025-04-24",
+    "endDate": "2025-04-26",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2024-09-27T23:59:59-12:00",
+      "paper": "2024-10-01T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICLR",
+    "name": "International Conference on Learning Representations",
+    "year": 2026,
+    "website": "https://iclr.cc/Conferences/2026",
+    "areas": ["general", "genai"],
+    "location": {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "venue": null,
+      "lat": -22.91,
+      "lng": -43.17
+    },
+    "startDate": "2026-04-23",
+    "endDate": "2026-04-25",
+    "deadlines": {
+      "abstract": "2025-09-19T23:59:59-12:00",
+      "paper": "2025-09-24T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICLR",
+    "name": "International Conference on Learning Representations",
+    "year": 2027,
+    "website": "https://iclr.cc/Conferences/2027",
+    "areas": ["general", "genai"],
+    "location": {
+      "city": "San Francisco",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.77,
+      "lng": -122.42
+    },
+    "startDate": "2027-04-26",
+    "endDate": "2027-04-30",
+    "deadlines": {
+      "abstract": "2026-09-18T23:59:59-12:00",
+      "paper": "2026-09-25T23:59:59-12:00",
+      "notification": "2026-12-16T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAAI",
+    "name": "AAAI Conference on Artificial Intelligence",
+    "year": 2025,
+    "website": "https://aaai.org/conference/aaai/aaai-25/",
+    "areas": ["general"],
+    "location": {
+      "city": "Philadelphia",
+      "country": "USA",
+      "venue": null,
+      "lat": 39.95,
+      "lng": -75.17
+    },
+    "startDate": "2025-02-27",
+    "endDate": "2025-03-02",
+    "deadlines": {
+      "abstract": "2024-08-07T23:59:59-12:00",
+      "paper": "2024-08-15T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAAI",
+    "name": "AAAI Conference on Artificial Intelligence",
+    "year": 2026,
+    "website": "https://aaai.org/conference/aaai/aaai-26/",
+    "areas": ["general"],
+    "location": {
+      "city": "Singapore",
+      "country": "Singapore",
+      "venue": null,
+      "lat": 1.35,
+      "lng": 103.82
+    },
+    "startDate": "2026-01-22",
+    "endDate": "2026-01-25",
+    "deadlines": {
+      "abstract": "2025-07-25T23:59:59-12:00",
+      "paper": "2025-08-01T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -51,14 +239,64 @@
     "acronym": "AAAI",
     "name": "AAAI Conference on Artificial Intelligence",
     "year": 2027,
-    "website": "https://aaai.org/conference/aaai/",
+    "website": "https://aaai.org/conference/aaai/aaai-27/",
     "areas": ["general"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Montréal",
+      "country": "Canada",
+      "venue": null,
+      "lat": 45.5,
+      "lng": -73.57
+    },
+    "startDate": "2027-02-16",
+    "endDate": "2027-02-23",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2026-07-21T23:59:59-12:00",
+      "paper": "2026-07-28T23:59:59-12:00",
+      "notification": "2026-11-30T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IJCAI",
+    "name": "International Joint Conference on Artificial Intelligence",
+    "year": 2025,
+    "website": "https://2025.ijcai.org/",
+    "areas": ["general"],
+    "location": {
+      "city": "Montréal",
+      "country": "Canada",
+      "venue": null,
+      "lat": 45.5,
+      "lng": -73.57
+    },
+    "startDate": "2025-08-19",
+    "endDate": "2025-08-22",
+    "deadlines": {
+      "abstract": "2025-01-16T23:59:59-12:00",
+      "paper": "2025-01-23T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IJCAI",
+    "name": "International Joint Conference on Artificial Intelligence",
+    "year": 2026,
+    "website": "https://2026.ijcai.org/",
+    "areas": ["general"],
+    "location": {
+      "city": "Bremen",
+      "country": "Germany",
+      "venue": null,
+      "lat": 53.08,
+      "lng": 8.8
+    },
+    "startDate": "2026-08-18",
+    "endDate": "2026-08-21",
+    "deadlines": {
+      "abstract": "2026-01-12T23:59:59-12:00",
+      "paper": "2026-01-19T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -67,14 +305,64 @@
     "acronym": "IJCAI",
     "name": "International Joint Conference on Artificial Intelligence",
     "year": 2027,
-    "website": "https://www.ijcai.org",
+    "website": "https://2027.ijcai.org/",
     "areas": ["general"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Kyoto",
+      "country": "Japan",
+      "venue": null,
+      "lat": 35.01,
+      "lng": 135.77
+    },
+    "startDate": "2027-08-07",
+    "endDate": "2027-08-13",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2027-01-04T23:59:00-12:00",
+      "paper": "2027-01-11T23:59:00-12:00",
+      "notification": "2027-04-21T23:59:00-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AISTATS",
+    "name": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2025,
+    "website": "https://aistats.org/aistats2025",
+    "areas": ["theory", "general"],
+    "location": {
+      "city": "Mai Khao",
+      "country": "Thailand",
+      "venue": null,
+      "lat": 8.17,
+      "lng": 98.3
+    },
+    "startDate": "2025-05-03",
+    "endDate": "2025-05-05",
+    "deadlines": {
+      "abstract": "2024-10-03T23:59:59-12:00",
+      "paper": "2024-10-10T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AISTATS",
+    "name": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2026,
+    "website": "https://virtual.aistats.org/Conferences/2026",
+    "areas": ["theory", "general"],
+    "location": {
+      "city": "Tangier",
+      "country": "Morocco",
+      "venue": null,
+      "lat": 35.76,
+      "lng": -5.83
+    },
+    "startDate": "2026-05-02",
+    "endDate": "2026-05-04",
+    "deadlines": {
+      "abstract": "2025-09-25T23:59:59-12:00",
+      "paper": "2025-10-02T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -83,14 +371,64 @@
     "acronym": "AISTATS",
     "name": "International Conference on Artificial Intelligence and Statistics",
     "year": 2027,
-    "website": "https://aistats.org",
+    "website": "https://virtual.aistats.org/Conferences/2027",
     "areas": ["theory", "general"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Montréal",
+      "country": "Canada",
+      "venue": null,
+      "lat": 45.5,
+      "lng": -73.57
+    },
+    "startDate": "2027-05-03",
+    "endDate": "2027-05-06",
+    "deadlines": {
+      "abstract": "2026-09-29T23:59:59-12:00",
+      "paper": "2026-10-06T23:59:59-12:00",
+      "notification": "2027-01-20T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "UAI",
+    "name": "Conference on Uncertainty in Artificial Intelligence",
+    "year": 2025,
+    "website": "https://www.auai.org/uai2025/",
+    "areas": ["theory"],
+    "location": {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "venue": null,
+      "lat": -22.91,
+      "lng": -43.17
+    },
+    "startDate": "2025-07-22",
+    "endDate": "2025-07-24",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2025-02-10T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "UAI",
+    "name": "Conference on Uncertainty in Artificial Intelligence",
+    "year": 2026,
+    "website": "https://www.auai.org/uai2026/",
+    "areas": ["theory"],
+    "location": {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "venue": null,
+      "lat": 52.37,
+      "lng": 4.9
+    },
+    "startDate": "2026-08-18",
+    "endDate": "2026-08-20",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2026-02-25T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -114,12 +452,62 @@
   {
     "acronym": "COLT",
     "name": "Conference on Learning Theory",
-    "year": 2027,
-    "website": "https://learningtheory.org",
+    "year": 2025,
+    "website": "https://learningtheory.org/colt2025/",
     "areas": ["theory"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Lyon",
+      "country": "France",
+      "venue": null,
+      "lat": 45.76,
+      "lng": 4.84
+    },
+    "startDate": "2025-07-01",
+    "endDate": "2025-07-04",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-02-06T17:00:00-05:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "COLT",
+    "name": "Conference on Learning Theory",
+    "year": 2026,
+    "website": "https://learningtheory.org/colt2026/",
+    "areas": ["theory"],
+    "location": {
+      "city": "San Diego",
+      "country": "USA",
+      "venue": null,
+      "lat": 32.72,
+      "lng": -117.16
+    },
+    "startDate": "2026-06-30",
+    "endDate": "2026-07-03",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2026-02-04T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "COLT",
+    "name": "Conference on Learning Theory",
+    "year": 2027,
+    "website": "https://learningtheory.org/colt2027/",
+    "areas": ["theory"],
+    "location": {
+      "city": "Tokyo",
+      "country": "Japan",
+      "venue": null,
+      "lat": 35.68,
+      "lng": 139.69
+    },
+    "startDate": "2027-06-28",
+    "endDate": "2027-07-02",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -130,15 +518,109 @@
   {
     "acronym": "CVPR",
     "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
-    "year": 2027,
-    "website": "https://cvpr.thecvf.com",
+    "year": 2025,
+    "website": "https://cvpr.thecvf.com/Conferences/2025/CallForPapers",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Nashville",
+      "country": "USA",
+      "venue": null,
+      "lat": 36.16,
+      "lng": -86.78
+    },
+    "startDate": "2025-06-13",
+    "endDate": "2025-06-15",
+    "deadlines": {
+      "abstract": "2024-11-07T23:59:59-08:00",
+      "paper": "2024-11-14T23:59:59-08:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CVPR",
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2026,
+    "website": "https://cvpr.thecvf.com/Conferences/2026",
+    "areas": ["cv"],
+    "location": {
+      "city": "Denver",
+      "country": "USA",
+      "venue": null,
+      "lat": 39.74,
+      "lng": -104.99
+    },
+    "startDate": "2026-06-05",
+    "endDate": "2026-06-07",
+    "deadlines": {
+      "abstract": "2025-11-07T23:59:59-12:00",
+      "paper": "2025-11-13T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CVPR",
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2027,
+    "website": "https://cvpr.thecvf.com/Conferences/2027",
+    "areas": ["cv"],
+    "location": {
+      "city": "Seattle",
+      "country": "USA",
+      "venue": null,
+      "lat": 47.61,
+      "lng": -122.33
+    },
+    "startDate": "2027-06-20",
+    "endDate": "2027-06-25",
+    "deadlines": {
+      "abstract": "2026-11-10T23:59:59-12:00",
+      "paper": "2026-11-16T23:59:59-12:00",
+      "notification": "2027-02-25T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICCV",
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "year": 2023,
+    "website": "https://iccv2023.thecvf.com/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "venue": null,
+      "lat": 48.86,
+      "lng": 2.35
+    },
+    "startDate": "2023-10-04",
+    "endDate": "2023-10-06",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2023-03-08T23:59:59Z",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICCV",
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "year": 2025,
+    "website": "https://iccv.thecvf.com/Conferences/2025",
+    "areas": ["cv"],
+    "location": {
+      "city": "Honolulu",
+      "country": "USA",
+      "venue": null,
+      "lat": 21.31,
+      "lng": -157.86
+    },
+    "startDate": "2025-10-21",
+    "endDate": "2025-10-23",
+    "deadlines": {
+      "abstract": "2025-03-04T09:59:59Z",
+      "paper": "2025-03-08T09:59:59Z",
       "notification": null,
       "cameraReady": null
     }
@@ -147,11 +629,17 @@
     "acronym": "ICCV",
     "name": "IEEE/CVF International Conference on Computer Vision",
     "year": 2027,
-    "website": "https://iccv.thecvf.com",
+    "website": "https://iccv.thecvf.com/Conferences/2027",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Hong Kong",
+      "country": "China",
+      "venue": null,
+      "lat": 22.32,
+      "lng": 114.17
+    },
+    "startDate": "2027-10-02",
+    "endDate": "2027-10-08",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -162,15 +650,87 @@
   {
     "acronym": "WACV",
     "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
-    "year": 2027,
-    "website": "https://wacv.thecvf.com",
+    "year": 2025,
+    "website": "https://wacv2025.thecvf.com/",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Tucson",
+      "country": "USA",
+      "venue": null,
+      "lat": 32.22,
+      "lng": -110.97
+    },
+    "startDate": "2025-03-01",
+    "endDate": "2025-03-03",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2024-09-09T23:59:59-07:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WACV",
+    "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+    "year": 2026,
+    "website": "https://wacv.thecvf.com/Conferences/2026",
+    "areas": ["cv"],
+    "location": {
+      "city": "Tucson",
+      "country": "USA",
+      "venue": null,
+      "lat": 32.22,
+      "lng": -110.97
+    },
+    "startDate": "2026-03-08",
+    "endDate": "2026-03-10",
+    "deadlines": {
+      "abstract": "2025-09-12T23:59:59-12:00",
+      "paper": "2025-09-19T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WACV",
+    "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+    "year": 2027,
+    "website": "https://wacv.thecvf.com/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Lake Buena Vista",
+      "country": "USA",
+      "venue": null,
+      "lat": 28.37,
+      "lng": -81.52
+    },
+    "startDate": "2027-01-04",
+    "endDate": "2027-01-08",
+    "deadlines": {
+      "abstract": "2026-08-21T23:59:59-12:00",
+      "paper": "2026-08-28T23:59:59-12:00",
+      "notification": "2026-10-09T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "BMVC",
+    "name": "British Machine Vision Conference",
+    "year": 2024,
+    "website": "https://bmvc2024.org/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Glasgow",
+      "country": "UK",
+      "venue": null,
+      "lat": 55.86,
+      "lng": -4.25
+    },
+    "startDate": "2024-11-25",
+    "endDate": "2024-11-28",
+    "deadlines": {
+      "abstract": "2024-04-27T07:59:59+08:00",
+      "paper": "2024-05-11T07:59:59+08:00",
       "notification": null,
       "cameraReady": null
     }
@@ -178,15 +738,87 @@
   {
     "acronym": "BMVC",
     "name": "British Machine Vision Conference",
-    "year": 2027,
-    "website": "https://www.bmva.org/bmvc",
+    "year": 2025,
+    "website": "https://bmvc2025.bmva.org/",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Sheffield",
+      "country": "UK",
+      "venue": null,
+      "lat": 53.38,
+      "lng": -1.47
+    },
+    "startDate": "2025-11-24",
+    "endDate": "2025-11-26",
+    "deadlines": {
+      "abstract": "2025-05-13T23:59:59Z",
+      "paper": "2025-05-16T23:59:59Z",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "BMVC",
+    "name": "British Machine Vision Conference",
+    "year": 2026,
+    "website": "https://bmvc2026.bmva.org/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Lancaster",
+      "country": "UK",
+      "venue": null,
+      "lat": 54.05,
+      "lng": -2.8
+    },
+    "startDate": "2026-11-23",
+    "endDate": "2026-11-26",
+    "deadlines": {
+      "abstract": "2026-05-22T23:59:59-12:00",
+      "paper": "2026-05-29T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "3DV",
+    "name": "International Conference on 3D Vision",
+    "year": 2025,
+    "website": "https://3dvconf.github.io/2025/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Singapore",
+      "country": "Singapore",
+      "venue": null,
+      "lat": 1.35,
+      "lng": 103.82
+    },
+    "startDate": "2025-03-25",
+    "endDate": "2025-03-28",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2024-08-12T23:59:59-07:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "3DV",
+    "name": "International Conference on 3D Vision",
+    "year": 2026,
+    "website": "https://3dvconf.github.io/2026/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Vancouver",
+      "country": "Canada",
+      "venue": null,
+      "lat": 49.28,
+      "lng": -123.12
+    },
+    "startDate": "2026-03-20",
+    "endDate": "2026-03-23",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-08-18T23:59:59-07:00",
       "notification": null,
       "cameraReady": null
     }
@@ -195,11 +827,83 @@
     "acronym": "3DV",
     "name": "International Conference on 3D Vision",
     "year": 2027,
-    "website": "https://3dvconf.github.io",
+    "website": "https://3dvconf.github.io/2027/",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Thessaloniki",
+      "country": "Greece",
+      "venue": null,
+      "lat": 40.64,
+      "lng": 22.94
+    },
+    "startDate": "2027-04-06",
+    "endDate": "2027-04-09",
+    "deadlines": {
+      "abstract": "2026-08-28T23:59:59-12:00",
+      "paper": "2026-08-28T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MICCAI",
+    "name": "Medical Image Computing and Computer Assisted Intervention",
+    "year": 2025,
+    "website": "https://conferences.miccai.org/2025/en/default.asp",
+    "areas": ["cv"],
+    "location": {
+      "city": "Daejeon",
+      "country": "South Korea",
+      "venue": null,
+      "lat": 36.35,
+      "lng": 127.38
+    },
+    "startDate": "2025-09-24",
+    "endDate": "2025-09-26",
+    "deadlines": {
+      "abstract": "2025-02-13T23:59:59-08:00",
+      "paper": "2025-02-27T23:59:59-08:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MICCAI",
+    "name": "Medical Image Computing and Computer Assisted Intervention",
+    "year": 2026,
+    "website": "https://conferences.miccai.org/2026/en/IMPORTANT-DATES.html",
+    "areas": ["cv"],
+    "location": {
+      "city": "Strasbourg",
+      "country": "France",
+      "venue": null,
+      "lat": 48.57,
+      "lng": 7.75
+    },
+    "startDate": "2026-09-28",
+    "endDate": "2026-09-30",
+    "deadlines": {
+      "abstract": "2026-02-12T23:59:59-08:00",
+      "paper": "2026-02-26T23:59:59-08:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MICCAI",
+    "name": "Medical Image Computing and Computer Assisted Intervention",
+    "year": 2027,
+    "website": "https://conferences.miccai.org/2027/en/",
+    "areas": ["cv"],
+    "location": {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "venue": null,
+      "lat": -36.85,
+      "lng": 174.76
+    },
+    "startDate": "2027-09-26",
+    "endDate": "2027-10-01",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -210,12 +914,18 @@
   {
     "acronym": "MICCAI",
     "name": "Medical Image Computing and Computer Assisted Intervention",
-    "year": 2027,
-    "website": "https://miccai.org",
+    "year": 2028,
+    "website": "https://conferences.miccai.org/2028/en/",
     "areas": ["cv"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "São Paulo",
+      "country": "Brazil",
+      "venue": null,
+      "lat": -23.55,
+      "lng": -46.63
+    },
+    "startDate": "2028-10-16",
+    "endDate": "2028-10-20",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -226,15 +936,109 @@
   {
     "acronym": "ACL",
     "name": "Annual Meeting of the Association for Computational Linguistics",
-    "year": 2027,
-    "website": "https://www.aclweb.org/portal/",
+    "year": 2025,
+    "website": "https://2025.aclweb.org/",
     "areas": ["nlp"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Vienna",
+      "country": "Austria",
+      "venue": null,
+      "lat": 48.21,
+      "lng": 16.37
+    },
+    "startDate": "2025-07-28",
+    "endDate": "2025-07-30",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2025-04-20T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACL",
+    "name": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2026,
+    "website": "https://2026.aclweb.org/",
+    "areas": ["nlp"],
+    "location": {
+      "city": "San Diego",
+      "country": "USA",
+      "venue": null,
+      "lat": 32.72,
+      "lng": -117.16
+    },
+    "startDate": "2026-07-05",
+    "endDate": "2026-07-07",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2026-03-14T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACL",
+    "name": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2027,
+    "website": "https://2027.aclweb.org/",
+    "areas": ["nlp"],
+    "location": {
+      "city": "Kyoto",
+      "country": "Japan",
+      "venue": null,
+      "lat": 35.01,
+      "lng": 135.77
+    },
+    "startDate": "2027-08-17",
+    "endDate": "2027-08-22",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2027-01-04T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "EMNLP",
+    "name": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2024,
+    "website": "https://2024.emnlp.org",
+    "areas": ["nlp"],
+    "location": {
+      "city": "Miami",
+      "country": "USA",
+      "venue": null,
+      "lat": 25.76,
+      "lng": -80.19
+    },
+    "startDate": "2024-11-12",
+    "endDate": "2024-11-14",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-08-20T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "EMNLP",
+    "name": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2025,
+    "website": "https://2025.emnlp.org/",
+    "areas": ["nlp"],
+    "location": {
+      "city": "Suzhou",
+      "country": "China",
+      "venue": null,
+      "lat": 31.3,
+      "lng": 120.59
+    },
+    "startDate": "2025-11-05",
+    "endDate": "2025-11-07",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-08-01T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -243,14 +1047,64 @@
     "acronym": "EMNLP",
     "name": "Conference on Empirical Methods in Natural Language Processing",
     "year": 2026,
-    "website": "https://2026.emnlp.org",
+    "website": "https://2026.emnlp.org/",
     "areas": ["nlp"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Budapest",
+      "country": "Hungary",
+      "venue": null,
+      "lat": 47.5,
+      "lng": 19.04
+    },
+    "startDate": "2026-10-25",
+    "endDate": "2026-10-27",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-08-02T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NAACL",
+    "name": "Annual Conference of the Nations of the Americas Chapter of the ACL",
+    "year": 2024,
+    "website": "https://2024.naacl.org/",
+    "areas": ["nlp"],
+    "location": {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "venue": null,
+      "lat": 19.43,
+      "lng": -99.13
+    },
+    "startDate": "2024-06-17",
+    "endDate": "2024-06-19",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-02-20T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NAACL",
+    "name": "Annual Conference of the Nations of the Americas Chapter of the ACL",
+    "year": 2025,
+    "website": "https://2025.naacl.org/",
+    "areas": ["nlp"],
+    "location": {
+      "city": "Albuquerque",
+      "country": "USA",
+      "venue": null,
+      "lat": 35.08,
+      "lng": -106.65
+    },
+    "startDate": "2025-04-30",
+    "endDate": "2025-05-02",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-12-16T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -259,14 +1113,64 @@
     "acronym": "NAACL",
     "name": "Annual Conference of the Nations of the Americas Chapter of the ACL",
     "year": 2027,
-    "website": "https://naacl.org",
+    "website": "https://2027.naacl.org/",
     "areas": ["nlp"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "San Francisco",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.77,
+      "lng": -122.42
+    },
+    "startDate": "2027-06-01",
+    "endDate": "2027-06-05",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-12-23T23:59:59-12:00",
+      "notification": "2027-02-10T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "KDD",
+    "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "year": 2025,
+    "website": "https://kdd2025.kdd.org/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Toronto",
+      "country": "Canada",
+      "venue": null,
+      "lat": 43.65,
+      "lng": -79.38
+    },
+    "startDate": "2025-08-03",
+    "endDate": "2025-08-07",
+    "deadlines": {
+      "abstract": "2025-02-03T23:59:59-12:00",
+      "paper": "2025-02-10T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "KDD",
+    "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "year": 2026,
+    "website": "https://kdd2026.kdd.org/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Jeju",
+      "country": "South Korea",
+      "venue": null,
+      "lat": 33.5,
+      "lng": 126.53
+    },
+    "startDate": "2026-08-10",
+    "endDate": "2026-08-13",
+    "deadlines": {
+      "abstract": "2026-02-01T23:59:59-12:00",
+      "paper": "2026-02-08T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -275,14 +1179,64 @@
     "acronym": "KDD",
     "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
     "year": 2027,
-    "website": "https://kdd.org",
+    "website": "https://kdd2027.kdd.org/",
     "areas": ["datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "San Jose",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.34,
+      "lng": -121.89
+    },
+    "startDate": "2027-08-01",
+    "endDate": "2027-08-05",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2026-07-19T23:59:59-12:00",
+      "paper": "2026-07-26T23:59:59-12:00",
+      "notification": "2026-11-14T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WWW",
+    "name": "The ACM Web Conference",
+    "year": 2025,
+    "website": "https://www2025.thewebconf.org/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Sydney",
+      "country": "Australia",
+      "venue": null,
+      "lat": -33.87,
+      "lng": 151.21
+    },
+    "startDate": "2025-04-30",
+    "endDate": "2025-05-02",
+    "deadlines": {
+      "abstract": "2024-10-07T23:59:59-12:00",
+      "paper": "2024-10-14T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WWW",
+    "name": "The ACM Web Conference",
+    "year": 2026,
+    "website": "https://www2026.thewebconf.org/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Dubai",
+      "country": "UAE",
+      "venue": null,
+      "lat": 25.2,
+      "lng": 55.27
+    },
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-03",
+    "deadlines": {
+      "abstract": "2025-09-30T23:59:59-12:00",
+      "paper": "2025-10-07T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -291,14 +1245,64 @@
     "acronym": "WWW",
     "name": "The ACM Web Conference",
     "year": 2027,
-    "website": "https://www.iw3c2.org",
+    "website": "https://www2027.thewebconf.org/",
     "areas": ["datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Dublin",
+      "country": "Ireland",
+      "venue": null,
+      "lat": 53.35,
+      "lng": -6.26
+    },
+    "startDate": "2027-05-10",
+    "endDate": "2027-05-14",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2026-10-18T23:59:59-12:00",
+      "paper": "2026-10-25T23:59:59-12:00",
+      "notification": "2027-01-04T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "SIGIR",
+    "name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2025,
+    "website": "https://sigir2025.dei.unipd.it/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Padova",
+      "country": "Italy",
+      "venue": null,
+      "lat": 45.41,
+      "lng": 11.88
+    },
+    "startDate": "2025-07-14",
+    "endDate": "2025-07-16",
+    "deadlines": {
+      "abstract": "2025-01-16T23:59:59-12:00",
+      "paper": "2025-01-23T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "SIGIR",
+    "name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2026,
+    "website": "https://sigir2026.org/en-AU",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Melbourne",
+      "country": "Australia",
+      "venue": null,
+      "lat": -37.81,
+      "lng": 144.96
+    },
+    "startDate": "2026-07-21",
+    "endDate": "2026-07-23",
+    "deadlines": {
+      "abstract": "2026-01-15T23:59:59-12:00",
+      "paper": "2026-01-22T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -307,14 +1311,64 @@
     "acronym": "SIGIR",
     "name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
     "year": 2027,
-    "website": "https://sigir.org",
+    "website": "https://sigir2027.org/",
     "areas": ["datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "San Jose",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.34,
+      "lng": -121.89
+    },
+    "startDate": "2027-07-18",
+    "endDate": "2027-07-24",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
+      "abstract": "2027-01-14T23:59:59-12:00",
+      "paper": "2027-01-21T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WSDM",
+    "name": "ACM International Conference on Web Search and Data Mining",
+    "year": 2025,
+    "website": "https://www.wsdm-conference.org/2025/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Hannover",
+      "country": "Germany",
+      "venue": null,
+      "lat": 52.38,
+      "lng": 9.73
+    },
+    "startDate": "2025-03-11",
+    "endDate": "2025-03-13",
+    "deadlines": {
+      "abstract": "2024-08-09T23:59:59-12:00",
+      "paper": "2024-08-14T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WSDM",
+    "name": "ACM International Conference on Web Search and Data Mining",
+    "year": 2026,
+    "website": "https://wsdm-conference.org/2026/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Boise",
+      "country": "USA",
+      "venue": null,
+      "lat": 43.62,
+      "lng": -116.2
+    },
+    "startDate": "2026-02-23",
+    "endDate": "2026-02-25",
+    "deadlines": {
+      "abstract": "2025-08-07T23:59:59-12:00",
+      "paper": "2025-08-14T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -323,14 +1377,64 @@
     "acronym": "WSDM",
     "name": "ACM International Conference on Web Search and Data Mining",
     "year": 2027,
-    "website": "https://www.wsdm-conference.org",
+    "website": "https://wsdm-conference.org/2027/",
     "areas": ["datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Hong Kong",
+      "country": "China",
+      "venue": "Cordis",
+      "lat": 22.32,
+      "lng": 114.17
+    },
+    "startDate": "2027-02-15",
+    "endDate": "2027-02-19",
+    "deadlines": {
+      "abstract": "2026-08-17T23:59:59-12:00",
+      "paper": "2026-08-24T23:59:59-12:00",
+      "notification": "2026-11-02T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICDM",
+    "name": "IEEE International Conference on Data Mining",
+    "year": 2024,
+    "website": "https://icdm2024.org/dates/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Abu Dhabi",
+      "country": "UAE",
+      "venue": null,
+      "lat": 24.45,
+      "lng": 54.38
+    },
+    "startDate": "2024-12-10",
+    "endDate": "2024-12-12",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2024-06-14T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICDM",
+    "name": "IEEE International Conference on Data Mining",
+    "year": 2025,
+    "website": "https://www3.cs.stonybrook.edu/~icdm2025/cfp.html",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Washington, D.C.",
+      "country": "USA",
+      "venue": null,
+      "lat": 38.91,
+      "lng": -77.04
+    },
+    "startDate": "2025-11-13",
+    "endDate": "2025-11-15",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-06-06T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -339,14 +1443,86 @@
     "acronym": "ICDM",
     "name": "IEEE International Conference on Data Mining",
     "year": 2026,
-    "website": "https://www.cs.uvm.edu/~icdm/",
+    "website": "http://icdm2026.neu.edu.cn/",
     "areas": ["datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Shenyang",
+      "country": "China",
+      "venue": null,
+      "lat": 41.81,
+      "lng": 123.43
+    },
+    "startDate": "2026-11-12",
+    "endDate": "2026-11-15",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-06-06T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICDM",
+    "name": "IEEE International Conference on Data Mining",
+    "year": 2027,
+    "website": "https://icdm2027-website.onrender.com/",
+    "areas": ["datamining"],
+    "location": {
+      "city": "Brisbane",
+      "country": "Australia",
+      "venue": null,
+      "lat": -27.47,
+      "lng": 153.03
+    },
+    "startDate": "2027-11-15",
+    "endDate": "2027-11-18",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2027-06-06T23:59:00-12:00",
+      "notification": "2027-08-16T23:59:00-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ECML-PKDD",
+    "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+    "year": 2025,
+    "website": "https://ecmlpkdd.org/2025/",
+    "areas": ["general", "datamining"],
+    "location": {
+      "city": "Porto",
+      "country": "Portugal",
+      "venue": null,
+      "lat": 41.15,
+      "lng": -8.61
+    },
+    "startDate": "2025-09-15",
+    "endDate": "2025-09-18",
+    "deadlines": {
+      "abstract": "2025-03-07T23:59:59-12:00",
+      "paper": "2025-03-14T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ECML-PKDD",
+    "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+    "year": 2026,
+    "website": "https://ecmlpkdd.org/2026/",
+    "areas": ["general", "datamining"],
+    "location": {
+      "city": "Naples",
+      "country": "Italy",
+      "venue": null,
+      "lat": 40.85,
+      "lng": 14.27
+    },
+    "startDate": "2026-09-07",
+    "endDate": "2026-09-11",
+    "deadlines": {
+      "abstract": "2026-03-05T23:59:59-12:00",
+      "paper": "2026-03-12T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -355,11 +1531,17 @@
     "acronym": "ECML-PKDD",
     "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
     "year": 2027,
-    "website": "https://ecmlpkdd.org",
+    "website": "https://ecmlpkdd.org/2027/",
     "areas": ["general", "datamining"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "venue": null,
+      "lat": 51.44,
+      "lng": 5.47
+    },
+    "startDate": "2027-09-20",
+    "endDate": "2027-09-24",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -370,15 +1552,109 @@
   {
     "acronym": "CoRL",
     "name": "Conference on Robot Learning",
-    "year": 2026,
-    "website": "https://www.corl.org",
+    "year": 2024,
+    "website": "https://2024.corl.org/",
     "areas": ["robotics", "rl"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Munich",
+      "country": "Germany",
+      "venue": null,
+      "lat": 48.14,
+      "lng": 11.58
+    },
+    "startDate": "2024-11-06",
+    "endDate": "2024-11-08",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2024-06-06T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoRL",
+    "name": "Conference on Robot Learning",
+    "year": 2025,
+    "website": "https://2025.corl.org/",
+    "areas": ["robotics", "rl"],
+    "location": {
+      "city": "Seoul",
+      "country": "South Korea",
+      "venue": null,
+      "lat": 37.57,
+      "lng": 126.98
+    },
+    "startDate": "2025-09-28",
+    "endDate": "2025-09-30",
+    "deadlines": {
+      "abstract": "2025-04-23T23:59:59-12:00",
+      "paper": "2025-04-30T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoRL",
+    "name": "Conference on Robot Learning",
+    "year": 2026,
+    "website": "https://www.corl.org/",
+    "areas": ["robotics", "rl"],
+    "location": {
+      "city": "Austin",
+      "country": "USA",
+      "venue": null,
+      "lat": 30.27,
+      "lng": -97.74
+    },
+    "startDate": "2026-11-09",
+    "endDate": "2026-11-11",
+    "deadlines": {
+      "abstract": "2026-05-25T23:59:59-12:00",
+      "paper": "2026-05-28T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICRA",
+    "name": "IEEE International Conference on Robotics and Automation",
+    "year": 2025,
+    "website": "https://2025.ieee-icra.org",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Atlanta",
+      "country": "USA",
+      "venue": null,
+      "lat": 33.75,
+      "lng": -84.39
+    },
+    "startDate": "2025-05-20",
+    "endDate": "2025-05-22",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-09-16T23:59:59-08:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICRA",
+    "name": "IEEE International Conference on Robotics and Automation",
+    "year": 2026,
+    "website": "https://2026.ieee-icra.org/",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Vienna",
+      "country": "Austria",
+      "venue": null,
+      "lat": 48.21,
+      "lng": 16.37
+    },
+    "startDate": "2026-06-02",
+    "endDate": "2026-06-04",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-09-15T23:59:59-08:00",
       "notification": null,
       "cameraReady": null
     }
@@ -387,14 +1663,64 @@
     "acronym": "ICRA",
     "name": "IEEE International Conference on Robotics and Automation",
     "year": 2027,
-    "website": "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra",
+    "website": "https://2027.ieee-icra.org/",
     "areas": ["robotics"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Seoul",
+      "country": "South Korea",
+      "venue": null,
+      "lat": 37.57,
+      "lng": 126.98
+    },
+    "startDate": "2027-05-24",
+    "endDate": "2027-05-28",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-09-16T23:59:59-08:00",
+      "notification": "2027-02-01T03:59:00-08:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IROS",
+    "name": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "year": 2025,
+    "website": "http://www.iros25.org/",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Hangzhou",
+      "country": "China",
+      "venue": null,
+      "lat": 30.27,
+      "lng": 120.16
+    },
+    "startDate": "2025-10-21",
+    "endDate": "2025-10-23",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-03-01T23:59:59-08:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IROS",
+    "name": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "year": 2026,
+    "website": "https://2026.ieee-iros.org/",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Pittsburgh",
+      "country": "USA",
+      "venue": null,
+      "lat": 40.44,
+      "lng": -79.99
+    },
+    "startDate": "2026-09-27",
+    "endDate": "2026-10-01",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2026-03-02T23:59:59-08:00",
       "notification": null,
       "cameraReady": null
     }
@@ -403,14 +1729,64 @@
     "acronym": "IROS",
     "name": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
     "year": 2027,
-    "website": "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros",
+    "website": "https://2027.ieee-iros.org/",
     "areas": ["robotics"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Florence",
+      "country": "Italy",
+      "venue": null,
+      "lat": 43.77,
+      "lng": 11.26
+    },
+    "startDate": "2027-09-26",
+    "endDate": "2027-10-01",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2027-03-01T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "RSS",
+    "name": "Robotics: Science and Systems",
+    "year": 2025,
+    "website": "https://roboticsconference.org/2025/",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Los Angeles",
+      "country": "USA",
+      "venue": null,
+      "lat": 34.05,
+      "lng": -118.24
+    },
+    "startDate": "2025-06-21",
+    "endDate": "2025-06-25",
+    "deadlines": {
+      "abstract": "2025-01-17T23:59:59-12:00",
+      "paper": "2025-01-24T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "RSS",
+    "name": "Robotics: Science and Systems",
+    "year": 2026,
+    "website": "https://roboticsconference.org/2026/",
+    "areas": ["robotics"],
+    "location": {
+      "city": "Sydney",
+      "country": "Australia",
+      "venue": null,
+      "lat": -33.87,
+      "lng": 151.21
+    },
+    "startDate": "2026-07-13",
+    "endDate": "2026-07-17",
+    "deadlines": {
+      "abstract": "2026-01-23T23:59:59-12:00",
+      "paper": "2026-01-30T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -419,14 +1795,64 @@
     "acronym": "RSS",
     "name": "Robotics: Science and Systems",
     "year": 2027,
-    "website": "https://roboticsconference.org",
+    "website": "https://roboticsconference.org/",
     "areas": ["robotics"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Athens",
+      "country": "Greece",
+      "venue": null,
+      "lat": 37.98,
+      "lng": 23.73
+    },
+    "startDate": "2027-07-06",
+    "endDate": "2027-07-11",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-12-04T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAMAS",
+    "name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "year": 2025,
+    "website": "https://aamas2025.org/",
+    "areas": ["rl"],
+    "location": {
+      "city": "Detroit",
+      "country": "USA",
+      "venue": null,
+      "lat": 42.33,
+      "lng": -83.05
+    },
+    "startDate": "2025-05-21",
+    "endDate": "2025-05-23",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-01-08T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAMAS",
+    "name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "year": 2026,
+    "website": "https://cyprusconferences.org/aamas2026",
+    "areas": ["rl"],
+    "location": {
+      "city": "Paphos",
+      "country": "Cyprus",
+      "venue": null,
+      "lat": 34.77,
+      "lng": 32.42
+    },
+    "startDate": "2026-05-27",
+    "endDate": "2026-05-29",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-11-17T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -435,27 +1861,33 @@
     "acronym": "AAMAS",
     "name": "International Conference on Autonomous Agents and Multiagent Systems",
     "year": 2027,
-    "website": "https://www.ifaamas.org",
+    "website": "https://warwick.ac.uk/fac/sci/dcs/aamas2027/",
     "areas": ["rl"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "venue": null,
+      "lat": 21.03,
+      "lng": 105.85
+    },
+    "startDate": "2027-05-03",
+    "endDate": "2027-05-07",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
-      "notification": null,
+      "abstract": "2026-10-01T23:59:59-12:00",
+      "paper": "2026-10-08T23:59:59-12:00",
+      "notification": "2026-12-21T23:59:59-12:00",
       "cameraReady": null
     }
   },
   {
-    "acronym": "CoLLAs",
-    "name": "Conference on Lifelong Learning Agents",
-    "year": 2027,
-    "website": "https://lifelong-ml.cc",
-    "areas": ["rl", "general"],
+    "acronym": "LoG",
+    "name": "Learning on Graphs Conference",
+    "year": 2024,
+    "website": "https://log2024.logconference.org/",
+    "areas": ["graphs"],
     "location": null,
-    "startDate": null,
-    "endDate": null,
+    "startDate": "2024-11-26",
+    "endDate": "2024-11-29",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -466,15 +1898,87 @@
   {
     "acronym": "LoG",
     "name": "Learning on Graphs Conference",
-    "year": 2026,
-    "website": "https://logconference.org",
+    "year": 2025,
+    "website": "https://log2025.logconference.org/",
     "areas": ["graphs"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Phoenix",
+      "country": "USA",
+      "venue": "Arizona State University",
+      "lat": 33.45,
+      "lng": -112.07
+    },
+    "startDate": "2025-12-10",
+    "endDate": "2025-12-12",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2025-08-29T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "LoG",
+    "name": "Learning on Graphs Conference",
+    "year": 2026,
+    "website": "https://logconference.org/",
+    "areas": ["graphs"],
+    "location": {
+      "city": "Boston",
+      "country": "USA",
+      "venue": "Northeastern University",
+      "lat": 42.36,
+      "lng": -71.06
+    },
+    "startDate": "2026-11-20",
+    "endDate": "2026-11-22",
+    "deadlines": {
+      "abstract": "2026-08-05T23:59:59-12:00",
+      "paper": "2026-08-07T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MLSys",
+    "name": "Conference on Machine Learning and Systems",
+    "year": 2025,
+    "website": "https://mlsys.org/Conferences/2025",
+    "areas": ["general"],
+    "location": {
+      "city": "Santa Clara",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.35,
+      "lng": -121.96
+    },
+    "startDate": "2025-05-13",
+    "endDate": "2025-05-15",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-10-31T20:00:00Z",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MLSys",
+    "name": "Conference on Machine Learning and Systems",
+    "year": 2026,
+    "website": "https://mlsys.org/Conferences/2026",
+    "areas": ["general"],
+    "location": {
+      "city": "Bellevue",
+      "country": "USA",
+      "venue": null,
+      "lat": 47.61,
+      "lng": -122.2
+    },
+    "startDate": "2026-05-19",
+    "endDate": "2026-05-21",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-10-30T20:00:00Z",
       "notification": null,
       "cameraReady": null
     }
@@ -483,14 +1987,64 @@
     "acronym": "MLSys",
     "name": "Conference on Machine Learning and Systems",
     "year": 2027,
-    "website": "https://mlsys.org",
+    "website": "https://mlsys.org/",
     "areas": ["general"],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Bellevue",
+      "country": "USA",
+      "venue": null,
+      "lat": 47.61,
+      "lng": -122.2
+    },
+    "startDate": "2027-06-21",
+    "endDate": "2027-06-25",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2026-10-30T20:00:00Z",
+      "notification": "2027-02-28T21:00:00Z",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACML",
+    "name": "Asian Conference on Machine Learning",
+    "year": 2024,
+    "website": "https://www.acml-conf.org/2024/index.html",
+    "areas": ["general"],
+    "location": {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "venue": null,
+      "lat": 21.03,
+      "lng": 105.85
+    },
+    "startDate": "2024-12-05",
+    "endDate": "2024-12-07",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2024-07-03T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACML",
+    "name": "Asian Conference on Machine Learning",
+    "year": 2025,
+    "website": "https://www.acml-conf.org/2025/",
+    "areas": ["general"],
+    "location": {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "venue": null,
+      "lat": 25.03,
+      "lng": 121.57
+    },
+    "startDate": "2025-12-09",
+    "endDate": "2025-12-11",
+    "deadlines": {
+      "abstract": null,
+      "paper": "2025-06-26T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -499,8 +2053,30 @@
     "acronym": "ACML",
     "name": "Asian Conference on Machine Learning",
     "year": 2026,
-    "website": "https://www.acml-conf.org",
+    "website": "https://www.acml-conf.org/2026/",
     "areas": ["general"],
+    "location": {
+      "city": "Melbourne",
+      "country": "Australia",
+      "venue": null,
+      "lat": -37.81,
+      "lng": 144.96
+    },
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": "2026-07-05T23:59:59-12:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoLLAs",
+    "name": "Conference on Lifelong Learning Agents",
+    "year": 2027,
+    "website": "https://lifelong-ml.cc",
+    "areas": ["rl", "general"],
     "location": null,
     "startDate": null,
     "endDate": null,

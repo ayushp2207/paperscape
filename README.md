@@ -25,6 +25,11 @@ cp .env.example .env   # then fill in MONGODB_URI
 npm run dev            # http://localhost:3000
 ```
 
+## Data sources
+
+- Conference dates, locations and deadlines: [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) (MIT License, © ccfddl contributors), imported with `npm run import:conferences`. Editions that haven't been announced yet are shown as "TBD".
+- Papers: [OpenAlex](https://openalex.org) (CC0).
+
 ## License
 
 [MIT](LICENSE)
