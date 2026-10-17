@@ -303,19 +303,20 @@ All documents have `createdAt`, `updatedAt` (Date). `ownerId` is the anonymous U
   year: 2027,
   areas: ["general", "theory", "genai"],   // AREAS ids
   website: "https://neurips.cc",
-  location: { city: "…", country: "…", lat: 45.5, lng: -73.6, venue: "…" },
-  startDate: Date, endDate: Date,
+  location: { city: "…", country: "…", lat: 45.5, lng: -73.6, venue: "…" } | null,  // null = TBD
+  startDate: Date | null, endDate: Date | null,   // calendar days at 12:00 UTC; null = TBD
   deadlines: {
-    abstract: Date | null,          // stored as AoE 23:59 → UTC instant
-    paper: Date,
+    abstract: Date | null,          // stored as AoE 23:59 → UTC instant; null = TBD
+    paper: Date | null,
     notification: Date | null,
     cameraReady: Date | null
   },
-  datesConfirmed: true | false,     // false → UI shows "estimated" badge
   isSeed: true | false,
   createdAt, updatedAt
 }
 ```
+
+**TBD rule:** any date or location that hasn't been announced is `null`, and the UI shows "TBD". Never estimate. Code that does maths on dates (countdowns, timeline, warnings, month filter, sorting) must skip `null`s, and conferences with no dates sort last.
 
 Visibility rule: `GET` returns `{ $or: [{ ownerId: null }, { ownerId: req.ownerId }] }`.
 Edit/delete is allowed only where `ownerId === req.ownerId`. Seeded ones offer **Duplicate** in the UI instead.
@@ -860,13 +861,16 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-1 Conference seed data (45 min)
 
-- [ ] `scripts/data/conferences.json`: **~30 conferences**.
-  - **Upcoming (2026–27):** NeurIPS, ICML, ICLR, CVPR, ICCV, ECCV (if in window), ACL, EMNLP, NAACL, AAAI, IJCAI, KDD, WWW, SIGIR, WSDM, AISTATS, UAI, COLT, CoRL, ICRA, IROS, RSS, WACV, BMVC, COLING, ECML-PKDD, MLSys, ICASSP, Interspeech, LoG.
-  - **Include some with past deadlines**, so the "show past" toggle has something to filter.
-- [ ] Each entry: all §6 fields, real `lat/lng` of the host city, areas from `AREAS`.
-- [ ] **Accuracy:** use official dates where announced. Otherwise estimate from the previous year's pattern and set `datesConfirmed: false` (the UI shows "estimated"). Spot-check 5 big ones against official sites.
-- [ ] `scripts/seed-conferences.js`: deletes only `isSeed: true` docs, inserts the JSON with `ownerId: null, isSeed: true`, converts deadline strings → AoE Dates, then prints the count.
-- [ ] **Done when:** `npm run seed:conferences` is idempotent and Compass shows ~30 docs.
+- [x] `scripts/data/conferences.json`: **32 conferences** (next edition of NeurIPS, ICML, ICLR, AAAI, IJCAI, AISTATS, UAI, COLT, CVPR, ICCV, WACV, BMVC, 3DV, MICCAI, ACL, EMNLP, NAACL, KDD, WWW, SIGIR, WSDM, ICDM, ECML-PKDD, CoRL, ICRA, IROS, RSS, AAMAS, CoLLAs, LoG, MLSys, ACML).
+  - Filled now: acronym, name, year, website, areas.
+  - **TBD (`null`) until filled from official sites:** `location`, `startDate`, `endDate`, all `deadlines`. No estimates.
+- [x] `scripts/seed-conferences.js`:
+  - Validates every entry first (required fields, area ids, lat/lng ranges, `YYYY-MM-DD` format, date ordering). One bad entry means nothing is written.
+  - Deletes only `isSeed: true` docs, inserts with `ownerId: null, isSeed: true`.
+  - Deadlines → `aoeEndOfDay`, start/end → `calendarDay` (both imported from `public/js/shared/format.js`).
+  - Prints how many conferences have dates, location, or are still TBD.
+- [x] **Done when:** `npm run seed:conferences` is idempotent and Atlas shows 32 seeded docs.
+- [ ] **Manual follow-up (Ayush + Harshitha, before Day 3):** fill real dates and city/country into `conferences.json` from each official site, then re-run the seed. Prioritise NeurIPS, ICML, ICLR, CVPR, ACL, EMNLP, AAAI, KDD, ICRA, CoRL. Claude can add `lat/lng` from the city. Also verify each `year` and `website`. Countdowns, timeline, map pins and warnings only appear for conferences with real values.
 
 ### A-2 Conferences API (1 h)
 
@@ -874,7 +878,8 @@ Each day is 5 focused hours. Times are hours from the session start.
 - [ ] Filters: `area` (`$in`); `month` (`$or` across deadline fields + startDate within the month range); `q` (case-insensitive regex on name/acronym/city, with **escaped input**); `past=false` → only conferences whose endDate ≥ now.
 - [ ] `routes/conferences.js`:
   - All endpoints from §7.
-  - Validation: required fields, valid areas, lat ∈ [−90, 90], lng ∈ [−180, 180], date ordering, URL format.
+  - Validation: required fields, valid areas, lat ∈ [−90, 90], lng ∈ [−180, 180], date ordering, URL format. Dates and `location` may be `null` (TBD).
+- [ ] Sorting: by next upcoming deadline; conferences with no dates last. `month` filter and `past=false` ignore TBD fields (a fully-TBD conference is treated as upcoming).
   - Returns `{error, details}`.
 - [ ] Delete → `409` with a message if any of your plans use the conference.
 - [ ] **Done when:** curl/Thunder Client covers create → list → update → delete; editing a seed returns 404.
@@ -886,7 +891,7 @@ Each day is 5 focused hours. Times are hours from the session start.
   - `load()` → `render()`.
   - Tabs Map | Timeline | List. Map/Timeline render a placeholder until A-6/A-7.
 - [ ] `filters.js`: area chips (toggle buttons with `aria-pressed`), month `<select>` (next 12 months), text search (debounced 250 ms), show-past checkbox. Filters call the API with query params.
-- [ ] List view cards: acronym + year, name, city/country flag emoji, area chips, next deadline with countdown chip, "estimated" badge.
+- [ ] List view cards: acronym + year, name, city/country flag emoji, area chips, next deadline with countdown chip, or a "TBD" badge when dates or location are missing.
 - [ ] `conferenceDetail.js`: side panel (bottom sheet on mobile) with all deadlines + countdowns, website link, **Plan for this venue** → `plans.html?target=id`, Edit/Delete (own) or Duplicate (seed).
 - [ ] `conferenceForm.js`: one `<dialog>` for create + edit, prefill on edit, client date-order validation, server error mapping via `showFieldErrors`, toast on success, refresh list.
 - [ ] **Done when:** P2 fully works through the UI.
@@ -903,7 +908,7 @@ Each day is 5 focused hours. Times are hours from the session start.
 - [ ] `planForm.js`: `<dialog>` create/edit; selects show `ACRONYM YEAR · paper deadline date` (upcoming only, sorted); milestones repeater (add/remove rows); **Suggest milestones** button; `?target=` prefill.
 - [ ] Card:
   - Status badge, target + backup chips.
-  - **Next deadline countdown** (nearest of abstract/paper for target).
+  - **Next deadline countdown** (nearest of abstract/paper for target), or "Deadline TBD".
   - Milestones list with checkboxes (`PATCH`) and a progress bar.
   - Edit/Delete (confirm dialog).
 - [ ] `countdown.js`: one 60 s interval that updates every `[data-countdown]` element from its `data-date`.
@@ -918,6 +923,7 @@ Each day is 5 focused hours. Times are hours from the session start.
   - `renderMap(container, conferences, { onSelect })`: inject the SVG once, then (re)draw the pins layer on every filter change.
   - Hover tooltip; click → `onSelect(id)`; selected pin enlarged + ring.
   - Pins of urgent (< 14 d) deadlines pulse via CSS animation (disabled under reduced-motion).
+  - Conferences with `location: null` get no pin; show a note "N venues with location TBD" under the map.
 - [ ] Legend: area colour swatches (only areas present).
 - [ ] **Done when:** NeurIPS lands on the right city, and filters update the pins live.
 
@@ -925,24 +931,24 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 - [ ] `timeline.js`: `renderTimeline(container, conferences, { onSelect })` per §10.2.
 - [ ] Legend for the mark types. Clicking a row selects the conference (same detail panel).
-- [ ] Rows with `datesConfirmed:false` use a dashed conference bar.
+- [ ] Conferences with no dates are not drawn; list them below the chart as "Dates TBD: ICML, ACL, …". Draw partial rows (e.g. a deadline but no conference dates) with whatever marks exist.
 - [ ] **Done when:** the month filter visibly narrows rows, the "today" line is correct, and it scrolls horizontally on mobile.
 
 ### A-8 Deploy (30 min)
 
-- [ ] Render → New Web Service → connect `ayushp2207/paperscape`.
+- [x] Render → New Web Service → connect `ayushp2207/paperscape`.
   - Settings: runtime Node, build `npm ci`, start `npm start`, health check `/api/health`.
   - Env vars: `MONGODB_URI`, `DB_NAME`, `NODE_VERSION=22`.
-- [ ] Atlas Network Access must include `0.0.0.0/0`.
-- [ ] Smoke test the deployed URL (all pages, create/delete a plan). Note the URL in README.
-- [ ] Note: the free tier sleeps after idle and the first request takes ~50 s. **Open it 2 min before the demo/video.**
+- [x] Atlas Network Access must include `0.0.0.0/0`.
+- [x] Smoke test the deployed URL (all pages, create/delete a plan). Note the URL in README.
+- [x] Note: the free tier sleeps after idle and the first request takes ~50 s. **Open it 2 min before the demo/video.**
 
 ### A-9 Warnings (1 h)
 
 - [ ] `warnings.js` pure functions per §10.3 (+ `findBackupGap` as Planned).
 - [ ] Top-of-page collapsible warnings banner (`<details open>`) + ⚠ badge on affected cards with the message in a tooltip/`title`.
-- [ ] Recompute on every plans change.
-- [ ] **Self-check:** create two plans with deadlines 3 days apart → clash appears; pick a conference with notification 5 weeks before start → travel warning appears. **Put such a conference in the seed data so the demo is easy.**
+- [ ] Recompute on every plans change. Skip any comparison where a date is `null` (TBD).
+- [ ] **Self-check:** create two plans with deadlines 3 days apart → clash appears; pick a conference with notification 5 weeks before start → travel warning appears. With seeds still TBD, test using your own conferences (A-3 form) with real dates.
 
 ### A-10 Home dashboard (45 min)
 
@@ -1120,7 +1126,7 @@ Only start these when the **Core** row of every module is merged and deployed. E
 | Merge conflicts in shared files                          | All shared files built in S0 and frozen; routers + pages pre-wired; `shared:` PR rule                                           |
 | Saved papers never cite each other → empty Citations tab | Citation-cluster seeding (§10.6); demo review built from an anchor + citers                                                     |
 | OpenAlex rate limit / API key changes                    | 150 ms pacing, retry on 429, `mailto` fallback; seed runs once and results stay in Atlas                                        |
-| Conference dates for 2027 not yet announced              | `datesConfirmed:false` + "estimated" badge; honest in the video                                                                 |
+| Conference dates for 2027 not yet announced              | Stored as `null` and shown as "TBD", never estimated; fill from official sites as they're announced (A-1 follow-up)             |
 | Wrong map projection → pins in the ocean                 | Generate the SVG ourselves with the same formula as the pins (§10.1)                                                            |
 | Timezone bugs (deadline shows the wrong day)             | AoE helper in `format.js` used everywhere; store `Date`, display local + "AoE" tag                                              |
 | Atlas blocks Render                                      | `0.0.0.0/0` in Network Access before A-8                                                                                        |

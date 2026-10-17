@@ -1,0 +1,514 @@
+[
+  {
+    "acronym": "NeurIPS",
+    "name": "Conference on Neural Information Processing Systems",
+    "year": 2026,
+    "website": "https://neurips.cc",
+    "areas": ["general", "theory", "genai"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICML",
+    "name": "International Conference on Machine Learning",
+    "year": 2027,
+    "website": "https://icml.cc",
+    "areas": ["general", "theory"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICLR",
+    "name": "International Conference on Learning Representations",
+    "year": 2027,
+    "website": "https://iclr.cc",
+    "areas": ["general", "genai"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAAI",
+    "name": "AAAI Conference on Artificial Intelligence",
+    "year": 2027,
+    "website": "https://aaai.org/conference/aaai/",
+    "areas": ["general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IJCAI",
+    "name": "International Joint Conference on Artificial Intelligence",
+    "year": 2027,
+    "website": "https://www.ijcai.org",
+    "areas": ["general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AISTATS",
+    "name": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2027,
+    "website": "https://aistats.org",
+    "areas": ["theory", "general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "UAI",
+    "name": "Conference on Uncertainty in Artificial Intelligence",
+    "year": 2027,
+    "website": "https://www.auai.org",
+    "areas": ["theory"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "COLT",
+    "name": "Conference on Learning Theory",
+    "year": 2027,
+    "website": "https://learningtheory.org",
+    "areas": ["theory"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CVPR",
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2027,
+    "website": "https://cvpr.thecvf.com",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICCV",
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "year": 2027,
+    "website": "https://iccv.thecvf.com",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WACV",
+    "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+    "year": 2027,
+    "website": "https://wacv.thecvf.com",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "BMVC",
+    "name": "British Machine Vision Conference",
+    "year": 2027,
+    "website": "https://www.bmva.org/bmvc",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "3DV",
+    "name": "International Conference on 3D Vision",
+    "year": 2027,
+    "website": "https://3dvconf.github.io",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MICCAI",
+    "name": "Medical Image Computing and Computer Assisted Intervention",
+    "year": 2027,
+    "website": "https://miccai.org",
+    "areas": ["cv"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACL",
+    "name": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2027,
+    "website": "https://www.aclweb.org/portal/",
+    "areas": ["nlp"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "EMNLP",
+    "name": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2026,
+    "website": "https://2026.emnlp.org",
+    "areas": ["nlp"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NAACL",
+    "name": "Annual Conference of the Nations of the Americas Chapter of the ACL",
+    "year": 2027,
+    "website": "https://naacl.org",
+    "areas": ["nlp"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "KDD",
+    "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "year": 2027,
+    "website": "https://kdd.org",
+    "areas": ["datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WWW",
+    "name": "The ACM Web Conference",
+    "year": 2027,
+    "website": "https://www.iw3c2.org",
+    "areas": ["datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "SIGIR",
+    "name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "year": 2027,
+    "website": "https://sigir.org",
+    "areas": ["datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "WSDM",
+    "name": "ACM International Conference on Web Search and Data Mining",
+    "year": 2027,
+    "website": "https://www.wsdm-conference.org",
+    "areas": ["datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICDM",
+    "name": "IEEE International Conference on Data Mining",
+    "year": 2026,
+    "website": "https://www.cs.uvm.edu/~icdm/",
+    "areas": ["datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ECML-PKDD",
+    "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+    "year": 2027,
+    "website": "https://ecmlpkdd.org",
+    "areas": ["general", "datamining"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoRL",
+    "name": "Conference on Robot Learning",
+    "year": 2026,
+    "website": "https://www.corl.org",
+    "areas": ["robotics", "rl"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ICRA",
+    "name": "IEEE International Conference on Robotics and Automation",
+    "year": 2027,
+    "website": "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra",
+    "areas": ["robotics"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "IROS",
+    "name": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "year": 2027,
+    "website": "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros",
+    "areas": ["robotics"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "RSS",
+    "name": "Robotics: Science and Systems",
+    "year": 2027,
+    "website": "https://roboticsconference.org",
+    "areas": ["robotics"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "AAMAS",
+    "name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "year": 2027,
+    "website": "https://www.ifaamas.org",
+    "areas": ["rl"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoLLAs",
+    "name": "Conference on Lifelong Learning Agents",
+    "year": 2027,
+    "website": "https://lifelong-ml.cc",
+    "areas": ["rl", "general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "LoG",
+    "name": "Learning on Graphs Conference",
+    "year": 2026,
+    "website": "https://logconference.org",
+    "areas": ["graphs"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "MLSys",
+    "name": "Conference on Machine Learning and Systems",
+    "year": 2027,
+    "website": "https://mlsys.org",
+    "areas": ["general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "ACML",
+    "name": "Asian Conference on Machine Learning",
+    "year": 2026,
+    "website": "https://www.acml-conf.org",
+    "areas": ["general"],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
+  }
+]
