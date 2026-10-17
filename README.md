@@ -11,7 +11,7 @@ Plan your ML submissions and run your literature review in one place.
 - Ayush Nimeshkumar Patel
 - Harshitha Seetharaman
 
-CS5610 Web Development, Northeastern University
+**Class:** [CS5610 Web Development, Northeastern University](https://johnguerra.co/classes/webDevelopment_online_summer_2026/index.html)
 
 ## Build and run locally
 
