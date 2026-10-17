@@ -75,8 +75,224 @@
           <h1>Conferences</h1>
           <p class="muted">Upcoming ML venues, their deadlines and where they happen.</p>
         </div>
+        <button class="btn btn--primary" id="add-conference" type="button">Add conference</button>
       </header>
-      <div id="conferences-root"></div>
+
+      <form class="conf-filters panel" id="conference-filters" role="search">
+        <div class="conf-filters__row">
+          <div class="field search-input conf-filters__search">
+            <label class="visually-hidden" for="filter-q">Search conferences</label>
+            <input
+              class="input"
+              id="filter-q"
+              name="q"
+              type="search"
+              placeholder="Search by name, acronym or city"
+              autocomplete="off"
+            />
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="filter-month">Month</label>
+            <select class="select" id="filter-month" name="month"></select>
+          </div>
+          <label class="check">
+            <input id="filter-past" name="past" type="checkbox" />
+            Show past
+          </label>
+        </div>
+        <fieldset class="conf-filters__areas">
+          <legend class="visually-hidden">Research areas</legend>
+          <div class="chip-list" id="filter-areas"></div>
+        </fieldset>
+      </form>
+
+      <div class="conf-toolbar">
+        <div class="tabs" role="tablist" aria-label="Conference views">
+          <button
+            class="tab"
+            id="tab-map"
+            type="button"
+            role="tab"
+            data-view="map"
+            aria-controls="view-panel"
+          >
+            Map
+          </button>
+          <button
+            class="tab"
+            id="tab-timeline"
+            type="button"
+            role="tab"
+            data-view="timeline"
+            aria-controls="view-panel"
+          >
+            Timeline
+          </button>
+          <button
+            class="tab"
+            id="tab-list"
+            type="button"
+            role="tab"
+            data-view="list"
+            aria-controls="view-panel"
+          >
+            List
+          </button>
+        </div>
+        <p class="muted conf-summary" id="conference-summary" aria-live="polite"></p>
+      </div>
+
+      <div class="conf-layout">
+        <section class="conf-view" id="view-panel" role="tabpanel"></section>
+        <aside
+          class="conf-detail panel"
+          id="conference-detail"
+          aria-label="Conference details"
+          hidden
+        ></aside>
+      </div>
+
+      <dialog class="dialog" id="conference-dialog" aria-labelledby="conference-dialog-title">
+        <form class="dialog__body form" id="conference-form">
+          <div class="dialog__header">
+            <h2 class="dialog__title" id="conference-dialog-title">Add conference</h2>
+            <button class="icon-btn" type="button" data-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="conf-acronym">Acronym</label>
+              <input class="input" id="conf-acronym" name="acronym" maxlength="20" required />
+            </div>
+            <div class="field">
+              <label for="conf-year">Year</label>
+              <input
+                class="input"
+                id="conf-year"
+                name="year"
+                type="number"
+                min="2000"
+                max="2100"
+                required
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label for="conf-name">Full name</label>
+            <input class="input" id="conf-name" name="name" maxlength="200" required />
+          </div>
+          <div class="field">
+            <label for="conf-website">Website</label>
+            <input
+              class="input"
+              id="conf-website"
+              name="website"
+              type="url"
+              placeholder="https://"
+            />
+          </div>
+          <fieldset class="field">
+            <legend>Research areas</legend>
+            <div class="checkbox-group" id="conf-areas"></div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Location</legend>
+            <p class="field__hint">
+              Leave all location fields empty if it hasn't been announced (TBD).
+            </p>
+            <div class="form-row">
+              <div class="field">
+                <label for="conf-city">City</label>
+                <input class="input" id="conf-city" name="location.city" maxlength="100" />
+              </div>
+              <div class="field">
+                <label for="conf-country">Country</label>
+                <input class="input" id="conf-country" name="location.country" maxlength="100" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="conf-venue">Venue (optional)</label>
+                <input class="input" id="conf-venue" name="location.venue" maxlength="150" />
+              </div>
+              <div class="field">
+                <label for="conf-lat">Latitude</label>
+                <input
+                  class="input"
+                  id="conf-lat"
+                  name="location.lat"
+                  type="number"
+                  step="any"
+                  min="-90"
+                  max="90"
+                />
+              </div>
+              <div class="field">
+                <label for="conf-lng">Longitude</label>
+                <input
+                  class="input"
+                  id="conf-lng"
+                  name="location.lng"
+                  type="number"
+                  step="any"
+                  min="-180"
+                  max="180"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Dates</legend>
+            <p class="field__hint">
+              Deadlines are Anywhere on Earth (AoE). Leave a date empty if it's TBD.
+            </p>
+            <div class="form-row">
+              <div class="field">
+                <label for="conf-start">Conference starts</label>
+                <input class="input" id="conf-start" name="startDate" type="date" />
+              </div>
+              <div class="field">
+                <label for="conf-end">Conference ends</label>
+                <input class="input" id="conf-end" name="endDate" type="date" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="conf-abstract">Abstract deadline</label>
+                <input class="input" id="conf-abstract" name="deadlines.abstract" type="date" />
+              </div>
+              <div class="field">
+                <label for="conf-paper">Paper deadline</label>
+                <input class="input" id="conf-paper" name="deadlines.paper" type="date" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="conf-notification">Notification</label>
+                <input
+                  class="input"
+                  id="conf-notification"
+                  name="deadlines.notification"
+                  type="date"
+                />
+              </div>
+              <div class="field">
+                <label for="conf-camera">Camera-ready</label>
+                <input class="input" id="conf-camera" name="deadlines.cameraReady" type="date" />
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="dialog__actions">
+            <button class="btn btn--ghost" type="button" data-close>Cancel</button>
+            <button class="btn btn--primary" type="submit" id="conference-submit">
+              Save conference
+            </button>
+          </div>
+        </form>
+      </dialog>
     </main>
     <footer class="site-footer">
       <div class="container site-footer__inner">
