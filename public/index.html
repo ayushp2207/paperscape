@@ -68,16 +68,110 @@
     </header>
     <main id="main" class="container">
       <section class="hero">
-        <p class="page-header__eyebrow">For ML grad students</p>
-        <h1>Plan your ML submissions.<br />Run your literature review.</h1>
+        <p class="page-header__eyebrow">For ML and networking grad students</p>
+        <h1>Plan your submissions.<br />Run your literature review.</h1>
         <p class="hero__lead muted">
-          Every upcoming conference on one map and timeline, submission plans with live countdowns,
-          and literature reviews organised around your research question.
+          Every upcoming ML and networking conference on one map and timeline, submission plans with
+          live countdowns, and literature reviews organised around your research question.
         </p>
         <div class="row">
           <a class="btn btn--primary btn--lg" href="conferences.html">Open the planner</a>
           <a class="btn btn--ghost btn--lg" href="reviews.html">Start a review</a>
         </div>
+      </section>
+
+      <section class="home-section" aria-labelledby="stats-title">
+        <h2 class="visually-hidden" id="stats-title">At a glance</h2>
+        <div class="stat-grid" id="home-stats"></div>
+      </section>
+
+      <section class="home-section home-split">
+        <div class="panel">
+          <div class="home-section__header">
+            <h2>Upcoming deadlines</h2>
+            <a href="conferences.html">All conferences →</a>
+          </div>
+          <ol class="upcoming-list" id="home-upcoming" aria-live="polite"></ol>
+        </div>
+
+        <div class="feature-cards">
+          <article class="card feature-card">
+            <p class="page-header__eyebrow">Conference Planner</p>
+            <h3>Pick a venue you can actually make</h3>
+            <p class="muted">
+              Compare venues on a world map and timeline, plan around a target and a backup, and get
+              warned about clashing deadlines or too little time to travel.
+            </p>
+            <a class="btn btn--ghost" href="plans.html">Your submission plans</a>
+          </article>
+          <article class="card feature-card">
+            <p class="page-header__eyebrow">Review Workspace</p>
+            <h3>Organise reading around a question</h3>
+            <p class="muted">
+              Search recent papers, record what each one found, and link papers into threads that
+              show how an idea developed.
+            </p>
+            <a class="btn btn--ghost" href="reviews.html">Your reviews</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-section" id="how-to-use" aria-labelledby="how-title">
+        <div class="home-section__header">
+          <h2 id="how-title">How to use Paperscape</h2>
+        </div>
+        <div class="how-grid">
+          <div class="panel">
+            <h3>Plan a submission</h3>
+            <ol class="steps">
+              <li>
+                <strong>Find a venue.</strong> Open <a href="conferences.html">Conferences</a> and
+                filter by research area or month. Switch between the Map, Timeline and List views
+                and click a conference to see every deadline.
+              </li>
+              <li>
+                <strong>Make a plan.</strong> Click <em>Plan for this venue</em>, pick a backup, and
+                use <em>Suggest milestones</em> to schedule backwards from the deadline.
+              </li>
+              <li>
+                <strong>Stay on track.</strong> On <a href="plans.html">Plans</a>, tick milestones
+                off as you go and watch the countdowns. Warnings appear if two deadlines clash or
+                there is too little time to travel.
+              </li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h3>Run a literature review</h3>
+            <ol class="steps">
+              <li>
+                <strong>Ask a question.</strong> On <a href="reviews.html">Reviews</a>, create a
+                review around your research question.
+              </li>
+              <li>
+                <strong>Collect papers.</strong> Search recent papers by keyword, area and year,
+                read the abstracts and add the relevant ones.
+              </li>
+              <li>
+                <strong>Make sense of them.</strong> Record each paper's status, notes and key
+                findings, link papers into threads, and see which ones cite each other.
+              </li>
+            </ol>
+          </div>
+        </div>
+        <ul class="home-notes">
+          <li>
+            <strong>No sign-up.</strong> Your plans and reviews are saved privately for this
+            browser. Clearing site data or switching browsers starts a fresh workspace.
+          </li>
+          <li>
+            <strong>Deadlines are Anywhere on Earth (AoE)</strong>, the convention most conferences
+            use. "TBD" means the conference hasn't announced it yet.
+          </li>
+          <li>
+            <strong>Always up to date.</strong> Conference dates refresh automatically. Spot a dead
+            link? Use <em>Report a broken link</em> in the conference panel.
+          </li>
+        </ul>
       </section>
     </main>
     <footer class="site-footer">
@@ -96,5 +190,6 @@
     </footer>
     <div class="toast-region" id="toast-region" aria-live="polite"></div>
     <script type="module" src="js/shared/nav.js"></script>
+    <script type="module" src="js/home.js"></script>
   </body>
 </html>

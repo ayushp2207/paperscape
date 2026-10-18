@@ -968,9 +968,9 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-10 Home dashboard (45 min)
 
-- [ ] `index.html` + `home.js` + `home.css` per §9.
-- [ ] Stat cards fetch `/api/plans`, `/api/reviews`, `/api/papers?limit=1` (for `total`).
-- [ ] **How to use** section (rubric). Footer links: GitHub, class page, design doc.
+- [x] `index.html` + `home.js` + `home.css` per §9.
+- [x] Stat cards fetch `/api/plans`, `/api/reviews`, `/api/papers?limit=1` (for `total`).
+- [x] **How to use** section (rubric). Footer links: GitHub, class page, design doc.
 
 ### A-11 Polish pass, own pages (1 h)
 
