@@ -144,3 +144,57 @@
     grid-column: 1;
   }
 }
+
+/* Warnings (A-9): banner above the grid + compact list on affected cards. */
+.warnings-banner {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid color-mix(in srgb, var(--warning) 45%, transparent);
+  border-radius: var(--radius);
+  background: var(--warning-soft);
+}
+
+.warnings-banner summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--warning);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.warnings-banner__hint {
+  margin: var(--space-2) 0 var(--space-3);
+  font-size: 0.8125rem;
+}
+
+.warning-list {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.warning-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+  align-items: start;
+}
+
+.warning-list .icon {
+  margin-top: 2px;
+  color: var(--warning);
+}
+
+.warning-list--compact {
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--warning-soft);
+  font-size: 0.8125rem;
+}
+
+.plan-card.has-warnings {
+  border-color: color-mix(in srgb, var(--warning) 45%, transparent);
+}
