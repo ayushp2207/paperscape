@@ -1,5 +1,7 @@
 // Seeds the shared, read-only conference list from scripts/data/conferences.json.
-// Re-runnable: replaces only documents with isSeed: true, never user-created conferences.
+// Re-runnable: upserts each edition by (acronym, year) so its _id never changes (plans reference
+// conferences by _id), then removes seeded editions no longer in the file. Never touches
+// user-created conferences.
 // Unknown dates/locations are null in the JSON and show as "TBD" in the UI.
 // Deadlines are either a day ("YYYY-MM-DD", meaning 23:59 AoE) or an exact ISO instant with offset.
 import dotenv from 'dotenv';
@@ -102,7 +104,6 @@ function toDocument(conf, now) {
     startDate: toDay(conf.startDate),
     endDate: toDay(conf.endDate),
     deadlines: Object.fromEntries(DEADLINE_KEYS.map((key) => [key, toDeadline(deadlines[key])])),
-    createdAt: now,
     updatedAt: now,
   };
 }
@@ -120,19 +121,35 @@ async function main() {
     );
   }
 
+  const keys = conferences.map((conf) => `${conf.acronym} ${conf.year}`);
+  const duplicates = keys.filter((key, i) => keys.indexOf(key) !== i);
+  if (duplicates.length)
+    throw new Error(`Duplicate editions: ${[...new Set(duplicates)].join(', ')}`);
+
   const now = new Date();
   const docs = conferences.map((conf) => toDocument(conf, now));
 
   await connectDb();
-  const { deletedCount } = await collection().deleteMany({ isSeed: true });
-  const { insertedCount } = await collection().insertMany(docs);
+  const { upsertedCount, modifiedCount } = await collection().bulkWrite(
+    docs.map((doc) => ({
+      updateOne: {
+        filter: { isSeed: true, acronym: doc.acronym, year: doc.year },
+        update: { $set: doc, $setOnInsert: { createdAt: now } },
+        upsert: true,
+      },
+    })),
+  );
+  const { deletedCount } = await collection().deleteMany({
+    isSeed: true,
+    $nor: docs.map((doc) => ({ acronym: doc.acronym, year: doc.year })),
+  });
 
   const withDates = docs.filter((doc) => doc.startDate && doc.deadlines.paper).length;
   const withLocation = docs.filter((doc) => doc.location).length;
   console.log(
-    `Seeded ${insertedCount} conferences (replaced ${deletedCount}) · ` +
-      `${withDates} with dates · ${withLocation} with location · ` +
-      `${insertedCount - withDates} with dates TBD`,
+    `Seeded ${docs.length} conferences (${upsertedCount} new, ${modifiedCount} updated, ` +
+      `${deletedCount} removed) · ${withDates} with dates · ${withLocation} with location · ` +
+      `${docs.length - withDates} with dates TBD`,
   );
 }
 
