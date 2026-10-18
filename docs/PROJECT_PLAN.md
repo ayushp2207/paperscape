@@ -929,16 +929,16 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-6 World map (1.25 h)
 
-- [ ] Run/write `scripts/build-world-map.js` (§10.1) → commit `public/assets/world.svg`.
+- [x] Run/write `scripts/build-world-map.js` (§10.1) → commit `public/assets/world.svg`.
   - Style land `fill: var(--surface-2)`, `stroke: var(--border)`, ocean = page bg.
   - Keep the file < 200 KB (110m resolution, round coords to 1 decimal).
-- [ ] `map.js`:
+- [x] `map.js`:
   - `renderMap(container, conferences, { onSelect })`: inject the SVG once, then (re)draw the pins layer on every filter change.
   - Hover tooltip; click → `onSelect(id)`; selected pin enlarged + ring.
   - Pins of urgent (< 14 d) deadlines pulse via CSS animation (disabled under reduced-motion).
   - Conferences with `location: null` get no pin; show a note "N venues with location TBD" under the map.
-- [ ] Legend: area colour swatches (only areas present).
-- [ ] **Done when:** NeurIPS lands on the right city, and filters update the pins live.
+- [x] Legend: area colour swatches (only areas present).
+- [x] **Done when:** NeurIPS lands on the right city, and filters update the pins live.
 
 ### A-7 Timeline (1.25 h)
 

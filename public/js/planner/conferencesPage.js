@@ -8,12 +8,13 @@ import { initConferenceForm } from './conferenceForm.js';
 import { countdownChip, startCountdownTicker } from './countdown.js';
 import { hasAnyDate, isPastConference, isUserCreated, nextDeadline } from './deadlines.js';
 import { initFilters, toQueryParams } from './filters.js';
+import { renderMap } from './map.js';
 
 const VIEWS = ['map', 'timeline', 'list'];
 
 const state = {
   conferences: [],
-  view: 'list',
+  view: 'map',
   selectedId: null,
   loaded: false,
   loading: true,
@@ -172,13 +173,19 @@ function renderList() {
   return el('div', { class: 'conf-grid' }, state.conferences.map(conferenceCard));
 }
 
-// Placeholders until the map (A-6) and timeline (A-7) land.
-function renderComingSoon(view) {
+// Placeholder until the timeline (A-7) lands.
+function renderComingSoon() {
   return emptyState({
-    iconName: view === 'map' ? 'globe' : 'calendar',
-    title: view === 'map' ? 'World map coming soon' : 'Timeline coming soon',
-    text: 'Use the List view for now.',
+    iconName: 'calendar',
+    title: 'Timeline coming soon',
+    text: 'Use the Map or List view for now.',
   });
+}
+
+function showMap() {
+  renderMap(viewPanel, state.conferences, { selectedId: state.selectedId, onSelect: select }).catch(
+    (err) => viewPanel.replaceChildren(errorState(err.message, render)),
+  );
 }
 
 function renderSummary() {
@@ -214,8 +221,10 @@ function render() {
   if (state.loading && !state.loaded) viewPanel.replaceChildren(skeleton(6, 'card'));
   else if (state.loading) return;
   else if (state.error) viewPanel.replaceChildren(errorState(state.error, load));
-  else if (state.view === 'list') viewPanel.replaceChildren(renderList());
-  else viewPanel.replaceChildren(renderComingSoon(state.view));
+  else if (state.view === 'list' || state.conferences.length === 0) {
+    viewPanel.replaceChildren(renderList());
+  } else if (state.view === 'map') showMap();
+  else viewPanel.replaceChildren(renderComingSoon());
 
   renderSummary();
   renderDetailPanel();
