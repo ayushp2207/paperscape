@@ -97,21 +97,24 @@ export function renderTimeline(container, conferences, { selectedId, onSelect })
   const tooltip = el('div', { class: 'tl-tooltip', role: 'tooltip', hidden: true });
   stage.append(tooltip);
 
+  // replaceChildren() would print `false` for skipped notes, so drop them first.
   container.replaceChildren(
-    legend(),
-    stage,
-    undated.length > 0 &&
-      el(
-        'p',
-        { class: 'muted tl-note' },
-        `Dates TBD: ${undated.map((conf) => `${conf.acronym} ${conf.year}`).join(', ')}`,
-      ),
-    outside > 0 &&
-      el(
-        'p',
-        { class: 'muted tl-note' },
-        `${outside} conference${outside === 1 ? '' : 's'} outside ${formatDate(start)} – ${formatDate(end)} (see List view)`,
-      ),
+    ...[
+      legend(),
+      stage,
+      undated.length > 0 &&
+        el(
+          'p',
+          { class: 'muted tl-note' },
+          `Dates TBD: ${undated.map((conf) => `${conf.acronym} ${conf.year}`).join(', ')}`,
+        ),
+      outside > 0 &&
+        el(
+          'p',
+          { class: 'muted tl-note' },
+          `${outside} conference${outside === 1 ? '' : 's'} outside ${formatDate(start)} – ${formatDate(end)} (see List view)`,
+        ),
+    ].filter(Boolean),
   );
 
   function draw() {
