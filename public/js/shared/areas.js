@@ -13,8 +13,8 @@ export const AREAS = [
     query: 'optimization convergence',
   },
   { id: 'graphs', label: 'Graph Learning', color: '#a3e635', query: 'graph neural network' },
-  { id: 'robotics', label: 'Robotics', color: '#fb923c', query: 'robot learning' },
-  { id: 'datamining', label: 'Data Mining & IR', color: '#22d3ee', query: 'recommender system' },
+  { id: 'robotics', label: 'Robotics', color: '#e879f9', query: 'robot learning' },
+  { id: 'datamining', label: 'Data Mining & IR', color: '#facc15', query: 'recommender system' },
   {
     id: 'networking',
     label: 'Networking & Wireless',

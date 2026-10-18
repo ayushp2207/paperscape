@@ -1,5 +1,6 @@
 .hero {
   position: relative;
+  overflow-x: clip; /* keep the background glow from widening the page */
   display: grid;
   gap: var(--space-4);
   justify-items: start;

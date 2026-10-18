@@ -85,7 +85,8 @@
 /* Area badge: set --area on the element, e.g. style="--area: var(--area-nlp)". */
 .badge--area {
   background: color-mix(in srgb, var(--area) 16%, transparent);
-  color: var(--area);
+  /* Blend toward the text colour so the label stays readable in both themes. */
+  color: color-mix(in srgb, var(--area) 60%, var(--text));
 }
 
 .countdown {
