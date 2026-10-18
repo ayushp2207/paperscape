@@ -974,10 +974,10 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-11 Polish pass, own pages (1 h)
 
-- [ ] Responsive: 360px, 768px, 1280px. Detail panel → bottom sheet on mobile.
-- [ ] Keyboard: tab through filters, open/close dialogs with Esc, focus returns to the trigger.
-- [ ] Planned items if time: Duplicate seed, backup-gap warning, `?target=` prefill.
-- [ ] Remove `console.log`s and unused functions.
+- [x] Responsive: 360px, 768px, 1280px. Detail panel → bottom sheet on mobile.
+- [x] Keyboard: tab through filters, open/close dialogs with Esc, focus returns to the trigger.
+- [x] Planned items if time: Duplicate seed, backup-gap warning, `?target=` prefill.
+- [x] Remove `console.log`s and unused functions.
 
 ---
 

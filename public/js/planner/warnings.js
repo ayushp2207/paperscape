@@ -32,7 +32,7 @@ function planEvents(plan, now) {
 }
 
 // Two deadlines from different plans within the window. Reports the closest pair per plan pair.
-export function findClashes(plans, now = new Date(), windowDays = CLASH_WINDOW_DAYS) {
+function findClashes(plans, now = new Date(), windowDays = CLASH_WINDOW_DAYS) {
   const events = plans
     .filter(isActive)
     .flatMap((plan) => planEvents(plan, now))
@@ -62,7 +62,7 @@ export function findClashes(plans, now = new Date(), windowDays = CLASH_WINDOW_D
 }
 
 // Less than the minimum time between acceptance notification and the conference starting.
-export function findTravelSqueeze(plans, now = new Date(), minDays = MIN_TRAVEL_DAYS) {
+function findTravelSqueeze(plans, now = new Date(), minDays = MIN_TRAVEL_DAYS) {
   const warnings = [];
   for (const plan of plans.filter(isActive)) {
     for (const [role, conf] of [
@@ -88,7 +88,7 @@ export function findTravelSqueeze(plans, now = new Date(), minDays = MIN_TRAVEL_
 }
 
 // The backup's paper deadline passes before the target's decision arrives.
-export function findBackupGap(plans, now = new Date()) {
+function findBackupGap(plans, now = new Date()) {
   return plans
     .filter(isActive)
     .filter((plan) => {
