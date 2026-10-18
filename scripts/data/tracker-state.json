@@ -1,0 +1,263 @@
+{
+  "pages": {
+    "http://icdm2026.neu.edu.cn/": {
+      "status": "broken"
+    },
+    "http://www.cnsm-conf.org": {
+      "fingerprint": "fe5c98fa8cb7ab1f",
+      "status": "ok"
+    },
+    "https://2026.emnlp.org/": {
+      "fingerprint": "31416236ca4b9dab",
+      "status": "ok"
+    },
+    "https://2027.aclweb.org/": {
+      "fingerprint": "5a3e63d89da1819f",
+      "status": "ok"
+    },
+    "https://2027.ieee-icra.org/": {
+      "fingerprint": "0b6352d27b0cbb8a",
+      "status": "ok"
+    },
+    "https://2027.ieee-iros.org/": {
+      "fingerprint": "86c39b3ef59ba93f",
+      "status": "ok"
+    },
+    "https://2027.ijcai.org/": {
+      "fingerprint": "68923fd8d4452648",
+      "status": "ok"
+    },
+    "https://2027.naacl.org/": {
+      "fingerprint": "8a7be1fcc8b9cc6e",
+      "status": "ok"
+    },
+    "https://3dvconf.github.io/2027/": {
+      "fingerprint": "8778564a113cb021",
+      "status": "ok"
+    },
+    "https://aaai.org/conference/aaai/aaai-27/": {
+      "fingerprint": "009685888e11fd5f",
+      "status": "ok"
+    },
+    "https://bmvc2026.bmva.org/": {
+      "fingerprint": "dd416c4a2d43834e",
+      "status": "ok"
+    },
+    "https://ccnc2027.ieee-ccnc.org/": {
+      "fingerprint": "1e909be00293f676",
+      "status": "ok"
+    },
+    "https://conferences.miccai.org/2027/en/": {
+      "fingerprint": "3001a3a6db1ab4f2",
+      "status": "ok"
+    },
+    "https://conferences.miccai.org/2028/en/": {
+      "fingerprint": "3ceb5186077ba83c",
+      "status": "ok"
+    },
+    "https://conferences.sigcomm.org/co-next/2026/#!/home": {
+      "fingerprint": "e3b0c44298fc1c14",
+      "status": "ok"
+    },
+    "https://conferences.sigcomm.org/co-next/2027/#!/home": {
+      "fingerprint": "e3b0c44298fc1c14",
+      "status": "ok"
+    },
+    "https://conferences.sigcomm.org/hotnets/2026/": {
+      "fingerprint": "dfc857a855826491",
+      "status": "ok"
+    },
+    "https://conferences.sigcomm.org/imc/2027/": {
+      "fingerprint": "63466525c9b3e840",
+      "status": "ok"
+    },
+    "https://conferences.sigcomm.org/sigcomm/2027/": {
+      "fingerprint": "02d3f79383c40c12",
+      "status": "ok"
+    },
+    "https://cvpr.thecvf.com/Conferences/2027": {
+      "fingerprint": "974ddff28f0664ca",
+      "status": "ok"
+    },
+    "https://dyspan2027.ieee-dyspan.org/": {
+      "fingerprint": "ec5e2f81b58ca5b7",
+      "status": "ok"
+    },
+    "https://ecmlpkdd.org/2027/": {
+      "fingerprint": "d280bf6889920171",
+      "status": "ok"
+    },
+    "https://events.vtsociety.org/vtc2027-fall/": {
+      "fingerprint": "80f31b32c2373c18",
+      "status": "ok"
+    },
+    "https://events.vtsociety.org/vtc2027-spring/": {
+      "fingerprint": "75cf9435cb76969c",
+      "status": "ok"
+    },
+    "https://globecom2026.ieee-globecom.org/": {
+      "fingerprint": "9cc3a83d8cc89056",
+      "status": "ok"
+    },
+    "https://icc2027.ieee-icc.org": {
+      "status": "broken"
+    },
+    "https://iccv.thecvf.com/Conferences/2027": {
+      "fingerprint": "e6de892a08a21c34",
+      "status": "ok"
+    },
+    "https://icdcs2027.icdcs.org/": {
+      "fingerprint": "d1b2cdd7a482bb99",
+      "status": "ok"
+    },
+    "https://icdm2027-website.onrender.com/": {
+      "status": "skipped"
+    },
+    "https://iclr.cc/Conferences/2027": {
+      "fingerprint": "427113c88cc7eb8e",
+      "status": "ok"
+    },
+    "https://icml.cc": {
+      "fingerprint": "7611f94f86c9e6f9",
+      "status": "ok"
+    },
+    "https://icnp.org": {
+      "fingerprint": "e3b0c44298fc1c14",
+      "status": "ok"
+    },
+    "https://infocom2027.ieee-infocom.org/": {
+      "fingerprint": "dd91fe798be22bd9",
+      "status": "ok"
+    },
+    "https://iwqos.org": {
+      "status": "broken"
+    },
+    "https://kdd2027.kdd.org/": {
+      "fingerprint": "8383715a12500006",
+      "status": "ok"
+    },
+    "https://learningtheory.org/colt2027/": {
+      "fingerprint": "2bc27f2d195026ce",
+      "status": "ok"
+    },
+    "https://lifelong-ml.cc": {
+      "fingerprint": "248e6feed3a4b4f0",
+      "status": "ok"
+    },
+    "https://logconference.org/": {
+      "fingerprint": "cd1b9e2e0448424f",
+      "status": "ok"
+    },
+    "https://mlsys.org/": {
+      "fingerprint": "f916dd60bc5f3f43",
+      "status": "ok"
+    },
+    "https://mswimconf.com/2026/": {
+      "fingerprint": "4114103b9abba6c2",
+      "status": "ok"
+    },
+    "https://netsoft2027.ieee-netsoft.org/": {
+      "fingerprint": "18bff7eca7b3dc68",
+      "status": "ok"
+    },
+    "https://neurips.cc/Conferences/2026": {
+      "fingerprint": "8c8554360fb767f2",
+      "status": "ok"
+    },
+    "https://noms2027.ieee-noms.org/": {
+      "fingerprint": "0c8fd76442a3b40e",
+      "status": "ok"
+    },
+    "https://pimrc2027.ieee-pimrc.org/": {
+      "fingerprint": "9d5aad06102f4002",
+      "status": "ok"
+    },
+    "https://roboticsconference.org/": {
+      "fingerprint": "69493a024887a9c7",
+      "status": "ok"
+    },
+    "https://secon2027.ieee-secon.org/": {
+      "fingerprint": "f4f1b89791d310db",
+      "status": "ok"
+    },
+    "https://sensys.acm.org/2027/": {
+      "fingerprint": "38a56f3ae0e6efa6",
+      "status": "ok"
+    },
+    "https://sigir2027.org/": {
+      "fingerprint": "068815c24361a6df",
+      "status": "ok"
+    },
+    "https://sigmobile.org/mobicom/2026/": {
+      "fingerprint": "db9947787cf8a8f6",
+      "status": "ok"
+    },
+    "https://virtual.aistats.org/Conferences/2027": {
+      "fingerprint": "c7140e33cc215ed1",
+      "status": "ok"
+    },
+    "https://wacv.thecvf.com/": {
+      "fingerprint": "b11b01f0ec7cdad2",
+      "status": "ok"
+    },
+    "https://warwick.ac.uk/fac/sci/dcs/aamas2027/": {
+      "fingerprint": "2069d6a68eb13ff0",
+      "status": "ok"
+    },
+    "https://wcnc2027.ieee-wcnc.org/": {
+      "fingerprint": "30a071b7ba8e1c34",
+      "status": "ok"
+    },
+    "https://wi-opt.org": {
+      "status": "broken"
+    },
+    "https://wsdm-conference.org/2027/": {
+      "fingerprint": "50cc0e72b3782837",
+      "status": "ok"
+    },
+    "https://www.acml-conf.org/2026/": {
+      "fingerprint": "fecace2f0c4c282b",
+      "status": "ok"
+    },
+    "https://www.auai.org": {
+      "fingerprint": "5e255c5996d3be57",
+      "status": "ok"
+    },
+    "https://www.corl.org/": {
+      "fingerprint": "cce4fa35ead01230",
+      "status": "ok"
+    },
+    "https://www.eucnc.eu": {
+      "fingerprint": "ff3d14a5b470592b",
+      "status": "ok"
+    },
+    "https://www.hotmobile.org/2027/": {
+      "fingerprint": "6044122ec64d9916",
+      "status": "ok"
+    },
+    "https://www.ieeelcn.org": {
+      "fingerprint": "e8333b2e6005102d",
+      "status": "ok"
+    },
+    "https://www.sigmobile.org/mobicom/2027/": {
+      "fingerprint": "b9dd64181acc3dbc",
+      "status": "ok"
+    },
+    "https://www.sigmobile.org/mobihoc/2026/": {
+      "fingerprint": "a694436061150a41",
+      "status": "ok"
+    },
+    "https://www.sigmobile.org/mobisys/2027/": {
+      "fingerprint": "d650bc8361259570",
+      "status": "ok"
+    },
+    "https://www.usenix.org/conference/nsdi27": {
+      "status": "blocked"
+    },
+    "https://www2027.thewebconf.org/": {
+      "fingerprint": "84606a1b563cb783",
+      "status": "ok"
+    }
+  },
+  "reviewedReports": []
+}

@@ -73,9 +73,12 @@
     "deadlines": {
       "abstract": "2026-05-05T11:59:00Z",
       "paper": "2026-05-07T11:59:00Z",
-      "notification": null,
+      "notification": "2026-09-24T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.notification"
+    ]
   },
   {
     "acronym": "ICML",
@@ -862,9 +865,12 @@
     "deadlines": {
       "abstract": "2026-05-22T23:59:59-12:00",
       "paper": "2026-05-29T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-08-07T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.notification"
+    ]
   },
   {
     "acronym": "3DV",
@@ -1174,9 +1180,13 @@
     "deadlines": {
       "abstract": null,
       "paper": "2026-08-02T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
+      "notification": "2026-08-20T23:59:59-12:00",
+      "cameraReady": "2026-08-30T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.notification",
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "NAACL",
@@ -1247,8 +1257,11 @@
       "abstract": null,
       "paper": "2026-12-23T23:59:59-12:00",
       "notification": "2027-02-10T23:59:59-12:00",
-      "cameraReady": null
-    }
+      "cameraReady": "2027-03-03T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "KDD",
@@ -1462,9 +1475,13 @@
     "deadlines": {
       "abstract": "2027-01-14T23:59:59-12:00",
       "paper": "2027-01-21T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
+      "notification": "2027-04-05T23:59:59-12:00",
+      "cameraReady": "2027-04-30T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.notification",
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "WSDM",
@@ -2675,9 +2692,12 @@
     "deadlines": {
       "abstract": "2026-04-13T23:59:59-12:00",
       "paper": null,
-      "notification": null,
+      "notification": "2026-09-30T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.notification"
+    ]
   },
   {
     "acronym": "CoNEXT",
@@ -2915,9 +2935,13 @@
     "deadlines": {
       "abstract": "2026-07-16T23:59:58-12:00",
       "paper": "2026-07-16T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
+      "notification": "2026-09-24T23:59:59-12:00",
+      "cameraReady": "2026-10-23T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.notification",
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "SenSys",
@@ -3276,8 +3300,11 @@
       "abstract": null,
       "paper": "2026-09-15T23:59:59-12:00",
       "notification": null,
-      "cameraReady": null
-    }
+      "cameraReady": "2027-02-08T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "ICNP",
@@ -3551,9 +3578,13 @@
     "deadlines": {
       "abstract": "2026-06-14T23:59:59-12:00",
       "paper": "2026-06-15T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
+      "notification": "2026-08-16T23:59:59-12:00",
+      "cameraReady": "2026-08-31T23:59:59-12:00"
+    },
+    "pinned": [
+      "deadlines.notification",
+      "deadlines.cameraReady"
+    ]
   },
   {
     "acronym": "LCN",
@@ -3779,9 +3810,12 @@
     "deadlines": {
       "abstract": null,
       "paper": null,
-      "notification": null,
+      "notification": "2026-12-20T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.notification"
+    ]
   },
   {
     "acronym": "VTC-Fall",
@@ -3797,9 +3831,12 @@
     "deadlines": {
       "abstract": null,
       "paper": null,
-      "notification": null,
+      "notification": "2027-04-14T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.notification"
+    ]
   },
   {
     "acronym": "DySPAN",
@@ -3940,9 +3977,13 @@
     "endDate": null,
     "deadlines": {
       "abstract": null,
-      "paper": null,
-      "notification": null,
+      "paper": "2026-10-09T23:59:59-12:00",
+      "notification": "2026-12-16T23:59:59-12:00",
       "cameraReady": null
-    }
+    },
+    "pinned": [
+      "deadlines.paper",
+      "deadlines.notification"
+    ]
   }
 ]
