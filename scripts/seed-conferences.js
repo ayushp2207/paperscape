@@ -10,12 +10,14 @@ import path from 'node:path';
 
 import { closeDb, connectDb } from '../db/connection.js';
 import { collection } from '../db/conferences.js';
+import { resolveReports } from '../db/linkReports.js';
 import { AREA_IDS } from '../public/js/shared/areas.js';
 import { aoeEndOfDay, calendarDay } from '../public/js/shared/format.js';
 
 dotenv.config({ quiet: true });
 
 const DATA_FILE = path.join(import.meta.dirname, 'data', 'conferences.json');
+const STATE_FILE = path.join(import.meta.dirname, 'data', 'tracker-state.json');
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const INSTANT_PATTERN = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})$/;
 const DEADLINE_KEYS = ['abstract', 'paper', 'notification', 'cameraReady'];
@@ -69,6 +71,10 @@ function validate(conf) {
   for (const key of DEADLINE_KEYS) {
     checkDate(deadlines[key] ?? null, `deadlines.${key}`, errors, { allowInstant: true });
   }
+  for (const [key, value] of Object.entries(conf.extensions ?? {})) {
+    if (!DEADLINE_KEYS.includes(key)) errors.push(`extensions.${key} is not a deadline`);
+    else checkDate(value, `extensions.${key}`, errors, { allowInstant: true });
+  }
   if (errors.length) return errors;
 
   // Compare as instants (a deadline may be a day or an exact time).
@@ -104,6 +110,10 @@ function toDocument(conf, now) {
     startDate: toDay(conf.startDate),
     endDate: toDay(conf.endDate),
     deadlines: Object.fromEntries(DEADLINE_KEYS.map((key) => [key, toDeadline(deadlines[key])])),
+    // Original dates of deadlines that were later extended (shown as "Extended" in the UI).
+    extensions: Object.fromEntries(
+      Object.entries(conf.extensions ?? {}).map(([key, value]) => [key, toDeadline(value)]),
+    ),
     updatedAt: now,
   };
 }
@@ -146,10 +156,14 @@ async function main() {
 
   const withDates = docs.filter((doc) => doc.startDate && doc.deadlines.paper).length;
   const withLocation = docs.filter((doc) => doc.location).length;
+  // Broken-link reports listed in the merged tracker PR count as reviewed.
+  const state = JSON.parse(await readFile(STATE_FILE, 'utf8').catch(() => '{}'));
+  const resolved = await resolveReports(state.reviewedReports ?? []);
+
   console.log(
     `Seeded ${docs.length} conferences (${upsertedCount} new, ${modifiedCount} updated, ` +
       `${deletedCount} removed) · ${withDates} with dates · ${withLocation} with location · ` +
-      `${docs.length - withDates} with dates TBD`,
+      `${docs.length - withDates} with dates TBD · ${resolved} broken-link reports resolved`,
   );
 }
 

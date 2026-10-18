@@ -15,11 +15,11 @@ Two people build this repo in parallel, each with their own Claude session. The 
 
 ## File ownership: only edit files you own
 
-| Owner           | Files                                                                                                                                                                                                                                                                                                                                                                  |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ayush (A)       | `db/conferences.js`, `db/submissionPlans.js`, `routes/conferences.js`, `routes/plans.js`, `scripts/seed-conferences.js`, `scripts/build-world-map.js`, `scripts/data/`, `public/index.html`, `public/conferences.html`, `public/plans.html`, `public/js/home.js`, `public/js/planner/`, `public/css/pages/{home,conferences,map,timeline,plans}.css`, `public/assets/` |
-| Harshitha (H)   | `db/reviews.js`, `db/reviewEntries.js`, `db/papers.js`, `routes/reviews.js`, `routes/entries.js`, `routes/papers.js`, `scripts/seed-papers.js`, `public/reviews.html`, `public/review.html`, `public/js/review/`, `public/css/pages/{reviews,review}.css`, `docs/DESIGN.md`, `docs/mockups/`, `README.md`                                                              |
-| Shared (frozen) | `server.js`, `package.json`, `eslint.config.js`, `.prettierrc`, `db/connection.js`, `db/indexes.js`, `lib/`, `middleware/`, `public/js/shared/`, `public/css/base.css`, `public/css/layout.css`, `public/css/components/`                                                                                                                                              |
+| Owner           | Files                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ayush (A)       | `db/conferences.js`, `db/submissionPlans.js`, `db/linkReports.js`, `routes/conferences.js`, `routes/plans.js`, `routes/reports.js`, `scripts/seed-conferences.js`, `scripts/track-conferences.js`, `scripts/lib/`, `scripts/build-world-map.js`, `scripts/data/`, `.github/workflows/`, `public/index.html`, `public/conferences.html`, `public/plans.html`, `public/js/home.js`, `public/js/planner/`, `public/css/pages/{home,conferences,map,timeline,plans}.css`, `public/assets/` |
+| Harshitha (H)   | `db/reviews.js`, `db/reviewEntries.js`, `db/papers.js`, `routes/reviews.js`, `routes/entries.js`, `routes/papers.js`, `scripts/seed-papers.js`, `public/reviews.html`, `public/review.html`, `public/js/review/`, `public/css/pages/{reviews,review}.css`, `docs/DESIGN.md`, `docs/mockups/`, `README.md`                                                                                                                                                                              |
+| Shared (frozen) | `server.js`, `package.json`, `eslint.config.js`, `.prettierrc`, `db/connection.js`, `db/indexes.js`, `lib/`, `middleware/`, `public/js/shared/`, `public/css/base.css`, `public/css/layout.css`, `public/css/components/`                                                                                                                                                                                                                                                              |
 
 If a task seems to need a change to a shared or other-owner file, **stop and tell the user**. Shared changes go in a separate `shared:` PR.
 
@@ -32,6 +32,7 @@ If a task seems to need a change to a shared or other-owner file, **stop and tel
 - Each page script keeps one `state` object and a `render()` function.
 - Use CSS custom properties from `base.css` (`--accent`, `--surface`, `--radius`, `--space-*`, `--area-<id>`); never hard-code colours in page CSS.
 - Research areas come from `public/js/shared/areas.js`. Don't invent new area ids.
+- `scripts/data/*.json` is written by scripts; don't hand-format it (it's excluded from Prettier).
 
 ## Commands
 
@@ -40,6 +41,7 @@ npm run dev              # node --watch server.js
 npm run lint             # must be 0 errors before committing
 npm run format           # prettier --write .
 npm run seed:conferences
+npm run track:conferences  # conference data refresh (runs daily in GitHub Actions)
 npm run seed:papers
 ```
 

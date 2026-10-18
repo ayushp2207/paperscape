@@ -8,6 +8,7 @@ const INDEXES = {
     { key: { reviewId: 1, paperId: 1 }, unique: true },
     { key: { ownerId: 1, reviewId: 1 } },
   ],
+  linkReports: [{ key: { status: 1, createdAt: 1 } }, { key: { ownerId: 1, conferenceId: 1 } }],
   papers: [
     { key: { openalexId: 1 }, unique: true },
     {

@@ -3,12 +3,13 @@ import { el, qs, qsa } from '../shared/dom.js';
 import { formatDate, formatDateRange } from '../shared/format.js';
 import { icon } from '../shared/icons.js';
 import { confirmDialog, emptyState, errorState, skeleton, toast } from '../shared/ui.js';
-import { areaBadge, locationText, renderDetail } from './conferenceDetail.js';
+import { areaBadge, extendedBadge, locationText, renderDetail } from './conferenceDetail.js';
 import { initConferenceForm } from './conferenceForm.js';
 import { countdownChip, startCountdownTicker } from './countdown.js';
 import { hasAnyDate, isPastConference, isUserCreated, nextDeadline } from './deadlines.js';
 import { initFilters, toQueryParams } from './filters.js';
 import { renderMap } from './map.js';
+import { reportBrokenLink } from './reportLink.js';
 import { renderTimeline } from './timeline.js';
 
 const VIEWS = ['map', 'timeline', 'list'];
@@ -92,7 +93,12 @@ function cardFooter(conference) {
   if (next) {
     const label = next.key === 'notification' ? 'Notification' : `${next.label} deadline`;
     return [
-      el('span', { class: 'muted' }, `${label} · ${formatDate(next.date, { aoe: true })}`),
+      el(
+        'span',
+        { class: 'muted conf-card__next' },
+        `${label} · ${formatDate(next.date, { aoe: true })}`,
+        extendedBadge(conference, next.key),
+      ),
       countdownChip(next.date),
     ];
   }
@@ -200,6 +206,7 @@ function renderDetailPanel() {
     onEdit: () => form.openEdit(conference),
     onDelete: () => remove(conference),
     onDuplicate: () => duplicateAndEdit(conference),
+    onReport: () => reportBrokenLink(conference),
   });
 }
 

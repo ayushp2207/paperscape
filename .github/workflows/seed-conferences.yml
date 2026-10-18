@@ -1,0 +1,35 @@
+# After a tracker PR (or any change to the conference data) is merged into main,
+# load the data into MongoDB so the live site shows it right away.
+name: Publish conference data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/data/conferences.json
+      - scripts/data/tracker-state.json
+  workflow_dispatch:
+
+concurrency:
+  group: publish-conference-data
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Seed conferences
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+        run: npm run seed:conferences

@@ -1,0 +1,560 @@
+[
+  {
+    "acronym": "NeurIPS",
+    "name": "Conference on Neural Information Processing Systems",
+    "areas": ["general", "theory", "genai"],
+    "cadence": 1,
+    "ccf": "AI/nips",
+    "website": "https://neurips.cc",
+    "editionUrl": "https://neurips.cc/Conferences/{year}"
+  },
+  {
+    "acronym": "ICML",
+    "name": "International Conference on Machine Learning",
+    "areas": ["general", "theory"],
+    "cadence": 1,
+    "ccf": "AI/icml",
+    "website": "https://icml.cc",
+    "editionUrl": "https://icml.cc/Conferences/{year}"
+  },
+  {
+    "acronym": "ICLR",
+    "name": "International Conference on Learning Representations",
+    "areas": ["general", "genai"],
+    "cadence": 1,
+    "ccf": "AI/iclr",
+    "website": "https://iclr.cc",
+    "editionUrl": "https://iclr.cc/Conferences/{year}"
+  },
+  {
+    "acronym": "AAAI",
+    "name": "AAAI Conference on Artificial Intelligence",
+    "areas": ["general"],
+    "cadence": 1,
+    "ccf": "AI/aaai",
+    "website": "https://aaai.org/conference/aaai/aaai-27/",
+    "editionUrl": null
+  },
+  {
+    "acronym": "IJCAI",
+    "name": "International Joint Conference on Artificial Intelligence",
+    "areas": ["general"],
+    "cadence": 1,
+    "ccf": "AI/ijcai",
+    "website": "https://2027.ijcai.org",
+    "editionUrl": "https://{year}.ijcai.org/"
+  },
+  {
+    "acronym": "AISTATS",
+    "name": "International Conference on Artificial Intelligence and Statistics",
+    "areas": ["theory", "general"],
+    "cadence": 1,
+    "ccf": "AI/aistats",
+    "website": "https://virtual.aistats.org",
+    "editionUrl": "https://aistats.org/aistats{year}/"
+  },
+  {
+    "acronym": "UAI",
+    "name": "Conference on Uncertainty in Artificial Intelligence",
+    "areas": ["theory"],
+    "cadence": 1,
+    "ccf": "AI/uai",
+    "website": "https://www.auai.org",
+    "editionUrl": "https://www.auai.org/uai{year}/"
+  },
+  {
+    "acronym": "COLT",
+    "name": "Conference on Learning Theory",
+    "areas": ["theory"],
+    "cadence": 1,
+    "ccf": "AI/colt",
+    "website": "https://learningtheory.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "CVPR",
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "areas": ["cv"],
+    "cadence": 1,
+    "ccf": "AI/cvpr",
+    "website": "https://cvpr.thecvf.com",
+    "editionUrl": "https://cvpr.thecvf.com/Conferences/{year}"
+  },
+  {
+    "acronym": "ICCV",
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "areas": ["cv"],
+    "cadence": 2,
+    "ccf": "AI/iccv",
+    "website": "https://iccv.thecvf.com",
+    "editionUrl": "https://iccv.thecvf.com/Conferences/{year}"
+  },
+  {
+    "acronym": "WACV",
+    "name": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+    "areas": ["cv"],
+    "cadence": 1,
+    "ccf": "AI/wacv",
+    "website": "https://wacv.thecvf.com",
+    "editionUrl": null
+  },
+  {
+    "acronym": "BMVC",
+    "name": "British Machine Vision Conference",
+    "areas": ["cv"],
+    "cadence": 1,
+    "ccf": "AI/bmvc",
+    "website": "https://bmvc2026.bmva.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "3DV",
+    "name": "International Conference on 3D Vision",
+    "areas": ["cv"],
+    "cadence": 1,
+    "ccf": "CG/3dv",
+    "website": "https://3dvconf.github.io",
+    "editionUrl": null
+  },
+  {
+    "acronym": "MICCAI",
+    "name": "Medical Image Computing and Computer Assisted Intervention",
+    "areas": ["cv"],
+    "cadence": 1,
+    "ccf": "MX/miccai",
+    "website": "https://conferences.miccai.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ACL",
+    "name": "Annual Meeting of the Association for Computational Linguistics",
+    "areas": ["nlp"],
+    "cadence": 1,
+    "ccf": "AI/acl",
+    "website": "https://2027.aclweb.org/",
+    "editionUrl": "https://{year}.aclweb.org/"
+  },
+  {
+    "acronym": "EMNLP",
+    "name": "Conference on Empirical Methods in Natural Language Processing",
+    "areas": ["nlp"],
+    "cadence": 1,
+    "ccf": "AI/emnlp",
+    "website": "https://2026.emnlp.org",
+    "editionUrl": "https://{year}.emnlp.org/"
+  },
+  {
+    "acronym": "NAACL",
+    "name": "Annual Conference of the Nations of the Americas Chapter of the ACL",
+    "areas": ["nlp"],
+    "cadence": 1,
+    "ccf": "AI/naacl",
+    "website": "https://2027.naacl.org",
+    "editionUrl": "https://{year}.naacl.org/"
+  },
+  {
+    "acronym": "KDD",
+    "name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "areas": ["datamining"],
+    "cadence": 1,
+    "ccf": "DB/sigkdd",
+    "website": "https://kdd2027.kdd.org",
+    "editionUrl": "https://kdd{year}.kdd.org/"
+  },
+  {
+    "acronym": "WWW",
+    "name": "The ACM Web Conference",
+    "areas": ["datamining"],
+    "cadence": 1,
+    "ccf": "MX/www",
+    "website": "https://www2027.thewebconf.org/",
+    "editionUrl": null
+  },
+  {
+    "acronym": "SIGIR",
+    "name": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "areas": ["datamining"],
+    "cadence": 1,
+    "ccf": "DB/sigir",
+    "website": "https://sigir2027.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "WSDM",
+    "name": "ACM International Conference on Web Search and Data Mining",
+    "areas": ["datamining"],
+    "cadence": 1,
+    "ccf": "DB/wsdm",
+    "website": "https://wsdm-conference.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ICDM",
+    "name": "IEEE International Conference on Data Mining",
+    "areas": ["datamining"],
+    "cadence": 1,
+    "ccf": "DB/icdm",
+    "website": "https://icdm2027-website.onrender.com/",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ECML-PKDD",
+    "name": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases",
+    "areas": ["general", "datamining"],
+    "cadence": 1,
+    "ccf": "DB/pkdd",
+    "website": "https://ecmlpkdd.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "CoRL",
+    "name": "Conference on Robot Learning",
+    "areas": ["robotics", "rl"],
+    "cadence": 1,
+    "ccf": "AI/corl",
+    "website": "https://www.corl.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ICRA",
+    "name": "IEEE International Conference on Robotics and Automation",
+    "areas": ["robotics"],
+    "cadence": 1,
+    "ccf": "AI/icra",
+    "website": "https://2027.ieee-icra.org/",
+    "editionUrl": null
+  },
+  {
+    "acronym": "IROS",
+    "name": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "areas": ["robotics"],
+    "cadence": 1,
+    "ccf": "AI/iros",
+    "website": "https://2027.ieee-iros.org/",
+    "editionUrl": null
+  },
+  {
+    "acronym": "RSS",
+    "name": "Robotics: Science and Systems",
+    "areas": ["robotics"],
+    "cadence": 1,
+    "ccf": "AI/rss",
+    "website": "https://roboticsconference.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "AAMAS",
+    "name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "areas": ["rl"],
+    "cadence": 1,
+    "ccf": "AI/aamas",
+    "website": "https://warwick.ac.uk",
+    "editionUrl": null
+  },
+  {
+    "acronym": "LoG",
+    "name": "Learning on Graphs Conference",
+    "areas": ["graphs"],
+    "cadence": 1,
+    "ccf": "AI/log",
+    "website": "https://logconference.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "MLSys",
+    "name": "Conference on Machine Learning and Systems",
+    "areas": ["general"],
+    "cadence": 1,
+    "ccf": "MX/mlsys",
+    "website": "https://mlsys.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ACML",
+    "name": "Asian Conference on Machine Learning",
+    "areas": ["general"],
+    "cadence": 1,
+    "ccf": "AI/acml",
+    "website": "https://www.acml-conf.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "CoLLAs",
+    "name": "Conference on Lifelong Learning Agents",
+    "areas": ["rl", "general"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://lifelong-ml.cc",
+    "editionUrl": null
+  },
+  {
+    "acronym": "SIGCOMM",
+    "name": "ACM International Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/sigcomm",
+    "website": "https://conferences.sigcomm.org",
+    "editionUrl": "https://conferences.sigcomm.org/sigcomm/{year}/"
+  },
+  {
+    "acronym": "NSDI",
+    "name": "USENIX Symposium on Networked Systems Design and Implementation",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/nsdi",
+    "website": "https://www.usenix.org",
+    "editionUrl": "https://www.usenix.org/conference/nsdi{yy}"
+  },
+  {
+    "acronym": "MobiCom",
+    "name": "ACM Annual International Conference On Mobile Computing And Networking",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/mobicom",
+    "website": "https://www.sigmobile.org",
+    "editionUrl": "https://www.sigmobile.org/mobicom/{year}/"
+  },
+  {
+    "acronym": "MobiSys",
+    "name": "ACM International Conference on Mobile Systems, Applications, and Services",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/mobisys",
+    "website": "https://www.sigmobile.org",
+    "editionUrl": "https://www.sigmobile.org/mobisys/{year}/"
+  },
+  {
+    "acronym": "MobiHoc",
+    "name": "International Symposium on Mobile Ad Hoc Networking and Computing",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/mobihoc",
+    "website": "https://www.sigmobile.org",
+    "editionUrl": "https://www.sigmobile.org/mobihoc/{year}/"
+  },
+  {
+    "acronym": "CoNEXT",
+    "name": "International Conference on Emerging Networking Experiments and Technologies",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/conext",
+    "website": "https://conferences.sigcomm.org",
+    "editionUrl": "https://conferences.sigcomm.org/co-next/{year}/"
+  },
+  {
+    "acronym": "IMC",
+    "name": "ACM Internet Measurement Conference",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/imc",
+    "website": "https://conferences.sigcomm.org",
+    "editionUrl": "https://conferences.sigcomm.org/imc/{year}/"
+  },
+  {
+    "acronym": "HotNets",
+    "name": "ACM Workshop on Hot Topics in Networks",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/hotnets",
+    "website": "https://conferences.sigcomm.org",
+    "editionUrl": "https://conferences.sigcomm.org/hotnets/{year}/"
+  },
+  {
+    "acronym": "SenSys",
+    "name": "ACM Conference on Embedded Networked Sensor Systems",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/sensys",
+    "website": "https://sensys.acm.org",
+    "editionUrl": "https://sensys.acm.org/{year}/"
+  },
+  {
+    "acronym": "INFOCOM",
+    "name": "IEEE International Conference on Computer Communications",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/infocom",
+    "website": "https://infocom2026.ieee-infocom.org",
+    "editionUrl": "https://infocom{year}.ieee-infocom.org/"
+  },
+  {
+    "acronym": "ICC",
+    "name": "IEEE International Conference on Communications",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/icc",
+    "website": "https://icc2026.ieee-icc.org",
+    "editionUrl": "https://icc{year}.ieee-icc.org/"
+  },
+  {
+    "acronym": "GLOBECOM",
+    "name": "IEEE Global Communications Conference",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/globecom",
+    "website": "https://globecom2026.ieee-globecom.org",
+    "editionUrl": "https://globecom{year}.ieee-globecom.org/"
+  },
+  {
+    "acronym": "WCNC",
+    "name": "IEEE Wireless Communications and Networking Conference",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/wcnc",
+    "website": "https://wcnc2026.ieee-wcnc.org",
+    "editionUrl": "https://wcnc{year}.ieee-wcnc.org/"
+  },
+  {
+    "acronym": "ICNP",
+    "name": "IEEE International Conference on Network Protocols",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/icnp",
+    "website": "https://icnp.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "IWQoS",
+    "name": "IEEE/ACM International Symposium on Quality of Service",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/iwqos",
+    "website": "https://iwqos.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "SECON",
+    "name": "IEEE International Conference on Sensing, Communication, and Networking",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/secon",
+    "website": "https://secon.ieee.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "MSWiM",
+    "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/mswim",
+    "website": "https://mswimconf.com",
+    "editionUrl": null
+  },
+  {
+    "acronym": "LCN",
+    "name": "IEEE Conference on Local Computer Networks",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "NW/lcn",
+    "website": "https://www.ieeelcn.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "NOMS",
+    "name": "IEEE/IFIP Network Operations and Management Symposium",
+    "areas": ["networking"],
+    "cadence": 2,
+    "ccf": "SC/noms",
+    "website": "https://noms.ieee.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "ICDCS",
+    "name": "IEEE International Conference on Distributed Computing Systems",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": "DS/icdcs",
+    "website": "https://icdcs.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "VTC-Spring",
+    "name": "IEEE Vehicular Technology Conference (Spring)",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://events.vtsociety.org",
+    "editionUrl": "https://events.vtsociety.org/vtc{year}-spring/"
+  },
+  {
+    "acronym": "VTC-Fall",
+    "name": "IEEE Vehicular Technology Conference (Fall)",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://events.vtsociety.org",
+    "editionUrl": "https://events.vtsociety.org/vtc{year}-fall/"
+  },
+  {
+    "acronym": "DySPAN",
+    "name": "IEEE International Symposium on Dynamic Spectrum Access Networks",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://dyspan.ieee.org",
+    "editionUrl": "https://dyspan{year}.ieee-dyspan.org/"
+  },
+  {
+    "acronym": "PIMRC",
+    "name": "IEEE International Symposium on Personal, Indoor and Mobile Radio Communications",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://pimrc.ieee.org",
+    "editionUrl": "https://pimrc{year}.ieee-pimrc.org/"
+  },
+  {
+    "acronym": "EuCNC",
+    "name": "EuCNC & 6G Summit",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://www.eucnc.eu",
+    "editionUrl": null
+  },
+  {
+    "acronym": "NetSoft",
+    "name": "IEEE International Conference on Network Softwarization",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://netsoft.ieee.org",
+    "editionUrl": "https://netsoft{year}.ieee-netsoft.org/"
+  },
+  {
+    "acronym": "CNSM",
+    "name": "International Conference on Network and Service Management",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "http://www.cnsm-conf.org",
+    "editionUrl": "http://www.cnsm-conf.org/{year}/"
+  },
+  {
+    "acronym": "CCNC",
+    "name": "IEEE Consumer Communications & Networking Conference",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://ccnc.ieee.org",
+    "editionUrl": "https://ccnc{year}.ieee-ccnc.org/"
+  },
+  {
+    "acronym": "WiOpt",
+    "name": "International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://wi-opt.org",
+    "editionUrl": null
+  },
+  {
+    "acronym": "HotMobile",
+    "name": "ACM International Workshop on Mobile Computing Systems and Applications",
+    "areas": ["networking"],
+    "cadence": 1,
+    "ccf": null,
+    "website": "https://www.hotmobile.org",
+    "editionUrl": "https://www.hotmobile.org/{year}/"
+  }
+]
