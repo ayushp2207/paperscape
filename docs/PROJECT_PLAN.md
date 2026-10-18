@@ -961,10 +961,10 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-9 Warnings (1 h)
 
-- [ ] `warnings.js` pure functions per §10.3 (+ `findBackupGap` as Planned).
-- [ ] Top-of-page collapsible warnings banner (`<details open>`) + ⚠ badge on affected cards with the message in a tooltip/`title`.
-- [ ] Recompute on every plans change. Skip any comparison where a date is `null` (TBD).
-- [ ] **Self-check:** create two plans with deadlines 3 days apart → clash appears; pick a conference with notification 5 weeks before start → travel warning appears. With seeds still TBD, test using your own conferences (A-3 form) with real dates.
+- [x] `warnings.js` pure functions per §10.3 (+ `findBackupGap` as Planned).
+- [x] Top-of-page collapsible warnings banner (`<details open>`) + ⚠ badge on affected cards with the message in a tooltip/`title`.
+- [x] Recompute on every plans change. Skip any comparison where a date is `null` (TBD).
+- [x] **Self-check:** create two plans with deadlines 3 days apart → clash appears; pick a conference with notification 5 weeks before start → travel warning appears. With seeds still TBD, test using your own conferences (A-3 form) with real dates.
 
 ### A-10 Home dashboard (45 min)
 

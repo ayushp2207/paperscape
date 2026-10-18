@@ -6,6 +6,7 @@ import { confirmDialog, emptyState, errorState, skeleton, toast } from '../share
 import { countdownChip, startCountdownTicker } from './countdown.js';
 import { nextDeadline } from './deadlines.js';
 import { initPlanForm } from './planForm.js';
+import { CLASH_WINDOW_DAYS, MIN_TRAVEL_DAYS, findWarnings } from './warnings.js';
 
 const STATUS = {
   drafting: { label: 'Drafting', badge: 'badge--accent' },
@@ -128,14 +129,53 @@ function milestoneItem(plan, milestone) {
   );
 }
 
-function planCard(plan) {
+const WARNING_TITLES = { clash: 'Deadline clash', travel: 'Travel time', backup: 'Backup timing' };
+
+function warningList(warnings, { compact = false } = {}) {
+  return el(
+    'ul',
+    { class: ['warning-list', compact && 'warning-list--compact'] },
+    warnings.map((warning) =>
+      el(
+        'li',
+        {},
+        icon('alert', { size: 16 }),
+        el('span', {}, el('strong', {}, `${WARNING_TITLES[warning.type]}: `), warning.message),
+      ),
+    ),
+  );
+}
+
+// Collapsible summary of every warning across plans, above the cards.
+function warningsBanner(warnings) {
+  if (warnings.length === 0) return null;
+  return el(
+    'details',
+    { class: 'warnings-banner', open: true },
+    el(
+      'summary',
+      {},
+      icon('alert', { size: 18 }),
+      `${warnings.length} warning${warnings.length === 1 ? '' : 's'} across your plans`,
+    ),
+    el(
+      'p',
+      { class: 'muted warnings-banner__hint' },
+      `Clash = deadlines from different plans within ${CLASH_WINDOW_DAYS} days. ` +
+        `Travel time = under ${MIN_TRAVEL_DAYS / 7} weeks from notification to the conference.`,
+    ),
+    warningList(warnings),
+  );
+}
+
+function planCard(plan, warnings) {
   const status = STATUS[plan.status] ?? STATUS.drafting;
   const total = plan.milestones.length;
   const done = plan.milestones.filter((m) => m.done).length;
 
   return el(
     'article',
-    { class: 'card plan-card' },
+    { class: ['card', 'plan-card', warnings.length > 0 && 'has-warnings'] },
     el(
       'div',
       { class: 'card__header' },
@@ -177,6 +217,7 @@ function planCard(plan) {
           plan.milestones.map((m) => milestoneItem(plan, m)),
         ),
       ),
+    warnings.length > 0 && warningList(warnings, { compact: true }),
     plan.notes && el('p', { class: 'plan-card__notes muted' }, plan.notes),
     el(
       'div',
@@ -226,7 +267,19 @@ function render() {
     );
     return;
   }
-  root.replaceChildren(el('div', { class: 'plan-grid' }, state.plans.map(planCard)));
+  // Recomputed on every render, so edits and milestone ticks update the warnings immediately.
+  const warnings = findWarnings(state.plans);
+  const forPlan = (plan) => warnings.filter((w) => w.planIds.includes(plan._id));
+  root.replaceChildren(
+    ...[
+      warningsBanner(warnings),
+      el(
+        'div',
+        { class: 'plan-grid' },
+        state.plans.map((plan) => planCard(plan, forPlan(plan))),
+      ),
+    ].filter(Boolean),
+  );
 }
 
 qs('#add-plan').addEventListener('click', () => form.openCreate());
