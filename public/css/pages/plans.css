@@ -1,1 +1,146 @@
-/* Submission plan cards and form (A-5) */
+/* Submission plans: card grid, next-deadline block, milestones, and the milestone editor. */
+.plan-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  align-items: start;
+}
+
+.plan-card .card__title {
+  overflow-wrap: anywhere;
+}
+
+.venue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.venue-chip--target {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: var(--accent-soft);
+}
+
+.venue-chip__role {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.plan-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.plan-next__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.plan-next__date {
+  font-weight: 600;
+}
+
+.plan-next .countdown {
+  padding: var(--space-1) var(--space-3);
+  font-size: 1rem;
+}
+
+.plan-next--empty {
+  font-size: 0.875rem;
+}
+
+.plan-milestones {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.plan-milestones__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.milestone-list {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.milestone {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  font-size: 0.875rem;
+}
+
+.milestone__check {
+  min-width: 0;
+}
+
+.milestone__check span {
+  overflow-wrap: anywhere;
+}
+
+.milestone.is-done .milestone__check span {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.milestone__due {
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.plan-card__notes {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  font-size: 0.875rem;
+  white-space: pre-line;
+}
+
+.milestone-editor {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.milestone-editor:empty {
+  display: none;
+}
+
+.milestone-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px auto;
+  align-items: start;
+  gap: var(--space-2);
+}
+
+@media (max-width: 520px) {
+  .milestone-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .milestone-row > .field:nth-child(2) {
+    grid-column: 1;
+  }
+}

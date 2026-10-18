@@ -73,8 +73,71 @@
           <h1>Submission plans</h1>
           <p class="muted">Target venues, backups, milestones and countdowns.</p>
         </div>
+        <button class="btn btn--primary" id="add-plan" type="button">New plan</button>
       </header>
-      <div id="plans-root"></div>
+
+      <section id="plans-root" aria-live="polite"></section>
+
+      <dialog class="dialog" id="plan-dialog" aria-labelledby="plan-dialog-title">
+        <form class="dialog__body form" id="plan-form">
+          <div class="dialog__header">
+            <h2 class="dialog__title" id="plan-dialog-title">New plan</h2>
+            <button class="icon-btn" type="button" data-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="field">
+            <label for="plan-title">Paper title</label>
+            <input class="input" id="plan-title" name="paperTitle" maxlength="200" required />
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="plan-target">Target venue</label>
+              <select class="select" id="plan-target" name="targetConferenceId" required></select>
+            </div>
+            <div class="field">
+              <label for="plan-backup">Backup venue</label>
+              <select class="select" id="plan-backup" name="backupConferenceId"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="plan-status">Status</label>
+            <select class="select" id="plan-status" name="status">
+              <option value="drafting">Drafting</option>
+              <option value="submitted">Submitted</option>
+              <option value="accepted">Accepted</option>
+              <option value="rejected">Rejected</option>
+              <option value="withdrawn">Withdrawn</option>
+            </select>
+          </div>
+
+          <fieldset class="form-section">
+            <legend>Milestones</legend>
+            <p class="field__hint">
+              Your own checkpoints before the deadline. Due dates are end of day AoE.
+            </p>
+            <ol class="milestone-editor" id="milestone-rows" aria-label="Milestones"></ol>
+            <div class="row">
+              <button class="btn btn--ghost btn--sm" id="add-milestone" type="button">
+                Add milestone
+              </button>
+              <button class="btn btn--ghost btn--sm" id="suggest-milestones" type="button">
+                Suggest milestones
+              </button>
+            </div>
+            <input type="hidden" name="milestones" />
+          </fieldset>
+
+          <div class="field">
+            <label for="plan-notes">Notes</label>
+            <textarea class="textarea" id="plan-notes" name="notes" maxlength="2000"></textarea>
+          </div>
+
+          <div class="dialog__actions">
+            <button class="btn btn--ghost" type="button" data-close>Cancel</button>
+            <button class="btn btn--primary" type="submit" id="plan-submit">Create plan</button>
+          </div>
+        </form>
+      </dialog>
     </main>
     <footer class="site-footer">
       <div class="container site-footer__inner">

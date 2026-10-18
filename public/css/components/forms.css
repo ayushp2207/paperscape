@@ -127,3 +127,17 @@ fieldset.field {
 .search-input .input {
   padding-left: var(--space-7);
 }
+
+/* Grouped fields inside a form (fieldset + legend). */
+.form-section {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.form-section legend {
+  padding-inline: var(--space-2);
+  font-weight: 600;
+}

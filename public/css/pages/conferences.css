@@ -207,19 +207,6 @@
   gap: var(--space-2);
 }
 
-.form-section {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-
-.form-section legend {
-  padding-inline: var(--space-2);
-  font-weight: 600;
-}
-
 /* Below 1024px the detail panel becomes a bottom sheet. */
 @media (max-width: 1024px) {
   .conf-layout.has-detail {
