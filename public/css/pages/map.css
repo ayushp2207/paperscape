@@ -1,1 +1,113 @@
-/* World map and pins (A-6) */
+/* World map (A-6): land shapes from assets/world.svg, conference pins drawn by map.js. */
+.world-map {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse at 50% 40%, var(--accent-soft), transparent 70%), var(--surface);
+}
+
+.world-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.world-map__land {
+  fill: var(--surface-3);
+  stroke: var(--bg);
+  stroke-width: 0.4;
+  stroke-linejoin: round;
+}
+
+.map-pin {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-pin__dot {
+  fill: currentColor;
+  stroke: var(--bg);
+  transition: r var(--duration) var(--ease);
+}
+
+.map-pin:hover .map-pin__dot,
+.map-pin:focus-visible .map-pin__dot {
+  stroke: var(--text);
+}
+
+.map-pin.is-selected .map-pin__dot {
+  stroke: var(--text);
+}
+
+.map-pin__pulse {
+  fill: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.map-pin.is-urgent .map-pin__pulse {
+  animation: pin-pulse 1.8s ease-out infinite;
+}
+
+@keyframes pin-pulse {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+.map-tooltip {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 2px;
+  min-width: 180px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 0.8125rem;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 10px));
+}
+
+.map-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  font-size: 0.8125rem;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+}
+
+.map-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.map-legend__urgent {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--text-muted);
+  border-radius: 50%;
+}
