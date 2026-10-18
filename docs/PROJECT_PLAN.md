@@ -917,15 +917,15 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-5 Plans page (1.25 h)
 
-- [ ] `plansPage.js`: load plans + conferences (for selects), render a cards grid (empty state with "Create your first plan" CTA).
-- [ ] `planForm.js`: `<dialog>` create/edit; prefill milestone dates with `toDateInputValue(date, { aoe: true })` (not `.slice(0, 10)`, which shifts AoE dates by a day on every save); selects show `ACRONYM YEAR · paper deadline date` (upcoming only, sorted); milestones repeater (add/remove rows); **Suggest milestones** button; `?target=` prefill.
-- [ ] Card:
+- [x] `plansPage.js`: load plans + conferences (for selects), render a cards grid (empty state with "Create your first plan" CTA).
+- [x] `planForm.js`: `<dialog>` create/edit; prefill milestone dates with `toDateInputValue(date, { aoe: true })` (not `.slice(0, 10)`, which shifts AoE dates by a day on every save); selects show `ACRONYM YEAR · paper deadline date` (upcoming only, sorted); milestones repeater (add/remove rows); **Suggest milestones** button; `?target=` prefill.
+- [x] Card:
   - Status badge, target + backup chips.
   - **Next deadline countdown** (nearest of abstract/paper for target), or "Deadline TBD".
   - Milestones list with checkboxes (`PATCH`) and a progress bar.
   - Edit/Delete (confirm dialog).
-- [ ] `countdown.js`: one 60 s interval that updates every `[data-countdown]` element from its `data-date`.
-- [ ] **Done when:** P3 + edit/delete from P4 work.
+- [x] `countdown.js`: one 60 s interval that updates every `[data-countdown]` element from its `data-date`.
+- [x] **Done when:** P3 + edit/delete from P4 work.
 
 ### A-6 World map (1.25 h)
 
