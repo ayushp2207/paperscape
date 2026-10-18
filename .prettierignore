@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
 public/assets/world.svg
+scripts/data/

@@ -17,6 +17,7 @@ Everything that has to be set up **by hand** before (and around) coding: account
 4. [OpenAlex: paper data source (Harshitha)](#4-openalex)
 5. [The `.env` file and sharing secrets safely (both)](#5-the-env-file--sharing-secrets)
 6. [Render: hosting the website publicly (Ayush)](#6-render-hosting)
+   6b. [Automatic conference updates (Ayush)](#6b-automatic-conference-updates-github)
 7. [Other tools: mockups, video, slides (both)](#7-other-tools)
 8. [Working together day to day](#8-working-together-day-to-day)
 9. ["Ready to build" checklist](#9-ready-to-build-checklist)
@@ -259,10 +260,10 @@ _Optional:_ to let her browse data in the Atlas website too, go to Project → *
 
 ### 3.7 Who loads which data (once, from a laptop)
 
-| Command                    | Who       | When             | Result                    |
-| -------------------------- | --------- | ---------------- | ------------------------- |
-| `npm run seed:conferences` | Ayush     | Day 1 (task A-1) | ~96 docs in `conferences` |
-| `npm run seed:papers`      | Harshitha | Day 1 (task H-2) | 1,000+ docs in `papers`   |
+| Command                    | Who       | When             | Result                                                       |
+| -------------------------- | --------- | ---------------- | ------------------------------------------------------------ |
+| `npm run seed:conferences` | Ayush     | Day 1 (task A-1) | conferences (kept current automatically afterwards, see §6b) |
+| `npm run seed:papers`      | Harshitha | Day 1 (task H-2) | 1,000+ docs in `papers`                                      |
 
 Because the DB is shared, **each seed runs once**, and the other person's app sees the data immediately. The deployed site uses the same DB, so production is seeded too. Don't re-run the other person's seed without telling them.
 
@@ -420,6 +421,26 @@ Click **Create Web Service**. The first build takes 2–4 min. Watch the **Logs*
 Fallback with the same steps: **Koyeb** (free Node web service) or **Railway** (trial credits). Atlas stays the same; only `MONGODB_URI` etc. move to the new host's env settings. Don't switch unless Render is actually blocking you.
 
 ---
+
+## 6b. Automatic conference updates (GitHub)
+
+**Who:** Ayush (repo admin). **Time:** 5 min, once.
+
+Conference dates on the site refresh automatically. Updates arrive as **one pull request** called "Conference tracker updates"; merging it publishes them to the live site. It needs two one-time settings:
+
+1. **Repository secrets:** Settings → **Secrets and variables → Actions** → **New repository secret**:
+
+   | Name          | Value                                                   |
+   | ------------- | ------------------------------------------------------- |
+   | `MONGODB_URI` | the `render-prod` connection string (same as on Render) |
+   | `DB_NAME`     | `paperscape`                                            |
+
+2. **Let Actions open pull requests:** Settings → **Actions → General** → _Workflow permissions_ → select **Read and write permissions** and tick **Allow GitHub Actions to create and approve pull requests** → **Save**.
+3. **First run:** **Actions** tab → **Conference tracker** → **Run workflow** (tick the "check every upcoming conference" box) → wait a few minutes.
+4. **Review:** open the "Conference tracker updates" pull request. It lists changed dates, extended deadlines, new editions, pages worth a manual look, and broken links (including ones reported on the site). Edit `scripts/data/conferences.json` in the PR if something needs fixing, then approve and merge. The PR is opened by GitHub Actions, so you can approve it yourself.
+5. After merging, the **Publish conference data** action updates the live site within a minute (no redeploy needed).
+
+From then on it runs every day by itself and keeps updating the same pull request until you merge it.
 
 ## 7. Other tools
 

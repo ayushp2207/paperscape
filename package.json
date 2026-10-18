@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "import:conferences": "node scripts/import-conferences.js",
+    "track:conferences": "node scripts/track-conferences.js",
     "seed:conferences": "node scripts/seed-conferences.js",
     "seed:papers": "node scripts/seed-papers.js",
     "build:map": "node scripts/build-world-map.js"

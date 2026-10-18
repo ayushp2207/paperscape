@@ -23,6 +23,12 @@
     "lat": 52.37,
     "lng": 4.9
   },
+  "Anaheim": {
+    "city": "Anaheim",
+    "country": "USA",
+    "lat": 33.84,
+    "lng": -117.91
+  },
   "Athens": {
     "city": "Athens",
     "country": "Greece",
@@ -113,6 +119,36 @@
     "lat": 47.5,
     "lng": 19.04
   },
+  "Buena Vista": {
+    "city": "Lake Buena Vista",
+    "country": "USA",
+    "lat": 28.37,
+    "lng": -81.52
+  },
+  "Cambridge, UK": {
+    "city": "Cambridge",
+    "country": "UK",
+    "lat": 52.21,
+    "lng": 0.12
+  },
+  "Cape Town": {
+    "city": "Cape Town",
+    "country": "South Africa",
+    "lat": -33.92,
+    "lng": 18.42
+  },
+  "Coimbra": {
+    "city": "Coimbra",
+    "country": "Portugal",
+    "lat": 40.21,
+    "lng": -8.43
+  },
+  "College Park": {
+    "city": "College Park",
+    "country": "USA",
+    "lat": 38.98,
+    "lng": -76.94
+  },
   "Daegu": {
     "city": "Daegu",
     "country": "South Korea",
@@ -148,6 +184,12 @@
     "country": "USA",
     "lat": 42.33,
     "lng": -83.05
+  },
+  "Disney Springs": {
+    "city": "Lake Buena Vista",
+    "country": "USA",
+    "lat": 28.37,
+    "lng": -81.52
   },
   "Dubai": {
     "city": "Dubai",
@@ -191,6 +233,12 @@
     "lat": 55.86,
     "lng": -4.25
   },
+  "Gold Coast": {
+    "city": "Gold Coast",
+    "country": "Australia",
+    "lat": -28.02,
+    "lng": 153.4
+  },
   "Grenoble": {
     "city": "Grenoble",
     "country": "France",
@@ -215,6 +263,18 @@
     "lat": 21.03,
     "lng": 105.85
   },
+  "Hawaii Convention Center": {
+    "city": "Honolulu",
+    "country": "USA",
+    "lat": 21.31,
+    "lng": -157.86
+  },
+  "Ho Chi Minh City": {
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "lat": 10.82,
+    "lng": 106.63
+  },
   "Hong Kong": {
     "city": "Hong Kong",
     "country": "China",
@@ -227,17 +287,23 @@
     "lat": 21.31,
     "lng": -157.86
   },
-  "Hawaii Convention Center": {
-    "city": "Honolulu",
+  "Houston": {
+    "city": "Houston",
     "country": "USA",
-    "lat": 21.31,
-    "lng": -157.86
+    "lat": 29.76,
+    "lng": -95.37
   },
   "Hyderabad": {
     "city": "Hyderabad",
     "country": "India",
     "lat": 17.39,
     "lng": 78.49
+  },
+  "Irvine": {
+    "city": "Irvine",
+    "country": "USA",
+    "lat": 33.68,
+    "lng": -117.83
   },
   "Istanbul": {
     "city": "Istanbul",
@@ -257,11 +323,23 @@
     "lat": 33.5,
     "lng": 126.53
   },
+  "Karlsruhe": {
+    "city": "Karlsruhe",
+    "country": "Germany",
+    "lat": 49.01,
+    "lng": 8.4
+  },
   "Kigali": {
     "city": "Kigali",
     "country": "Rwanda",
     "lat": -1.95,
     "lng": 30.06
+  },
+  "Kuala Lumpur": {
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "lat": 3.14,
+    "lng": 101.69
   },
   "Kyoto": {
     "city": "Kyoto",
@@ -275,23 +353,17 @@
     "lat": 28.37,
     "lng": -81.52
   },
-  "Disney Springs": {
-    "city": "Lake Buena Vista",
-    "country": "USA",
-    "lat": 28.37,
-    "lng": -81.52
-  },
-  "Buena Vista": {
-    "city": "Lake Buena Vista",
-    "country": "USA",
-    "lat": 28.37,
-    "lng": -81.52
-  },
   "Lancaster": {
     "city": "Lancaster",
     "country": "UK",
     "lat": 54.05,
     "lng": -2.8
+  },
+  "Lisbon": {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.72,
+    "lng": -9.14
   },
   "London": {
     "city": "London",
@@ -323,6 +395,12 @@
     "lat": 22.2,
     "lng": 113.54
   },
+  "Madison": {
+    "city": "Madison",
+    "country": "USA",
+    "lat": 43.07,
+    "lng": -89.4
+  },
   "Mai Khao": {
     "city": "Mai Khao",
     "country": "Thailand",
@@ -353,13 +431,19 @@
     "lat": 25.76,
     "lng": -80.19
   },
-  "Montréal": {
+  "Milan": {
+    "city": "Milan",
+    "country": "Italy",
+    "lat": 45.46,
+    "lng": 9.19
+  },
+  "Montreal": {
     "city": "Montréal",
     "country": "Canada",
     "lat": 45.5,
     "lng": -73.57
   },
-  "Montreal": {
+  "Montréal": {
     "city": "Montréal",
     "country": "Canada",
     "lat": 45.5,
@@ -407,6 +491,12 @@
     "lat": 45.41,
     "lng": 11.88
   },
+  "Panama City": {
+    "city": "Panama City",
+    "country": "Panama",
+    "lat": 8.98,
+    "lng": -79.52
+  },
   "Paphos": {
     "city": "Paphos",
     "country": "Cyprus",
@@ -431,6 +521,12 @@
     "lat": 33.45,
     "lng": -112.07
   },
+  "Pisa": {
+    "city": "Pisa",
+    "country": "Italy",
+    "lat": 43.72,
+    "lng": 10.4
+  },
   "Pittsburgh": {
     "city": "Pittsburgh",
     "country": "USA",
@@ -443,17 +539,47 @@
     "lat": 41.15,
     "lng": -8.61
   },
+  "Providence": {
+    "city": "Providence",
+    "country": "USA",
+    "lat": 41.82,
+    "lng": -71.41
+  },
   "Punta Cana": {
     "city": "Punta Cana",
     "country": "Dominican Republic",
     "lat": 18.58,
     "lng": -68.4
   },
+  "Renton": {
+    "city": "Renton",
+    "country": "USA",
+    "lat": 47.48,
+    "lng": -122.21
+  },
   "Rio de Janeiro": {
     "city": "Rio de Janeiro",
     "country": "Brazil",
     "lat": -22.91,
     "lng": -43.17
+  },
+  "Rome": {
+    "city": "Rome",
+    "country": "Italy",
+    "lat": 41.9,
+    "lng": 12.5
+  },
+  "Saint-Malo": {
+    "city": "Saint-Malo",
+    "country": "France",
+    "lat": 48.65,
+    "lng": -2.03
+  },
+  "Salt Lake City": {
+    "city": "Salt Lake City",
+    "country": "USA",
+    "lat": 40.76,
+    "lng": -111.89
   },
   "San Diego": {
     "city": "San Diego",
@@ -551,6 +677,12 @@
     "lat": 35.76,
     "lng": -5.83
   },
+  "Tempe": {
+    "city": "Tempe",
+    "country": "USA",
+    "lat": 33.43,
+    "lng": -111.94
+  },
   "Thessaloniki": {
     "city": "Thessaloniki",
     "country": "Greece",
@@ -580,6 +712,12 @@
     "country": "Italy",
     "lat": 45.07,
     "lng": 7.69
+  },
+  "Utrecht": {
+    "city": "Utrecht",
+    "country": "Netherlands",
+    "lat": 52.09,
+    "lng": 5.12
   },
   "Valencia": {
     "city": "Valencia",
@@ -611,12 +749,6 @@
     "lat": 19.94,
     "lng": -155.79
   },
-  "Washington, D.C.": {
-    "city": "Washington, D.C.",
-    "country": "USA",
-    "lat": 38.91,
-    "lng": -77.04
-  },
   "Washington D.C.": {
     "city": "Washington, D.C.",
     "country": "USA",
@@ -624,6 +756,12 @@
     "lng": -77.04
   },
   "Washington DC": {
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "lat": 38.91,
+    "lng": -77.04
+  },
+  "Washington, D.C.": {
     "city": "Washington, D.C.",
     "country": "USA",
     "lat": 38.91,

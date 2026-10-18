@@ -20,12 +20,25 @@ export function locationText(conference) {
   return [location.city, location.country].filter(Boolean).join(', ');
 }
 
+export function extendedBadge(conference, key) {
+  const original = conference.extensions?.[key];
+  if (!original) return null;
+  return el(
+    'span',
+    {
+      class: 'badge badge--warning',
+      title: `Originally ${formatDate(original, { aoe: true })} AoE`,
+    },
+    'Extended',
+  );
+}
+
 function deadlineRow({ key, label }, conference) {
   const date = conference.deadlines?.[key];
   return el(
     'li',
     { class: 'deadline-row' },
-    el('span', { class: 'deadline-row__label' }, label),
+    el('span', { class: 'deadline-row__label' }, label, extendedBadge(conference, key)),
     date
       ? el('span', { class: 'deadline-row__date' }, formatDate(date, { aoe: true }))
       : el('span', { class: 'badge badge--outline' }, 'TBD'),
@@ -34,7 +47,11 @@ function deadlineRow({ key, label }, conference) {
 }
 
 // Renders the side panel (bottom sheet on mobile) for one conference.
-export function renderDetail(panel, conference, { onClose, onEdit, onDelete, onDuplicate }) {
+export function renderDetail(
+  panel,
+  conference,
+  { onClose, onEdit, onDelete, onDuplicate, onReport },
+) {
   const own = isUserCreated(conference);
   const { location } = conference;
 
@@ -98,6 +115,17 @@ export function renderDetail(panel, conference, { onClose, onEdit, onDelete, onD
       'ul',
       { class: 'deadline-list' },
       DEADLINES.map((deadline) => deadlineRow(deadline, conference)),
+    ),
+    el(
+      'p',
+      { class: 'conf-detail__note muted' },
+      own ? 'Your own entry.' : 'Dates are kept up to date automatically.',
+      conference.website &&
+        el(
+          'button',
+          { class: 'link-btn', type: 'button', on: { click: onReport } },
+          'Report a broken link',
+        ),
     ),
     el(
       'div',

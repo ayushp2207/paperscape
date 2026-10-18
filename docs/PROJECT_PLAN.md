@@ -870,19 +870,22 @@ Each day is 5 focused hours. Times are hours from the session start.
   - Deadlines → `aoeEndOfDay`, start/end → `calendarDay` (both imported from `public/js/shared/format.js`).
   - Prints how many conferences have dates, location, or are still TBD.
 - [x] **Done when:** `npm run seed:conferences` is idempotent and Atlas shows 32 seeded docs.
-- [x] ~~Manual follow-up: fill real dates by hand.~~ Replaced by A-1b (import from ccf-deadlines).
+- [x] ~~Manual follow-up: fill real dates by hand.~~ Replaced by A-1b.
 
-### A-1b Import real conference data (1 h)
+### A-1b Real conference data (1 h)
 
-- [x] `scripts/import-conferences.js` (`npm run import:conferences`): downloads 31 of our conferences from [ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) (MIT) and rewrites `scripts/data/conferences.json`.
-  - Keeps the **last 2 past editions + every upcoming edition**. A conference with no announced upcoming edition gets a TBD placeholder for its next year (ICML 2027, UAI 2027); only the year is filled in.
-  - Parses the dataset's free-text dates ("June 30 - July 3, 2026", multi-city NeurIPS) and converts deadlines to exact instants using each entry's time zone (AoE / UTC±N). `decision_deadline` becomes our `notification`.
-  - Multi-round conferences: the earliest round still open, else the last round.
-  - Entries not in the dataset (CoLLAs) are kept untouched. Includes a tiny YAML reader, so no new dependency.
-- [x] `scripts/data/cities.json`: host-city aliases → canonical city, country, lat/lng (99 cities).
-- [x] `seed-conferences.js` accepts exact ISO instants for deadlines as well as `YYYY-MM-DD` (= 23:59 AoE).
-- [x] README credits the dataset (MIT).
-- [ ] **Refresh before the demo:** re-run `npm run import:conferences && npm run seed:conferences` to pick up newly announced dates. Re-running overwrites imported entries, so manual edits belong in conferences that aren't imported.
+- [x] Seeded conferences come with real dates, venues and deadlines (last 2 past editions + every upcoming edition). Anything not yet announced is shown as TBD, never estimated.
+- [x] Host-city coordinates for the map (`scripts/data/cities.json`).
+- [x] README credits the data source (MIT).
+
+### A-1c Live conference tracking + networking venues (done)
+
+- [x] **Always-current dates:** conference dates, venues and deadlines refresh automatically. Updates arrive as a single pull request to review; merging it publishes them to the live site.
+- [x] **Deadline extensions** are detected and shown with an "Extended" badge (with the original date on hover).
+- [x] **New editions** are picked up automatically when a conference announces its next year.
+- [x] **"Report a broken link"** button in the conference detail panel; reports are reviewed in the same pull request and resolved on merge.
+- [x] **Networking & Wireless venues** (SIGCOMM, NSDI, MobiCom, INFOCOM, ICC, GLOBECOM, DySPAN, PIMRC, EuCNC, …) alongside the ML venues, with a new research area.
+- [ ] One-time GitHub setup (repository secrets + Actions permission), see SETUP.md §6b.
 
 ### A-2 Conferences API (1 h)
 

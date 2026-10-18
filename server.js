@@ -11,6 +11,7 @@ import plansRouter from './routes/plans.js';
 import reviewsRouter from './routes/reviews.js';
 import entriesRouter from './routes/entries.js';
 import papersRouter from './routes/papers.js';
+import reportsRouter from './routes/reports.js';
 
 dotenv.config({ quiet: true });
 
@@ -28,6 +29,7 @@ app.use('/api/plans', plansRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/entries', entriesRouter);
 app.use('/api/papers', papersRouter);
+app.use('/api/reports', reportsRouter);
 app.use('/api', apiNotFound);
 
 app.use(errorHandler);
