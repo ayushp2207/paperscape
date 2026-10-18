@@ -942,10 +942,10 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### A-7 Timeline (1.25 h)
 
-- [ ] `timeline.js`: `renderTimeline(container, conferences, { onSelect })` per §10.2.
-- [ ] Legend for the mark types. Clicking a row selects the conference (same detail panel).
-- [ ] Conferences with no dates are not drawn; list them below the chart as "Dates TBD: ICML, ACL, …". Draw partial rows (e.g. a deadline but no conference dates) with whatever marks exist.
-- [ ] **Done when:** the month filter visibly narrows rows, the "today" line is correct, and it scrolls horizontally on mobile.
+- [x] `timeline.js`: `renderTimeline(container, conferences, { onSelect })` per §10.2.
+- [x] Legend for the mark types. Clicking a row selects the conference (same detail panel).
+- [x] Conferences with no dates are not drawn; list them below the chart as "Dates TBD: ICML, ACL, …". Draw partial rows (e.g. a deadline but no conference dates) with whatever marks exist.
+- [x] **Done when:** the month filter visibly narrows rows, the "today" line is correct, and it scrolls horizontally on mobile.
 
 ### A-8 Deploy (30 min)
 

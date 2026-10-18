@@ -59,6 +59,11 @@
   grid-template-columns: minmax(0, 1fr) 380px;
 }
 
+/* Let wide children (timeline) scroll inside the panel instead of widening the page. */
+.conf-view {
+  min-width: 0;
+}
+
 .conf-grid {
   display: grid;
   gap: var(--space-4);

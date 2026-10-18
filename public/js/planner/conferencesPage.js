@@ -9,6 +9,7 @@ import { countdownChip, startCountdownTicker } from './countdown.js';
 import { hasAnyDate, isPastConference, isUserCreated, nextDeadline } from './deadlines.js';
 import { initFilters, toQueryParams } from './filters.js';
 import { renderMap } from './map.js';
+import { renderTimeline } from './timeline.js';
 
 const VIEWS = ['map', 'timeline', 'list'];
 
@@ -173,15 +174,6 @@ function renderList() {
   return el('div', { class: 'conf-grid' }, state.conferences.map(conferenceCard));
 }
 
-// Placeholder until the timeline (A-7) lands.
-function renderComingSoon() {
-  return emptyState({
-    iconName: 'calendar',
-    title: 'Timeline coming soon',
-    text: 'Use the Map or List view for now.',
-  });
-}
-
 function showMap() {
   renderMap(viewPanel, state.conferences, { selectedId: state.selectedId, onSelect: select }).catch(
     (err) => viewPanel.replaceChildren(errorState(err.message, render)),
@@ -224,7 +216,11 @@ function render() {
   else if (state.view === 'list' || state.conferences.length === 0) {
     viewPanel.replaceChildren(renderList());
   } else if (state.view === 'map') showMap();
-  else viewPanel.replaceChildren(renderComingSoon());
+  else
+    renderTimeline(viewPanel, state.conferences, {
+      selectedId: state.selectedId,
+      onSelect: select,
+    });
 
   renderSummary();
   renderDetailPanel();
