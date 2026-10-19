@@ -8,14 +8,15 @@ import {
   errorState,
   openDialog,
   showFieldErrors,
-  skeleton,
+  toast,
 } from '../shared/ui.js';
+import { backupLink, paperUrl, reportLinkButton } from './linkReport.js';
+import { pager } from './pager.js';
+import { paperCardsSkeleton } from './skeletons.js';
 
 const DEBOUNCE_MS = 300;
 export const PAGE_SIZES = [5, 10, 50];
 export const DEFAULT_PAGE_SIZE = 10;
-// Page buttons either side of the current one before the rest collapse into "…".
-const PAGE_WINDOW = 1;
 const MAX_AUTHORS = 3;
 const YEARS = { min: 2000, max: 2030 };
 
@@ -71,7 +72,9 @@ export class PaperSearch {
       ),
     );
     this.results = el('div', { class: 'search-results' });
+    this.citingChip = el('div', { class: 'search-citing' });
     root.replaceChildren(
+      this.citingChip,
       this.form,
       el(
         'div',
@@ -91,6 +94,14 @@ export class PaperSearch {
 
   get query() {
     return { ...this.#query };
+  }
+
+  // "Papers that cite X": clears the sentence and lists library papers whose references include X.
+  findCiting(paperId, title) {
+    this.#clearForm();
+    this.#started = true;
+    this.#query = { page: 1, limit: this.#query.limit, cites: paperId, citesTitle: title };
+    this.#run();
   }
 
   // Searches the first time the tab is shown, not when the page loads.
@@ -174,6 +185,11 @@ export class PaperSearch {
     );
   }
 
+  // Empties every blank. (form.reset() would bring back the review's starting keywords.)
+  #clearForm() {
+    for (const name of ['q', 'area', 'yearFrom', 'yearTo']) this.form.elements[name].value = '';
+  }
+
   #readForm() {
     const field = (name) => this.form.elements[name].value.trim();
     const year = (name) => (field(name) ? Number(field(name)) : undefined);
@@ -184,6 +200,8 @@ export class PaperSearch {
       yearTo: year('yearTo'),
       page: 1,
       limit: this.#query.limit,
+      cites: this.#query.cites,
+      citesTitle: this.#query.citesTitle,
     };
   }
 
@@ -207,8 +225,9 @@ export class PaperSearch {
   }
 
   async #run() {
-    const query = this.#query;
+    const { citesTitle, ...query } = this.#query;
     this.#onQueryChange(query);
+    this.#renderCitingChip(citesTitle);
     const key = JSON.stringify(query);
     const requestId = ++this.#latest;
     clearFieldErrors(this.form);
@@ -221,20 +240,68 @@ export class PaperSearch {
       const result = this.#cache.get(key) ?? (await api.get('/papers', query));
       this.#cache.set(key, result);
       if (requestId !== this.#latest) return; // a newer search has started
+      // A page past the end (old link, or results changed): show the last real page instead.
+      if (result.total > 0 && query.page > result.pages) {
+        this.#query = { ...this.#query, page: result.pages };
+        this.#run();
+        return;
+      }
       this.#view = { status: 'done', result, error: null };
+      // Opened from a link: the reply names the paper being cited.
+      if (result.citing && !this.#query.citesTitle) {
+        this.#query.citesTitle = result.citing.title;
+        this.#renderCitingChip(result.citing.title);
+      }
     } catch (err) {
       if (requestId !== this.#latest) return;
+      // A "papers that cite" link to a paper that is gone (or a garbled id): drop the filter.
+      if (query.cites && err instanceof ApiError && (err.status === 404 || err.details?.cites)) {
+        toast(
+          'That paper is no longer in the library, so the citation filter was removed.',
+          'warning',
+        );
+        this.#query = { ...this.#query, cites: undefined, citesTitle: undefined };
+        this.#run();
+        return;
+      }
       if (err instanceof ApiError && err.details) showFieldErrors(this.form, err.details);
       this.#view = { status: 'error', result: null, error: err };
     }
     this.#render();
   }
 
+  #renderCitingChip(title) {
+    this.citingChip.replaceChildren(
+      ...(this.#query.cites
+        ? [
+            el('span', { class: 'muted' }, 'Papers that cite'),
+            el('strong', { class: 'search-citing__title' }, title ?? 'this paper'),
+            el(
+              'button',
+              {
+                class: 'chip',
+                type: 'button',
+                'aria-label': 'Stop filtering by citations',
+                on: {
+                  click: () => {
+                    this.#query = { ...this.#readForm(), cites: undefined, citesTitle: undefined };
+                    this.#run();
+                  },
+                },
+              },
+              icon('x', { size: 14 }),
+              'Clear',
+            ),
+          ]
+        : []),
+    );
+  }
+
   #render() {
     const { status, result, error } = this.#view;
     if (status === 'loading') {
       this.status.textContent = 'Searching…';
-      this.results.replaceChildren(skeleton(3, 'card'));
+      this.results.replaceChildren(paperCardsSkeleton(Math.min(this.#query.limit, 6)));
     } else if (status === 'error') {
       this.status.textContent = error.details ? 'Check the highlighted field.' : '';
       this.results.replaceChildren(
@@ -254,15 +321,20 @@ export class PaperSearch {
       this.results.replaceChildren(this.#noResults());
       return;
     }
-    // replaceChildren() would print a `false` pager as text, so it is left out instead.
-    const pager = pages > 1 ? [this.#pager(page, pages)] : [];
+    const nav = pager({
+      page,
+      pages,
+      label: 'Search results pages',
+      onPage: (n) => this.#goToPage(n),
+    });
     this.results.replaceChildren(
       el(
         'ul',
         { class: 'paper-grid' },
         items.map((paper) => this.#paperCard(paper)),
       ),
-      ...pager,
+      // replaceChildren() would print a missing pager as text, so it is left out instead.
+      ...(nav ? [nav] : []),
     );
   }
 
@@ -280,7 +352,9 @@ export class PaperSearch {
           type: 'button',
           on: {
             click: () => {
-              this.form.reset();
+              // Clearing also drops a "papers that cite" filter, so the user is never stuck.
+              this.#clearForm();
+              this.#query = { ...this.#query, cites: undefined, citesTitle: undefined };
               this.#changed({ debounce: false });
             },
           },
@@ -373,7 +447,7 @@ export class PaperSearch {
             'a',
             {
               class: 'icon-btn icon-btn--sm',
-              href: paper.doi ?? paper.openalexUrl,
+              href: paperUrl(paper),
               target: '_blank',
               rel: 'noopener noreferrer',
               'aria-label': `Open ${paper.title} (new tab)`,
@@ -429,6 +503,7 @@ export class PaperSearch {
           paper.venue && ` · ${paper.venue}`,
         ),
         el('p', { class: 'paper-dialog__abstract' }, paper.abstract),
+        el('div', { class: 'paper-dialog__help' }, backupLink(paper), reportLinkButton(paper)),
         el(
           'div',
           { class: 'dialog__actions' },
@@ -436,7 +511,7 @@ export class PaperSearch {
             'a',
             {
               class: 'btn btn--ghost btn--sm',
-              href: paper.doi ?? paper.openalexUrl,
+              href: paperUrl(paper),
               target: '_blank',
               rel: 'noopener noreferrer',
             },
@@ -455,47 +530,5 @@ export class PaperSearch {
     await this.#onAdd(paper);
     this.#renderResults();
     if (this.#dialog?.open && this.#detailsPaper === paper) this.#renderDetails();
-  }
-
-  // ‹ 1 … 4 [5] 6 … 12 ›: first, last, and PAGE_WINDOW pages either side of the current one.
-  #pager(page, pages) {
-    const shown = [...new Set([1, pages])];
-    for (let n = page - PAGE_WINDOW; n <= page + PAGE_WINDOW; n++) {
-      if (n > 1 && n < pages) shown.push(n);
-    }
-    shown.sort((a, b) => a - b);
-
-    const button = (label, target, attrs = {}) =>
-      el(
-        'button',
-        {
-          class: 'pager__button',
-          type: 'button',
-          ...attrs,
-          on: { click: () => this.#goToPage(target) },
-        },
-        label,
-      );
-    const numbers = shown.flatMap((n, i) => [
-      i > 0 &&
-        n - shown[i - 1] > 1 &&
-        el('li', { class: 'pager__gap', 'aria-hidden': 'true' }, '…'),
-      el(
-        'li',
-        {},
-        button(String(n), n, {
-          'aria-label': `Page ${n}`,
-          'aria-current': n === page ? 'page' : undefined,
-        }),
-      ),
-    ]);
-
-    return el(
-      'nav',
-      { class: 'pager', 'aria-label': 'Search results pages' },
-      button('‹', page - 1, { 'aria-label': 'Previous page', disabled: page <= 1 }),
-      el('ol', { class: 'pager__pages' }, numbers),
-      button('›', page + 1, { 'aria-label': 'Next page', disabled: page >= pages }),
-    );
   }
 }

@@ -1049,15 +1049,15 @@ Each day is 5 focused hours. Times are hours from the session start.
   - POST thread (server sets `id`).
   - PUT thread (validate every `entryId` belongs to this review).
   - DELETE thread with `$pull`.
-- [ ] `threads.js`: new-thread form; each thread as an `<ol>` stepper with ↑ ↓ ✕ `<button>`s (each sends the new `entryIds` order via PUT); "Add paper" `<select>`; rename (inline form) and delete.
-- [ ] **Done when:** R4a works: create a thread with 3 papers, reorder, reload, and the order persists.
+- [x] `threads.js`: new-thread form; each thread as an `<ol>` stepper with ↑ ↓ ✕ `<button>`s (each sends the new `entryIds` order via PUT); "Add paper" `<select>`; rename (inline form) and delete.
+- [x] **Done when:** R4a works: create a thread with 3 papers, reorder, reload, and the order persists.
 
 ### H-10 Citations tab (1 h)
 
 - [x] `GET /api/reviews/:id/citations` per §10.5.
-- [ ] `citations.js`: stat line, grouped list "A cites → B, C" (click a title → switches to the Reading list and opens that entry), "Most cited in this review" top 3. Also add "cited by N in review" badges into `entryCard.js`.
-- [ ] Empty-state copy: "None of your saved papers cite each other yet. Try adding papers from the same thread of work."
-- [ ] **Demo tip:** find a seeded anchor paper + 3 of its citers and add them to a demo review.
+- [x] `citations.js`: stat line, grouped list "A cites → B, C" (click a title → switches to the Reading list and opens that entry), "Most cited in this review" top 3. Also add "cited by N in review" badges into `entryCard.js`.
+- [x] Empty-state copy: "None of your saved papers cite each other yet. Try adding papers from the same thread of work."
+- [x] **Demo tip:** find a seeded anchor paper + 3 of its citers and add them to a demo review.
 
 ### H-11 Polish own pages (30 min)
 

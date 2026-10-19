@@ -1,7 +1,10 @@
 import { el } from '../shared/dom.js';
 import { icon } from '../shared/icons.js';
 import { entryCard } from './entryCard.js';
+import { pageOf, pager } from './pager.js';
 import { STATUSES } from './vocab.js';
+
+const PAGE_SIZE = 10;
 
 const SORTS = [
   { id: 'added', label: 'Recently added', compare: () => 0 },
@@ -14,13 +17,15 @@ const SORTS = [
   },
 ];
 
-// The "Reading list" tab: status filter chips, a sort, and the numbered entries.
+// The "Reading list" tab: status filter chips, a sort, and the numbered entries, PAGE_SIZE at a
+// time (all entries arrive with the review, so paging keeps the page light, not the network).
 // The page owns the entries; this class owns how they are filtered, sorted and drawn.
 // Entries are only re-drawn when a change moves them (a filter or sort they no longer fit),
 // so typing in one entry's notes is never interrupted by a save elsewhere.
 export class ReadingList {
   #filter = 'all';
   #sort = 'added';
+  #page = 1;
   #entries = [];
   #handlers;
 
@@ -28,13 +33,29 @@ export class ReadingList {
     this.#handlers = handlers;
     this.toolbar = el('div', { class: 'list-toolbar' });
     this.list = el('ol', { class: 'entry-list' });
-    root.replaceChildren(this.toolbar, this.list);
+    this.pages = el('div');
+    root.replaceChildren(this.toolbar, this.list, this.pages);
   }
 
   render(entries) {
     this.#entries = entries;
     this.#renderToolbar();
     this.#renderList();
+  }
+
+  // Scrolls to one entry and briefly highlights it (opened from threads, citations or the map).
+  reveal(entryId) {
+    const entry = this.#entries.find((e) => e._id === entryId);
+    if (entry && this.#filter !== 'all' && entry.status !== this.#filter) this.#filter = 'all';
+    const position = this.#visible().findIndex((e) => e._id === entryId);
+    if (position >= 0) this.#page = Math.floor(position / PAGE_SIZE) + 1;
+    this.render(this.#entries);
+    const node = this.list.querySelector(`#entry-${CSS.escape(entryId)}`);
+    if (!node) return;
+    node.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    node.querySelector('.entry__title a')?.focus({ preventScroll: true });
+    node.classList.remove('is-revealed');
+    requestAnimationFrame(() => node.classList.add('is-revealed'));
   }
 
   // After a save: re-draw the list only if the change affects its filter or order.
@@ -66,6 +87,7 @@ export class ReadingList {
           on: {
             click: () => {
               this.#filter = id;
+              this.#page = 1;
               this.render(this.#entries);
             },
           },
@@ -92,6 +114,7 @@ export class ReadingList {
             on: {
               change: (event) => {
                 this.#sort = event.target.value;
+                this.#page = 1;
                 this.#renderList();
               },
             },
@@ -104,6 +127,7 @@ export class ReadingList {
   }
 
   #renderList() {
+    this.pages.replaceChildren();
     if (this.#entries.length === 0) {
       this.list.replaceChildren(this.#emptyList());
       return;
@@ -116,9 +140,25 @@ export class ReadingList {
       );
       return;
     }
+    // After a removal the last page can empty out; pageOf() clamps back to a real page.
+    const { items, page, pages, offset } = pageOf(visible, this.#page, PAGE_SIZE);
+    this.#page = page;
+    const nav = pager({
+      page,
+      pages,
+      label: 'Reading list pages',
+      onPage: (n) => {
+        this.#page = n;
+        this.#renderList();
+        this.toolbar.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      },
+    });
+    if (nav) this.pages.replaceChildren(nav);
+    this.list.start = offset + 1;
     this.list.replaceChildren(
-      ...visible.map((entry, i) =>
-        entryCard(entry, i + 1, {
+      ...items.map((entry, i) =>
+        entryCard(entry, offset + i + 1, {
+          links: this.#handlers.linksOf(entry._id),
           onUpdate: (fields) => this.#handlers.onUpdate(entry, fields),
           onRemove: () => this.#handlers.onRemove(entry),
         }),

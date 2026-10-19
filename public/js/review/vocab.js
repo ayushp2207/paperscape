@@ -14,6 +14,13 @@ export const RELATIONS = [
   { id: 'background', label: 'Background reading' },
 ];
 
+// Why a paper's link was reported as broken.
+export const LINK_REPORT_REASONS = [
+  { id: 'not-loading', label: 'The link doesn’t load' },
+  { id: 'wrong-paper', label: 'It opens a different paper' },
+  { id: 'other', label: 'Something else' },
+];
+
 export const STATUS_IDS = STATUSES.map((status) => status.id);
 export const RELATION_IDS = RELATIONS.map((relation) => relation.id);
 

@@ -143,9 +143,12 @@ export async function citationGraph(reviewId, ownerId) {
     title: paper.title,
     year: paper.year,
   }));
+  // OpenAlex sometimes holds a preprint and its published version as two works that cite each
+  // other; a link between two copies of the same paper says nothing, so it is left out.
+  const titleOf = new Map(saved.map((paper) => [paper.openalexId, paper.title.toLowerCase()]));
   const edges = saved.flatMap((paper) =>
     paper.referencedWorks
-      .filter((ref) => entryIdByOpenalex.has(ref))
+      .filter((ref) => entryIdByOpenalex.has(ref) && titleOf.get(ref) !== paper.title.toLowerCase())
       .map((ref) => ({
         from: entryIdByPaper.get(String(paper._id)),
         to: entryIdByOpenalex.get(ref),

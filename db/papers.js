@@ -3,12 +3,15 @@ import { buildVocabulary } from '../public/js/review/topics.js';
 
 export const collection = () => getDb().collection('papers');
 
-// Search results and lookups never need the (long) reference list; only citation code does.
-const SUMMARY = { projection: { referencedWorks: 0 } };
+// Search results and lookups never need the (long) reference list, and never expose link
+// reports (they hold other browsers' ids).
+const SUMMARY = { projection: { referencedWorks: 0, linkReports: 0 } };
 
-export async function search({ q, area, yearFrom, yearTo, page, limit }) {
+// `citesOpenalexId` keeps only papers whose reference list includes that paper.
+export async function search({ q, area, yearFrom, yearTo, page, limit, citesOpenalexId }) {
   const filter = {};
   if (q) filter.$text = { $search: q };
+  if (citesOpenalexId) filter.referencedWorks = citesOpenalexId;
   if (area) filter.areas = area;
   if (yearFrom || yearTo) {
     filter.year = {};
@@ -44,7 +47,17 @@ export function topicVocabulary() {
 }
 
 export function getById(id) {
-  return collection().findOne({ _id: id });
+  return collection().findOne({ _id: id }, { projection: { linkReports: 0 } });
+}
+
+// A browser's report that a paper's link is broken; reporting again replaces its earlier one.
+// Stored on the paper (the seed never overwrites this field) for a maintainer to check.
+export async function reportLink(id, ownerId, { reason, url }) {
+  await collection().updateOne({ _id: id }, { $pull: { linkReports: { ownerId } } });
+  await collection().updateOne(
+    { _id: id },
+    { $push: { linkReports: { ownerId, reason, url, reportedAt: new Date() } } },
+  );
 }
 
 // Upserts by OpenAlex id. A paper found under several areas keeps all of them.
