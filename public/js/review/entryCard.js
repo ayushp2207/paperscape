@@ -1,5 +1,6 @@
 import { el } from '../shared/dom.js';
 import { icon } from '../shared/icons.js';
+import { backupLink, paperUrl, reportLinkButton } from './linkReport.js';
 import { LIMITS, RELATIONS, STATUSES } from './vocab.js';
 
 const MAX_AUTHORS = 3;
@@ -204,8 +205,9 @@ function marginNotes(entry, onSave) {
 }
 
 // One saved paper in the reading list: numbered, with reading controls and margin notes.
-// onUpdate(fields) saves and resolves true/false; onRemove() asks and removes.
-export function entryCard(entry, number, { onUpdate, onRemove }) {
+// links: { cites, citedBy } within this review. onUpdate(fields) saves and resolves true/false;
+// onRemove() asks and removes.
+export function entryCard(entry, number, { links, onUpdate, onRemove }) {
   const { paper } = entry;
   return el(
     'li',
@@ -220,13 +222,21 @@ export function entryCard(entry, number, { onUpdate, onRemove }) {
         el('span', { class: 'mono' }, String(paper.year)),
         el('span', {}, `${paper.citedByCount.toLocaleString()} citations`),
         paper.venue && el('span', {}, paper.venue),
+        links?.citedBy.length > 0 &&
+          el(
+            'span',
+            { class: 'badge badge--accent' },
+            `Cited by ${links.citedBy.length} in this review`,
+          ),
+        links?.cites.length > 0 &&
+          el('span', { class: 'badge badge--outline' }, `Cites ${links.cites.length}`),
       ),
       el(
         'h3',
         { class: 'entry__title', id: `entry-title-${entry._id}` },
         el(
           'a',
-          { href: paper.doi ?? paper.openalexUrl, target: '_blank', rel: 'noopener noreferrer' },
+          { href: paperUrl(paper), target: '_blank', rel: 'noopener noreferrer' },
           paper.title,
         ),
       ),
@@ -272,14 +282,20 @@ export function entryCard(entry, number, { onUpdate, onRemove }) {
       ),
       findingsEditor(entry, onUpdate),
       el(
-        'button',
-        {
-          class: 'link-btn entry__remove',
-          type: 'button',
-          on: { click: onRemove },
-        },
-        icon('trash', { size: 14 }),
-        'Remove from review',
+        'div',
+        { class: 'entry__actions' },
+        backupLink(paper),
+        reportLinkButton(paper),
+        el(
+          'button',
+          {
+            class: 'link-btn entry__remove',
+            type: 'button',
+            on: { click: onRemove },
+          },
+          icon('trash', { size: 14 }),
+          'Remove from review',
+        ),
       ),
     ),
     marginNotes(entry, onUpdate),

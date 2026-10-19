@@ -1,15 +1,19 @@
 import { ApiError, api } from '../shared/api.js';
 import { el, qs, qsa } from '../shared/dom.js';
-import { confirmDialog, errorState, skeleton, toast } from '../shared/ui.js';
+import { confirmDialog, errorState, showFieldErrors, toast } from '../shared/ui.js';
+import { CitationsView, citationIndex } from './citations.js';
+import { OrbitMap } from './orbitMap.js';
 import { DEFAULT_PAGE_SIZE, PAGE_SIZES, PaperSearch } from './paperSearch.js';
 import { countsOf } from './progress.js';
 import { ReadingList } from './readingList.js';
 import { reviewEditor } from './reviewEditor.js';
 import { reviewHeader } from './reviewHeader.js';
+import { reviewPageSkeleton } from './skeletons.js';
+import { ThreadsView } from './threads.js';
 import { loadVocabulary } from './vocabularyClient.js';
 
-const TABS = ['list', 'find'];
-const SEARCH_PARAMS = ['q', 'area', 'yearFrom', 'yearTo', 'page', 'limit'];
+const TABS = ['list', 'find', 'threads', 'citations', 'map'];
+const SEARCH_PARAMS = ['q', 'area', 'yearFrom', 'yearTo', 'page', 'limit', 'cites'];
 // Defaults are left out of the URL to keep links short.
 const DEFAULTS = { page: 1, limit: DEFAULT_PAGE_SIZE };
 
@@ -19,6 +23,8 @@ const reviewId = params.get('id');
 const state = {
   review: null,
   entries: [],
+  citations: { nodes: [], edges: [] },
+  index: new Map(),
   loaded: false,
   error: null,
   editing: false,
@@ -28,9 +34,12 @@ const state = {
 const headerRoot = qs('#review-root');
 const body = qs('#review-body');
 const tabs = qsa('[role="tab"]', body);
-const panels = { list: qs('#panel-list'), find: qs('#panel-find') };
+const panels = Object.fromEntries(TABS.map((tab) => [tab, qs(`#panel-${tab}`)]));
 let readingList;
 let paperSearch;
+let threadsView;
+let citationsView;
+let orbitMap;
 
 // ---------- URL: the open tab and the search live in the address, so links and Back work ----------
 
@@ -50,14 +59,22 @@ function syncUrl(query) {
 // The search in the URL if there is one, else the review's own keywords and area.
 function initialQuery(review) {
   if (SEARCH_PARAMS.some((key) => params.has(key))) {
-    const number = (key) => (params.get(key) ? Number(params.get(key)) : undefined);
+    // Hand-edited or old links: anything that isn't a sensible whole number is ignored.
+    const number = (key, min, max) => {
+      const value = Number(params.get(key));
+      return params.get(key) && Number.isInteger(value) && value >= min && value <= max
+        ? value
+        : undefined;
+    };
+    const limit = number('limit', 1, Infinity);
     return {
       q: params.get('q') ?? '',
       area: params.get('area') ?? '',
-      yearFrom: number('yearFrom'),
-      yearTo: number('yearTo'),
-      page: number('page') ?? 1,
-      limit: PAGE_SIZES.includes(number('limit')) ? number('limit') : DEFAULT_PAGE_SIZE,
+      yearFrom: number('yearFrom', 2000, 2030),
+      yearTo: number('yearTo', 2000, 2030),
+      page: number('page', 1, Infinity) ?? 1,
+      limit: PAGE_SIZES.includes(limit) ? limit : DEFAULT_PAGE_SIZE,
+      cites: params.get('cites') ?? undefined,
     };
   }
   return { q: review.keywords.join(' ') || review.title, area: review.area ?? '' };
@@ -75,7 +92,57 @@ function selectTab(tab, { focus = false } = {}) {
   }
   for (const [name, panel] of Object.entries(panels)) panel.hidden = name !== tab;
   if (tab === 'find') paperSearch.start();
+  renderActive();
   syncUrl(paperSearch.query);
+}
+
+// Threads, Citations and the Map are drawn from page state when shown, and again when the
+// data behind them changes while they are open.
+function renderActive() {
+  if (state.tab === 'threads') threadsView.render(state.review.threads, state.entries);
+  if (state.tab === 'citations') citationsView.render(state.citations);
+  if (state.tab === 'map') {
+    orbitMap.render({
+      review: state.review,
+      entries: state.entries,
+      threads: state.review.threads,
+      index: state.index,
+    });
+  }
+}
+
+function renderCounts() {
+  qs('#list-count').textContent = String(state.entries.length);
+  qs('#threads-count').textContent = String(state.review.threads.length);
+  qs('#citations-count').textContent = String(state.citations.edges.length);
+}
+
+// From the citations, threads or map: show the paper in the reading list.
+function openEntry(entryId) {
+  selectTab('list');
+  readingList.reveal(entryId);
+}
+
+// "Find papers that cite this": the search tab, filtered to library papers citing that paper.
+function findCiting(entryId) {
+  const entry = state.entries.find((e) => e._id === entryId);
+  if (!entry) return;
+  paperSearch.findCiting(entry.paperId, entry.paper.title);
+  selectTab('find');
+}
+
+function showThreadOnMap(threadId) {
+  orbitMap.showThread(threadId);
+  selectTab('map');
+}
+
+// A 404 while saving means the review, paper or thread was changed or deleted elsewhere (another
+// tab or window): say so and reload instead of showing stale data. Returns true if handled.
+function reloadIfGone(err) {
+  if (!(err instanceof ApiError) || err.status !== 404) return false;
+  toast('This changed in another tab or window. Reloading the latest version…', 'warning');
+  load();
+  return true;
 }
 
 for (const button of tabs) {
@@ -99,10 +166,24 @@ for (const button of tabs) {
 
 const savedPaperIds = () => new Set(state.entries.map((entry) => entry.paperId));
 
-function entriesChanged() {
+function setCitations(graph) {
+  state.citations = graph;
+  state.index = citationIndex(graph);
+}
+
+// Adding or removing a paper can add or remove citation links: one request refreshes them.
+async function entriesChanged() {
   renderHeader();
-  qs('#list-count').textContent = String(state.entries.length);
+  renderCounts();
   paperSearch.refresh();
+  try {
+    setCitations(await api.get(`/reviews/${reviewId}/citations`));
+    readingList.render(state.entries);
+    renderCounts();
+    renderActive();
+  } catch {
+    // The links stay as they were; the next change or reload refreshes them.
+  }
 }
 
 async function addPaper(paper) {
@@ -113,6 +194,7 @@ async function addPaper(paper) {
     entriesChanged();
     toast('Added to your reading list', 'success');
   } catch (err) {
+    if (reloadIfGone(err)) return;
     toast(
       err instanceof ApiError && err.status === 409 ? 'Already in this review' : err.message,
       err.status === 409 ? 'info' : 'error',
@@ -126,11 +208,13 @@ async function updateEntry(entry, fields) {
   Object.assign(entry, fields);
   readingList.changed(fields);
   renderHeader();
+  if (state.tab === 'map') renderActive();
   try {
     Object.assign(entry, await api.put(`/entries/${entry._id}`, fields));
     return true;
   } catch (err) {
     Object.assign(entry, before);
+    if (reloadIfGone(err)) return false;
     readingList.render(state.entries);
     renderHeader();
     toast(err.message, 'error');
@@ -148,11 +232,70 @@ async function removeEntry(entry) {
   try {
     await api.del(`/entries/${entry._id}`);
     state.entries = state.entries.filter((e) => e._id !== entry._id);
+    // The server also took the paper out of every thread.
+    for (const thread of state.review.threads) {
+      thread.entryIds = thread.entryIds.filter((id) => id !== entry._id);
+    }
     readingList.render(state.entries);
     entriesChanged();
     toast('Paper removed', 'success');
   } catch (err) {
-    toast(err.message, 'error');
+    if (!reloadIfGone(err)) toast(err.message, 'error');
+  }
+}
+
+// ---------- Threads ----------
+
+function threadError(err, form) {
+  if (reloadIfGone(err)) return;
+  if (form && err instanceof ApiError && err.details) showFieldErrors(form, err.details);
+  else toast(err.details?.entryIds ?? err.message, 'error');
+}
+
+async function createThread(form, fields) {
+  try {
+    const thread = await api.post(`/reviews/${reviewId}/threads`, fields);
+    state.review.threads.push(thread);
+    renderCounts();
+    renderActive();
+    toast('Thread created', 'success');
+    return true;
+  } catch (err) {
+    threadError(err, form);
+    return false;
+  }
+}
+
+// Optimistic, like entries: reorders and renames show at once and roll back on failure.
+async function updateThread(thread, fields, form) {
+  const before = { ...thread, entryIds: [...thread.entryIds] };
+  Object.assign(thread, fields);
+  renderActive();
+  try {
+    Object.assign(thread, await api.put(`/reviews/${reviewId}/threads/${thread.id}`, fields));
+    return true;
+  } catch (err) {
+    Object.assign(thread, before);
+    renderActive();
+    threadError(err, form);
+    return false;
+  }
+}
+
+async function deleteThread(thread) {
+  const confirmed = await confirmDialog({
+    title: 'Delete this thread?',
+    message: `"${thread.title}" will be deleted. The papers stay in your reading list.`,
+  });
+  if (!confirmed) return;
+  try {
+    await api.del(`/reviews/${reviewId}/threads/${thread.id}`);
+    state.review.threads = state.review.threads.filter((t) => t.id !== thread.id);
+    renderCounts();
+    renderActive();
+    toast('Thread deleted', 'success');
+  } catch (err) {
+    if (!reloadIfGone(err)) toast(err.message, 'error');
   }
 }
 
@@ -219,39 +362,71 @@ function notFound() {
   );
 }
 
+// Couldn't load (offline, server down): say so, offer a retry and a way back.
+function loadFailed(message) {
+  const box = errorState(message, load);
+  box.append(el('a', { class: 'btn btn--ghost', href: 'reviews.html' }, 'Back to your reviews'));
+  return box;
+}
+
 function render() {
   if (!state.loaded) {
-    headerRoot.replaceChildren(skeleton(1, 'card'));
+    headerRoot.replaceChildren(reviewPageSkeleton());
     return;
   }
   if (state.error) {
     body.hidden = true;
     const missing = state.error instanceof ApiError && state.error.status === 404;
-    headerRoot.replaceChildren(missing ? notFound() : errorState(state.error.message, load));
+    headerRoot.replaceChildren(missing ? notFound() : loadFailed(state.error.message));
     return;
   }
   renderHeader();
   body.hidden = false;
-  qs('#list-count').textContent = String(state.entries.length);
+  renderCounts();
   readingList.render(state.entries);
   selectTab(state.tab);
 }
 
-// One request loads the review and all its saved papers.
+// One request loads the review, its saved papers and the citation links between them.
 async function load() {
   state.loaded = false;
   render();
   try {
     if (!reviewId) throw new ApiError(404, 'Review not found');
-    const { entries, ...review } = await api.get(`/reviews/${reviewId}`, { include: 'entries' });
+    const { entries, citations, ...review } = await api.get(`/reviews/${reviewId}`, {
+      include: 'entries,citations',
+    });
     state.review = review;
     state.entries = entries;
+    setCitations(citations);
     state.error = null;
     document.title = `${review.title} · Paperscape`;
+    const findPapers = () => selectTab('find', { focus: true });
     readingList ??= new ReadingList(panels.list, {
       onUpdate: updateEntry,
       onRemove: removeEntry,
-      onFindPapers: () => selectTab('find', { focus: true }),
+      onFindPapers: findPapers,
+      linksOf: (entryId) => state.index.get(entryId),
+    });
+
+    const linksOf = (entryId) => state.index.get(entryId);
+    threadsView ??= new ThreadsView(panels.threads, {
+      onCreate: createThread,
+      onUpdate: updateThread,
+      onDelete: deleteThread,
+      onOpenEntry: openEntry,
+      onFindPapers: findPapers,
+      onShowOnMap: showThreadOnMap,
+      linksOf,
+    });
+    citationsView ??= new CitationsView(panels.citations, {
+      onOpenEntry: openEntry,
+      onFindCiting: findCiting,
+    });
+    orbitMap ??= new OrbitMap(panels.map, {
+      onOpenEntry: openEntry,
+      onFindPapers: findPapers,
+      onFindCiting: findCiting,
     });
     paperSearch ??= new PaperSearch(panels.find, {
       query: initialQuery(review),

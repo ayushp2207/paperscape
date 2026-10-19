@@ -1,7 +1,15 @@
 import { Router } from 'express';
 
-import { getById, search, topicVocabulary } from '../db/papers.js';
-import { isIntInRange, notFound, toObjectId, validator } from '../lib/validation.js';
+import { getById, reportLink, search, topicVocabulary } from '../db/papers.js';
+import {
+  ValidationError,
+  isIntInRange,
+  isObjectIdString,
+  notFound,
+  toObjectId,
+  validator,
+} from '../lib/validation.js';
+import { LINK_REPORT_REASONS } from '../public/js/review/vocab.js';
 import { AREA_IDS } from '../public/js/shared/areas.js';
 
 const router = Router();
@@ -21,6 +29,7 @@ function parseSearchQuery(query) {
   const v = validator();
   const q = typeof query.q === 'string' ? query.q.trim() : '';
   const area = typeof query.area === 'string' && query.area ? query.area : undefined;
+  const cites = typeof query.cites === 'string' && query.cites ? query.cites : undefined;
   const yearFrom = toInt(query.yearFrom, undefined);
   const yearTo = toInt(query.yearTo, undefined);
   const page = toInt(query.page, 1);
@@ -39,6 +48,7 @@ function parseSearchQuery(query) {
     'yearTo',
     '"To" year must not be before "From" year',
   );
+  v.check(!cites || isObjectIdString(cites), 'cites', 'Unknown paper');
   v.check(Number.isInteger(page), 'page', 'Page must be a whole number');
   v.check(Number.isInteger(limit), 'limit', 'Limit must be a whole number');
   v.done();
@@ -47,6 +57,7 @@ function parseSearchQuery(query) {
   return {
     q,
     area,
+    cites,
     yearFrom,
     yearTo,
     page: Math.max(1, page),
@@ -54,8 +65,14 @@ function parseSearchQuery(query) {
   };
 }
 
+// With `cites=<paperId>`, only papers that cite that paper; the reply names it as `citing`.
 router.get('/', async (req, res) => {
-  res.json(await search(parseSearchQuery(req.query)));
+  const { cites, ...query } = parseSearchQuery(req.query);
+  if (!cites) return res.json(await search(query));
+  const cited = await getById(toObjectId(cites, 'Paper'));
+  if (!cited) throw notFound('Paper');
+  const result = await search({ ...query, citesOpenalexId: cited.openalexId });
+  res.json({ ...result, citing: { _id: cited._id, title: cited.title } });
 });
 
 // Research phrases mined from the papers, for title, keyword and area suggestions in the
@@ -71,6 +88,21 @@ router.get('/:id', async (req, res) => {
   const paper = await getById(toObjectId(req.params.id, 'Paper'));
   if (!paper) throw notFound('Paper');
   res.json(paper);
+});
+
+// Flags the paper's link (DOI, else OpenAlex page) as broken. Body: { reason }.
+router.post('/:id/report-link', async (req, res) => {
+  const reasons = LINK_REPORT_REASONS.map((reason) => reason.id);
+  if (!reasons.includes(req.body?.reason)) {
+    throw new ValidationError({ reason: 'Pick what is wrong with the link' });
+  }
+  const paper = await getById(toObjectId(req.params.id, 'Paper'));
+  if (!paper) throw notFound('Paper');
+  await reportLink(paper._id, req.ownerId, {
+    reason: req.body.reason,
+    url: paper.doi ?? paper.openalexUrl,
+  });
+  res.status(201).json({ ok: true });
 });
 
 export default router;

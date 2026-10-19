@@ -1,13 +1,18 @@
 import { api } from '../shared/api.js';
 import { el, qs } from '../shared/dom.js';
-import { confirmDialog, errorState, skeleton, toast } from '../shared/ui.js';
+import { confirmDialog, errorState, toast } from '../shared/ui.js';
 import { emptyReviews, orbitIllustration } from './emptyReviews.js';
+import { pageOf, pager } from './pager.js';
 import { reviewCard } from './reviewCard.js';
 import { EMPTY_COUNTS, initComposer } from './reviewComposer.js';
 import { reviewEditor } from './reviewEditor.js';
+import { reviewCardsSkeleton } from './skeletons.js';
 import { loadVocabulary } from './vocabularyClient.js';
 
-const state = { reviews: [], loaded: false, error: null, editingId: null };
+// Reviews per page; the "New question" card joins the last page.
+const PAGE_SIZE = 8;
+
+const state = { reviews: [], loaded: false, error: null, editingId: null, page: 1 };
 const root = qs('#reviews-root');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -18,6 +23,7 @@ const composer = initComposer(qs('#composer'), qs('#composer-preview'), {
   loadVocabulary,
   onCreated(review, from) {
     state.reviews.unshift({ ...review, counts: EMPTY_COUNTS, lastActivityAt: review.updatedAt });
+    state.page = 1; // the new review is first in the list
     render();
     flyIn(review._id, from);
   },
@@ -108,7 +114,7 @@ function card(review) {
 
 function render() {
   if (!state.loaded) {
-    root.replaceChildren(skeleton(3, 'card'));
+    root.replaceChildren(reviewCardsSkeleton(3));
     return;
   }
   if (state.error) {
@@ -119,9 +125,23 @@ function render() {
     root.replaceChildren(emptyReviews());
     return;
   }
+  // One request brings every review; paging only keeps the grid short.
+  const { items, page, pages } = pageOf(state.reviews, state.page, PAGE_SIZE);
+  state.page = page;
+  const nav = pager({
+    page,
+    pages,
+    label: 'Review pages',
+    onPage: (n) => {
+      state.page = n;
+      render();
+      root.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
+  });
   root.replaceChildren(
     listHeader(),
-    el('div', { class: 'grid review-grid' }, state.reviews.map(card), newQuestionCard()),
+    el('div', { class: 'grid review-grid' }, items.map(card), page === pages && newQuestionCard()),
+    ...(nav ? [nav] : []),
   );
 }
 

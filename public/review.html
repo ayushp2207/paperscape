@@ -93,6 +93,36 @@
           >
             Find papers
           </button>
+          <button
+            class="tab"
+            type="button"
+            role="tab"
+            id="tab-threads"
+            aria-controls="panel-threads"
+            data-tab="threads"
+          >
+            Threads <span class="tab__count" id="threads-count"></span>
+          </button>
+          <button
+            class="tab"
+            type="button"
+            role="tab"
+            id="tab-citations"
+            aria-controls="panel-citations"
+            data-tab="citations"
+          >
+            Citations <span class="tab__count" id="citations-count"></span>
+          </button>
+          <button
+            class="tab"
+            type="button"
+            role="tab"
+            id="tab-map"
+            aria-controls="panel-map"
+            data-tab="map"
+          >
+            Map
+          </button>
         </div>
         <section
           class="tab-panel"
@@ -107,6 +137,30 @@
           role="tabpanel"
           id="panel-find"
           aria-labelledby="tab-find"
+          tabindex="0"
+          hidden
+        ></section>
+        <section
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-threads"
+          aria-labelledby="tab-threads"
+          tabindex="0"
+          hidden
+        ></section>
+        <section
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-citations"
+          aria-labelledby="tab-citations"
+          tabindex="0"
+          hidden
+        ></section>
+        <section
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-map"
+          aria-labelledby="tab-map"
           tabindex="0"
           hidden
         ></section>
