@@ -5,13 +5,13 @@ export const STATUSES = [
   { id: 'read', label: 'Read' },
 ];
 
-// How a paper relates to the review's research question.
+// The role a paper plays for the review's research question.
 export const RELATIONS = [
-  { id: 'unsure', label: 'Unsure' },
-  { id: 'supports', label: 'Supports' },
-  { id: 'challenges', label: 'Challenges' },
-  { id: 'method', label: 'Method' },
-  { id: 'background', label: 'Background' },
+  { id: 'unsure', label: 'Not sure yet' },
+  { id: 'supports', label: 'Supports my question' },
+  { id: 'challenges', label: 'Challenges my question' },
+  { id: 'method', label: 'Gives a method I can use' },
+  { id: 'background', label: 'Background reading' },
 ];
 
 export const STATUS_IDS = STATUSES.map((status) => status.id);
@@ -29,6 +29,8 @@ export const LIMITS = {
   threadTitle: 80,
   threadNote: 500,
   minThreadPapers: 2,
-  relevanceMin: 1,
+  // Relevance is a 5-star rating in half stars: 0.5, 1, … 5.
+  relevanceMin: 0.5,
   relevanceMax: 5,
+  relevanceStep: 0.5,
 };

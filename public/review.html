@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="css/components/chips.css" />
     <link rel="stylesheet" href="css/components/tabs.css" />
     <link rel="stylesheet" href="css/components/states.css" />
+    <link rel="stylesheet" href="css/pages/reviews.css" />
     <link rel="stylesheet" href="css/pages/review.css" />
   </head>
   <body>
@@ -67,7 +68,49 @@
       </div>
     </header>
     <main id="main" class="container">
-      <div id="review-root"></div>
+      <a class="back-link" href="reviews.html">← Your reviews</a>
+      <div id="review-root" aria-live="polite"></div>
+
+      <div class="review-body" id="review-body" hidden>
+        <div class="tabs review-tabs" role="tablist" aria-label="Review sections">
+          <button
+            class="tab"
+            type="button"
+            role="tab"
+            id="tab-list"
+            aria-controls="panel-list"
+            data-tab="list"
+          >
+            Reading list <span class="tab__count" id="list-count"></span>
+          </button>
+          <button
+            class="tab"
+            type="button"
+            role="tab"
+            id="tab-find"
+            aria-controls="panel-find"
+            data-tab="find"
+          >
+            Find papers
+          </button>
+        </div>
+        <section
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-list"
+          aria-labelledby="tab-list"
+          tabindex="0"
+          hidden
+        ></section>
+        <section
+          class="tab-panel"
+          role="tabpanel"
+          id="panel-find"
+          aria-labelledby="tab-find"
+          tabindex="0"
+          hidden
+        ></section>
+      </div>
     </main>
     <footer class="site-footer">
       <div class="container site-footer__inner">

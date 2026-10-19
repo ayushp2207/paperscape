@@ -1,1 +1,737 @@
-/* Review detail page and its tabs (H-6 to H-10) */
+/* Review page: header, tabs, the reading list (numbered entries with margin notes) and the
+   paper search (a sentence with fill-in blanks). Card pieces come from reviews.css. */
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+.review-header {
+  --area: var(--accent);
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(
+      circle at 92% 0%,
+      color-mix(in srgb, var(--area) 20%, transparent),
+      transparent 45%
+    ),
+    var(--surface);
+}
+
+.review-header.has-area {
+  border-top: 3px solid var(--area);
+}
+
+.review-header__top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.review-header__heading {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.review-header__title {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.review-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  align-self: start;
+}
+
+.review-header__question {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+}
+
+@media (max-width: 640px) {
+  .review-header {
+    padding: var(--space-5);
+  }
+
+  .review-header__top {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .review-header__actions {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+}
+
+/* ---------- Tabs ---------- */
+.review-body {
+  margin-top: var(--space-5);
+}
+
+.review-tabs {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.tab__count {
+  min-width: 1.5em;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.tab__count:empty {
+  display: none;
+}
+
+.tab-panel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+
+/* ---------- Find papers: the search is a sentence with fill-in blanks ---------- */
+.search-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.search-sentence__word {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.search-sentence__input {
+  min-width: 0;
+  padding: var(--space-1) var(--space-2);
+  border: 0;
+  border-bottom: 2px solid var(--accent);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  transition: background var(--duration) var(--ease);
+}
+
+.search-sentence__input:hover,
+.search-sentence__input:focus {
+  outline: none;
+  background: var(--accent-soft);
+}
+
+.search-sentence__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.search-sentence__input option {
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.search-sentence__input--topic {
+  flex: 1 1 16ch;
+}
+
+.search-sentence__input--year {
+  width: 6.5ch;
+  appearance: textfield;
+}
+
+.search-sentence__input--year::-webkit-inner-spin-button,
+.search-sentence__input--year::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.search-sentence__submit {
+  align-self: center;
+  margin-left: auto;
+}
+
+/* On a phone the topic gets its own line, so the rest of the sentence isn't squeezed. */
+@media (max-width: 560px) {
+  .search-sentence__input--topic {
+    flex-basis: 100%;
+  }
+}
+
+.search-sentence .field-error {
+  flex-basis: 100%;
+  font-size: 0.8125rem;
+}
+
+.search-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) 0;
+}
+
+.search-status {
+  min-height: 1.5em;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.paper-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Same height in every row: clamped text, actions pinned to the bottom. */
+.paper-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Side by side, titles reserve three lines so cards in a row line up; one per row, no need. */
+@media (min-width: 680px) {
+  .paper-card__title {
+    min-height: calc(3 * 1.35em);
+  }
+}
+
+.paper-card__open {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.paper-card__open:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.paper-card__authors {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.paper-card__snippet {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Details popup */
+.paper-dialog .dialog__header {
+  align-items: flex-start;
+}
+
+.paper-dialog__authors {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.paper-dialog__abstract {
+  max-height: 45vh;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+  line-height: 1.65;
+}
+
+.paper-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.paper-card__title,
+.entry__title {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.paper-card__title a,
+.entry__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.paper-card__title a:hover,
+.entry__title a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.paper-card__authors,
+.entry__authors {
+  font-size: 0.875rem;
+}
+
+.paper-card__abstract summary {
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.paper-card__abstract p {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.paper-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.paper-card__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.paper-card__saved {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--success);
+}
+
+/* ‹ 1 … 4 [5] 6 … 12 › */
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-top: var(--space-5);
+}
+
+.pager__pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pager__button {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    background var(--duration) var(--ease);
+}
+
+.pager__button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.pager__button[aria-current='page'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.pager__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pager__gap {
+  padding: 0 var(--space-1);
+  color: var(--text-muted);
+}
+
+/* ---------- Reading list ---------- */
+.list-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.chip__count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.list-toolbar__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.select--sm {
+  width: auto;
+  min-height: 32px;
+  padding-block: var(--space-1);
+  font-size: 0.875rem;
+}
+
+.entry-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-strong);
+}
+
+.entry-list__none {
+  padding: var(--space-6) 0;
+  text-align: center;
+}
+
+/* An entry reads like an annotated page: number, paper, and notes in the margin. */
+.entry {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(220px, 300px);
+  gap: var(--space-4) var(--space-5);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry__number {
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.entry--reading .entry__number {
+  color: var(--accent);
+}
+
+.entry--read .entry__number {
+  color: var(--success);
+}
+
+.entry__main {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  min-width: 0;
+}
+
+.entry__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-1) 0;
+}
+
+/* Reading status: three radios drawn as a segmented control. */
+.segmented {
+  display: inline-flex;
+  margin: 0;
+  padding: 2px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.segmented__option input,
+.stars__half input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented__label {
+  display: block;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.segmented__option:hover .segmented__label {
+  color: var(--text);
+}
+
+.segmented__option input:checked + .segmented__label {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.entry--read .segmented__option input:checked + .segmented__label {
+  background: var(--success);
+}
+
+.segmented__option input:focus-visible + .segmented__label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.entry__control-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.entry__relation {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Relevance: five stars filled to --rating (0.5 to 5). Ten invisible half-star radios sit on top,
+   so a click on the left or right half of a star picks x.5 or x. */
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.stars__track {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.stars__glyphs {
+  display: block;
+  font-size: 1.375rem;
+  letter-spacing: 0;
+  background: linear-gradient(
+    90deg,
+    var(--warning) calc(var(--rating) / 5 * 100%),
+    var(--surface-3) 0
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: background 120ms var(--ease);
+}
+
+.stars__hits {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.stars__half {
+  cursor: pointer;
+}
+
+.stars__track:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.stars__score {
+  min-width: 3ch;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.findings {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.findings__list {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.findings__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-3);
+  border-left: 2px solid var(--accent-2);
+  font-size: 0.9375rem;
+}
+
+.findings__add {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.findings__add[hidden] {
+  display: none;
+}
+
+/* Quiet text actions inside an entry ("Add finding", "Remove from review"). */
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link-btn:hover,
+.link-btn:focus-visible {
+  color: var(--accent);
+}
+
+.findings__add .input {
+  min-height: 34px;
+  font-size: 0.875rem;
+}
+
+.entry__remove {
+  justify-self: start;
+}
+
+.entry__remove:hover,
+.entry__remove:focus-visible {
+  color: var(--danger);
+}
+
+/* Margin notes: a thin rule, then handwritten-feeling italic text. */
+.entry__margin {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--border-strong);
+}
+
+.entry__margin-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.entry__notes {
+  width: 100%;
+  min-height: 7em;
+  padding: var(--space-1) 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.entry__notes:focus {
+  outline: none;
+}
+
+.entry__margin:focus-within {
+  border-left-color: var(--accent);
+}
+
+.entry__saved {
+  min-height: 1.2em;
+  font-size: 0.75rem;
+  color: var(--success);
+}
+
+@media (max-width: 860px) {
+  .entry {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .entry__margin {
+    grid-column: 2;
+  }
+
+  .entry__notes {
+    min-height: 3.5em;
+  }
+}

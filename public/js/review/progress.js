@@ -26,6 +26,14 @@ export const PHASES = [
   { label: 'Write', hint: 'Every paper is read', action: 'See citations', tab: 'citations' },
 ];
 
+// Status counts from loaded entries, same shape as the list API's `counts`, so the review page
+// can update its header after every change without asking the server.
+export function countsOf(entries) {
+  const counts = { 'to-read': 0, reading: 0, read: 0, total: entries.length };
+  for (const entry of entries) counts[entry.status]++;
+  return counts;
+}
+
 // Index into PHASES for where a review stands, from its status counts.
 export function phaseIndex({ total, read, reading }) {
   if (total === 0 || (read === 0 && reading === 0)) return 0;

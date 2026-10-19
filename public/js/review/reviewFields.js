@@ -306,13 +306,6 @@ export class ReviewFields {
     this.question.focus();
   }
 
-  // Puts a question in (e.g. an example the user picked) and runs the suggestions for it.
-  setQuestion(question) {
-    this.question.value = question;
-    this.#changed();
-    this.focus();
-  }
-
   #analyse() {
     this.#analysis = analyseQuestion(this.question.value, {
       keywords: this.keywords.value,

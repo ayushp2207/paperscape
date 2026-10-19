@@ -2,19 +2,19 @@ import { Router } from 'express';
 
 import { update } from '../db/reviewEntries.js';
 import { removeEntry } from '../db/reviews.js';
-import {
-  ValidationError,
-  isIntInRange,
-  isOneOf,
-  notFound,
-  toObjectId,
-  validator,
-} from '../lib/validation.js';
+import { ValidationError, isOneOf, notFound, toObjectId, validator } from '../lib/validation.js';
 import { LIMITS, RELATION_IDS, STATUS_IDS } from '../public/js/review/vocab.js';
 
 const router = Router();
 
 const EDITABLE = ['status', 'relation', 'relevance', 'notes', 'findings'];
+
+// Half-star rating: a number in range that is a whole multiple of the step (0.5).
+const isRating = (value) =>
+  typeof value === 'number' &&
+  value >= LIMITS.relevanceMin &&
+  value <= LIMITS.relevanceMax &&
+  Number.isInteger(value / LIMITS.relevanceStep);
 
 // Partial update: only the fields sent are validated and saved (a note saved on blur
 // sends just `notes`). Blank findings are dropped rather than rejected.
@@ -43,9 +43,9 @@ function parseEntryUpdate(body) {
   }
   if (has('relevance')) {
     v.check(
-      isIntInRange(relevance, LIMITS.relevanceMin, LIMITS.relevanceMax),
+      isRating(relevance),
       'relevance',
-      `Relevance must be a whole number from ${LIMITS.relevanceMin} to ${LIMITS.relevanceMax}`,
+      `Relevance must be ${LIMITS.relevanceMin} to ${LIMITS.relevanceMax} stars, in half stars`,
     );
   }
   if (has('notes')) {
