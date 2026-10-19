@@ -32,7 +32,7 @@
       "status": "ok"
     },
     "https://3dvconf.github.io/2027/": {
-      "fingerprint": "8778564a113cb021",
+      "fingerprint": "3eb82c6b581610e9",
       "status": "ok"
     },
     "https://aaai.org/conference/aaai/aaai-27/": {
@@ -68,7 +68,7 @@
       "status": "ok"
     },
     "https://conferences.sigcomm.org/imc/2027/": {
-      "fingerprint": "63466525c9b3e840",
+      "fingerprint": "c7a3b3cfb1306b0a",
       "status": "ok"
     },
     "https://conferences.sigcomm.org/sigcomm/2027/": {
@@ -193,7 +193,7 @@
       "status": "ok"
     },
     "https://virtual.aistats.org/Conferences/2027": {
-      "fingerprint": "c7140e33cc215ed1",
+      "fingerprint": "3ecdcf0fc0f53e9b",
       "status": "ok"
     },
     "https://wacv.thecvf.com/": {
@@ -224,7 +224,7 @@
       "status": "ok"
     },
     "https://www.corl.org/": {
-      "fingerprint": "cce4fa35ead01230",
+      "fingerprint": "78a61ff044461b21",
       "status": "ok"
     },
     "https://www.eucnc.eu": {
@@ -255,9 +255,11 @@
       "status": "blocked"
     },
     "https://www2027.thewebconf.org/": {
-      "fingerprint": "84606a1b563cb783",
+      "fingerprint": "2b5e7d4f6d06f00a",
       "status": "ok"
     }
   },
-  "reviewedReports": []
+  "reviewedReports": [
+    "6ad524c9729b47df5b076661"
+  ]
 }
