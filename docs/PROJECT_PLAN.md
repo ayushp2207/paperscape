@@ -992,9 +992,9 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-2 Papers seed script (1.5 h)
 
-- [ ] `scripts/seed-papers.js` per §10.6. **Order:** write the OpenAlex fetch + transform part first (log to console, no DB) while the scaffold PR is open. Once S0-2 merges (~hour 2), rebase and wire in `db/connection.js` to do the upserts. It reads `AREAS` queries. Duplicate the small query map inside the script if importing the browser module is awkward, or import `public/js/shared/areas.js` directly, since it is plain ESM.
-- [ ] Logs progress per area; final summary: total papers, papers with ≥ 1 in-collection reference (a proxy for citation density).
-- [ ] Run it against Atlas. **Done when:** ≥ 1,000 docs, the text index works (`db.papers.find({$text:{$search:"diffusion"}})` returns results), and ≥ 30 % of papers reference another paper in the collection.
+- [x] `scripts/seed-papers.js` per §10.6. **Order:** write the OpenAlex fetch + transform part first (log to console, no DB) while the scaffold PR is open. Once S0-2 merges (~hour 2), rebase and wire in `db/connection.js` to do the upserts. It reads `AREAS` queries. Duplicate the small query map inside the script if importing the browser module is awkward, or import `public/js/shared/areas.js` directly, since it is plain ESM.
+- [x] Logs progress per area; final summary: total papers, papers with ≥ 1 in-collection reference (a proxy for citation density).
+- [x] Run it against Atlas. **Done when:** ≥ 1,000 docs, the text index works (`db.papers.find({$text:{$search:"diffusion"}})` returns results), and ≥ 30 % of papers reference another paper in the collection.
 
 ### H-3 Reviews API (1 h)
 
@@ -1020,8 +1020,8 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-6 Paper search API + Find-papers tab (1.25 h)
 
-- [ ] `db/papers.js`: `search({ q, area, yearFrom, yearTo, page, limit })` returning `{ items, total, page, pages }`. Use a projection to exclude `referencedWorks`. Add `getById`.
-- [ ] `routes/papers.js`: validate and clamp numbers (limit ≤ 50, page ≥ 1, years 2000–2030).
+- [x] `db/papers.js`: `search({ q, area, yearFrom, yearTo, page, limit })` returning `{ items, total, page, pages }`. Use a projection to exclude `referencedWorks`. Add `getById`.
+- [x] `routes/papers.js`: validate and clamp numbers (limit ≤ 50, page ≥ 1, years 2000–2030).
 - [ ] `review.html` skeleton: header (title, question, progress), tabs (`<button role="tab">`). `reviewPage.js` loads the review + entries and owns `state`.
 - [ ] `search.js`: search `<form>`, result cards, abstract toggle (`<details>`), **Add to review** (POST entry → button becomes "Added ✓"), pagination buttons.
 - [ ] **Done when:** R2 fully works (search "diffusion", filter CV 2025, add 3 papers).
