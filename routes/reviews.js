@@ -26,6 +26,7 @@ import {
   toObjectId,
   validator,
 } from '../lib/validation.js';
+import { AREA_IDS } from '../public/js/shared/areas.js';
 import { LIMITS, STATUS_IDS } from '../public/js/review/vocab.js';
 
 const router = Router();
@@ -46,7 +47,7 @@ const isStringList = (value, maxItems, maxLength) =>
 function parseReviewInput(body) {
   requireObject(body);
   const v = validator();
-  const { title, question, description, keywords } = body;
+  const { title, question, description, keywords, area } = body;
   v.check(
     isNonEmptyString(title, LIMITS.title),
     'title',
@@ -63,6 +64,11 @@ function parseReviewInput(body) {
     `Description must be at most ${LIMITS.description} characters`,
   );
   v.check(
+    area === undefined || area === null || AREA_IDS.includes(area),
+    'area',
+    `Unknown area. Use: ${AREA_IDS.join(', ')}`,
+  );
+  v.check(
     keywords === undefined || isStringList(keywords, LIMITS.keywords, LIMITS.keyword),
     'keywords',
     `Up to ${LIMITS.keywords} keywords, each at most ${LIMITS.keyword} characters`,
@@ -74,6 +80,7 @@ function parseReviewInput(body) {
     question: question.trim(),
     description: (description ?? '').trim(),
     keywords: [...new Set((keywords ?? []).map((keyword) => keyword.trim()))],
+    area: area ?? null,
   };
 }
 

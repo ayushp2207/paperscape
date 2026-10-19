@@ -1,4 +1,5 @@
 import { getDb } from './connection.js';
+import { buildVocabulary } from '../public/js/review/topics.js';
 
 export const collection = () => getDb().collection('papers');
 
@@ -26,6 +27,20 @@ export async function search({ q, area, yearFrom, yearTo, page, limit }) {
     collection().countDocuments(filter),
   ]);
   return { items, total, page, pages: Math.max(1, Math.ceil(total / limit)) };
+}
+
+// Papers are read-only between seeds, so the vocabulary is built once per server start.
+let vocabulary;
+export function topicVocabulary() {
+  vocabulary ??= collection()
+    .find({}, { projection: { _id: 0, title: 1, abstract: 1, areas: 1 } })
+    .toArray()
+    .then(buildVocabulary)
+    .catch((err) => {
+      vocabulary = undefined;
+      throw err;
+    });
+  return vocabulary;
 }
 
 export function getById(id) {

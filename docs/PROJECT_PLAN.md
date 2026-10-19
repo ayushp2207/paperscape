@@ -1013,9 +1013,9 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-5 Reviews page (1.25 h)
 
-- [ ] `reviewsPage.js` + `reviewForm.js` + `reviews.css` per §9.
-- [ ] Card progress bar = 4 coloured segments by status counts (pure CSS flex with widths as %).
-- [ ] Create/edit dialog, delete with confirm (shows entry count). Toasts. Skeleton on load. Empty state CTA.
+- [x] `reviewsPage.js` + `reviewForm.js` + `reviews.css` per §9.
+- [x] Card progress bar = 4 coloured segments by status counts (pure CSS flex with widths as %).
+- [x] Create/edit dialog, delete with confirm (shows entry count). Toasts. Skeleton on load. Empty state CTA.
 - [ ] **Done when:** R1 fully works through the UI.
 
 ### H-6 Paper search API + Find-papers tab (1.25 h)
