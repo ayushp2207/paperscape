@@ -58,10 +58,6 @@ export function urgency(date, now = new Date()) {
   return 'ok';
 }
 
-export function daysBetween(a, b) {
-  return Math.round((new Date(b).getTime() - new Date(a).getTime()) / DAY_MS);
-}
-
 const RELATIVE_UNITS = [
   ['year', 365 * DAY_MS],
   ['month', 30 * DAY_MS],

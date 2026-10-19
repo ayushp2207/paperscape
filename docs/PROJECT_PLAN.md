@@ -151,7 +151,7 @@ paperscape/
 │   └── papers.js                     [H] read-only queries
 │
 ├── lib/
-│   └── validation.js                 [S] isNonEmptyString, isObjectIdString, toObjectId, parseDate, pick...
+│   └── validation.js                 [S] isNonEmptyString, isObjectIdString, toObjectId, pick...
 │
 ├── middleware/
 │   ├── owner.js                      [S] reads X-Owner-Id → req.ownerId
@@ -570,7 +570,6 @@ export function aoeEndOfDay("2027-01-28") /* → Date (23:59 UTC-12) */;
 export function toDateInputValue(date);  export function formatDate(date, opts);
 export function countdown(date) /* → { days, hours, minutes, passed, label: "12d 4h" } */;
 export function urgency(date) /* → "ok" | "soon" | "urgent" | "passed" */;
-export function daysBetween(a, b);
 
 // areas.js
 export const AREAS = [{ id, label, color, query }];  export const areaById = (id) => …;
