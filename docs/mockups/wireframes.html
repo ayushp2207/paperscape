@@ -1,0 +1,755 @@
+<!doctype html>
+<!--
+  Mid-fidelity wireframes for the design document. Each <section class="board"> is exported to
+  a PNG of the same name (docs/mockups/<id>.png). Grey blocks are layout; numbered purple notes
+  describe the interactions. Colours are placeholders: the app uses the tokens in base.css.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paperscape wireframes</title>
+    <style>
+      :root {
+        --ink: #1f2430;
+        --mute: #6b7385;
+        --line: #c9cfdb;
+        --block: #e6e9f0;
+        --block-2: #d6dbe6;
+        --paper: #f7f8fb;
+        --note: #6d5df5;
+        --note-soft: #ecebff;
+        font-family:
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+        color: var(--ink);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #fff;
+        display: grid;
+        gap: 32px;
+      }
+      .board {
+        position: relative;
+        width: 1200px;
+        padding: 0 0 28px;
+        border: 2px solid var(--ink);
+        border-radius: 14px;
+        background: var(--paper);
+        overflow: hidden;
+      }
+      .board--mobile {
+        width: 1200px;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        padding: 28px 28px 140px;
+        background: #fff;
+      }
+      .phone {
+        position: relative;
+        width: 300px;
+        border: 2px solid var(--ink);
+        border-radius: 26px;
+        background: var(--paper);
+        overflow: hidden;
+        padding-bottom: 16px;
+      }
+      .label {
+        position: absolute;
+        top: 62px;
+        right: 14px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        height: 52px;
+        padding: 0 24px;
+        border-bottom: 2px solid var(--line);
+        font-size: 14px;
+      }
+      .nav b {
+        margin-right: 12px;
+      }
+      .nav .on {
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: var(--block-2);
+      }
+      .nav .sp {
+        flex: 1;
+      }
+      .pad {
+        padding: 22px 24px 0;
+      }
+      .row {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .b {
+        background: var(--block);
+        border: 1.5px solid var(--line);
+        border-radius: 10px;
+      }
+      .line {
+        height: 10px;
+        border-radius: 6px;
+        background: var(--block-2);
+      }
+      .h1 {
+        height: 26px;
+        border-radius: 8px;
+        background: var(--ink);
+        opacity: 0.8;
+      }
+      .h2 {
+        height: 16px;
+        border-radius: 6px;
+        background: var(--ink);
+        opacity: 0.55;
+      }
+      .btn {
+        display: inline-grid;
+        place-items: center;
+        height: 32px;
+        padding: 0 14px;
+        border-radius: 8px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+      }
+      .chip {
+        display: inline-block;
+        height: 22px;
+        padding: 0 10px;
+        border: 1.5px solid var(--line);
+        border-radius: 99px;
+        font-size: 11px;
+        line-height: 19px;
+        color: var(--mute);
+      }
+      .ring {
+        border: 2px dashed var(--line);
+        border-radius: 50%;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--ink);
+        display: inline-block;
+      }
+      .dot.o {
+        background: transparent;
+        border: 2px solid var(--ink);
+      }
+      .tabs {
+        display: flex;
+        gap: 6px;
+        padding: 4px;
+        width: fit-content;
+        border: 1.5px solid var(--line);
+        border-radius: 10px;
+        font-size: 12px;
+      }
+      .tabs span {
+        padding: 5px 12px;
+        border-radius: 7px;
+        color: var(--mute);
+      }
+      .tabs .on {
+        background: var(--block-2);
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .n {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--note);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        box-shadow: 0 0 0 4px var(--note-soft);
+      }
+      .notes {
+        margin: 22px 24px 0;
+        padding: 14px 18px;
+        border-left: 4px solid var(--note);
+        border-radius: 8px;
+        background: var(--note-soft);
+        font-size: 13px;
+        line-height: 1.55;
+        columns: 2;
+        column-gap: 32px;
+      }
+      .notes p {
+        margin: 0 0 6px;
+        break-inside: avoid;
+      }
+      .notes b {
+        color: var(--note);
+      }
+      .muted {
+        color: var(--mute);
+        font-size: 12px;
+      }
+      .word {
+        font-size: 13px;
+        color: var(--mute);
+      }
+      .blank {
+        display: inline-block;
+        min-width: 90px;
+        border-bottom: 2px solid var(--note);
+        font-size: 13px;
+        padding: 0 4px 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ HOME ============ -->
+    <section class="board" id="home">
+      <span class="label">Home · index.html</span>
+      <div class="nav">
+        <b>◇ Paperscape</b><span>Conferences</span><span>Plans</span><span>Reviews</span
+        ><span class="sp"></span><span>☀</span>
+      </div>
+      <div class="pad grid" style="grid-template-columns: 1.3fr 1fr; align-items: center">
+        <div class="grid" style="gap: 12px">
+          <div class="line" style="width: 30%"></div>
+          <div class="h1" style="width: 80%; height: 40px"></div>
+          <div class="h1" style="width: 70%; height: 40px"></div>
+          <div class="line" style="width: 90%"></div>
+          <div class="line" style="width: 75%"></div>
+          <div class="row">
+            <span class="btn">Open the planner</span><span class="btn ghost">Start a review</span>
+          </div>
+        </div>
+        <div class="b" style="height: 220px; border-radius: 50%; opacity: 0.6"></div>
+      </div>
+      <div class="pad grid" style="grid-template-columns: repeat(4, 1fr)">
+        <div class="b" style="height: 110px"></div>
+        <div class="b" style="height: 110px"></div>
+        <div class="b" style="height: 110px"></div>
+        <div class="b" style="height: 110px"></div>
+      </div>
+      <div class="pad grid" style="grid-template-columns: 1.2fr 1fr">
+        <div class="b grid" style="padding: 16px; gap: 10px">
+          <div class="h2" style="width: 40%"></div>
+          <div class="b" style="height: 46px; background: #fff"></div>
+          <div class="b" style="height: 46px; background: #fff"></div>
+          <div class="b" style="height: 46px; background: #fff"></div>
+        </div>
+        <div class="b grid" style="padding: 16px; gap: 10px">
+          <div class="h2" style="width: 55%"></div>
+          <div class="line"></div>
+          <div class="line" style="width: 80%"></div>
+          <div class="h2" style="width: 50%; margin-top: 12px"></div>
+          <div class="line"></div>
+          <div class="line" style="width: 70%"></div>
+        </div>
+      </div>
+      <span class="n" style="left: 0px; top: 262px">1</span>
+      <span class="n" style="left: 40px; top: 352px">2</span>
+      <span class="n" style="left: 40px; top: 486px">3</span>
+      <span class="n" style="left: 680px; top: 486px">4</span>
+      <div class="notes">
+        <p>
+          <b>1</b> Two entry points, one per persona: Nadia opens the planner, Leo starts a review.
+        </p>
+        <p>
+          <b>2</b> Live stats: next deadline (countdown, AoE), active plans, reviews, papers in the
+          library.
+        </p>
+        <p>
+          <b>3</b> Upcoming deadlines list, each with a countdown chip that turns amber/red as it
+          nears.
+        </p>
+        <p><b>4</b> "How to use": a short guide for both halves (rubric: usage instructions).</p>
+      </div>
+    </section>
+
+    <!-- ============ CONFERENCES ============ -->
+    <section class="board" id="conferences">
+      <span class="label">Conference Planner · conferences.html</span>
+      <div class="nav">
+        <b>◇ Paperscape</b><span class="on">Conferences</span><span>Plans</span><span>Reviews</span
+        ><span class="sp"></span><span>☀</span>
+      </div>
+      <div class="pad row" style="justify-content: space-between">
+        <div class="grid" style="gap: 8px; width: 50%">
+          <div class="h1" style="width: 50%"></div>
+          <div class="line" style="width: 80%"></div>
+        </div>
+        <span class="btn">Add conference</span>
+      </div>
+      <div class="pad">
+        <div class="b grid" style="padding: 14px; gap: 10px; background: #fff">
+          <div class="row">
+            <div class="b" style="flex: 1; height: 32px"></div>
+            <div class="b" style="width: 150px; height: 32px"></div>
+            <span class="muted">☐ Show past</span>
+          </div>
+          <div class="row" style="flex-wrap: wrap; gap: 6px">
+            <span class="chip">● General ML</span><span class="chip">● NLP</span
+            ><span class="chip">● Computer Vision</span><span class="chip">● RL</span
+            ><span class="chip">● Generative</span><span class="chip">● Theory</span
+            ><span class="chip">● Graphs</span><span class="chip">● Robotics</span
+            ><span class="chip">● Data Mining</span><span class="chip">● Networking</span>
+          </div>
+        </div>
+      </div>
+      <div class="pad row" style="justify-content: space-between">
+        <div class="tabs"><span class="on">Map</span><span>Timeline</span><span>List</span></div>
+        <span class="muted">66 conferences · 14 with dates TBD</span>
+      </div>
+      <div class="pad grid" style="grid-template-columns: 1fr 300px">
+        <div class="b" style="height: 300px; position: relative; background: #eef1f6">
+          <span class="dot" style="position: absolute; left: 22%; top: 30%"></span>
+          <span class="dot" style="position: absolute; left: 48%; top: 22%"></span>
+          <span class="dot" style="position: absolute; left: 51%; top: 28%"></span>
+          <span class="dot" style="position: absolute; left: 80%; top: 34%"></span>
+          <span class="dot" style="position: absolute; left: 86%; top: 74%"></span>
+          <span class="dot" style="position: absolute; left: 34%; top: 70%"></span>
+        </div>
+        <div
+          class="b grid"
+          style="padding: 14px; gap: 10px; align-content: start; background: #fff"
+        >
+          <div class="h2" style="width: 60%"></div>
+          <div class="line" style="width: 40%"></div>
+          <div class="b" style="height: 60px"></div>
+          <div class="line"></div>
+          <div class="line" style="width: 70%"></div>
+          <div class="row">
+            <span class="btn">Plan for this venue</span><span class="btn ghost">Report link</span>
+          </div>
+        </div>
+      </div>
+      <span class="n" style="left: 2px; top: 156px">1</span>
+      <span class="n" style="left: 40px; top: 300px">2</span>
+      <span class="n" style="left: 40px; top: 380px">3</span>
+      <span class="n" style="left: 880px; top: 380px">4</span>
+      <div class="notes">
+        <p>
+          <b>1</b> Search, month filter and research-area chips; shared by map, timeline and list.
+        </p>
+        <p><b>2</b> Map / Timeline / List switch over the same filtered conferences (P1).</p>
+        <p><b>3</b> Hand-drawn SVG world map; pins coloured by area, clustered pins pulse.</p>
+        <p>
+          <b>4</b> Detail panel: dates in AoE, deadlines with countdowns, "Plan for this venue",
+          edit/delete own entries (P2).
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PLANS ============ -->
+    <section class="board" id="plans">
+      <span class="label">Submission plans · plans.html</span>
+      <div class="nav">
+        <b>◇ Paperscape</b><span>Conferences</span><span class="on">Plans</span><span>Reviews</span
+        ><span class="sp"></span><span>☀</span>
+      </div>
+      <div class="pad row" style="justify-content: space-between">
+        <div class="grid" style="gap: 8px; width: 50%">
+          <div class="h1" style="width: 55%"></div>
+          <div class="line" style="width: 70%"></div>
+        </div>
+        <span class="btn">New plan</span>
+      </div>
+      <div class="pad">
+        <div
+          class="b"
+          style="padding: 12px 16px; background: var(--note-soft); border-color: var(--note)"
+        >
+          <span class="muted">⚠ 2 warnings across your plans · deadline clash · travel time</span>
+        </div>
+      </div>
+      <div class="pad grid" style="grid-template-columns: repeat(3, 1fr)">
+        <div class="b grid" style="padding: 16px; gap: 10px; background: #fff">
+          <div class="row" style="justify-content: space-between">
+            <div class="h2" style="width: 60%"></div>
+            <span class="chip">Drafting</span>
+          </div>
+          <div class="row">
+            <span class="chip">◎ Target ICML</span><span class="chip">⛓ Backup NeurIPS</span>
+          </div>
+          <div class="b" style="height: 50px"></div>
+          <div class="line" style="height: 8px"></div>
+          <div class="muted">☑ Related work · ☐ Experiments · ☐ Full draft</div>
+          <div class="row">
+            <span class="btn ghost">Edit</span><span class="btn ghost">Delete</span>
+          </div>
+        </div>
+        <div class="b" style="height: 250px; background: #fff"></div>
+        <div class="b" style="height: 250px; background: #fff"></div>
+      </div>
+      <span class="n" style="left: 40px; top: 210px">1</span>
+      <span class="n" style="left: 40px; top: 290px">2</span>
+      <span class="n" style="left: 290px; top: 390px">3</span>
+      <div class="notes">
+        <p>
+          <b>1</b> Warnings banner: deadlines within 7 days of each other, or under 6 weeks from
+          notification to conference (P4).
+        </p>
+        <p>
+          <b>2</b> One card per plan: target and backup venue, next deadline with countdown (P3).
+        </p>
+        <p>
+          <b>3</b> Milestones tick off in place; edit opens a dialog with "Suggest milestones"
+          counted back from the deadline.
+        </p>
+        <p><b>&nbsp;</b> Delete asks first; plans are private to the browser (anonymous id).</p>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="board" id="reviews">
+      <span class="label">Review Workspace · reviews.html</span>
+      <div class="nav">
+        <b>◇ Paperscape</b><span>Conferences</span><span>Plans</span><span class="on">Reviews</span
+        ><span class="sp"></span><span>☀</span>
+      </div>
+      <div class="pad">
+        <div
+          class="b grid"
+          style="padding: 18px; gap: 12px; background: #fff; grid-template-columns: 1.15fr 1fr"
+        >
+          <div class="grid" style="gap: 10px">
+            <div class="h1" style="width: 75%"></div>
+            <div class="b" style="height: 60px"></div>
+            <div class="row">
+              <div class="b" style="flex: 1.4; height: 30px"></div>
+              <div class="b" style="flex: 1; height: 30px"></div>
+            </div>
+            <div class="row" style="gap: 6px">
+              <span class="chip">+ data augmentation</span
+              ><span class="chip">+ vision transformers</span>
+            </div>
+            <div class="row" style="justify-content: flex-end">
+              <span class="btn">Create review</span>
+            </div>
+          </div>
+          <div class="b grid" style="padding: 14px; gap: 10px; border-style: dashed">
+            <div class="row">
+              <div class="ring" style="width: 54px; height: 54px"></div>
+              <div class="grid" style="gap: 6px; flex: 1">
+                <div class="line" style="width: 40%"></div>
+                <div class="h2" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="line" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pad row" style="justify-content: space-between">
+        <div class="h2" style="width: 130px"></div>
+        <div class="row" style="gap: 6px">
+          <span class="chip">3 reviews</span><span class="chip">14 papers saved</span
+          ><span class="chip">6 read</span>
+        </div>
+      </div>
+      <div class="pad grid" style="grid-template-columns: repeat(3, 1fr)">
+        <div class="b grid" style="padding: 14px; gap: 10px; background: #fff">
+          <div class="row">
+            <div class="ring" style="width: 64px; height: 64px; position: relative">
+              <span class="dot" style="position: absolute; left: 4px; top: 6px"></span
+              ><span class="dot o" style="position: absolute; right: 2px; bottom: 10px"></span>
+            </div>
+            <div class="grid" style="gap: 6px; flex: 1">
+              <span class="chip" style="width: fit-content">Computer Vision</span>
+              <div class="h2"></div>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="line" style="width: 75%"></div>
+          <div class="row" style="gap: 4px">
+            <div class="line" style="flex: 1; background: var(--ink)"></div>
+            <div class="line" style="flex: 1; background: var(--ink)"></div>
+            <div class="line" style="flex: 1"></div>
+            <div class="line" style="flex: 1"></div>
+          </div>
+          <div class="row" style="justify-content: space-between">
+            <span class="muted">⑂ 1 thread</span><span class="btn">Continue reading →</span>
+          </div>
+        </div>
+        <div class="b" style="background: #fff"></div>
+        <div class="b grid" style="place-items: center; border-style: dashed; height: 240px">
+          <div class="ring" style="width: 70px; height: 70px; display: grid; place-items: center">
+            +
+          </div>
+        </div>
+      </div>
+      <span class="n" style="left: 40px; top: 90px">1</span>
+      <span class="n" style="left: 630px; top: 90px">2</span>
+      <span class="n" style="left: 40px; top: 370px">3</span>
+      <span class="n" style="left: 290px; top: 470px">4</span>
+      <span class="n" style="left: 1050px; top: 400px">5</span>
+      <div class="notes">
+        <p>
+          <b>1</b> Question-first composer: research question; title and area follow its topic
+          (editable); suggested keyword chips; Enter creates (R1).
+        </p>
+        <p><b>2</b> Live preview card builds as you type, then flies into the list on create.</p>
+        <p>
+          <b>3</b> Orbit badge: one dot per saved paper around the share read; "+" jumps to Find
+          papers.
+        </p>
+        <p>
+          <b>4</b> Phase track (Gather → Read → Synthesise → Write) and a next-step button that
+          opens the right tab.
+        </p>
+        <p>
+          <b>5</b> "New question" card on the last page; edit turns a card into its own form; delete
+          lists what it removes.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ REVIEW ============ -->
+    <section class="board" id="review">
+      <span class="label">Review detail · review.html?id=…</span>
+      <div class="nav">
+        <b>◇ Paperscape</b><span>Conferences</span><span>Plans</span><span class="on">Reviews</span
+        ><span class="sp"></span><span>☀</span>
+      </div>
+      <div class="pad">
+        <div class="b grid" style="padding: 16px; gap: 10px; background: #fff">
+          <div class="row">
+            <div class="ring" style="width: 64px; height: 64px"></div>
+            <div class="grid" style="gap: 6px; flex: 1">
+              <div class="line" style="width: 20%"></div>
+              <div class="h1" style="width: 45%"></div>
+            </div>
+            <span class="btn ghost">Edit</span>
+          </div>
+          <div class="line" style="width: 70%"></div>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="tabs">
+          <span>Reading list 14</span><span class="on">Find papers</span><span>Threads 1</span
+          ><span>Citations 6</span><span>Map</span>
+        </div>
+      </div>
+      <div class="pad grid" style="grid-template-columns: 1fr 1fr; gap: 24px">
+        <div class="grid" style="gap: 12px; align-content: start">
+          <div class="b row" style="padding: 12px; background: #fff; flex-wrap: wrap; gap: 8px">
+            <span class="word">Find papers about</span><span class="blank">diffusion sampling</span
+            ><span class="word">in</span><span class="blank">Generative ▾</span
+            ><span class="word">from</span><span class="blank" style="min-width: 50px">2022</span
+            ><span class="word">to</span><span class="blank" style="min-width: 50px">now</span>
+          </div>
+          <div class="row" style="justify-content: space-between">
+            <span class="muted">86 papers · page 1 of 9</span
+            ><span class="muted">Show [10 ▾] per page</span>
+          </div>
+          <div class="grid" style="grid-template-columns: 1fr 1fr">
+            <div class="b grid" style="padding: 10px; gap: 6px; background: #fff">
+              <div class="line" style="width: 50%"></div>
+              <div class="h2"></div>
+              <div class="line"></div>
+              <div class="line" style="width: 80%"></div>
+              <div class="row" style="justify-content: space-between">
+                <span class="chip">Read more ↗</span><span class="btn">+ Add</span>
+              </div>
+            </div>
+            <div class="b grid" style="padding: 10px; gap: 6px; background: #fff">
+              <div class="line" style="width: 50%"></div>
+              <div class="h2"></div>
+              <div class="line"></div>
+              <div class="line" style="width: 80%"></div>
+              <div class="row" style="justify-content: space-between">
+                <span class="chip">Read more ↗</span><span class="muted">✓ In this review</span>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="justify-content: center; gap: 6px">
+            <span class="chip">‹</span><span class="btn" style="height: 24px">1</span
+            ><span class="chip">2</span><span class="chip">…</span><span class="chip">9</span
+            ><span class="chip">›</span>
+          </div>
+        </div>
+        <div
+          class="b"
+          style="height: 330px; background: #10142a; position: relative; border-radius: 14px"
+        >
+          <div class="ring" style="position: absolute; inset: 14px; border-color: #5a628a"></div>
+          <div class="ring" style="position: absolute; inset: 70px; border-color: #5a628a"></div>
+          <div
+            class="ring"
+            style="position: absolute; inset: 120px; border-color: #7c6cff; background: #2a2a66"
+          ></div>
+          <span
+            class="dot"
+            style="position: absolute; left: 30%; top: 40%; background: #22c55e"
+          ></span>
+          <span
+            class="dot"
+            style="position: absolute; left: 62%; top: 30%; background: #7c6cff"
+          ></span>
+          <span
+            class="dot o"
+            style="position: absolute; left: 75%; top: 70%; border-color: #c8cde0"
+          ></span>
+          <span
+            class="dot"
+            style="position: absolute; left: 22%; top: 72%; background: #22c55e"
+          ></span>
+          <span class="muted" style="position: absolute; bottom: 8px; left: 12px; color: #c8cde0"
+            >Map tab: papers orbit the question</span
+          >
+        </div>
+      </div>
+      <span class="n" style="left: 40px; top: 90px">1</span>
+      <span class="n" style="left: 40px; top: 200px">2</span>
+      <span class="n" style="left: 40px; top: 260px">3</span>
+      <span class="n" style="left: 280px; top: 470px">4</span>
+      <span class="n" style="left: 640px; top: 260px">5</span>
+      <div class="notes">
+        <p>
+          <b>1</b> Header in the card style; edit in place; one request loads review, papers and
+          citation links.
+        </p>
+        <p>
+          <b>2</b> Five tabs (arrow keys move between them); the open tab and search live in the
+          URL.
+        </p>
+        <p>
+          <b>3</b> Search as a sentence pre-filled from the review; 300 ms debounce; 5/10/50 per
+          page (R2).
+        </p>
+        <p>
+          <b>4</b> Equal cards, "Read more" popup with the full abstract, Report broken link, Add →
+          "In this review".
+        </p>
+        <p>
+          <b>5</b> Map: closer = more relevant, colour = status, arrows = who cites whom, thread
+          drawn as a path (R4). Reading list (R3) and Threads/Citations sit behind the other tabs.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ MOBILE ============ -->
+    <section class="board board--mobile" id="mobile">
+      <span class="label">Mobile · 390 px</span>
+      <div class="phone">
+        <div class="nav" style="padding: 0 14px">
+          <b>◇ Paperscape</b><span class="sp"></span><span>☀ ☰</span>
+        </div>
+        <div class="pad grid" style="gap: 10px; padding: 14px 14px 0">
+          <div class="h1" style="width: 85%"></div>
+          <div class="b" style="height: 70px; background: #fff"></div>
+          <div class="b" style="height: 28px; background: #fff"></div>
+          <div class="b" style="height: 28px; background: #fff"></div>
+          <span class="btn">Create review</span>
+          <div class="b grid" style="padding: 10px; gap: 6px; background: #fff">
+            <div class="row">
+              <div class="ring" style="width: 48px; height: 48px"></div>
+              <div class="h2" style="flex: 1"></div>
+            </div>
+            <div class="line"></div>
+            <span class="btn" style="width: fit-content">Find papers →</span>
+          </div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="nav" style="padding: 0 14px">
+          <b>◇ Paperscape</b><span class="sp"></span><span>☀ ☰</span>
+        </div>
+        <div class="pad grid" style="gap: 10px; padding: 14px 14px 0">
+          <div class="b" style="height: 90px; background: #fff"></div>
+          <div class="tabs" style="max-width: 100%; overflow: hidden">
+            <span class="on">Reading list</span><span>Find</span><span>Threads</span>
+          </div>
+          <div class="row" style="gap: 6px">
+            <span class="chip">All 9</span><span class="chip">To read</span
+            ><span class="chip">Read</span>
+          </div>
+          <div class="grid" style="grid-template-columns: 22px 1fr; gap: 8px">
+            <b>1</b>
+            <div class="grid" style="gap: 6px">
+              <div class="h2"></div>
+              <div class="row" style="gap: 4px">
+                <span class="chip">To read</span><span class="chip">Reading</span
+                ><span class="chip">Read</span>
+              </div>
+              <div class="muted">★★★½☆ 3.5/5</div>
+              <div class="b" style="height: 40px; border-style: dashed"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="nav" style="padding: 0 14px">
+          <b>◇ Paperscape</b><span class="sp"></span><span>☀ ☰</span>
+        </div>
+        <div class="pad grid" style="gap: 10px; padding: 14px 14px 0">
+          <span class="btn ghost" style="width: fit-content">❚❚ Pause orbit</span>
+          <div
+            class="b"
+            style="height: 230px; background: #10142a; position: relative; border-radius: 50%"
+          >
+            <div
+              class="ring"
+              style="position: absolute; inset: 60px; border-color: #7c6cff; background: #2a2a66"
+            ></div>
+            <span
+              class="dot"
+              style="position: absolute; left: 20%; top: 40%; background: #22c55e"
+            ></span
+            ><span
+              class="dot"
+              style="position: absolute; left: 70%; top: 25%; background: #7c6cff"
+            ></span>
+          </div>
+          <div class="b grid" style="padding: 10px; gap: 6px; background: #fff">
+            <div class="h2"></div>
+            <div class="line"></div>
+            <span class="btn" style="width: fit-content">Edit in reading list</span>
+          </div>
+        </div>
+      </div>
+      <span class="n" style="left: 90px; top: 120px">1</span>
+      <span class="n" style="left: 430px; top: 260px">2</span>
+      <span class="n" style="left: 770px; top: 140px">3</span>
+      <div
+        class="notes"
+        style="position: absolute; left: 28px; right: 28px; bottom: 16px; columns: 3; margin: 0"
+      >
+        <p><b>1</b> Composer stacks; the live preview steps aside so the form stays first.</p>
+        <p><b>2</b> Margin notes move under each paper; tabs scroll sideways; controls wrap.</p>
+        <p><b>3</b> The map scales to the screen with larger labels; its panel follows below.</p>
+      </div>
+    </section>
+  </body>
+</html>

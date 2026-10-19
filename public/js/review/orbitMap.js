@@ -11,7 +11,6 @@ const SUN = 62;
 const QUESTION_LINE = 20;
 const QUESTION_LINES = 4;
 const LABEL_LENGTH = 30;
-const LABEL_CHAR = 6.6; // approximate width of one 12px label character
 const STARS = 70;
 // One lap of the innermost orbit, in seconds. Outer orbits are slower (Kepler: ω ∝ r^-1.5).
 const INNER_LAP = 80;
@@ -444,16 +443,8 @@ export class OrbitMap {
       body.x = CENTER + body.radius * Math.cos(angle);
       body.y = CENTER + body.radius * Math.sin(angle);
       body.group.setAttribute('transform', `translate(${body.x.toFixed(1)} ${body.y.toFixed(1)})`);
-      if (body.label) {
-        // Labels sit on the outer side of their dot, unless that would run off the map.
-        const width = body.label.textContent.length * LABEL_CHAR;
-        const fitsLeft = body.x - body.size - 8 - width >= 4;
-        const fitsRight = body.x + body.size + 8 + width <= SIZE - 4;
-        const right = body.x >= CENTER ? fitsRight || !fitsLeft : !fitsLeft && fitsRight;
-        body.label.setAttribute('x', String(right ? body.size + 8 : -body.size - 8));
-        body.label.setAttribute('text-anchor', right ? 'start' : 'end');
-      }
     }
+    this.#placeLabels(bodies);
     for (const { from, to, path } of edges) {
       const a = bodies.get(from);
       const b = bodies.get(to);
@@ -475,6 +466,43 @@ export class OrbitMap {
         .map((id) => `${bodies.get(id).x.toFixed(1)},${bodies.get(id).y.toFixed(1)}`)
         .join(' '),
     );
+  }
+
+  // Labels sit on the outer side of their dot, or the other side if that is blocked. A label
+  // that would run off the map, across the question or into another label is hidden (the title
+  // stays in the tooltip and the panel). The selected paper's label is placed first.
+  #placeLabels(bodies) {
+    const sun = { x1: CENTER - SUN, x2: CENTER + SUN, y1: CENTER - SUN, y2: CENTER + SUN };
+    const PAD = 4; // breathing room between labels
+    const overlaps = (a, b) =>
+      a.x1 < b.x2 + PAD && b.x1 < a.x2 + PAD && a.y1 < b.y2 + PAD && b.y1 < a.y2 + PAD;
+    const placed = [sun];
+    const labelled = [...bodies.entries()]
+      .filter(([, body]) => body.label)
+      .sort(([a], [b]) => (b === this.#selectedId) - (a === this.#selectedId))
+      .map(([, body]) => body);
+    for (const body of labelled) {
+      body.labelWidth ??= body.label.getComputedTextLength();
+      body.labelHeight ??= body.label.getBBox().height || 14;
+      const gap = body.size + 8;
+      const box = (right) => ({
+        x1: right ? body.x + gap : body.x - gap - body.labelWidth,
+        x2: right ? body.x + gap + body.labelWidth : body.x - gap,
+        y1: body.y - body.labelHeight / 2,
+        y2: body.y + body.labelHeight / 2,
+      });
+      const fits = (right) => {
+        const b = box(right);
+        return b.x1 >= 4 && b.x2 <= SIZE - 4 && !placed.some((other) => overlaps(b, other));
+      };
+      const outward = body.x >= CENTER;
+      const side = [outward, !outward].find(fits);
+      body.label.setAttribute('visibility', side === undefined ? 'hidden' : 'visible');
+      if (side === undefined) continue;
+      placed.push(box(side));
+      body.label.setAttribute('x', String(side ? gap : -gap));
+      body.label.setAttribute('text-anchor', side ? 'start' : 'end');
+    }
   }
 
   #panel() {

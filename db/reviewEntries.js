@@ -40,7 +40,7 @@ export function listForReview(reviewId, ownerId, { status } = {}) {
     .toArray();
 }
 
-export async function getWithPaper(entryId, ownerId) {
+async function getWithPaper(entryId, ownerId) {
   const [entry] = await collection()
     .aggregate([{ $match: { _id: entryId, ownerId } }, ...withPaper])
     .toArray();

@@ -345,6 +345,7 @@ Edit/delete is allowed only where `ownerId === req.ownerId`. Seeded ones offer *
   question: "How do sparse attention methods trade off accuracy vs memory beyond 32k tokens?",
   description: "",
   keywords: ["sparse attention", "long context"],
+  area: "nlp" | null,                       // AREAS id; suggested from the question, editable
   threads: [
     { id: "uuid", title: "From Longformer to ring attention", note: "", entryIds: [ObjectId, …] }  // ORDERED
   ],
@@ -359,9 +360,9 @@ Edit/delete is allowed only where `ownerId === req.ownerId`. Seeded ones offer *
   _id, ownerId: "uuid",
   reviewId: ObjectId,
   paperId: ObjectId,                       // → papers._id
-  status: "to-read" | "reading" | "read" | "skipped",
+  status: "to-read" | "reading" | "read",
   relation: "supports" | "challenges" | "method" | "background" | "unsure",  // vs research question
-  relevance: 1..5,
+  relevance: 0.5..5,                       // star rating in half stars
   notes: "",
   findings: ["Achieves 2x memory reduction at 64k", …],
   createdAt, updatedAt
@@ -382,7 +383,8 @@ Edit/delete is allowed only where `ownerId === req.ownerId`. Seeded ones offer *
   areas: ["nlp"],                           // from the seed query that found it
   citedByCount: 123,
   referencedWorks: ["W…", "W…"],            // OpenAlex ids, used for citation links
-  openalexUrl: "https://openalex.org/W…"
+  openalexUrl: "https://openalex.org/W…",
+  linkReports: [ { ownerId, reason, url, reportedAt } ]  // broken-link reports; never returned by the API
 }
 ```
 
@@ -439,33 +441,37 @@ Validation: target ≠ backup; both conferences must be visible to the owner; mi
 
 ### Reviews + threads + citations [H]
 
-| Method | URL                                  | Body / query                                   | Returns                                                                       |
-| ------ | ------------------------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------- |
-| GET    | `/api/reviews`                       |                                                | `[review + counts{to-read,reading,read,skipped,total}]`                       |
-| GET    | `/api/reviews/:id`                   |                                                | `review`                                                                      |
-| POST   | `/api/reviews`                       | `{ title, question, description?, keywords? }` | `201`                                                                         |
-| PUT    | `/api/reviews/:id`                   | same                                           | updated                                                                       |
-| DELETE | `/api/reviews/:id`                   |                                                | `204` (also deletes its entries)                                              |
-| POST   | `/api/reviews/:id/threads`           | `{ title, note? }`                             | `201 thread`                                                                  |
-| PUT    | `/api/reviews/:id/threads/:threadId` | `{ title?, note?, entryIds? }` (ordered)       | updated thread                                                                |
-| DELETE | `/api/reviews/:id/threads/:threadId` |                                                | `204`                                                                         |
-| GET    | `/api/reviews/:id/citations`         |                                                | `{ nodes:[{entryId,paperId,title,year}], edges:[{from,to}] }` (from cites to) |
+| Method | URL                                  | Body / query                                   | Returns                                                                        |
+| ------ | ------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------ |
+| GET    | `/api/reviews`                       |                                                | `[review + counts{to-read,reading,read,skipped,total}]`                        |
+| GET    | `/api/reviews/:id`                   | `?include=entries,citations`                   | `review` (+ `entries`, `citations` when asked: the review page in one request) |
+| POST   | `/api/reviews`                       | `{ title, question, description?, keywords? }` | `201`                                                                          |
+| PUT    | `/api/reviews/:id`                   | same                                           | updated                                                                        |
+| DELETE | `/api/reviews/:id`                   |                                                | `204` (also deletes its entries)                                               |
+| POST   | `/api/reviews/:id/threads`           | `{ title, note?, entryIds }` (≥ 2 papers)      | `201 thread`                                                                   |
+| PUT    | `/api/reviews/:id/threads/:threadId` | `{ title?, note?, entryIds? }` (ordered)       | updated thread                                                                 |
+| DELETE | `/api/reviews/:id/threads/:threadId` |                                                | `204`                                                                          |
+| GET    | `/api/reviews/:id/citations`         |                                                | `{ nodes:[{entryId,paperId,title,year}], edges:[{from,to}] }` (from cites to)  |
 
 ### Review entries [H]
 
-| Method | URL                        | Body                                                 | Returns                               |
-| ------ | -------------------------- | ---------------------------------------------------- | ------------------------------------- |
-| GET    | `/api/reviews/:id/entries` | `?status=read`                                       | `[entry + paper summary]` (`$lookup`) |
-| POST   | `/api/reviews/:id/entries` | `{ paperId }`                                        | `201`; `409` if already added         |
-| PUT    | `/api/entries/:entryId`    | `{ status, relation, relevance, notes, findings[] }` | updated                               |
-| DELETE | `/api/entries/:entryId`    |                                                      | `204` (also `$pull` from threads)     |
+| Method | URL                        | Body                                                                  | Returns                               |
+| ------ | -------------------------- | --------------------------------------------------------------------- | ------------------------------------- |
+| GET    | `/api/reviews/:id/entries` | `?status=read`                                                        | `[entry + paper summary]` (`$lookup`) |
+| POST   | `/api/reviews/:id/entries` | `{ paperId }`                                                         | `201`; `409` if already added         |
+| PUT    | `/api/entries/:entryId`    | any of `{ status, relation, relevance, notes, findings[] }` (partial) | updated                               |
+| DELETE | `/api/entries/:entryId`    |                                                                       | `204` (also `$pull` from threads)     |
 
 ### Papers (read-only) [H]
 
-| Method | URL               | Query                                                  | Returns                                                     |
-| ------ | ----------------- | ------------------------------------------------------ | ----------------------------------------------------------- |
-| GET    | `/api/papers`     | `q, area, yearFrom, yearTo, page=1, limit=20 (max 50)` | `{ items:[paper w/o referencedWorks], total, page, pages }` |
-| GET    | `/api/papers/:id` |                                                        | full paper                                                  |
+| Method | URL                           | Query                                                  | Returns                                                         |
+| ------ | ----------------------------- | ------------------------------------------------------ | --------------------------------------------------------------- |
+| GET    | `/api/papers`                 | `q, area, yearFrom, yearTo, page=1, limit=20 (max 50)` | `{ items:[paper w/o referencedWorks], total, page, pages }`     |
+| GET    | `/api/papers/:id`             |                                                        | full paper                                                      |
+| GET    | `/api/papers/topics`          |                                                        | `[[phrase, paperCount, areaId]]` topic vocabulary, cached 1 day |
+| POST   | `/api/papers/:id/report-link` | `{ reason }`                                           | `201`; one report per browser                                   |
+
+`GET /api/papers` also takes `cites=<paperId>`: only papers whose references include that paper (the reply adds `citing: { _id, title }`).
 
 With `q`, use `$text` and sort by `{ score: { $meta: "textScore" } }`. Without `q`, sort by `citedByCount: -1`.
 
@@ -985,10 +991,10 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-1 Design doc text (45 min) → `docs/DESIGN.md`
 
-- [ ] **Project description:** expand the proposal paragraph (problem, solution, who it's for).
-- [ ] **User personas:** Nadia and Leo, each with a short bio, goals, frustrations, and tech comfort. Optionally a portrait placeholder.
-- [ ] **User stories:** the 8 stories from §1, each with 2–3 acceptance criteria.
-- [ ] Sections stubbed for: Mockups, Data model (copy §6 summary), Architecture diagram (simple box diagram: Browser ↔ Express ↔ MongoDB ↔ OpenAlex seed).
+- [x] **Project description:** expand the proposal paragraph (problem, solution, who it's for).
+- [x] **User personas:** Nadia and Leo, each with a short bio, goals, frustrations, and tech comfort. Optionally a portrait placeholder.
+- [x] **User stories:** the 8 stories from §1, each with 2–3 acceptance criteria.
+- [x] Sections stubbed for: Mockups, Data model (copy §6 summary), Architecture diagram (simple box diagram: Browser ↔ Express ↔ MongoDB ↔ OpenAlex seed).
 
 ### H-2 Papers seed script (1.5 h)
 
@@ -1007,8 +1013,8 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-4 Mockups (1.25 h) → `docs/mockups/`
 
-- [ ] Use **Excalidraw** (fastest) or Figma. Draw mid-fi mockups of all 5 pages following §9 layouts and the colour tokens in §8. Include a mobile view of at least 1 page.
-- [ ] Export PNGs: `home.png`, `conferences.png`, `plans.png`, `reviews.png`, `review.png`, `mobile.png`. Embed them in DESIGN.md with captions explaining the interactions.
+- [x] Use **Excalidraw** (fastest) or Figma. Draw mid-fi mockups of all 5 pages following §9 layouts and the colour tokens in §8. Include a mobile view of at least 1 page.
+- [x] Export PNGs: `home.png`, `conferences.png`, `plans.png`, `reviews.png`, `review.png`, `mobile.png`. Embed them in DESIGN.md with captions explaining the interactions.
 - [ ] A reviews the planner mockups (5 min).
 
 ### H-5 Reviews page (1.25 h)
@@ -1061,9 +1067,9 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-11 Polish own pages (30 min)
 
-- [ ] Loading skeletons, empty states, error toasts with retry on reviews + review pages.
-- [ ] Mobile check at 360px (tabs scroll horizontally, cards stack).
-- [ ] Remove `console.log`s / unused code.
+- [x] Loading skeletons, empty states, error toasts with retry on reviews + review pages.
+- [x] Mobile check at 360px (tabs scroll horizontally, cards stack).
+- [x] Remove `console.log`s / unused code.
 
 ---
 
