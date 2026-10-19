@@ -1,1 +1,713 @@
-/* Review cards and form (H-5) */
+/* Reviews: compose a question with a live preview, then a grid of review cards. */
+
+/* ---------- Composer ---------- */
+.composer-hero {
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+  padding: var(--space-6);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 85% 30%, var(--hero-glow), transparent 45%),
+    linear-gradient(180deg, var(--surface), var(--bg));
+}
+
+/* Faint orbits behind the preview: the review's papers will circle its question. */
+.composer-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -160px;
+  width: 560px;
+  aspect-ratio: 1;
+  border: 1px dashed var(--border-strong);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 90px transparent,
+    inset 0 0 0 91px var(--border);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.composer-hero__intro {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  max-width: 60ch;
+}
+
+.composer-hero__intro h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.02em;
+}
+
+.composer-hero__body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .composer-hero {
+    padding: var(--space-5);
+  }
+
+  .composer-hero__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.composer {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.composer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.composer-hero__preview {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.composer-hero__preview-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Fields (composer and inline editor) ---------- */
+.review-fields {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* Title and area sit side by side; they stack on narrow screens. */
+.review-fields__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (max-width: 560px) {
+  .review-fields__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.review-fields__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.review-fields__question {
+  min-height: 88px;
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
+
+.review-fields__context summary {
+  width: fit-content;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.review-fields__context[open] summary {
+  margin-bottom: var(--space-2);
+}
+
+/* Keyword chips inside an input-like box. */
+.token-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.token-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.token-field__list {
+  display: contents;
+  list-style: none;
+}
+
+.token {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-1) 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.token__remove {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.token__remove:hover,
+.token__remove:focus-visible {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+.token-field__input {
+  flex: 1;
+  min-width: 140px;
+  min-height: 30px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.token-field__input:focus {
+  outline: none;
+}
+
+/* One-click choices under a field: other title ideas, keyword suggestions. */
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.choice-row:empty {
+  display: none;
+}
+
+.choice-row__hint {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.chip--suggestion {
+  min-height: 28px;
+  border-style: dashed;
+}
+
+/* ---------- Review cards ---------- */
+.review-list__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.review-list__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Totals strip: "3 reviews · 18 papers saved · 7 papers read · 2 threads". */
+.review-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-stats__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.review-stats__item strong {
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.review-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  align-items: start;
+}
+
+.review-card {
+  --area: var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow: hidden;
+}
+
+/* A soft glow in the review's area colour (accent when no area is set). */
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: -90px;
+  right: -90px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--area) 22%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: transform 400ms var(--ease);
+}
+
+.review-card:hover::before {
+  transform: scale(1.25);
+}
+
+.review-card > * {
+  position: relative;
+}
+
+.review-card:not(.review-card--editing):hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}
+
+/* A review's research area tints the top edge of its card. */
+.review-card.has-area {
+  border-top: 3px solid var(--area);
+}
+
+.review-card--preview {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-card--editing {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.review-card__top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.review-card__heading {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.review-card__heading .card__title {
+  overflow-wrap: anywhere;
+}
+
+.review-card__updated {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.review-card__updated,
+.review-card__counts,
+.review-card__hint {
+  font-size: 0.8125rem;
+}
+
+/* The question is the heart of a review: big, with an accent quote mark. */
+.review-card__question {
+  position: relative;
+  display: -webkit-box;
+  margin: 0;
+  padding-left: var(--space-6);
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.review-card__question::before {
+  content: '“';
+  position: absolute;
+  top: -0.2em;
+  left: 0;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background-clip: text;
+  color: transparent;
+}
+
+.review-card__question.is-placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.review-card__keywords {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.review-card__footer .card__actions {
+  align-items: center;
+  margin-top: 0;
+}
+
+.review-card__delete:hover {
+  color: var(--danger);
+}
+
+/* ---------- Phase track: Gather → Read → Synthesise → Write ---------- */
+.phase-track {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.phase-track__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.phase-track__step {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-3);
+}
+
+.phase-track__step.is-done {
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.phase-track__step.is-current {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.phase-track__label {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.phase-track__label strong {
+  color: var(--text);
+}
+
+/* ---------- Orbit badge: one dot per paper around the share read ---------- */
+.orbit-badge {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+}
+
+.orbit-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* The orbit turns slowly while the card is hovered or focused. */
+.orbit-badge__orbit {
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+}
+
+.review-card:hover .orbit-badge__orbit,
+.review-card:focus-within .orbit-badge__orbit {
+  animation: orbit-turn 14s linear infinite;
+}
+
+@keyframes orbit-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review-card:hover .orbit-badge__orbit,
+  .review-card:focus-within .orbit-badge__orbit {
+    animation: none;
+  }
+
+  .review-card::before {
+    transition: none;
+  }
+}
+
+.orbit-badge__ring {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-dasharray: 2 4;
+}
+
+.orbit-badge__dot--to-read {
+  fill: var(--surface);
+  stroke: var(--text-muted);
+  stroke-width: 1.25;
+}
+
+.orbit-badge__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.orbit-badge__center strong {
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.orbit-badge__center small {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Ghost card: the next question ---------- */
+.review-card-ghost {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-2);
+  min-height: 240px;
+  padding: var(--space-5);
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease);
+}
+
+.review-card-ghost:hover,
+.review-card-ghost:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.review-card-ghost__orbit {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px dashed var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+}
+
+.review-card-ghost__title {
+  font-weight: 600;
+}
+
+/* ---------- Empty state: before the first review ---------- */
+.empty-reviews {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-6);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 18% 50%, var(--hero-glow), transparent 55%);
+}
+
+@media (max-width: 720px) {
+  .empty-reviews {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: var(--space-5);
+  }
+}
+
+.empty-reviews__body {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 60ch;
+}
+
+.empty-reviews__body h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  letter-spacing: -0.01em;
+}
+
+.empty-reviews__steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty-reviews__steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-3);
+  color: var(--text-muted);
+}
+
+.empty-reviews__steps strong {
+  color: var(--text);
+}
+
+.empty-reviews__step-number {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.empty-reviews__try {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.empty-reviews__examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty-reviews__examples .chip {
+  text-align: left;
+}
+
+/* Orbit illustration: an empty question with papers circling at three reading stages. */
+.empty-orbit {
+  width: 100%;
+  max-width: 260px;
+}
+
+.empty-orbit__glow {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-dasharray: 3 4;
+}
+
+.empty-orbit__mark {
+  fill: var(--accent);
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.empty-orbit__path {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-dasharray: 2 5;
+}
+
+.empty-orbit__dot--read {
+  fill: var(--success);
+}
+
+.empty-orbit__dot--reading {
+  fill: var(--accent);
+}
+
+.empty-orbit__dot--to-read {
+  fill: var(--surface);
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+}
+
+.empty-orbit__ring {
+  transform-origin: 110px 110px;
+  animation: orbit-turn 40s linear infinite;
+}
+
+.empty-orbit__ring--2 {
+  animation-duration: 60s;
+  animation-direction: reverse;
+}
+
+.empty-orbit__ring--3 {
+  animation-duration: 90s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-orbit__ring {
+    animation: none;
+  }
+}

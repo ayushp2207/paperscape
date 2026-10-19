@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { getById, search } from '../db/papers.js';
+import { getById, search, topicVocabulary } from '../db/papers.js';
 import { isIntInRange, notFound, toObjectId, validator } from '../lib/validation.js';
 import { AREA_IDS } from '../public/js/shared/areas.js';
 
@@ -56,6 +56,15 @@ function parseSearchQuery(query) {
 
 router.get('/', async (req, res) => {
   res.json(await search(parseSearchQuery(req.query)));
+});
+
+// Research phrases mined from the papers, for title, keyword and area suggestions in the
+// review form, as compact [phrase, paperCount, areaId] rows. Same for everyone and only changes
+// with a re-seed, so browsers (and any cache in front of the server) may keep it for a day.
+router.get('/topics', async (_req, res) => {
+  const vocabulary = await topicVocabulary();
+  res.set('Cache-Control', 'public, max-age=86400');
+  res.json(vocabulary.map(({ phrase, count, area }) => [phrase, count, area]));
 });
 
 router.get('/:id', async (req, res) => {
