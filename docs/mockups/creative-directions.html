@@ -1,0 +1,2017 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Paperscape, creative directions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #eef1f2;
+        --sf: #f8f9f9;
+        --sf2: #e5eaec;
+        --ink: #26303a;
+        --mu: #66727c;
+        --ln: #dce2e5;
+        --ln2: #c3ccd2;
+        --tl: #3f6e6a;
+        --tlw: #dfe9e8;
+        --st: #57708a;
+        --stw: #e3e8ef;
+        --oc: #8e6e33;
+        --ocw: #f1e9d9;
+        --dg: #9a4a44;
+        --dgw: #f3e3e1;
+        --on: #f8f9f9;
+        --sans:
+          'Schibsted Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+        color-scheme: light;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --bg: #181c20;
+          --sf: #20252a;
+          --sf2: #262c32;
+          --ink: #d3d9de;
+          --mu: #909aa3;
+          --ln: #2f363c;
+          --ln2: #434c54;
+          --tl: #7fa8a3;
+          --tlw: #273634;
+          --st: #8ea2b8;
+          --stw: #28313b;
+          --oc: #c2a15f;
+          --ocw: #3a3222;
+          --dg: #d08a84;
+          --dgw: #3b2826;
+          --on: #181c20;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme='dark'] {
+        --bg: #181c20;
+        --sf: #20252a;
+        --sf2: #262c32;
+        --ink: #d3d9de;
+        --mu: #909aa3;
+        --ln: #2f363c;
+        --ln2: #434c54;
+        --tl: #7fa8a3;
+        --tlw: #273634;
+        --st: #8ea2b8;
+        --stw: #28313b;
+        --oc: #c2a15f;
+        --ocw: #3a3222;
+        --dg: #d08a84;
+        --dgw: #3b2826;
+        --on: #181c20;
+        color-scheme: dark;
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+      }
+      :focus-visible {
+        outline: 2px solid var(--st);
+        outline-offset: 2px;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 20px 80px;
+      }
+      .num {
+        font-variant-numeric: tabular-nums lining-nums;
+      }
+      .muted {
+        color: var(--mu);
+      }
+      .serif {
+        font-family: var(--serif);
+      }
+
+      .top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 26px;
+        border-bottom: 1px solid var(--ln);
+      }
+      .top h1 {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: clamp(40px, 7vw, 72px);
+        line-height: 1;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .top p {
+        margin: 12px 0 0;
+        color: var(--mu);
+        max-width: 58ch;
+      }
+      .ctl {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .seg {
+        display: inline-flex;
+        border: 1px solid var(--ln2);
+        border-radius: 8px;
+        padding: 2px;
+        background: var(--sf);
+      }
+      .seg button {
+        border: 0;
+        background: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        color: var(--mu);
+      }
+      .seg button[aria-pressed='true'] {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .jump {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        font-size: 15px;
+        margin-top: 18px;
+      }
+      .jump a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--ln2);
+      }
+
+      section.blk {
+        padding: 56px 0 8px;
+      }
+      .blk h2 {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: clamp(34px, 5vw, 46px);
+        margin: 0;
+        letter-spacing: -0.01em;
+        line-height: 1.05;
+      }
+      .idea {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+        margin: 14px 0 24px;
+      }
+      @media (max-width: 760px) {
+        .idea {
+          grid-template-columns: 1fr;
+        }
+      }
+      .idea p {
+        margin: 0;
+        color: var(--mu);
+        max-width: 56ch;
+      }
+      .idea p b {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .stage {
+        overflow: hidden;
+        margin: 0 0 14px;
+      }
+      .stage.actual {
+        overflow-x: auto;
+      }
+      .shot {
+        width: 1120px;
+        transform-origin: 0 0;
+      }
+      .cap {
+        font-size: 14px;
+        color: var(--mu);
+        margin: 0 0 34px;
+        max-width: 80ch;
+      }
+
+      .win {
+        background: var(--bg);
+        border: 1px solid var(--ln2);
+        border-radius: 14px;
+        overflow: hidden;
+        font-size: 14px;
+        position: relative;
+      }
+      .bar {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 14px;
+        background: var(--sf2);
+        border-bottom: 1px solid var(--ln);
+      }
+      .bar i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--ln2);
+        display: block;
+      }
+      .bar .url {
+        margin-left: 14px;
+        font-size: 12px;
+        color: var(--mu);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--ln2);
+        background: var(--sf);
+        border-radius: 999px;
+        padding: 7px 15px;
+        font-size: 13px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .btn.p {
+        background: var(--tl);
+        border-color: var(--tl);
+        color: var(--on);
+      }
+      .btn.g {
+        border-color: transparent;
+        background: none;
+        color: var(--mu);
+      }
+      .ico {
+        width: 18px;
+        height: 18px;
+        flex: none;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mark {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .mark svg {
+        width: 20px;
+        height: 20px;
+        color: var(--tl);
+      }
+
+      /* ===== A. Departures ===== */
+      .dep {
+        padding: 30px 40px 40px;
+      }
+      .dep-hd {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 26px;
+      }
+      .dep-hd h3 {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 54px;
+        line-height: 0.95;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .dep-hd .clock {
+        text-align: right;
+      }
+      .dep-hd .clock b {
+        font-size: 30px;
+        font-weight: 400;
+        display: block;
+        line-height: 1;
+      }
+      .horizon {
+        height: 70px;
+        margin: 0 0 6px;
+      }
+      .board {
+        border-top: 1px solid var(--ink);
+      }
+      .brow {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 0.9fr 1.05fr 1.2fr;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--ln);
+      }
+      .brow.h {
+        font-size: 12px;
+        color: var(--mu);
+        padding: 10px 4px;
+      }
+      .brow .cf {
+        font-family: var(--serif);
+        font-size: 22px;
+        line-height: 1.1;
+      }
+      .brow .cf small {
+        display: block;
+        font-family: var(--sans);
+        font-size: 12px;
+        color: var(--mu);
+        margin-top: 2px;
+      }
+      .flip {
+        display: inline-flex;
+        gap: 3px;
+      }
+      .flip span {
+        display: inline-grid;
+        place-items: center;
+        width: 30px;
+        height: 40px;
+        border-radius: 5px;
+        background: var(--sf2);
+        font-size: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .flip span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 1px;
+        background: var(--bg);
+      }
+      .flip.mine span {
+        background: var(--tlw);
+        color: var(--tl);
+      }
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+      }
+      .stat i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: block;
+        background: var(--mu);
+      }
+      .stat.ok i {
+        background: var(--tl);
+      }
+      .stat.ok {
+        color: var(--tl);
+      }
+      .stat.w i {
+        background: var(--oc);
+      }
+      .stat.w {
+        color: var(--oc);
+      }
+      .brow.sel {
+        background: var(--sf);
+      }
+      @keyframes roll {
+        from {
+          transform: translateY(-60%);
+          opacity: 0;
+        }
+        to {
+          transform: none;
+          opacity: 1;
+        }
+      }
+      .go .flip span {
+        animation: roll 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .go .flip span {
+          animation: none;
+        }
+      }
+
+      .passwrap {
+        padding: 40px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 40px;
+        align-items: start;
+      }
+      .pass {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 210px;
+        background: var(--sf);
+        border: 1px solid var(--ln2);
+        border-radius: 18px;
+        position: relative;
+      }
+      .pass .main {
+        padding: 26px 30px;
+      }
+      .pass .stub {
+        padding: 26px 24px;
+        border-left: 1.5px dashed var(--ln2);
+        position: relative;
+      }
+      .pass .stub::before,
+      .pass .stub::after {
+        content: '';
+        position: absolute;
+        left: -12px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--bg);
+        border: 1px solid var(--ln2);
+      }
+      .pass .stub::before {
+        top: -12px;
+        clip-path: inset(50% 0 0 0);
+      }
+      .pass .stub::after {
+        bottom: -12px;
+        clip-path: inset(0 0 50% 0);
+      }
+      .route {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: end;
+        gap: 20px;
+        margin: 6px 0 26px;
+      }
+      .route .city {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 56px;
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+      }
+      .route .lbl {
+        font-size: 12px;
+        color: var(--mu);
+        margin-bottom: 6px;
+      }
+      .route .path {
+        height: 1px;
+        background: var(--ln2);
+        position: relative;
+        margin-bottom: 22px;
+      }
+      .route .path::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -4px;
+        width: 9px;
+        height: 9px;
+        border-top: 1px solid var(--ln2);
+        border-right: 1px solid var(--ln2);
+        transform: rotate(45deg);
+      }
+      .route .path b {
+        position: absolute;
+        left: 38%;
+        top: -7px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--tl);
+        box-shadow: 0 0 0 5px var(--tlw);
+      }
+      .stops {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--ln);
+      }
+      .stops div {
+        padding: 14px 12px 0 0;
+      }
+      .stops .k {
+        font-size: 12px;
+        color: var(--mu);
+      }
+      .stops b {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        margin-top: 2px;
+      }
+      .stops .done b {
+        color: var(--tl);
+      }
+      .stops .now b {
+        text-decoration: underline;
+        text-decoration-color: var(--tl);
+        text-underline-offset: 4px;
+      }
+      .kv {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 0;
+        border-bottom: 1px solid var(--ln);
+        font-size: 13px;
+      }
+      .kv:last-child {
+        border: 0;
+      }
+      .note {
+        border-left: 2px solid var(--oc);
+        padding: 4px 0 4px 14px;
+        font-size: 14px;
+      }
+      .note b {
+        font-weight: 500;
+        color: var(--oc);
+        display: block;
+      }
+
+      /* ===== B. Orbit ===== */
+      .orb {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        min-height: 720px;
+      }
+      .orb-l {
+        position: relative;
+        padding: 22px 26px;
+      }
+      .orb-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .legend {
+        display: flex;
+        gap: 16px;
+        font-size: 12px;
+        color: var(--mu);
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: block;
+      }
+      .orb svg .p {
+        cursor: pointer;
+      }
+      .orb svg .p:hover circle.dotc {
+        stroke-width: 3;
+      }
+      .orb-r {
+        border-left: 1px solid var(--ln);
+        background: var(--sf);
+        padding: 24px 24px;
+      }
+      .orb-r .yr {
+        font-size: 12px;
+        color: var(--mu);
+      }
+      .orb-r h4 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 1.15;
+        margin: 6px 0 10px;
+      }
+      .chips {
+        display: flex;
+        border: 1px solid var(--ln2);
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 16px 0;
+      }
+      .chips span {
+        flex: 1;
+        text-align: center;
+        font-size: 13px;
+        padding: 6px 0;
+        color: var(--mu);
+      }
+      .chips .on {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .orb-r h6 {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--mu);
+        margin: 18px 0 6px;
+      }
+      .orb-r .find {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .orb-r .cites {
+        font-size: 14px;
+        margin: 0;
+        line-height: 1.7;
+      }
+      .zoom {
+        position: absolute;
+        left: 26px;
+        bottom: 22px;
+        display: flex;
+        gap: 6px;
+      }
+
+      /* ===== C. Marginalia ===== */
+      .mg {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 0;
+        min-height: 760px;
+      }
+      .mg-main {
+        padding: 44px 56px 40px;
+      }
+      .mg-side {
+        border-left: 1px solid var(--ln);
+        padding: 44px 28px;
+        position: relative;
+      }
+      .crumb {
+        font-size: 13px;
+        color: var(--mu);
+      }
+      .bigq {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 60px;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        margin: 14px 0 22px;
+        max-width: 15ch;
+      }
+      .bigq em {
+        font-style: italic;
+      }
+      .meta-l {
+        display: flex;
+        gap: 26px;
+        font-size: 14px;
+        color: var(--mu);
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--ink);
+        margin-bottom: 6px;
+      }
+      .meta-l b {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .thd {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 26px 0 4px;
+      }
+      .thd h5 {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0;
+      }
+      .ix {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 8px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--ln);
+        position: relative;
+      }
+      .ix .n {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 34px;
+        line-height: 1;
+        color: var(--mu);
+      }
+      .ix.r .n {
+        color: var(--tl);
+      }
+      .ix .t {
+        font-family: var(--serif);
+        font-size: 23px;
+        line-height: 1.2;
+        margin: 0;
+      }
+      .ix .s {
+        font-size: 13px;
+        color: var(--mu);
+        margin-top: 4px;
+        display: flex;
+        gap: 14px;
+      }
+      .ix .f {
+        margin: 8px 0 0;
+        font-size: 15px;
+        max-width: 60ch;
+      }
+      .ann {
+        position: absolute;
+        left: 28px;
+        right: 24px;
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 16px;
+        line-height: 1.45;
+        color: var(--st);
+      }
+      .ann::before {
+        content: '';
+        position: absolute;
+        left: -29px;
+        top: 11px;
+        width: 20px;
+        height: 1px;
+        background: var(--st);
+      }
+      .ann small {
+        display: block;
+        font-family: var(--sans);
+        font-style: normal;
+        font-size: 11px;
+        color: var(--mu);
+        margin-top: 4px;
+      }
+
+      .cat {
+        padding: 44px 56px 40px;
+      }
+      .findl {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 46px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+      .findl u {
+        text-decoration: none;
+        border-bottom: 1.5px solid var(--tl);
+        color: var(--ink);
+        padding: 0 4px;
+        font-style: italic;
+      }
+      .drawers {
+        display: flex;
+        gap: 0;
+        margin: 28px 0 0;
+        border-bottom: 1px solid var(--ln2);
+      }
+      .drawers span {
+        padding: 10px 18px;
+        font-size: 14px;
+        color: var(--mu);
+        border: 1px solid transparent;
+        border-bottom: 0;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: -1px;
+      }
+      .drawers .on {
+        border-color: var(--ln2);
+        background: var(--sf);
+        color: var(--ink);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        background: var(--sf);
+        border: 1px solid var(--ln2);
+        border-top: 0;
+        border-radius: 0 12px 12px 12px;
+        padding: 22px;
+      }
+      .card {
+        background: var(--bg);
+        border: 1px solid var(--ln);
+        border-radius: 4px;
+        padding: 16px 16px 14px;
+        position: relative;
+        min-height: 210px;
+        display: flex;
+        flex-direction: column;
+      }
+      .card::before {
+        content: '';
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 44px;
+        border-top: 1px solid var(--dgw);
+      }
+      .card .yr {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--mu);
+        height: 24px;
+      }
+      .card .t {
+        font-family: var(--serif);
+        font-size: 19px;
+        line-height: 1.2;
+        margin: 10px 0 6px;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--mu);
+        margin: 0;
+        flex: 1;
+      }
+      .card .ft {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+        font-size: 12px;
+      }
+      .card .ok {
+        color: var(--tl);
+      }
+      .card.sk .t,
+      .card.sk p {
+        background: var(--sf2);
+        color: transparent;
+        border-radius: 4px;
+      }
+      .pg {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+        font-size: 14px;
+      }
+      .pg .dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .pg .dots i {
+        width: 22px;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--ln2);
+        display: block;
+      }
+      .pg .dots i.on {
+        background: var(--ink);
+        width: 36px;
+      }
+
+      /* states */
+      .states {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+      .st {
+        border-top: 1px solid var(--ink);
+        padding: 14px 0 0;
+      }
+      .st h3 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 22px;
+        margin: 0 0 4px;
+      }
+      .st .why {
+        font-size: 14px;
+        color: var(--mu);
+        margin: 0 0 14px;
+      }
+      .toast {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        background: var(--ink);
+        color: var(--bg);
+        border-radius: 999px;
+        padding: 9px 16px;
+        font-size: 13px;
+      }
+      .final {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 32px;
+        border-top: 1px solid var(--ink);
+        padding-top: 22px;
+      }
+      @media (max-width: 760px) {
+        .final {
+          grid-template-columns: 1fr;
+        }
+      }
+      .final h2 {
+        font-family: var(--serif);
+        font-weight: 300;
+        font-size: 40px;
+        margin: 0;
+        line-height: 1.05;
+      }
+      .final p {
+        margin: 0 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div>
+          <h1>Paperscape, reimagined</h1>
+          <p>
+            Three ideas, each built on a metaphor from a researcher's real life: travel, the night
+            sky, and the margins of a printed paper. Same calm mist and steel palette, same features
+            underneath.
+          </p>
+          <nav class="jump" aria-label="Designs">
+            <a href="#a">Departures</a><a href="#b">Orbit</a><a href="#c">Marginalia</a
+            ><a href="#s">States</a>
+          </nav>
+        </div>
+        <div class="ctl">
+          <div class="seg" role="group" aria-label="Theme">
+            <button data-th="light" aria-pressed="false">Light</button
+            ><button data-th="dark" aria-pressed="false">Dark</button>
+          </div>
+          <div class="seg" role="group" aria-label="Mockup size">
+            <button data-fit="fit" aria-pressed="true">Fit</button
+            ><button data-fit="actual" aria-pressed="false">Actual size</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============ A ============ -->
+      <section class="blk" id="a">
+        <h2>Departures</h2>
+        <div class="idea">
+          <p>
+            <b>The idea.</b> Submitting a paper is a trip: you pick a destination, you have a
+            departure time, and you need time to get a visa. So the Conference Planner becomes an
+            airport departures board, and each submission plan becomes a boarding pass.
+          </p>
+          <p>
+            <b>Why it works for first-timers.</b> Everyone already knows how to read a departures
+            board. Days left are large split-flap digits, and the status column does the warning
+            work in words, not just colors.
+          </p>
+        </div>
+
+        <div class="stage">
+          <div class="shot">
+            <div class="win" id="board">
+              <div class="bar">
+                <i></i><i></i><i></i><span class="url">paperscape.app/planner</span>
+              </div>
+              <div class="dep">
+                <div class="dep-hd">
+                  <div>
+                    <div class="mark" style="margin-bottom: 18px">
+                      <svg viewBox="0 0 24 24" class="ico">
+                        <circle cx="5" cy="6" r="2" />
+                        <circle cx="19" cy="9" r="2" />
+                        <circle cx="10" cy="18" r="2" />
+                        <path d="M7 6.5l10 2.2M18 10.7l-6.6 6M6 8l3.3 8.2" /></svg
+                      >Paperscape
+                      <span class="muted" style="font-weight: 400; margin-left: 14px">Planner</span
+                      ><span class="muted" style="font-weight: 400; margin-left: 14px"
+                        >Reviews</span
+                      >
+                    </div>
+                    <h3>Upcoming<br />deadlines</h3>
+                  </div>
+                  <div class="clock">
+                    <span class="muted" style="font-size: 13px">Today, Boston</span
+                    ><b class="num">Oct 15</b>
+                    <div
+                      style="margin-top: 14px; display: flex; gap: 8px; justify-content: flex-end"
+                    >
+                      <span class="btn">All areas</span><span class="btn">Next 6 months</span
+                      ><span class="btn p">Plan a submission</span>
+                    </div>
+                  </div>
+                </div>
+                <svg
+                  class="horizon dotmap"
+                  viewBox="0 0 600 120"
+                  preserveAspectRatio="none"
+                  width="100%"
+                  aria-hidden="true"
+                ></svg>
+                <div class="board">
+                  <div class="brow h">
+                    <span>Conference</span><span>Where</span><span>Paper due</span
+                    ><span>Days left</span><span>Status</span>
+                  </div>
+                  <div class="brow sel">
+                    <div class="cf">ICLW 2027<small>Your target venue</small></div>
+                    <span>Europe</span><span class="num">Nov 7</span
+                    ><span class="flip mine num"><span>2</span><span>3</span></span
+                    ><span class="stat ok"><i></i>On track, draft 60%</span>
+                  </div>
+                  <div class="brow">
+                    <div class="cf">VPC 2027<small>Your backup venue</small></div>
+                    <span>East Asia</span><span class="num">Nov 10</span
+                    ><span class="flip mine num"><span>2</span><span>6</span></span
+                    ><span class="stat w"><i></i>Same week as ICLW</span>
+                  </div>
+                  <div class="brow">
+                    <div class="cf">RLS 2027<small>Reinforcement learning</small></div>
+                    <span>North America</span><span class="num">Dec 12</span
+                    ><span class="flip num"><span>5</span><span>8</span></span
+                    ><span class="stat"><i></i>Not planned</span>
+                  </div>
+                  <div class="brow">
+                    <div class="cf">LMC 2027<small>Language models</small></div>
+                    <span>South America</span><span class="num">Jan 20</span
+                    ><span class="flip num"><span>9</span><span>7</span></span
+                    ><span class="stat w"><i></i>4 weeks for travel</span>
+                  </div>
+                  <div class="brow">
+                    <div class="cf">TML 2027<small>Theory</small></div>
+                    <span>Oceania</span><span class="num">Feb 3</span
+                    ><span class="flip num"><span>1</span><span>1</span><span>1</span></span
+                    ><span class="stat"><i></i>Not planned</span>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 14px;
+                    font-size: 13px;
+                  "
+                  class="muted"
+                >
+                  <span
+                    >Showing 5 of 14 conferences. Conferences load once and filter instantly.</span
+                  ><span>Switch to map view</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">
+          The board. Your own venues have tinted digits. The digits roll in once when the page
+          loads, which is the only animation on the screen.
+        </p>
+
+        <div class="stage">
+          <div class="shot">
+            <div class="win">
+              <div class="bar">
+                <i></i><i></i><i></i><span class="url">paperscape.app/plans/iclw-2027</span>
+              </div>
+              <div class="passwrap">
+                <div>
+                  <div class="muted" style="font-size: 13px; margin-bottom: 14px">
+                    Your plans / ICL paper
+                  </div>
+                  <div class="pass">
+                    <div class="main">
+                      <div
+                        style="display: flex; justify-content: space-between; font-size: 13px"
+                        class="muted"
+                      >
+                        <span>Submission plan</span><span>Created Sep 30</span>
+                      </div>
+                      <div class="route">
+                        <div>
+                          <div class="lbl">From</div>
+                          <div class="city">Draft</div>
+                        </div>
+                        <div class="path"><b></b></div>
+                        <div>
+                          <div class="lbl">To</div>
+                          <div class="city">ICLW</div>
+                        </div>
+                      </div>
+                      <div class="stops">
+                        <div class="done"><span class="k">Oct 1</span><b>Related work</b></div>
+                        <div class="now"><span class="k">Oct 22</span><b>Experiments</b></div>
+                        <div><span class="k">Nov 1</span><b>Full draft</b></div>
+                        <div><span class="k">Nov 7</span><b>Submit</b></div>
+                      </div>
+                    </div>
+                    <div class="stub">
+                      <div class="muted" style="font-size: 12px">Departs in</div>
+                      <div
+                        class="serif num"
+                        style="
+                          font-size: 64px;
+                          font-weight: 300;
+                          line-height: 1;
+                          letter-spacing: -0.02em;
+                        "
+                      >
+                        23
+                      </div>
+                      <div class="muted" style="font-size: 13px; margin-bottom: 18px">days</div>
+                      <div class="kv"><span class="muted">Backup</span><span>VPC 2027</span></div>
+                      <div class="kv">
+                        <span class="muted">Decisions</span><span class="num">Feb 14</span>
+                      </div>
+                      <div class="kv">
+                        <span class="muted">Conference</span><span class="num">Apr 21</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px; margin-top: 18px">
+                    <span class="btn p">Add milestone</span><span class="btn">Edit plan</span
+                    ><span class="btn g">Delete plan</span>
+                  </div>
+                </div>
+                <aside>
+                  <div class="note">
+                    <b>Travel check</b>Decisions to start is 9 weeks. That's enough time for most
+                    visas.
+                  </div>
+                  <div class="note" style="margin-top: 18px">
+                    <b>Deadline clash</b>Your backup's abstract is due 3 days after this paper. Want
+                    to move a milestone earlier?
+                  </div>
+                  <div style="margin-top: 28px" class="muted">
+                    <div style="font-size: 13px; margin-bottom: 8px">Other plans</div>
+                    <div style="color: var(--ink); font-family: var(--serif); font-size: 18px">
+                      Diffusion workshop paper
+                    </div>
+                    <div style="font-size: 13px">To RLS 2027 in 58 days</div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">
+          A boarding pass. The dot on the route line is how far you are through your milestones.
+          Warnings sit to the side as plain sentences.
+        </p>
+      </section>
+
+      <!-- ============ B ============ -->
+      <section class="blk" id="b">
+        <h2>Orbit</h2>
+        <div class="idea">
+          <p>
+            <b>The idea.</b> Your research question sits at the center, and your papers orbit it.
+            The inner ring holds papers you've read, the middle ring the ones you're reading, and
+            the outer ring your to-read list. Thin lines show which papers cite each other, and your
+            thread is one bright path.
+          </p>
+          <p>
+            <b>Why it works.</b> Progress becomes visible: as you read, papers move inward. Try
+            tapping the dots. On phones and for screen readers, the same data is available as a
+            plain list.
+          </p>
+        </div>
+
+        <div class="stage">
+          <div class="shot">
+            <div class="win">
+              <div class="bar">
+                <i></i><i></i><i></i><span class="url">paperscape.app/reviews/icl-thesis</span>
+              </div>
+              <div class="orb">
+                <div class="orb-l">
+                  <div class="orb-top">
+                    <div class="mark">
+                      <svg viewBox="0 0 24 24" class="ico">
+                        <circle cx="5" cy="6" r="2" />
+                        <circle cx="19" cy="9" r="2" />
+                        <circle cx="10" cy="18" r="2" />
+                        <path d="M7 6.5l10 2.2M18 10.7l-6.6 6M6 8l3.3 8.2" /></svg
+                      >ICL thesis
+                    </div>
+                    <div style="display: flex; gap: 8px">
+                      <span class="btn">View as list</span><span class="btn p">Add papers</span>
+                    </div>
+                  </div>
+                  <svg
+                    id="orbit"
+                    viewBox="0 0 760 620"
+                    width="100%"
+                    role="img"
+                    aria-label="Papers arranged in rings around the research question"
+                  ></svg>
+                  <div class="zoom">
+                    <div class="legend">
+                      <span><i style="background: var(--tl)"></i>Read</span
+                      ><span><i style="background: var(--st)"></i>Reading</span
+                      ><span><i style="border: 1.5px solid var(--ln2)"></i>To read</span
+                      ><span
+                        ><i
+                          style="height: 2px; width: 16px; border-radius: 0; background: var(--tl)"
+                        ></i
+                        >Your thread</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <aside class="orb-r" id="orbPanel" aria-live="polite"></aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">
+          Dot size is citation count. Faint lines are citation links between your saved papers.
+          Selecting a dot opens it on the right, where status, finding, and notes edit in place.
+        </p>
+      </section>
+
+      <!-- ============ C ============ -->
+      <section class="blk" id="c">
+        <h2>Marginalia</h2>
+        <div class="idea">
+          <p>
+            <b>The idea.</b> Researchers scribble in the margins of printed papers. Here your review
+            reads like a printed page: the research question is set huge, papers form a numbered
+            index, and your notes appear in the margin beside each one, in italics, like
+            handwriting.
+          </p>
+          <p>
+            <b>Search as a card catalog.</b> Finding papers works like a library drawer: you type
+            into a sentence, and results come back as index cards, 20 to a drawer.
+          </p>
+        </div>
+
+        <div class="stage">
+          <div class="shot">
+            <div class="win">
+              <div class="bar">
+                <i></i><i></i><i></i><span class="url">paperscape.app/reviews/icl-thesis</span>
+              </div>
+              <div class="mg">
+                <div class="mg-main">
+                  <div style="display: flex; justify-content: space-between; align-items: center">
+                    <span class="crumb">Your reviews / ICL thesis</span
+                    ><span style="display: flex; gap: 8px"
+                      ><span class="btn">Edit question</span
+                      ><span class="btn p">Add papers</span></span
+                    >
+                  </div>
+                  <p class="bigq">How does <em>in-context learning</em> emerge in large models?</p>
+                  <div class="meta-l">
+                    <span><b class="num">14</b> papers</span><span><b class="num">8</b> read</span
+                    ><span><b class="num">2</b> threads</span
+                    ><span><b class="num">5</b> citation links</span>
+                  </div>
+                  <div class="thd">
+                    <h5>Thread one: from meta-learning to circuits</h5>
+                    <span class="muted" style="font-size: 13px">Drag to reorder</span>
+                  </div>
+                  <div class="ix r" id="ix1">
+                    <span class="n num">1</span>
+                    <div>
+                      <p class="t">Meta-learning as implicit gradient descent</p>
+                      <div class="s"><span>Varga and Ito, 2023</span><span>Read</span></div>
+                      <p class="f">
+                        The forward pass can act like a few steps of training on the prompt.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="ix r" id="ix2">
+                    <span class="n num">2</span>
+                    <div>
+                      <p class="t">Induction heads revisited</p>
+                      <div class="s">
+                        <span>Chen, 2024</span><span>Read</span><span>Cites 1</span>
+                      </div>
+                      <p class="f">
+                        Copying circuits appear suddenly, around the same step as the accuracy jump.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="ix" id="ix3">
+                    <span class="n num">3</span>
+                    <div>
+                      <p class="t">Scaling laws for sparse attention</p>
+                      <div class="s">
+                        <span>Kim and Osei, 2025</span><span>Reading</span
+                        ><span>Cites 1 and 2</span>
+                      </div>
+                      <p class="f muted">No finding yet.</p>
+                    </div>
+                  </div>
+                  <div class="ix" id="ix4">
+                    <span class="n num">4</span>
+                    <div>
+                      <p class="t">When does emergence disappear?</p>
+                      <div class="s">
+                        <span>Novak, 2025</span><span>To read</span><span>Cites 3</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <aside class="mg-side" id="margin">
+                  <div class="ann" data-for="ix1">
+                    Starting claim for chapter 2. Check their setup against mine.<small
+                      >Your note, Oct 3</small
+                    >
+                  </div>
+                  <div class="ann" data-for="ix2">
+                    The timing matches paper 1. This is the bridge.<small>Your note, Oct 8</small>
+                  </div>
+                  <div class="ann" data-for="ix3" style="color: var(--mu)">
+                    Add a note<small>Notes save when you click away</small>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">
+          The review page. Thread order is a real sequence, so papers are numbered. Notes sit next
+          to the paper they belong to, and teal numbers mean you've read it.
+        </p>
+
+        <div class="stage">
+          <div class="shot">
+            <div class="win">
+              <div class="bar">
+                <i></i><i></i><i></i
+                ><span class="url">paperscape.app/search?q=distillation&amp;page=2</span>
+              </div>
+              <div class="cat">
+                <div class="findl">
+                  Find papers about <u>diffusion distillation</u>
+                  <span class="muted" style="font-size: 20px; font-family: var(--sans)">from</span>
+                  <u>2023</u>
+                  <span class="muted" style="font-size: 20px; font-family: var(--sans)">to</span>
+                  <u>2026</u>
+                </div>
+                <div class="muted" style="margin-top: 10px; font-size: 14px">
+                  Every underlined word is editable. Results update after you stop typing.
+                </div>
+                <div class="drawers">
+                  <span class="on">All areas, 86</span><span>Vision, 61</span
+                  ><span>Language, 14</span><span>Theory, 11</span>
+                </div>
+                <div class="cards">
+                  <div class="card">
+                    <div class="yr"><span>2025</span><span class="num">204 citations</span></div>
+                    <p class="t">Progressive distillation at scale</p>
+                    <p>
+                      Halves the sampling steps repeatedly while keeping image quality within a
+                      small margin.
+                    </p>
+                    <div class="ft">
+                      <span class="muted">Ahmed, Ruiz</span
+                      ><span class="btn p" style="padding: 5px 12px">Add to review</span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="yr"><span>2024</span><span class="num">97 citations</span></div>
+                    <p class="t">One-step generators from teacher scores</p>
+                    <p>Trains a single-step model directly from a pretrained diffusion teacher.</p>
+                    <div class="ft"><span class="ok">In Diffusion project</span></div>
+                  </div>
+                  <div class="card sk" aria-hidden="true">
+                    <div class="yr"><span>&nbsp;</span></div>
+                    <p class="t">Loading card title here</p>
+                    <p>Loading abstract text placeholder line here</p>
+                  </div>
+                </div>
+                <div class="pg">
+                  <span class="muted">Drawer 2 of 5, cards 21 to 40</span>
+                  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+                  <span style="display: flex; gap: 8px"
+                    ><span class="btn">Previous</span><span class="btn">Next</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">
+          The card catalog. The search is a sentence you edit in place. The third card shows the
+          loading state while the next result arrives.
+        </p>
+      </section>
+
+      <!-- ============ States ============ -->
+      <section class="blk" id="s">
+        <h2>The quiet parts</h2>
+        <div class="idea">
+          <p>Loading, empty, error, and duplicate states, written in each design's voice.</p>
+        </div>
+        <div class="states">
+          <div class="st">
+            <h3>Empty board</h3>
+            <p class="why">Departures, before any plan exists.</p>
+            <p class="serif" style="font-size: 20px; margin: 0 0 10px">
+              No departures planned yet. Choose a conference and set your first milestone.
+            </p>
+            <span class="btn p">Plan a submission</span>
+          </div>
+          <div class="st">
+            <h3>Empty orbit</h3>
+            <p class="why">Orbit, a new review with no papers.</p>
+            <svg viewBox="0 0 200 90" width="200" aria-hidden="true">
+              <g fill="none" stroke="var(--ln2)" stroke-dasharray="3 4">
+                <circle cx="100" cy="90" r="40" />
+                <circle cx="100" cy="90" r="70" />
+              </g>
+              <circle cx="100" cy="90" r="16" fill="var(--tlw)" />
+            </svg>
+            <p style="margin: 6px 0 10px; font-size: 14px" class="muted">
+              Your question is in place. Add papers and they'll appear in the outer ring.
+            </p>
+            <span class="btn p">Add papers</span>
+          </div>
+          <div class="st">
+            <h3>Error</h3>
+            <p class="why">Says what happened and what to do.</p>
+            <p style="margin: 0 0 10px; color: var(--dg); font-size: 15px">
+              The catalog couldn't load. Check your connection and try again.
+            </p>
+            <span class="btn" style="border-color: var(--dg); color: var(--dg)">Try again</span>
+          </div>
+          <div class="st">
+            <h3>Already saved</h3>
+            <p class="why">The database's unique index blocks a second add.</p>
+            <span class="toast">This paper is already in ICL thesis</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="final">
+        <h2>Which to build</h2>
+        <div>
+          <p>
+            <b>Mix them by module.</b> Departures for Ayush's Conference Planner and Marginalia for
+            your Review Workspace give each half its own personality while sharing the palette and
+            type.
+          </p>
+          <p>
+            <b>Orbit as the signature view.</b> It's the most memorable screen, so make it a "Map
+            view" toggle on the review page once the list version works.
+          </p>
+          <p class="muted" style="font-size: 14px">
+            All three are plain HTML, CSS, and hand-drawn SVG, so they fit your no-framework rule.
+            Titles, authors, and conference names are placeholders.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var root = document.documentElement,
+          NS = 'http://www.w3.org/2000/svg';
+        var thBtns = document.querySelectorAll('[data-th]');
+        function cur() {
+          return (
+            root.getAttribute('data-theme') ||
+            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          );
+        }
+        function syncTh() {
+          var c = cur();
+          thBtns.forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.dataset.th === c));
+          });
+        }
+        try {
+          var s = localStorage.getItem('ps-theme');
+          if (s) root.setAttribute('data-theme', s);
+        } catch (e) {}
+        thBtns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            root.setAttribute('data-theme', b.dataset.th);
+            try {
+              localStorage.setItem('ps-theme', b.dataset.th);
+            } catch (e) {}
+            syncTh();
+          });
+        });
+        syncTh();
+
+        function el(t, a, p) {
+          var e = document.createElementNS(NS, t);
+          for (var k in a) e.setAttribute(k, a[k]);
+          if (p) p.appendChild(e);
+          return e;
+        }
+
+        /* horizon dot map */
+        var land = [
+          [130, 40, 88, 30],
+          [205, 95, 30, 30],
+          [320, 38, 34, 16],
+          [330, 90, 40, 34],
+          [440, 42, 104, 30],
+          [512, 100, 40, 14],
+          [235, 14, 22, 8],
+        ];
+        document.querySelectorAll('.dotmap').forEach(function (svg) {
+          var g = el('g', { fill: 'var(--ln2)' }, svg);
+          for (var x = 4; x < 600; x += 7) {
+            for (var y = 4; y < 120; y += 7) {
+              for (var i = 0; i < land.length; i++) {
+                var l = land[i],
+                  dx = (x - l[0]) / l[2],
+                  dy = (y - l[1]) / l[3];
+                if (dx * dx + dy * dy <= 1) {
+                  el('circle', { cx: x, cy: y, r: 1.4 }, g);
+                  break;
+                }
+              }
+            }
+          }
+          [
+            [322, 34, 1],
+            [470, 52, 1],
+            [110, 40, 0],
+            [210, 100, 0],
+            [505, 100, 0],
+          ].forEach(function (m) {
+            el(
+              'circle',
+              { cx: m[0], cy: m[1], r: m[2] ? 4 : 3, fill: m[2] ? 'var(--tl)' : 'var(--st)' },
+              svg,
+            );
+          });
+        });
+
+        /* flip digits stagger */
+        var board = document.getElementById('board');
+        board.querySelectorAll('.flip span').forEach(function (s, i) {
+          s.style.animationDelay = i * 60 + 'ms';
+        });
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (e) {
+                if (e.isIntersecting) {
+                  board.classList.add('go');
+                  io.disconnect();
+                }
+              });
+            },
+            { threshold: 0.3 },
+          );
+          io.observe(board);
+        } else board.classList.add('go');
+
+        /* orbit */
+        var papers = [
+          {
+            id: 1,
+            t: 'Meta-learning as implicit gradient descent',
+            a: 'Varga and Ito',
+            y: 2023,
+            c: 311,
+            s: 'read',
+            ang: 200,
+            f: 'The forward pass can act like a few steps of training on the prompt.',
+            th: 1,
+          },
+          {
+            id: 2,
+            t: 'Induction heads revisited',
+            a: 'Chen',
+            y: 2024,
+            c: 89,
+            s: 'read',
+            ang: 290,
+            f: 'Copying circuits appear suddenly, around the same step as the accuracy jump.',
+            th: 2,
+          },
+          {
+            id: 3,
+            t: 'Scaling laws for sparse attention',
+            a: 'Kim and Osei',
+            y: 2025,
+            c: 142,
+            s: 'reading',
+            ang: 20,
+            f: '',
+            th: 3,
+          },
+          {
+            id: 4,
+            t: 'When does emergence disappear?',
+            a: 'Novak',
+            y: 2025,
+            c: 40,
+            s: 'todo',
+            ang: 85,
+            f: '',
+            th: 4,
+          },
+          {
+            id: 5,
+            t: 'Prompt length and copying',
+            a: 'Ito',
+            y: 2024,
+            c: 22,
+            s: 'todo',
+            ang: 150,
+            f: '',
+          },
+          {
+            id: 6,
+            t: 'Task vectors in the residual stream',
+            a: 'Ruiz and Park',
+            y: 2024,
+            c: 130,
+            s: 'read',
+            ang: 60,
+            f: 'In-context examples compress into a single direction you can add to other prompts.',
+          },
+          {
+            id: 7,
+            t: 'Data distribution drives emergence',
+            a: 'Okafor',
+            y: 2023,
+            c: 180,
+            s: 'read',
+            ang: 130,
+            f: 'Bursty training data is what makes in-context learning appear at all.',
+          },
+          {
+            id: 8,
+            t: 'Linear attention learns regression',
+            a: 'Haas',
+            y: 2023,
+            c: 95,
+            s: 'reading',
+            ang: 245,
+            f: '',
+          },
+          {
+            id: 9,
+            t: 'Benchmarks for few-shot reasoning',
+            a: 'Silva',
+            y: 2025,
+            c: 15,
+            s: 'todo',
+            ang: 330,
+            f: '',
+          },
+          {
+            id: 10,
+            t: 'Emergence is a metric artifact',
+            a: 'Lund',
+            y: 2024,
+            c: 260,
+            s: 'todo',
+            ang: 250,
+            f: '',
+          },
+        ];
+        var links = [
+          [3, 1],
+          [3, 2],
+          [2, 1],
+          [4, 3],
+          [6, 7],
+          [8, 1],
+          [10, 7],
+        ];
+        var R = { read: 120, reading: 195, todo: 265 },
+          cx = 380,
+          cy = 310,
+          sel = 3;
+        var svg = document.getElementById('orbit');
+        function pos(p) {
+          var a = (p.ang * Math.PI) / 180;
+          return [cx + R[p.s] * Math.cos(a), cy + R[p.s] * Math.sin(a) * 0.92];
+        }
+        function rad(p) {
+          return 6 + Math.sqrt(p.c) * 0.75;
+        }
+        function byId(i) {
+          return papers.filter(function (p) {
+            return p.id === i;
+          })[0];
+        }
+        function draw() {
+          while (svg.firstChild) svg.removeChild(svg.firstChild);
+          ['read', 'reading', 'todo'].forEach(function (k) {
+            el(
+              'ellipse',
+              {
+                cx: cx,
+                cy: cy,
+                rx: R[k],
+                ry: R[k] * 0.92,
+                fill: 'none',
+                stroke: 'var(--ln)',
+                'stroke-width': 1,
+              },
+              svg,
+            );
+          });
+          var lab = { read: 'Read', reading: 'Reading', todo: 'To read' };
+          ['read', 'reading', 'todo'].forEach(function (k) {
+            var t = el(
+              'text',
+              {
+                x: cx,
+                y: cy - R[k] * 0.92 - 6,
+                'text-anchor': 'middle',
+                'font-size': 11,
+                fill: 'var(--mu)',
+              },
+              svg,
+            );
+            t.textContent = lab[k];
+          });
+          links.forEach(function (l) {
+            var a = pos(byId(l[0])),
+              b = pos(byId(l[1]));
+            var mx = (a[0] + b[0]) / 2,
+              my = (a[1] + b[1]) / 2;
+            var qx = mx + (cx - mx) * 0.35,
+              qy = my + (cy - my) * 0.35;
+            var on = l[0] === sel || l[1] === sel;
+            el(
+              'path',
+              {
+                d: 'M' + a[0] + ' ' + a[1] + ' Q' + qx + ' ' + qy + ' ' + b[0] + ' ' + b[1],
+                fill: 'none',
+                stroke: on ? 'var(--st)' : 'var(--ln2)',
+                'stroke-width': on ? 1.4 : 1,
+                'stroke-dasharray': on ? '' : '2 4',
+              },
+              svg,
+            );
+          });
+          var th = papers
+            .filter(function (p) {
+              return p.th;
+            })
+            .sort(function (a, b) {
+              return a.th - b.th;
+            });
+          var d = '';
+          th.forEach(function (p, i) {
+            var q = pos(p);
+            d += (i ? 'L' : 'M') + q[0] + ' ' + q[1] + ' ';
+          });
+          el(
+            'path',
+            {
+              d: d,
+              fill: 'none',
+              stroke: 'var(--tl)',
+              'stroke-width': 2.2,
+              'stroke-linejoin': 'round',
+              opacity: 0.85,
+            },
+            svg,
+          );
+          el('circle', { cx: cx, cy: cy, r: 62, fill: 'var(--tlw)' }, svg);
+          ['How does', 'in-context', 'learning emerge?'].forEach(function (s, i) {
+            var t = el(
+              'text',
+              {
+                x: cx,
+                y: cy - 14 + i * 19,
+                'text-anchor': 'middle',
+                'font-size': 15,
+                fill: 'var(--ink)',
+                'font-family': 'Newsreader, Georgia, serif',
+              },
+              svg,
+            );
+            t.textContent = s;
+          });
+          papers.forEach(function (p) {
+            var q = pos(p),
+              r = rad(p);
+            var g = el('g', { class: 'p', tabindex: 0, role: 'button', 'aria-label': p.t }, svg);
+            if (p.id === sel)
+              el(
+                'circle',
+                {
+                  cx: q[0],
+                  cy: q[1],
+                  r: r + 7,
+                  fill: 'none',
+                  stroke: 'var(--ink)',
+                  'stroke-width': 1,
+                },
+                g,
+              );
+            var fill = p.s === 'read' ? 'var(--tl)' : p.s === 'reading' ? 'var(--st)' : 'var(--bg)';
+            el(
+              'circle',
+              {
+                class: 'dotc',
+                cx: q[0],
+                cy: q[1],
+                r: r,
+                fill: fill,
+                stroke: p.s === 'todo' ? 'var(--ln2)' : fill,
+                'stroke-width': 1.5,
+              },
+              g,
+            );
+            if (p.th) {
+              var n = el(
+                'text',
+                {
+                  x: q[0],
+                  y: q[1] + 4,
+                  'text-anchor': 'middle',
+                  'font-size': 11,
+                  fill: p.s === 'todo' ? 'var(--ink)' : 'var(--on)',
+                },
+                g,
+              );
+              n.textContent = p.th;
+            }
+            var right = q[0] >= cx;
+            var lt = el(
+              'text',
+              {
+                x: q[0] + (right ? r + 8 : -r - 8),
+                y: q[1] + 4,
+                'text-anchor': right ? 'start' : 'end',
+                'font-size': 12,
+                fill: p.id === sel ? 'var(--ink)' : 'var(--mu)',
+              },
+              g,
+            );
+            lt.textContent = p.t.length > 26 ? p.t.slice(0, 25) + '…' : p.t;
+            function pick() {
+              sel = p.id;
+              draw();
+              panel();
+            }
+            g.addEventListener('click', pick);
+            g.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                pick();
+              }
+            });
+          });
+        }
+        function panel() {
+          var p = byId(sel),
+            P = document.getElementById('orbPanel');
+          var cites = links
+            .filter(function (l) {
+              return l[0] === p.id;
+            })
+            .map(function (l) {
+              return byId(l[1]).t;
+            });
+          var by = links
+            .filter(function (l) {
+              return l[1] === p.id;
+            })
+            .map(function (l) {
+              return byId(l[0]).t;
+            });
+          var st = { read: 'Read', reading: 'Reading', todo: 'To read' };
+          P.innerHTML = '';
+          function add(tag, cls, txt) {
+            var e = document.createElement(tag);
+            if (cls) e.className = cls;
+            if (txt != null) e.textContent = txt;
+            P.appendChild(e);
+            return e;
+          }
+          add('div', 'yr', p.a + ', ' + p.y + ', ' + p.c + ' citations');
+          add('h4', '', p.t);
+          var ch = add('div', 'chips');
+          ['todo', 'reading', 'read'].forEach(function (k) {
+            var s = document.createElement('span');
+            s.textContent = st[k];
+            if (k === p.s) s.className = 'on';
+            ch.appendChild(s);
+          });
+          add('h6', '', 'Key finding for your question');
+          add(
+            'p',
+            'find',
+            p.f || 'Nothing yet. What does this paper tell you about your question?',
+          ).style.color = p.f ? '' : 'var(--mu)';
+          if (p.th) {
+            add('h6', '', 'Thread');
+            add('p', 'cites', 'Step ' + p.th + ' of 4 in From meta-learning to circuits');
+          }
+          add('h6', '', 'Cites in this review');
+          add('p', 'cites', cites.length ? cites.join('\n') : 'None').style.whiteSpace = 'pre-line';
+          add('h6', '', 'Cited by in this review');
+          add('p', 'cites', by.length ? by.join('\n') : 'None').style.whiteSpace = 'pre-line';
+          var b = add('div', '');
+          b.style.marginTop = '22px';
+          b.style.display = 'flex';
+          b.style.gap = '8px';
+          var b1 = document.createElement('span');
+          b1.className = 'btn';
+          b1.textContent = 'Read abstract';
+          b.appendChild(b1);
+          var b2 = document.createElement('span');
+          b2.className = 'btn g';
+          b2.textContent = 'Remove';
+          b.appendChild(b2);
+        }
+        draw();
+        panel();
+
+        /* margin notes alignment */
+        function alignNotes() {
+          document.querySelectorAll('#margin .ann').forEach(function (a) {
+            var t = document.getElementById(a.dataset.for),
+              sd = a.parentNode;
+            if (t) a.style.top = t.offsetTop - sd.offsetTop + 18 + 'px';
+          });
+        }
+
+        /* fit */
+        var mode = 'fit',
+          fitBtns = document.querySelectorAll('[data-fit]');
+        function fit() {
+          alignNotes();
+          document.querySelectorAll('.stage').forEach(function (st) {
+            var sh = st.querySelector('.shot');
+            if (mode === 'actual') {
+              st.classList.add('actual');
+              sh.style.transform = 'none';
+              st.style.height = 'auto';
+              return;
+            }
+            st.classList.remove('actual');
+            var sc = Math.min(1, st.clientWidth / 1120);
+            sh.style.transform = 'scale(' + sc + ')';
+            st.style.height = sh.offsetHeight * sc + 'px';
+          });
+        }
+        fitBtns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            mode = b.dataset.fit;
+            fitBtns.forEach(function (x) {
+              x.setAttribute('aria-pressed', String(x === b));
+            });
+            fit();
+          });
+        });
+        window.addEventListener('resize', fit);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+        fit();
+      })();
+    </script>
+  </body>
+</html>

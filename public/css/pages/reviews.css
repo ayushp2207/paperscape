@@ -673,7 +673,34 @@
   }
 }
 
-/* ---------- Loading placeholders (shared by both review pages) ---------- */
+/* ---------- Loading placeholders (shared by both review pages) ----------
+   Every shape is the same flat light grey with rounded ends, inside outline-only cards, and the
+   whole group breathes gently instead of shimmering. */
+.sk {
+  --sk-shape: color-mix(in srgb, var(--text-muted) 38%, transparent);
+}
+
+.sk .skeleton {
+  background: var(--sk-shape);
+  animation: sk-breathe 1.6s ease-in-out infinite;
+}
+
+@keyframes sk-breathe {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk .skeleton {
+    animation: none;
+  }
+}
+
+.sk .sk-card,
+.sk .sk-header {
+  background: transparent;
+}
 .sk__shapes {
   display: grid;
   gap: var(--space-4);
@@ -731,12 +758,10 @@
 
 .sk-line--button {
   height: 2rem;
-  border-radius: var(--radius-sm);
 }
 
 .sk-line--number {
   height: 1.75rem;
-  border-radius: var(--radius-sm);
 }
 
 .sk-circle {

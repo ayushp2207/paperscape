@@ -3,7 +3,7 @@
 // vocabulary once) and the browser (which matches questions as the user types).
 import { AREAS } from '../shared/areas.js';
 
-export const STOP_WORDS = new Set(
+const STOP_WORDS = new Set(
   (
     'a an and are as at be been being between beyond by can could do does doing done for from ' +
     'has have how if in into is it its more most of on or over should so such than that the ' +
