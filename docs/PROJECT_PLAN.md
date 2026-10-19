@@ -998,12 +998,12 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-3 Reviews API (1 h)
 
-- [ ] `db/reviews.js`:
+- [x] `db/reviews.js`:
   - `listWithCounts(ownerId)`: aggregate reviews + `$lookup` on reviewEntries grouped by status, or do a second query and merge.
   - `get`, `create`, `update`, `remove` (also `reviewEntries.deleteMany({reviewId})`).
-- [ ] Validation: title 1–120, question 1–500, keywords ≤ 10 strings.
-- [ ] `routes/reviews.js` with CRUD endpoints (threads + citations come in H-9/H-10, same file).
-- [ ] **Done when:** curl CRUD works and other owners get 404.
+- [x] Validation: title 1–120, question 1–500, keywords ≤ 10 strings.
+- [x] `routes/reviews.js` with CRUD endpoints (threads + citations come in H-9/H-10, same file).
+- [x] **Done when:** curl CRUD works and other owners get 404.
 
 ### H-4 Mockups (1.25 h) → `docs/mockups/`
 
@@ -1028,14 +1028,14 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-7 Entries API (1.25 h)
 
-- [ ] `db/reviewEntries.js`:
+- [x] `db/reviewEntries.js`:
   - `listForReview(reviewId, ownerId, status?)` with `$lookup` papers (project title, authors, year, venue, abstract, doi, citedByCount, openalexUrl).
   - `add(reviewId, paperId, ownerId)`: verify the review is yours and the paper exists; catch the duplicate-key error → 409.
   - `update(entryId, ownerId, data)`.
   - `remove(entryId, ownerId)` + `$pull` the entryId from all threads in that review.
-- [ ] `routes/entries.js`: `PUT/DELETE /api/entries/:entryId`.
-- [ ] Nested `GET/POST /api/reviews/:id/entries`: put these in `routes/reviews.js` (her file), calling `db/reviewEntries.js`.
-- [ ] Validation: status/relation enums, relevance 1–5, notes ≤ 5,000, findings ≤ 20 × 300 chars.
+- [x] `routes/entries.js`: `PUT/DELETE /api/entries/:entryId`.
+- [x] Nested `GET/POST /api/reviews/:id/entries`: put these in `routes/reviews.js` (her file), calling `db/reviewEntries.js`.
+- [x] Validation: status/relation enums, relevance 1–5, notes ≤ 5,000, findings ≤ 20 × 300 chars.
 
 ### H-8 Reading list tab (1.25 h)
 
@@ -1045,7 +1045,7 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-9 Threads tab (1.25 h)
 
-- [ ] API in `routes/reviews.js` + `db/reviews.js`:
+- [x] API in `routes/reviews.js` + `db/reviews.js`:
   - POST thread (server sets `id`).
   - PUT thread (validate every `entryId` belongs to this review).
   - DELETE thread with `$pull`.
@@ -1054,7 +1054,7 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-10 Citations tab (1 h)
 
-- [ ] `GET /api/reviews/:id/citations` per §10.5.
+- [x] `GET /api/reviews/:id/citations` per §10.5.
 - [ ] `citations.js`: stat line, grouped list "A cites → B, C" (click a title → switches to the Reading list and opens that entry), "Most cited in this review" top 3. Also add "cited by N in review" badges into `entryCard.js`.
 - [ ] Empty-state copy: "None of your saved papers cite each other yet. Try adding papers from the same thread of work."
 - [ ] **Demo tip:** find a seeded anchor paper + 3 of its citers and add them to a demo review.
