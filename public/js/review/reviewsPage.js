@@ -1,27 +1,17 @@
 import { api } from '../shared/api.js';
 import { el, qs } from '../shared/dom.js';
-import { icon } from '../shared/icons.js';
 import { confirmDialog, errorState, skeleton, toast } from '../shared/ui.js';
-import { emptyReviews } from './emptyReviews.js';
+import { emptyReviews, orbitIllustration } from './emptyReviews.js';
 import { reviewCard } from './reviewCard.js';
 import { EMPTY_COUNTS, initComposer } from './reviewComposer.js';
 import { reviewEditor } from './reviewEditor.js';
+import { loadVocabulary } from './vocabularyClient.js';
 
 const state = { reviews: [], loaded: false, error: null, editingId: null };
 const root = qs('#reviews-root');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
-
-// Topic phrases for title, keyword and area suggestions, fetched only the first time a review
-// form is used (and then cached by the browser for a day). Optional: if the request fails, the
-// form still suggests from the question's own words.
-let vocabularyRequest;
-const loadVocabulary = () =>
-  (vocabularyRequest ??= api
-    .get('/papers/topics')
-    .then((rows) => rows.map(([phrase, count, area]) => ({ phrase, count, area })))
-    .catch(() => []));
 
 // Saves come back from the API, so the list is patched in place instead of refetched.
 const composer = initComposer(qs('#composer'), qs('#composer-preview'), {
@@ -126,7 +116,7 @@ function render() {
     return;
   }
   if (state.reviews.length === 0) {
-    root.replaceChildren(emptyReviews({ onTry: (question) => composer.prefill(question) }));
+    root.replaceChildren(emptyReviews());
     return;
   }
   root.replaceChildren(
@@ -167,12 +157,12 @@ function listHeader() {
 function newQuestionCard() {
   return el(
     'button',
-    { class: 'review-card-ghost', type: 'button', on: { click: () => composer.focus() } },
-    el(
-      'span',
-      { class: 'review-card-ghost__orbit', 'aria-hidden': 'true' },
-      icon('plus', { size: 22 }),
-    ),
+    {
+      class: 'card review-card-ghost',
+      type: 'button',
+      on: { click: () => composer.focus() },
+    },
+    orbitIllustration('+'),
     el('span', { class: 'review-card-ghost__title' }, 'New question'),
     el('span', { class: 'muted' }, 'Start another review'),
   );

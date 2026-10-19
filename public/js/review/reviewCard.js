@@ -77,7 +77,23 @@ export function reviewCard(review, { preview = false, onEdit, onDelete } = {}) {
     el(
       'div',
       { class: 'review-card__top' },
-      orbitBadge(review.counts),
+      preview
+        ? orbitBadge(review.counts)
+        : el(
+            'div',
+            { class: 'review-card__orbit' },
+            orbitBadge(review.counts),
+            el(
+              'a',
+              {
+                class: 'orbit-add',
+                href: `${href}&tab=find`,
+                'aria-label': `Add papers to ${review.title}`,
+                title: 'Add papers',
+              },
+              icon('plus', { size: 14 }),
+            ),
+          ),
       el(
         'div',
         { class: 'review-card__heading' },

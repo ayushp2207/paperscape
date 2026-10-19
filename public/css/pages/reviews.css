@@ -270,9 +270,10 @@
   color: var(--text);
 }
 
+/* Cards in a row share one height; the footer sits at the bottom of each. */
 .review-grid {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
-  align-items: start;
+  align-items: stretch;
 }
 
 .review-card {
@@ -386,6 +387,7 @@
   font-weight: 700;
   line-height: 1;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -407,6 +409,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+  margin-top: auto;
   padding-top: var(--space-3);
   border-top: 1px solid var(--border);
 }
@@ -460,6 +463,32 @@
 }
 
 /* ---------- Orbit badge: one dot per paper around the share read ---------- */
+.review-card__orbit {
+  position: relative;
+}
+
+/* "+" on the orbit: straight to Find papers for this review. */
+.orbit-add {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: var(--shadow);
+  transition: transform var(--duration) var(--ease);
+}
+
+.orbit-add:hover,
+.orbit-add:focus-visible {
+  transform: scale(1.12);
+  background: var(--accent-hover);
+}
 .orbit-badge {
   position: relative;
   width: 88px;
@@ -532,22 +561,19 @@
 }
 
 /* ---------- Ghost card: the next question ---------- */
+/* A .card like the others, so it shares their size; dashed to read as "not yet". */
 .review-card-ghost {
-  display: grid;
+  /* Alone on a row it has no neighbour to stretch to, so it keeps a card-like height. */
+  min-height: 300px;
   place-content: center;
   justify-items: center;
   gap: var(--space-2);
-  min-height: 240px;
-  padding: var(--space-5);
   border: 1.5px dashed var(--border-strong);
-  border-radius: var(--radius);
   background: transparent;
   color: var(--text);
+  font: inherit;
   text-align: center;
   cursor: pointer;
-  transition:
-    border-color var(--duration) var(--ease),
-    background var(--duration) var(--ease);
 }
 
 .review-card-ghost:hover,
@@ -556,14 +582,12 @@
   background: var(--accent-soft);
 }
 
-.review-card-ghost__orbit {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border: 1px dashed var(--accent);
-  border-radius: 50%;
-  color: var(--accent);
+.review-card-ghost .empty-orbit {
+  max-width: 140px;
+}
+
+.review-card-ghost .empty-orbit__mark {
+  font-size: 34px;
 }
 
 .review-card-ghost__title {
@@ -573,89 +597,19 @@
 /* ---------- Empty state: before the first review ---------- */
 .empty-reviews {
   display: grid;
-  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
-  gap: var(--space-6);
-  align-items: center;
-  padding: var(--space-6);
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-5);
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius-lg);
-  background: radial-gradient(circle at 18% 50%, var(--hero-glow), transparent 55%);
-}
-
-@media (max-width: 720px) {
-  .empty-reviews {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding: var(--space-5);
-  }
-}
-
-.empty-reviews__body {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 60ch;
-}
-
-.empty-reviews__body h2 {
-  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
-  letter-spacing: -0.01em;
-}
-
-.empty-reviews__steps {
-  display: grid;
-  gap: var(--space-3);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.empty-reviews__steps li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: baseline;
-  gap: var(--space-3);
-  color: var(--text-muted);
-}
-
-.empty-reviews__steps strong {
-  color: var(--text);
-}
-
-.empty-reviews__step-number {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  background: var(--accent-soft);
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-}
-
-.empty-reviews__try {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.empty-reviews__examples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.empty-reviews__examples .chip {
-  text-align: left;
+  background: radial-gradient(circle at 50% 40%, var(--hero-glow), transparent 55%);
+  text-align: center;
 }
 
 /* Orbit illustration: an empty question with papers circling at three reading stages. */
 .empty-orbit {
   width: 100%;
-  max-width: 260px;
+  max-width: 180px;
 }
 
 .empty-orbit__glow {

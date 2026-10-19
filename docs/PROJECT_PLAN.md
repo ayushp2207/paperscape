@@ -1016,15 +1016,15 @@ Each day is 5 focused hours. Times are hours from the session start.
 - [x] `reviewsPage.js` + `reviewForm.js` + `reviews.css` per §9.
 - [x] Card progress bar = 4 coloured segments by status counts (pure CSS flex with widths as %).
 - [x] Create/edit dialog, delete with confirm (shows entry count). Toasts. Skeleton on load. Empty state CTA.
-- [ ] **Done when:** R1 fully works through the UI.
+- [x] **Done when:** R1 fully works through the UI.
 
 ### H-6 Paper search API + Find-papers tab (1.25 h)
 
 - [x] `db/papers.js`: `search({ q, area, yearFrom, yearTo, page, limit })` returning `{ items, total, page, pages }`. Use a projection to exclude `referencedWorks`. Add `getById`.
 - [x] `routes/papers.js`: validate and clamp numbers (limit ≤ 50, page ≥ 1, years 2000–2030).
-- [ ] `review.html` skeleton: header (title, question, progress), tabs (`<button role="tab">`). `reviewPage.js` loads the review + entries and owns `state`.
-- [ ] `search.js`: search `<form>`, result cards, abstract toggle (`<details>`), **Add to review** (POST entry → button becomes "Added ✓"), pagination buttons.
-- [ ] **Done when:** R2 fully works (search "diffusion", filter CV 2025, add 3 papers).
+- [x] `review.html` skeleton: header (title, question, progress), tabs (`<button role="tab">`). `reviewPage.js` loads the review + entries and owns `state`.
+- [x] `search.js`: search `<form>`, result cards, abstract toggle (`<details>`), **Add to review** (POST entry → button becomes "Added ✓"), pagination buttons.
+- [x] **Done when:** R2 fully works (search "diffusion", filter CV 2025, add 3 papers).
 
 ### H-7 Entries API (1.25 h)
 
@@ -1039,9 +1039,9 @@ Each day is 5 focused hours. Times are hours from the session start.
 
 ### H-8 Reading list tab (1.25 h)
 
-- [ ] `readingList.js` + `entryCard.js` per §9: status filter chips, sort select, entry `<details>` cards with the edit `<form>` (status, relation, relevance radios, notes, findings add/remove), Save → PUT + toast, Remove → confirm + DELETE.
-- [ ] Header progress bar updates after each change.
-- [ ] **Done when:** R3 fully works.
+- [x] `readingList.js` + `entryCard.js` per §9: status filter chips, sort select, entry `<details>` cards with the edit `<form>` (status, relation, relevance radios, notes, findings add/remove), Save → PUT + toast, Remove → confirm + DELETE.
+- [x] Header progress bar updates after each change.
+- [x] **Done when:** R3 fully works.
 
 ### H-9 Threads tab (1.25 h)
 

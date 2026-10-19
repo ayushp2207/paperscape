@@ -35,8 +35,5 @@ export function initComposer(form, previewRoot, { loadVocabulary, onCreated }) {
     onCreated(saved, from);
   });
 
-  return {
-    focus: () => fields.focus(),
-    prefill: (question) => fields.setQuestion(question),
-  };
+  return { focus: () => fields.focus() };
 }
