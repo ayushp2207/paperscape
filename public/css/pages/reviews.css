@@ -52,9 +52,16 @@
   align-items: start;
 }
 
+/* Stacked, the preview would sit below the button where nobody looks while typing,
+   and the background rings would run behind the fields, so both step aside. */
 @media (max-width: 860px) {
   .composer-hero {
     padding: var(--space-5);
+  }
+
+  .composer-hero::before,
+  .composer-hero__body .composer-hero__preview {
+    display: none;
   }
 
   .composer-hero__body {

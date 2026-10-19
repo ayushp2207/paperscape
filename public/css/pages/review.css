@@ -166,7 +166,7 @@
 }
 
 .search-sentence__input--year {
-  width: 5ch;
+  width: 6.5ch;
   appearance: textfield;
 }
 
@@ -178,6 +178,13 @@
 .search-sentence__submit {
   align-self: center;
   margin-left: auto;
+}
+
+/* On a phone the topic gets its own line, so the rest of the sentence isn't squeezed. */
+@media (max-width: 560px) {
+  .search-sentence__input--topic {
+    flex-basis: 100%;
+  }
 }
 
 .search-sentence .field-error {
@@ -217,8 +224,11 @@
   gap: var(--space-2);
 }
 
-.paper-card__title {
-  min-height: calc(3 * 1.35em);
+/* Side by side, titles reserve three lines so cards in a row line up; one per row, no need. */
+@media (min-width: 680px) {
+  .paper-card__title {
+    min-height: calc(3 * 1.35em);
+  }
 }
 
 .paper-card__open {
@@ -629,6 +639,30 @@
   gap: var(--space-2);
 }
 
+.findings__add[hidden] {
+  display: none;
+}
+
+/* Quiet text actions inside an entry ("Add finding", "Remove from review"). */
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link-btn:hover,
+.link-btn:focus-visible {
+  color: var(--accent);
+}
+
 .findings__add .input {
   min-height: 34px;
   font-size: 0.875rem;
@@ -636,6 +670,11 @@
 
 .entry__remove {
   justify-self: start;
+}
+
+.entry__remove:hover,
+.entry__remove:focus-visible {
+  color: var(--danger);
 }
 
 /* Margin notes: a thin rule, then handwritten-feeling italic text. */
@@ -690,5 +729,9 @@
 
   .entry__margin {
     grid-column: 2;
+  }
+
+  .entry__notes {
+    min-height: 3.5em;
   }
 }

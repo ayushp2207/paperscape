@@ -100,6 +100,50 @@ function findingsEditor(entry, onSave) {
   });
   const save = (findings) => onSave({ findings });
 
+  // Collapsed to a small button until used, so a list of entries isn't a wall of empty inputs.
+  const form = el(
+    'form',
+    {
+      class: 'findings__add',
+      novalidate: true,
+      hidden: true,
+      on: {
+        submit: (event) => {
+          event.preventDefault();
+          if (input.value.trim()) save([...entry.findings, input.value.trim()]);
+        },
+        keydown: (event) => {
+          if (event.key === 'Escape') collapse();
+        },
+      },
+    },
+    el('label', { class: 'visually-hidden', for: input.id }, 'Add a finding'),
+    input,
+    el('button', { class: 'btn btn--ghost btn--sm', type: 'submit' }, 'Add'),
+  );
+  const open = el(
+    'button',
+    {
+      class: 'link-btn',
+      type: 'button',
+      on: {
+        click: () => {
+          open.hidden = true;
+          form.hidden = false;
+          input.focus();
+        },
+      },
+    },
+    icon('plus', { size: 14 }),
+    'Add finding',
+  );
+  const collapse = () => {
+    form.hidden = true;
+    open.hidden = false;
+    open.focus();
+  };
+  const addFinding = el('div', {}, open, form);
+
   return el(
     'div',
     { class: 'findings' },
@@ -125,23 +169,7 @@ function findingsEditor(entry, onSave) {
           ),
         ),
       ),
-    entry.findings.length < LIMITS.findings &&
-      el(
-        'form',
-        {
-          class: 'findings__add',
-          novalidate: true,
-          on: {
-            submit: (event) => {
-              event.preventDefault();
-              if (input.value.trim()) save([...entry.findings, input.value.trim()]);
-            },
-          },
-        },
-        el('label', { class: 'visually-hidden', for: input.id }, 'Add a finding'),
-        input,
-        el('button', { class: 'btn btn--ghost btn--sm', type: 'submit' }, 'Add finding'),
-      ),
+    entry.findings.length < LIMITS.findings && addFinding,
   );
 }
 
@@ -153,7 +181,7 @@ function marginNotes(entry, onSave) {
     class: 'entry__notes',
     id: `notes-${entry._id}`,
     name: 'notes',
-    rows: '5',
+    rows: '3',
     maxlength: String(LIMITS.notes),
     placeholder: 'Add a note…',
     on: {
@@ -246,11 +274,11 @@ export function entryCard(entry, number, { onUpdate, onRemove }) {
       el(
         'button',
         {
-          class: 'btn btn--danger-ghost btn--sm entry__remove',
+          class: 'link-btn entry__remove',
           type: 'button',
           on: { click: onRemove },
         },
-        icon('trash', { size: 16 }),
+        icon('trash', { size: 14 }),
         'Remove from review',
       ),
     ),
