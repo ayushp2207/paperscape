@@ -2385,7 +2385,7 @@
     "endDate": "2027-08-12",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2027-02-02T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -2858,12 +2858,12 @@
       "lat": 33.75,
       "lng": -84.39
     },
-    "startDate": null,
-    "endDate": null,
+    "startDate": "2027-10-25",
+    "endDate": "2027-10-29",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
-      "notification": null,
+      "abstract": "2026-11-10T23:59:59-12:00",
+      "paper": "2026-11-17T23:59:59-12:00",
+      "notification": "2027-02-25T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -3154,9 +3154,12 @@
     "endDate": "2027-06-03",
     "deadlines": {
       "abstract": null,
-      "paper": "2026-10-16T23:59:59-07:00",
+      "paper": "2026-10-30T23:59:59-07:00",
       "notification": null,
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2026-10-16T23:59:59-07:00"
     }
   },
   {
