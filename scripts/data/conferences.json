@@ -576,8 +576,8 @@
     "endDate": "2027-07-02",
     "deadlines": {
       "abstract": null,
-      "paper": null,
-      "notification": null,
+      "paper": "2027-01-29T23:59:59-12:00",
+      "notification": "2027-05-03T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -940,7 +940,7 @@
     "deadlines": {
       "abstract": "2026-08-28T23:59:59-12:00",
       "paper": "2026-08-28T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-12-02T07:00:00-12:00",
       "cameraReady": null
     }
   },
@@ -1115,30 +1115,6 @@
   {
     "acronym": "EMNLP",
     "name": "Conference on Empirical Methods in Natural Language Processing",
-    "year": 2024,
-    "website": "https://2024.emnlp.org",
-    "areas": [
-      "nlp"
-    ],
-    "location": {
-      "city": "Miami",
-      "country": "USA",
-      "venue": null,
-      "lat": 25.76,
-      "lng": -80.19
-    },
-    "startDate": "2024-11-12",
-    "endDate": "2024-11-14",
-    "deadlines": {
-      "abstract": null,
-      "paper": "2024-08-20T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "EMNLP",
-    "name": "Conference on Empirical Methods in Natural Language Processing",
     "year": 2025,
     "website": "https://2025.emnlp.org/",
     "areas": [
@@ -1187,6 +1163,24 @@
       "deadlines.notification",
       "deadlines.cameraReady"
     ]
+  },
+  {
+    "acronym": "EMNLP",
+    "name": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2027,
+    "website": "https://2026.emnlp.org",
+    "areas": [
+      "nlp"
+    ],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
   },
   {
     "acronym": "NAACL",
@@ -1550,9 +1544,13 @@
     "endDate": "2027-02-19",
     "deadlines": {
       "abstract": "2026-08-17T23:59:59-12:00",
-      "paper": "2026-08-24T23:59:59-12:00",
-      "notification": "2026-11-02T23:59:59-12:00",
+      "paper": "2026-11-17T23:59:59-12:00",
+      "notification": "2026-12-18T23:59:59-12:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2026-08-24T23:59:59-12:00",
+      "notification": "2026-11-02T23:59:59-12:00"
     }
   },
   {
@@ -1797,7 +1795,7 @@
     "deadlines": {
       "abstract": "2026-05-25T23:59:59-12:00",
       "paper": "2026-05-28T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-09-04T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -2290,12 +2288,12 @@
       "lat": -37.81,
       "lng": 144.96
     },
-    "startDate": null,
-    "endDate": null,
+    "startDate": "2026-12-01",
+    "endDate": "2026-12-04",
     "deadlines": {
       "abstract": null,
       "paper": "2026-07-05T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-09-22T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -2385,7 +2383,7 @@
     "endDate": "2027-08-12",
     "deadlines": {
       "abstract": null,
-      "paper": null,
+      "paper": "2027-02-02T23:59:59-12:00",
       "notification": null,
       "cameraReady": null
     }
@@ -2458,6 +2456,30 @@
     "deadlines": {
       "abstract": "2026-09-10T23:59:59-04:00",
       "paper": "2026-09-17T23:59:59-04:00",
+      "notification": null,
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "NSDI",
+    "name": "USENIX Symposium on Networked Systems Design and Implementation",
+    "year": 2028,
+    "website": "https://www.usenix.org/conferences/byname/178",
+    "areas": [
+      "networking"
+    ],
+    "location": {
+      "city": "Santa Clara",
+      "country": "USA",
+      "venue": null,
+      "lat": 37.35,
+      "lng": -121.96
+    },
+    "startDate": "2028-05-09",
+    "endDate": "2028-05-11",
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
       "notification": null,
       "cameraReady": null
     }
@@ -2858,12 +2880,12 @@
       "lat": 33.75,
       "lng": -84.39
     },
-    "startDate": null,
-    "endDate": null,
+    "startDate": "2027-10-25",
+    "endDate": "2027-10-29",
     "deadlines": {
-      "abstract": null,
-      "paper": null,
-      "notification": null,
+      "abstract": "2026-11-10T23:59:59-12:00",
+      "paper": "2026-11-17T23:59:59-12:00",
+      "notification": "2027-02-25T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -3154,9 +3176,12 @@
     "endDate": "2027-06-03",
     "deadlines": {
       "abstract": null,
-      "paper": "2026-10-16T23:59:59-07:00",
+      "paper": "2026-10-30T23:59:59-07:00",
       "notification": null,
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2026-10-16T23:59:59-07:00"
     }
   },
   {
