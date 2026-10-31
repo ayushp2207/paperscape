@@ -1867,8 +1867,11 @@
     "deadlines": {
       "abstract": null,
       "paper": "2026-09-16T23:59:59-08:00",
-      "notification": "2027-02-01T03:59:00-08:00",
+      "notification": "2027-02-01T03:59:59-08:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "notification": "2027-02-01T03:59:00-08:00"
     }
   },
   {
@@ -2487,30 +2490,6 @@
   {
     "acronym": "MobiCom",
     "name": "ACM Annual International Conference On Mobile Computing And Networking",
-    "year": 2024,
-    "website": "https://www.sigmobile.org/mobicom/2024/",
-    "areas": [
-      "networking"
-    ],
-    "location": {
-      "city": "Washington, D.C.",
-      "country": "USA",
-      "venue": null,
-      "lat": 38.91,
-      "lng": -77.04
-    },
-    "startDate": "2024-11-19",
-    "endDate": "2024-11-22",
-    "deadlines": {
-      "abstract": "2024-03-08T23:59:59-12:00",
-      "paper": "2024-03-15T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "MobiCom",
-    "name": "ACM Annual International Conference On Mobile Computing And Networking",
     "year": 2025,
     "website": "https://sigmobile.org/mobicom/2025/",
     "areas": [
@@ -2570,7 +2549,7 @@
     "deadlines": {
       "abstract": "2026-08-26T23:59:59-12:00",
       "paper": "2026-09-02T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-11-19T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -3538,30 +3517,6 @@
   {
     "acronym": "MSWiM",
     "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
-    "year": 2023,
-    "website": "https://mswimconf.com/2023/",
-    "areas": [
-      "networking"
-    ],
-    "location": {
-      "city": "Montréal",
-      "country": "Canada",
-      "venue": null,
-      "lat": 45.5,
-      "lng": -73.57
-    },
-    "startDate": "2023-10-30",
-    "endDate": "2023-11-01",
-    "deadlines": {
-      "abstract": "2023-07-02T23:59:59-12:00",
-      "paper": "2023-07-08T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "MSWiM",
-    "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
     "year": 2025,
     "website": "https://mswimconf.com/2025/",
     "areas": [
@@ -3610,6 +3565,24 @@
       "deadlines.notification",
       "deadlines.cameraReady"
     ]
+  },
+  {
+    "acronym": "MSWiM",
+    "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
+    "year": 2027,
+    "website": "https://mswimconf.com",
+    "areas": [
+      "networking"
+    ],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
   },
   {
     "acronym": "LCN",
