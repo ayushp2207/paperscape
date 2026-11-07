@@ -76,7 +76,7 @@
       "status": "ok"
     },
     "https://cvpr.thecvf.com/Conferences/2027": {
-      "fingerprint": "974ddff28f0664ca",
+      "fingerprint": "f657675fa11e42d1",
       "status": "ok"
     },
     "https://dyspan2027.ieee-dyspan.org/": {
@@ -166,7 +166,7 @@
     },
     "https://noms2027.ieee-noms.org/": {
       "fingerprint": "0c8fd76442a3b40e",
-      "status": "ok"
+      "status": "broken"
     },
     "https://pimrc2027.ieee-pimrc.org/": {
       "fingerprint": "9d5aad06102f4002",
