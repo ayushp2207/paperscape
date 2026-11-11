@@ -160,7 +160,9 @@ async function fetchArea(client, area) {
   works.push(
     ...(await client.works({ search: area.query, filter: recent, perPage: FILL_PER_AREA })),
   );
-
+  // Anchors, their citers and the fill query overlap (a paper citing one anchor often cites
+  // another), so `works` holds duplicates. Two upserts on the same openalexId in one unordered
+  // bulkWrite can raise a duplicate-key error against the unique index, so keep one per id.
   return works.map((work) => toPaper(work, area.id)).filter(Boolean);
 }
 
