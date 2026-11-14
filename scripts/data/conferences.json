@@ -72,13 +72,16 @@
     "endDate": "2026-12-11",
     "deadlines": {
       "abstract": "2026-05-05T11:59:00Z",
-      "paper": "2026-05-07T11:59:00Z",
+      "paper": "2026-05-07T11:59:59Z",
       "notification": "2026-09-24T23:59:59-12:00",
       "cameraReady": null
     },
     "pinned": [
       "deadlines.notification"
-    ]
+    ],
+    "extensions": {
+      "paper": "2026-05-07T11:59:00Z"
+    }
   },
   {
     "acronym": "ICML",
@@ -134,14 +137,20 @@
     "acronym": "ICML",
     "name": "International Conference on Machine Learning",
     "year": 2027,
-    "website": "https://icml.cc",
+    "website": "https://icml.cc/Conferences/2027",
     "areas": [
       "general",
       "theory"
     ],
-    "location": null,
-    "startDate": null,
-    "endDate": null,
+    "location": {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "venue": "Riocentro",
+      "lat": -22.91,
+      "lng": -43.17
+    },
+    "startDate": "2027-08-02",
+    "endDate": "2027-08-04",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -216,7 +225,7 @@
       "lng": -122.42
     },
     "startDate": "2027-04-26",
-    "endDate": "2027-04-30",
+    "endDate": "2027-04-28",
     "deadlines": {
       "abstract": "2026-09-18T23:59:59-12:00",
       "paper": "2026-09-25T23:59:59-12:00",
@@ -362,10 +371,15 @@
     "startDate": "2027-08-07",
     "endDate": "2027-08-13",
     "deadlines": {
+      "abstract": "2027-01-04T23:59:59-12:00",
+      "paper": "2027-01-11T23:59:59-12:00",
+      "notification": "2027-04-21T23:59:59-12:00",
+      "cameraReady": null
+    },
+    "extensions": {
       "abstract": "2027-01-04T23:59:00-12:00",
       "paper": "2027-01-11T23:59:00-12:00",
-      "notification": "2027-04-21T23:59:00-12:00",
-      "cameraReady": null
+      "notification": "2027-04-21T23:59:00-12:00"
     }
   },
   {
@@ -644,7 +658,7 @@
       "lat": 47.61,
       "lng": -122.33
     },
-    "startDate": "2027-06-20",
+    "startDate": "2027-06-22",
     "endDate": "2027-06-25",
     "deadlines": {
       "abstract": "2026-11-10T23:59:59-12:00",
@@ -716,8 +730,8 @@
       "lat": 22.32,
       "lng": 114.17
     },
-    "startDate": "2027-10-02",
-    "endDate": "2027-10-08",
+    "startDate": "2027-10-05",
+    "endDate": "2027-10-07",
     "deadlines": {
       "abstract": null,
       "paper": null,
@@ -788,13 +802,16 @@
       "lat": 28.37,
       "lng": -81.52
     },
-    "startDate": "2027-01-04",
+    "startDate": "2027-01-06",
     "endDate": "2027-01-08",
     "deadlines": {
       "abstract": "2026-08-21T23:59:59-12:00",
       "paper": "2026-08-28T23:59:59-12:00",
-      "notification": "2026-10-09T23:59:59-12:00",
+      "notification": "2026-10-14T23:59:59-12:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "notification": "2026-10-09T23:59:59-12:00"
     }
   },
   {
@@ -1103,7 +1120,7 @@
       "lat": 35.01,
       "lng": 135.77
     },
-    "startDate": "2027-08-17",
+    "startDate": "2027-08-20",
     "endDate": "2027-08-22",
     "deadlines": {
       "abstract": null,
@@ -1616,12 +1633,12 @@
       "lat": 41.81,
       "lng": 123.43
     },
-    "startDate": "2026-11-12",
+    "startDate": "2026-11-13",
     "endDate": "2026-11-15",
     "deadlines": {
       "abstract": null,
       "paper": "2026-06-06T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-08-16T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -1644,9 +1661,13 @@
     "endDate": "2027-11-18",
     "deadlines": {
       "abstract": null,
-      "paper": "2027-06-06T23:59:00-12:00",
-      "notification": "2027-08-16T23:59:00-12:00",
+      "paper": "2027-06-06T23:59:59-12:00",
+      "notification": "2027-08-16T23:59:59-12:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2027-06-06T23:59:00-12:00",
+      "notification": "2027-08-16T23:59:00-12:00"
     }
   },
   {
@@ -1727,31 +1748,6 @@
   {
     "acronym": "CoRL",
     "name": "Conference on Robot Learning",
-    "year": 2024,
-    "website": "https://2024.corl.org/",
-    "areas": [
-      "robotics",
-      "rl"
-    ],
-    "location": {
-      "city": "Munich",
-      "country": "Germany",
-      "venue": null,
-      "lat": 48.14,
-      "lng": 11.58
-    },
-    "startDate": "2024-11-06",
-    "endDate": "2024-11-08",
-    "deadlines": {
-      "abstract": null,
-      "paper": "2024-06-06T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "CoRL",
-    "name": "Conference on Robot Learning",
     "year": 2025,
     "website": "https://2025.corl.org/",
     "areas": [
@@ -1796,6 +1792,25 @@
       "abstract": "2026-05-25T23:59:59-12:00",
       "paper": "2026-05-28T23:59:59-12:00",
       "notification": "2026-09-04T23:59:59-12:00",
+      "cameraReady": null
+    }
+  },
+  {
+    "acronym": "CoRL",
+    "name": "Conference on Robot Learning",
+    "year": 2027,
+    "website": "https://www.corl.org",
+    "areas": [
+      "robotics",
+      "rl"
+    ],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
       "cameraReady": null
     }
   },
@@ -1867,8 +1882,11 @@
     "deadlines": {
       "abstract": null,
       "paper": "2026-09-16T23:59:59-08:00",
-      "notification": "2027-02-01T03:59:00-08:00",
+      "notification": "2027-02-01T03:59:59-08:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "notification": "2027-02-01T03:59:00-08:00"
     }
   },
   {
@@ -1934,7 +1952,7 @@
       "lat": 43.77,
       "lng": 11.26
     },
-    "startDate": "2027-09-26",
+    "startDate": "2027-09-27",
     "endDate": "2027-10-01",
     "deadlines": {
       "abstract": null,
@@ -2011,7 +2029,7 @@
     "deadlines": {
       "abstract": null,
       "paper": "2026-12-04T23:59:59-12:00",
-      "notification": null,
+      "notification": "2027-04-30T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -2082,9 +2100,13 @@
     "endDate": "2027-05-07",
     "deadlines": {
       "abstract": "2026-10-01T23:59:59-12:00",
-      "paper": "2026-10-08T23:59:59-12:00",
-      "notification": "2026-12-21T23:59:59-12:00",
+      "paper": "2026-12-11T23:59:59-12:00",
+      "notification": "2027-02-01T23:59:59-12:00",
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2026-10-08T23:59:59-12:00",
+      "notification": "2026-12-21T23:59:59-12:00"
     }
   },
   {
@@ -2149,7 +2171,7 @@
     "deadlines": {
       "abstract": "2026-08-05T23:59:59-12:00",
       "paper": "2026-08-07T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-09-13T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -2220,9 +2242,12 @@
     "endDate": "2027-06-25",
     "deadlines": {
       "abstract": null,
-      "paper": "2026-10-30T20:00:00Z",
+      "paper": "2026-10-30T21:00:00Z",
       "notification": "2027-02-28T21:00:00Z",
       "cameraReady": null
+    },
+    "extensions": {
+      "paper": "2026-10-30T20:00:00Z"
     }
   },
   {
@@ -2487,30 +2512,6 @@
   {
     "acronym": "MobiCom",
     "name": "ACM Annual International Conference On Mobile Computing And Networking",
-    "year": 2024,
-    "website": "https://www.sigmobile.org/mobicom/2024/",
-    "areas": [
-      "networking"
-    ],
-    "location": {
-      "city": "Washington, D.C.",
-      "country": "USA",
-      "venue": null,
-      "lat": 38.91,
-      "lng": -77.04
-    },
-    "startDate": "2024-11-19",
-    "endDate": "2024-11-22",
-    "deadlines": {
-      "abstract": "2024-03-08T23:59:59-12:00",
-      "paper": "2024-03-15T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "MobiCom",
-    "name": "ACM Annual International Conference On Mobile Computing And Networking",
     "year": 2025,
     "website": "https://sigmobile.org/mobicom/2025/",
     "areas": [
@@ -2570,7 +2571,7 @@
     "deadlines": {
       "abstract": "2026-08-26T23:59:59-12:00",
       "paper": "2026-09-02T23:59:59-12:00",
-      "notification": null,
+      "notification": "2026-11-19T23:59:59-12:00",
       "cameraReady": null
     }
   },
@@ -3538,30 +3539,6 @@
   {
     "acronym": "MSWiM",
     "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
-    "year": 2023,
-    "website": "https://mswimconf.com/2023/",
-    "areas": [
-      "networking"
-    ],
-    "location": {
-      "city": "Montréal",
-      "country": "Canada",
-      "venue": null,
-      "lat": 45.5,
-      "lng": -73.57
-    },
-    "startDate": "2023-10-30",
-    "endDate": "2023-11-01",
-    "deadlines": {
-      "abstract": "2023-07-02T23:59:59-12:00",
-      "paper": "2023-07-08T23:59:59-12:00",
-      "notification": null,
-      "cameraReady": null
-    }
-  },
-  {
-    "acronym": "MSWiM",
-    "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
     "year": 2025,
     "website": "https://mswimconf.com/2025/",
     "areas": [
@@ -3610,6 +3587,24 @@
       "deadlines.notification",
       "deadlines.cameraReady"
     ]
+  },
+  {
+    "acronym": "MSWiM",
+    "name": "International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems",
+    "year": 2027,
+    "website": "https://mswimconf.com",
+    "areas": [
+      "networking"
+    ],
+    "location": null,
+    "startDate": null,
+    "endDate": null,
+    "deadlines": {
+      "abstract": null,
+      "paper": null,
+      "notification": null,
+      "cameraReady": null
+    }
   },
   {
     "acronym": "LCN",
@@ -3745,7 +3740,7 @@
     "deadlines": {
       "abstract": null,
       "paper": "2026-11-09T23:59:59-12:00",
-      "notification": null,
+      "notification": "2027-02-15T23:59:59-12:00",
       "cameraReady": null
     }
   },

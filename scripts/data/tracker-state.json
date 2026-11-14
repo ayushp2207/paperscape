@@ -76,7 +76,7 @@
       "status": "ok"
     },
     "https://cvpr.thecvf.com/Conferences/2027": {
-      "fingerprint": "974ddff28f0664ca",
+      "fingerprint": "faaf101dd73b9492",
       "status": "ok"
     },
     "https://dyspan2027.ieee-dyspan.org/": {
@@ -212,7 +212,7 @@
       "status": "broken"
     },
     "https://wsdm-conference.org/2027/": {
-      "fingerprint": "50cc0e72b3782837",
+      "fingerprint": "ed9117f5ab220417",
       "status": "ok"
     },
     "https://www.acml-conf.org/2026/": {
@@ -240,7 +240,7 @@
       "status": "ok"
     },
     "https://www.sigmobile.org/mobicom/2027/": {
-      "fingerprint": "b9dd64181acc3dbc",
+      "fingerprint": "a202bfb9dcebe446",
       "status": "ok"
     },
     "https://www.sigmobile.org/mobihoc/2026/": {
