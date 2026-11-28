@@ -32,11 +32,11 @@
       "status": "ok"
     },
     "https://3dvconf.github.io/2027/": {
-      "fingerprint": "3eb82c6b581610e9",
+      "fingerprint": "11ceb6b284c4e3d5",
       "status": "ok"
     },
     "https://aaai.org/conference/aaai/aaai-27/": {
-      "fingerprint": "009685888e11fd5f",
+      "fingerprint": "c10d28413653bf2f",
       "status": "ok"
     },
     "https://bmvc2026.bmva.org/": {
@@ -60,7 +60,7 @@
       "status": "ok"
     },
     "https://conferences.sigcomm.org/co-next/2027/#!/home": {
-      "fingerprint": "e3b0c44298fc1c14",
+      "fingerprint": "3003765f7e6b518f",
       "status": "ok"
     },
     "https://conferences.sigcomm.org/hotnets/2026/": {
@@ -173,11 +173,11 @@
       "status": "ok"
     },
     "https://roboticsconference.org/": {
-      "fingerprint": "69493a024887a9c7",
+      "fingerprint": "3035b738865daa6a",
       "status": "ok"
     },
     "https://secon2027.ieee-secon.org/": {
-      "fingerprint": "f4f1b89791d310db",
+      "fingerprint": "cc5c59d0efcf4ad2",
       "status": "ok"
     },
     "https://sensys.acm.org/2027/": {
@@ -248,7 +248,7 @@
       "status": "ok"
     },
     "https://www.sigmobile.org/mobisys/2027/": {
-      "fingerprint": "d650bc8361259570",
+      "fingerprint": "3003765f7e6b518f",
       "status": "ok"
     },
     "https://www.usenix.org/conference/nsdi27": {
